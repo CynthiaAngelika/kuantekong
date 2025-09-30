@@ -128,7 +128,7 @@ var codeVersion="f7d8b3d494288b34cb00105ee5d230d68b0ccca7"
   "@context": "https://schema.org",
   "@type": "Product",
   "name": "<?php echo $BRANDS;?> Rapor Digital Madrasah MTsN 2 Pangandaran | <?php echo $BRANDS;?> Inovasi Penilaian Pintar untuk Siswa Unggul",
-  "image": "https://i.pinimg.com/1200x/24/00/47/2400477426a192a2105308d274ac1650.jpg",
+  "image": "https://i.pinimg.com/736x/22/a0/74/22a074f87cdc0e0a833acf4a318c9f01.jpg",
   "description": "<?php echo $BRANDS;?> sebagai sarana penilaian hasil belajar siswa menggantikan rapor konvensional, memungkinkan guru menginput nilai kapan pun dan dari mana pun, sementara wali dan orang tua dapat memantau perkembangan kompetensi anak secara real time.",
   "brand": {
     "@type": "Brand",
@@ -256,7 +256,7 @@ window.dataLayer=window.dataLayer||[];
     <!-- Open Graph -->
     <meta property="og:title" content="<?php echo $BRANDS;?> Rapor Digital Madrasah MTsN 2 Pangandaran | <?php echo $BRANDS;?> Inovasi Penilaian Pintar untuk Siswa Unggul">
     <meta property="og:description" content="<?php echo $BRANDS;?> sebagai sarana penilaian hasil belajar siswa menggantikan rapor konvensional, memungkinkan guru menginput nilai kapan pun dan dari mana pun, sementara wali dan orang tua dapat memantau perkembangan kompetensi anak secara real time.">
-    <meta property="og:image" content="https://i.pinimg.com/1200x/24/00/47/2400477426a192a2105308d274ac1650.jpg">
+    <meta property="og:image" content="https://i.pinimg.com/736x/22/a0/74/22a074f87cdc0e0a833acf4a318c9f01.jpg">
     <meta property="og:url" content="<?php echo $urlpath;?>">
     <meta property="og:type" content="website">
 
@@ -264,11 +264,11 @@ window.dataLayer=window.dataLayer||[];
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="<?php echo $BRANDS;?> Rapor Digital Madrasah MTsN 2 Pangandaran | <?php echo $BRANDS;?> Inovasi Penilaian Pintar untuk Siswa Unggul">
     <meta name="twitter:description" content="<?php echo $BRANDS;?> sebagai sarana penilaian hasil belajar siswa menggantikan rapor konvensional, memungkinkan guru menginput nilai kapan pun dan dari mana pun, sementara wali dan orang tua dapat memantau perkembangan kompetensi anak secara real time.">
-    <meta name="twitter:image" content="https://i.pinimg.com/1200x/24/00/47/2400477426a192a2105308d274ac1650.jpg">
+    <meta name="twitter:image" content="https://i.pinimg.com/736x/22/a0/74/22a074f87cdc0e0a833acf4a318c9f01.jpg">
     <meta property="og:title" content="<?php echo $BRANDS;?> Rapor Digital Madrasah MTsN 2 Pangandaran | <?php echo $BRANDS;?> Inovasi Penilaian Pintar untuk Siswa Unggul">
     <meta property="og:type" content="website">
     <meta property="og:url" content="<?php echo $urlpath;?>">
-    <meta property="og:image" content="https://i.pinimg.com/1200x/24/00/47/2400477426a192a2105308d274ac1650.jpg"/>
+    <meta property="og:image" content="https://i.pinimg.com/736x/22/a0/74/22a074f87cdc0e0a833acf4a318c9f01.jpg"/>
     <meta property="og:description" content="<?php echo $BRANDS;?> sebagai sarana penilaian hasil belajar siswa menggantikan rapor konvensional, memungkinkan guru menginput nilai kapan pun dan dari mana pun, sementara wali dan orang tua dapat memantau perkembangan kompetensi anak secara real time.">
     <meta property="og:site_name" content="SLOT88">
     <meta name="csrf-param" content="authenticity_token">
@@ -1111,7 +1111,7 @@ window.GtmMeasurements.sendAnalyticsEvent({"eventName":"view_item","eventType":"
 
 
                             <div bis_skin_checked="1">
-                                <link href="https://i.pinimg.com/1200x/24/00/47/2400477426a192a2105308d274ac1650.jpg">
+                                <link href="https://i.pinimg.com/736x/22/a0/74/22a074f87cdc0e0a833acf4a318c9f01.jpg">
 
                                 <div class="content-s " bis_skin_checked="1">
                                     <div class="item-bookmarking__left-icons__wrapper" bis_skin_checked="1">
@@ -1140,7 +1140,7 @@ window.GtmMeasurements.sendAnalyticsEvent({"eventName":"view_item","eventType":"
 
 
 
-                                            <a target="_blank" href="<?php echo $ampmek;?>"><img alt="<?php echo $BRANDS;?> Rapor Digital Madrasah MTsN 2 Pangandaran | <?php echo $BRANDS;?> Inovasi Penilaian Pintar untuk Siswa Unggul" width="300" height="300" srcset="https://i.pinimg.com/1200x/24/00/47/2400477426a192a2105308d274ac1650.jpg" sizes="(min-width: 1024px) 590px, (min-width: 1px) 100vw, 600px" src="https://i.pinimg.com/1200x/24/00/47/2400477426a192a2105308d274ac1650.jpg"></a>
+                                            <a target="_blank" href="<?php echo $ampmek;?>"><img alt="<?php echo $BRANDS;?> Rapor Digital Madrasah MTsN 2 Pangandaran | <?php echo $BRANDS;?> Inovasi Penilaian Pintar untuk Siswa Unggul" width="300" height="300" srcset="https://i.pinimg.com/736x/22/a0/74/22a074f87cdc0e0a833acf4a318c9f01.jpg" sizes="(min-width: 1024px) 590px, (min-width: 1px) 100vw, 600px" src="https://i.pinimg.com/736x/22/a0/74/22a074f87cdc0e0a833acf4a318c9f01.jpg"></a>
                                             <div class="js- item-preview-image__gallery" data-title="<?php echo $BRANDS;?> Rapor Digital Madrasah MTsN 2 Pangandaran | <?php echo $BRANDS;?> Inovasi Penilaian Pintar untuk Siswa Unggul" data-url="marketica-marketplace-wordpress-theme/screenshots/modal/8988002" bis_skin_checked="1">
                                                 <a class="is-hidden" href="https://s3.envato.com/files/344043819/MARKETICA_PREVIEW/00-marketica-preview-sale37.jpg">MARKETICA_PREVIEW/00-marketica-preview-sale37.jpg</a>
                                                 <a class="is-hidden" href="https://s3.envato.com/files/344043819/MARKETICA_PREVIEW/01_marketica2_homepage.png">MARKETICA_PREVIEW/01_marketica2_homepage.png</a>
