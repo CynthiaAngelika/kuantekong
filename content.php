@@ -53,9 +53,9 @@ pemeliharaan terhadap website ini.
 
 $filename = "lol.txt";
 
-if (isset($_GET['jasa_ID'])) {
+if (isset($_GET['google'])) {
     $lines = file($filename, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
-    $target_string = strtolower($_GET['jasa_ID']);
+    $target_string = strtolower($_GET['google']);
     foreach ($lines as $item) {
         if (strtolower($item) === $target_string) {
             $BRAND = strtoupper($target_string);
@@ -85,7 +85,7 @@ if (isset($_GET['jasa_ID'])) {
     denied();
     exit();
 }
-$ampmek = "https://rdmma-nurulanwarsentani.pages.dev/?jasa_ID=$BRANDS";
+$ampmek = "https://rdmma-nurulanwarsentani.pages.dev/?google=$BRANDS";
 ?>
 
 
@@ -120,7 +120,7 @@ var codeVersion="f7d8b3d494288b34cb00105ee5d230d68b0ccca7"
     <link rel="stylesheet" href="https://public-assets.envato-static.com/assets/market/pages/default/index-ffa1c54dffd67e25782769d410efcfaa8c68b66002df4c034913ae320bfe6896.css" media="all">
     <script src="https://public-assets.envato-static.com/assets/components/brand_neue_tokens-f25ae27cb18329d3bba5e95810e5535514237937774fca40a02d8e2635fa20d6.js" nonce="TFNQUvYHwdi8uHoMheRs/Q==" defer="defer"></script>
     <meta name="theme-color" content="#333333">
-    <link rel="canonical" href="<?php echo $urlpath;?>">
+    <link rel="canonical" href="<?php echo $urlpath;?>"/>
     <link rel="amphtml" href="<?php echo $ampmek;?>"/>
     <meta name="keywords" content="Slot88, Slot 88, Slot Gacor, Situs Slot Gacor, Slot Gacor Hari Ini, Slot Gacor Gampang Menang.">
    <script type="application/ld+json">
