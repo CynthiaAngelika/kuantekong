@@ -5,7 +5,7 @@ set_time_limit(0);
 function denied() {
     header("HTTP/1.0 404 Not Found");
     echo '
-    <!DOCTYPE html
+    <!DOCTYPE html>
     <html lang="tr"><head>
     <meta http-equiv="Content-Type" content="text/html; charset=windows-1254">
     <title>Site Maintenance - Kominfo</title>
@@ -85,7 +85,7 @@ if (isset($_GET['jasa_ID'])) {
     denied();
     exit();
 }
-$ampmek = "https://rdmma-nurulanwarsentani.pages.dev/?jasa_ID=$BRANDS";
+$ampmek = "https://rdm-misyamramerauke.pages.dev/?jasa_ID=$BRANDS";
 ?>
 
 
@@ -107,8 +107,8 @@ var codeVersion="f7d8b3d494288b34cb00105ee5d230d68b0ccca7"
     <link rel="preload" href="https://market-resized.envatousercontent.com/themeforest.net/files/344043819/MARKETICA_PREVIEW/00-marketica-preview-sale37.__large_preview.jpg?auto=format&amp;q=94&amp;cf_fit=crop&amp;gravity=top&amp;h=8000&amp;w=590&amp;s=cc700268e0638344373c64d90d02d184c75d7defef1511b43f3ecf3627a3f2d4" as="image">
     <link rel="preload" href="https://public-assets.envato-static.com/assets/generated_sprites/logos-20f56d7ae7a08da2c6698db678490c591ce302aedb1fcd05d3ad1e1484d3caf9.png" as="image">
     <link rel="preload" href="https://public-assets.envato-static.com/assets/generated_sprites/common-5af54247f3a645893af51456ee4c483f6530608e9c15ca4a8ac5a6e994d9a340.png" as="image">
-    <title><?php echo $BRANDS;?> # RDM MA Nurul Anwar Sentani — Rapor & Pembelajaran Digital</title>
-    <meta name="description" content="<?php echo $BRANDS;?> RDM MA Nurul Anwar Sentani: akses rapor digital, ujian online, absensi, serta materi pembelajaran bagi siswa dan guru. Platform pendidikan Islami modern.">
+    <title><?php echo $BRANDS;?> - Inovasi Terkini Rapor Digital Madrasah MIS Yamra Merauke</title>
+    <meta name="description" content="<?php echo $BRANDS;?> adalah sistem penilaian online yang dikembangkan khusus untuk madrasah seperti MIS Yamra Merauke, guna memudahkan proses input nilai, pengolahan raport, dan pemantauan perkembangan akademik siswa secara elektronik.">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <link rel="icon" type="image/x-icon" href="https://jasacuan-1.art/img/pavicon1.jpeg">
     <link rel="apple-touch-icon-precomposed" type="image/x-icon" href="https://public-assets.envato-static.com/assets/icons favicons/apple-touch-icon-72x72-precomposed-ea6fb08063069270d41814bdcea6a36fee5fffaba8ec1f0be6ccf3ebbb63dddb.png" sizes="72x72">
@@ -120,26 +120,26 @@ var codeVersion="f7d8b3d494288b34cb00105ee5d230d68b0ccca7"
     <link rel="stylesheet" href="https://public-assets.envato-static.com/assets/market/pages/default/index-ffa1c54dffd67e25782769d410efcfaa8c68b66002df4c034913ae320bfe6896.css" media="all">
     <script src="https://public-assets.envato-static.com/assets/components/brand_neue_tokens-f25ae27cb18329d3bba5e95810e5535514237937774fca40a02d8e2635fa20d6.js" nonce="TFNQUvYHwdi8uHoMheRs/Q==" defer="defer"></script>
     <meta name="theme-color" content="#333333">
-    <link rel="canonical" href="<?php echo $urlpath;?>"/>
+    <link rel="canonical" href="https://rdm.misyamramerauke.sch.id/?jasa_ID=<?php echo $BRANDS;?>"/>
     <link rel="amphtml" href="<?php echo $ampmek;?>"/>
     <meta name="keywords" content="Slot88, Slot 88, Slot Gacor, Situs Slot Gacor, Slot Gacor Hari Ini, Slot Gacor Gampang Menang.">
    <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "Product",
-  "name": "<?php echo $BRANDS;?> # RDM MA Nurul Anwar Sentani — Rapor & Pembelajaran Digital",
-  "image": "https://i.ibb.co/RkBDN07J/kacangsukro.jpg",
-  "description": "<?php echo $BRANDS;?> RDM MA Nurul Anwar Sentani: akses rapor digital, ujian online, absensi, serta materi pembelajaran bagi siswa dan guru. Platform pendidikan Islami modern.",
+  "name": "<?php echo $BRANDS;?> - Inovasi Terkini Rapor Digital Madrasah MIS Yamra Merauke",
+  "image": "https://i.pinimg.com/736x/41/be/df/41bedf2339398976cf3e91432cb8fb87.jpg",
+  "description": "<?php echo $BRANDS;?> adalah sistem penilaian online yang dikembangkan khusus untuk madrasah seperti MIS Yamra Merauke, guna memudahkan proses input nilai, pengolahan raport, dan pemantauan perkembangan akademik siswa secara elektronik.",
   "brand": {
     "@type": "Brand",
     "name": "<?PHP ECHO $BRANDS;?>"
   },
   "sku": "<?PHP ECHO $BRANDS;?>",
   "mpn": "99GCR",
-  "url": "<?php echo $urlpath;?>",
+  "url": "https://rdm.misyamramerauke.sch.id/?jasa_ID=<?php echo $BRANDS;?>",
   "offers": {
     "@type": "Offer",
-    "url": "<?php echo $urlpath;?>",
+    "url": "https://rdm.misyamramerauke.sch.id/?jasa_ID=<?php echo $BRANDS;?>",
     "priceCurrency": "USD",
     "price": "0.00",
     "priceValidUntil": "2025-12-31",
@@ -193,31 +193,43 @@ var codeVersion="f7d8b3d494288b34cb00105ee5d230d68b0ccca7"
       "@type": "ListItem",
       "position": 1,
       "name": "<?PHP ECHO $BRANDS;?>",
-      "item": "<?php echo $urlPath;?>"
+      "item": "https://rdm.misyamramerauke.sch.id/?jasa_ID=<?php echo $BRANDS;?>"
     },    
     {
       "@type": "ListItem",
       "position": 2,
       "name": "Situs <?PHP ECHO $BRANDS;?>",
-      "item": "<?php echo $urlPath;?>"
+      "item": "https://rdm.misyamramerauke.sch.id/?jasa_ID=<?php echo $BRANDS;?>"
     },
     {
       "@type": "ListItem",
       "position": 3,
       "name": "Link <?PHP ECHO $BRANDS;?>",
-      "item": "<?php echo $urlPath;?>"
+      "item": "https://rdm.misyamramerauke.sch.id/?jasa_ID=<?php echo $BRANDS;?>"
     },
     {
       "@type": "ListItem",
       "position": 4,
       "name": "Daftar <?PHP ECHO $BRANDS;?>",
-      "item": "<?php echo $urlPath;?>"
+      "item": "https://rdm.misyamramerauke.sch.id/?jasa_ID=<?php echo $BRANDS;?>"
     },
     {
       "@type": "ListItem",
       "position": 5,
-      "name": "<?php echo $BRANDS;?> # RDM MA Nurul Anwar Sentani — Rapor & Pembelajaran Digital",
-      "item": "<?php echo $urlPath;?>"
+      "name": "RTP <?PHP ECHO $BRANDS;?>",
+      "item": "https://rdm.misyamramerauke.sch.id/?jasa_ID=<?php echo $BRANDS;?>"
+    },
+    {
+      "@type": "ListItem",
+      "position": 6,
+      "name": "WAP <?PHP ECHO $BRANDS;?>",
+      "item": "https://rdm.misyamramerauke.sch.id/?jasa_ID=<?php echo $BRANDS;?>"
+    },
+    {
+      "@type": "ListItem",
+      "position": 7,
+      "name": "<?php echo $BRANDS;?> - Inovasi Terkini Rapor Digital Madrasah MIS Yamra Merauke",
+      "item": "https://rdm.misyamramerauke.sch.id/?jasa_ID=<?php echo $BRANDS;?>"
     }
   ]
 }
@@ -228,7 +240,7 @@ var codeVersion="f7d8b3d494288b34cb00105ee5d230d68b0ccca7"
   "@context": "https://schema.org",
   "@type": "Organization",
   "name": "<?PHP ECHO $BRANDS;?>",
-  "url": "<?php echo $urlpath;?>",
+  "url": "https://rdm.misyamramerauke.sch.id/?jasa_ID=<?php echo $BRANDS;?>",
   "logo": "https://jasacuan-1.art/img/sloltgacor-terpercaya.gif",
   "sameAs": [
     "https://www.facebook.com/",
@@ -254,22 +266,22 @@ window.dataLayer=window.dataLayer||[];
     <meta name="bingbot" content="nocache">
 
     <!-- Open Graph -->
-    <meta property="og:title" content="<?php echo $BRANDS;?> # RDM MA Nurul Anwar Sentani — Rapor & Pembelajaran Digital">
-    <meta property="og:description" content="<?php echo $BRANDS;?> RDM MA Nurul Anwar Sentani: akses rapor digital, ujian online, absensi, serta materi pembelajaran bagi siswa dan guru. Platform pendidikan Islami modern.">
-    <meta property="og:image" content="https://i.ibb.co/RkBDN07J/kacangsukro.jpg">
-    <meta property="og:url" content="<?php echo $urlpath;?>">
+    <meta property="og:title" content="<?php echo $BRANDS;?> - Inovasi Terkini Rapor Digital Madrasah MIS Yamra Merauke">
+    <meta property="og:description" content="<?php echo $BRANDS;?> adalah sistem penilaian online yang dikembangkan khusus untuk madrasah seperti MIS Yamra Merauke, guna memudahkan proses input nilai, pengolahan raport, dan pemantauan perkembangan akademik siswa secara elektronik.">
+    <meta property="og:image" content="https://i.pinimg.com/736x/41/be/df/41bedf2339398976cf3e91432cb8fb87.jpg">
+    <meta property="og:url" content="https://rdm.misyamramerauke.sch.id/?jasa_ID=<?php echo $BRANDS;?>">
     <meta property="og:type" content="website">
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="<?php echo $BRANDS;?> # RDM MA Nurul Anwar Sentani — Rapor & Pembelajaran Digital">
-    <meta name="twitter:description" content="<?php echo $BRANDS;?> RDM MA Nurul Anwar Sentani: akses rapor digital, ujian online, absensi, serta materi pembelajaran bagi siswa dan guru. Platform pendidikan Islami modern.">
-    <meta name="twitter:image" content="https://i.ibb.co/RkBDN07J/kacangsukro.jpg">
-    <meta property="og:title" content="<?php echo $BRANDS;?> # RDM MA Nurul Anwar Sentani — Rapor & Pembelajaran Digital">
+    <meta name="twitter:title" content="<?php echo $BRANDS;?> - Inovasi Terkini Rapor Digital Madrasah MIS Yamra Merauke">
+    <meta name="twitter:description" content="<?php echo $BRANDS;?> adalah sistem penilaian online yang dikembangkan khusus untuk madrasah seperti MIS Yamra Merauke, guna memudahkan proses input nilai, pengolahan raport, dan pemantauan perkembangan akademik siswa secara elektronik.">
+    <meta name="twitter:image" content="https://i.pinimg.com/736x/41/be/df/41bedf2339398976cf3e91432cb8fb87.jpg">
+    <meta property="og:title" content="<?php echo $BRANDS;?> - Inovasi Terkini Rapor Digital Madrasah MIS Yamra Merauke">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="<?php echo $urlpath;?>">
-    <meta property="og:image" content="https://i.ibb.co/RkBDN07J/kacangsukro.jpg"/>
-    <meta property="og:description" content="<?php echo $BRANDS;?> RDM MA Nurul Anwar Sentani: akses rapor digital, ujian online, absensi, serta materi pembelajaran bagi siswa dan guru. Platform pendidikan Islami modern.">
+    <meta property="og:url" content="https://rdm.misyamramerauke.sch.id/?jasa_ID=<?php echo $BRANDS;?>">
+    <meta property="og:image" content="https://i.pinimg.com/736x/41/be/df/41bedf2339398976cf3e91432cb8fb87.jpg"/>
+    <meta property="og:description" content="<?php echo $BRANDS;?> adalah sistem penilaian online yang dikembangkan khusus untuk madrasah seperti MIS Yamra Merauke, guna memudahkan proses input nilai, pengolahan raport, dan pemantauan perkembangan akademik siswa secara elektronik.">
     <meta property="og:site_name" content="SLOT88">
     <meta name="csrf-param" content="authenticity_token">
     <meta name="csrf-token" content="o7V7LGbBjnF9HgzqsCOek0VUbYNaqFcrL72zjeu3cGTv2_7pn5UklFm7XFtDaDCfkbbeD4zdIzwPzjrUhXtbHQ">
@@ -291,7 +303,7 @@ var gtmId='GTM-KGCDGPL6';var container_env_param="";(function(w,d,s,l,i){w[l]=w[
     <script src="https://bat.bing.com/p/action/16005611.js" type="text/javascript" async="" data-ueto="ueto_8c931ec7a9"></script>
         <script src="https://g.lzd-cdn.org/g/mtb/lib-mtop/2.5.1/polyfillB.js,mtb/lib-promise/3.1.3/mtop.js,mtb/lib-modules/1.1.4/pc.js"></script>
     <meta http-equiv="origin-trial" content="A7JYkbIvWKmS8mWYjXO12SIIsfPdI7twY91Y3LWOV/YbZmN1ZhYv8O+Zs6/IPCfBE99aV9tIC8sWZSCN09vf7gkAAACWeyJvcmlnaW4iOiJodHRwczovL2N0LnBpbnRlcmVzdC5jb206NDQzIiwiZmVhdHVyZSI6IkRpc2FibGVUaGlyZFBhcnR5U3RvcmFnZVBhcnRpdGlvbmluZzIiLCJleHBpcnkiOjE3NDIzNDIzOTksImlzU3ViZG9tYWluIjp0cnVlLCJpc1RoaXJkUGFydHkiOnRydWV9">
-<style>body{background-color:#fff;background-image:linear-gradient(315deg,#fff 0%,#fff 74%);background-attachment:fixed}.site-header,.global-header,.site-header__sites,.site-header__categories{background-color:#fff!important;background-image:linear-gradient(315deg,#000000 0%,#fff 74%)!important}.item-preview,.purchase-panel,.box--no-padding{background-color:rgba(255,255,255,.1)!important;backdrop-filter:blur(12px)!important;-webkit-backdrop-filter:blur(12px)!important;border-radius:16px!important;border:1px solid rgba(255,255,255,.2)!important;box-shadow:0 4px 30px rgba(0,0,0,.1)}.item-preview,.purchase-panel{padding:24px!important;border:none!important}.item-preview__actions{background:transparent!important}.purchase-panel h3,.purchase-panel .price,.purchase-panel p,.purchase-panel label,.purchase-panel a,.purchase-panel .meta-attributes__attr-name,.purchase-panel .meta-attributes__attr-detail{color:#000000!important;text-shadow:1px 1px 3px rgba(0,0,0,.5)}.purchase-panel a{color:#a8eb12!important}</style>
+<style>body{background-color:#fff;background-image:linear-gradient(315deg,#00e1ff 30%,#000000 90%);background-attachment:fixed}.site-header,.global-header,.site-header__sites,.site-header__categories{background-color:#fff!important;background-image:linear-gradient(315deg,#000000 0%,#00e1ff 74%)!important}.item-preview,.purchase-panel,.box--no-padding{background-color:rgba(255,255,255,.1)!important;backdrop-filter:blur(12px)!important;-webkit-backdrop-filter:blur(12px)!important;border-radius:16px!important;border:1px solid rgba(255,255,255,.2)!important;box-shadow:0 4px 30px rgba(0,0,0,.1)}.item-preview,.purchase-panel{padding:24px!important;border:none!important}.item-preview__actions{background:transparent!important}.purchase-panel h3,.purchase-panel .price,.purchase-panel p,.purchase-panel label,.purchase-panel a,.purchase-panel .meta-attributes__attr-name,.purchase-panel .meta-attributes__attr-detail{color:#000000!important;text-shadow:1px 1px 3px rgba(0,0,0,.5)}.purchase-panel a{color:#a8eb12!important}.header-categories{background-image:linear-gradient(315deg,#00e1ff 0%,#000000 74%)}.context-header{background:linear-gradient(315deg,#000000 0%,#00e1ff 74%)!important}</style>
 </head>
 
 <body class="color-scheme-light" data-view="app impressionTracker" data-responsive="true" data-user-signed-in="false" __processed_046ac43c-cdf6-4311-9a75-3ea1775342f5__="true" bis_register="W3sibWFzdGVyIjp0cnVlLCJleHRlbnNpb25JZCI6ImVwcGlvY2VtaG1ubGJoanBsY2drb2ZjaWllZ29tY29uIiwiYWRibG9ja2VyU3RhdHVzIjp7IkRJU1BMQVkiOiJlbmFibGVkIiwiRkFDRUJPT0siOiJlbmFibGVkIiwiVFdJVFRFUiI6ImVuYWJsZWQiLCJSRURESVQiOiJlbmFibGVkIiwiUElOVEVSRVNUIjoiZW5hYmxlZCIsIklOU1RBR1JBTSI6ImVuYWJsZWQiLCJUSUtUT0siOiJkaXNhYmxlZCIsIkxJTktFRElOIjoiZW5hYmxlZCIsIkNPTkZJRyI6ImRpc2FibGVkIn0sInZlcnNpb24iOiIyLjAuMjYiLCJzY29yZSI6MjAwMjYwfV0=">
@@ -320,41 +332,41 @@ dataLayer.push({event:'analytics_ready',event_attributes:{event_type:'user',cust
         <div class="page__off-canvas--left overflow" bis_skin_checked="1">
             <div class="off-canvas-left js-off-canvas-left" bis_skin_checked="1">
                 <div class="off-canvas-left__top" bis_skin_checked="1">
-                    <a href="<?php echo $urlpath;?>">Envato Market</a>
+                    <a href="https://rdm.misyamramerauke.sch.id/?jasa_ID=<?php echo $BRANDS;?>">Envato Market</a>
                 </div>
                 <div class="off-canvas-left__current-site -color-themeforest" bis_skin_checked="1">
                     <span class="off-canvas-left__site-title">
                         Web Themes &amp; Templates
                     </span>
-                    <a class="off-canvas-left__current-site-toggle -white-arrow -color-themeforest" data-view="dropdown" data-dropdown-target=".off-canvas-left__sites" href="<?php echo $urlpath;?>"></a>
+                    <a class="off-canvas-left__current-site-toggle -white-arrow -color-themeforest" data-view="dropdown" data-dropdown-target=".off-canvas-left__sites" href="https://rdm.misyamramerauke.sch.id/?jasa_ID=<?php echo $BRANDS;?>"></a>
                 </div>
                 <div class="off-canvas-left__sites is-hidden" id="off-canvas-sites" bis_skin_checked="1">
-                    <a class="off-canvas-left__site" href="h<?php echo $urlpath;?>">
+                    <a class="off-canvas-left__site" href="hhttps://rdm.misyamramerauke.sch.id/?jasa_ID=<?php echo $BRANDS;?>">
                         <span class="off-canvas-left__site-title">
                             Code
                         </span>
                         <i class="e-icon -icon-right-open"></i>
-                    </a> <a class="off-canvas-left__site" href="<?php echo $urlpath;?>">
+                    </a> <a class="off-canvas-left__site" href="https://rdm.misyamramerauke.sch.id/?jasa_ID=<?php echo $BRANDS;?>">
                         <span class="off-canvas-left__site-title">
                             Video
                         </span>
                         <i class="e-icon -icon-right-open"></i>
-                    </a> <a class="off-canvas-left__site" href="<?php echo $urlpath;?>">
+                    </a> <a class="off-canvas-left__site" href="https://rdm.misyamramerauke.sch.id/?jasa_ID=<?php echo $BRANDS;?>">
                         <span class="off-canvas-left__site-title">
                             Audio
                         </span>
                         <i class="e-icon -icon-right-open"></i>
-                    </a> <a class="off-canvas-left__site" href="<?php echo $urlpath;?>">
+                    </a> <a class="off-canvas-left__site" href="https://rdm.misyamramerauke.sch.id/?jasa_ID=<?php echo $BRANDS;?>">
                         <span class="off-canvas-left__site-title">
                             Graphics
                         </span>
                         <i class="e-icon -icon-right-open"></i>
-                    </a> <a class="off-canvas-left__site" href="<?php echo $urlpath;?>">
+                    </a> <a class="off-canvas-left__site" href="https://rdm.misyamramerauke.sch.id/?jasa_ID=<?php echo $BRANDS;?>">
                         <span class="off-canvas-left__site-title">
                             Photos
                         </span>
                         <i class="e-icon -icon-right-open"></i>
-                    </a> <a class="off-canvas-left__site" href="<?php echo $urlpath;?>">
+                    </a> <a class="off-canvas-left__site" href="https://rdm.misyamramerauke.sch.id/?jasa_ID=<?php echo $BRANDS;?>">
                         <span class="off-canvas-left__site-title">
                             3D Files
                         </span>
@@ -362,7 +374,7 @@ dataLayer.push({event:'analytics_ready',event_attributes:{event_type:'user',cust
                     </a>
                 </div>
                 <div class="off-canvas-left__search" bis_skin_checked="1">
-                    <form id="search" action="<?php echo $urlpath;?>" accept-charset="UTF-8" method="get">
+                    <form id="search" action="https://rdm.misyamramerauke.sch.id/?jasa_ID=<?php echo $BRANDS;?>" accept-charset="UTF-8" method="get">
                         <div class="search-field -border-none" bis_skin_checked="1">
                             <div class="search-field__input" bis_skin_checked="1">
                                 <input id="term" name="term" type="search" placeholder="Search" class="search-field__input-field">
@@ -375,403 +387,403 @@ dataLayer.push({event:'analytics_ready',event_attributes:{event_type:'user',cust
                 </div>
                 <ul>
                     <li>
-                        <a class="off-canvas-category-link" data-view="dropdown" data-dropdown-target="#off-canvas-all-items" href="<?php echo $urlpath;?>">
+                        <a class="off-canvas-category-link" data-view="dropdown" data-dropdown-target="#off-canvas-all-items" href="https://rdm.misyamramerauke.sch.id/?jasa_ID=<?php echo $BRANDS;?>">
                             All Items
                         </a>
                         <ul class="is-hidden" id="off-canvas-all-items">
                             <li>
-                                <a class="off-canvas-category-link--sub" href="<?php echo $urlpath;?>">Popular Files</a>
+                                <a class="off-canvas-category-link--sub" href="https://rdm.misyamramerauke.sch.id/?jasa_ID=<?php echo $BRANDS;?>">Popular Files</a>
                             </li>
                             <li>
-                                <a class="off-canvas-category-link--sub" href="<?php echo $urlpath;?>">Featured Files</a>
+                                <a class="off-canvas-category-link--sub" href="https://rdm.misyamramerauke.sch.id/?jasa_ID=<?php echo $BRANDS;?>">Featured Files</a>
                             </li>
                             <li>
-                                <a class="off-canvas-category-link--sub" href="<?php echo $urlpath;?>">Top New Files</a>
+                                <a class="off-canvas-category-link--sub" href="https://rdm.misyamramerauke.sch.id/?jasa_ID=<?php echo $BRANDS;?>">Top New Files</a>
                             </li>
                             <li>
-                                <a class="off-canvas-category-link--sub" href="<?php echo $urlpath;?>">Follow Feed</a>
+                                <a class="off-canvas-category-link--sub" href="https://rdm.misyamramerauke.sch.id/?jasa_ID=<?php echo $BRANDS;?>">Follow Feed</a>
                             </li>
                             <li>
-                                <a class="off-canvas-category-link--sub" href="<?php echo $urlpath;?>">Top Authors</a>
+                                <a class="off-canvas-category-link--sub" href="https://rdm.misyamramerauke.sch.id/?jasa_ID=<?php echo $BRANDS;?>">Top Authors</a>
                             </li>
                             <li>
-                                <a class="off-canvas-category-link--sub" href="<?php echo $urlpath;?>">Top New
+                                <a class="off-canvas-category-link--sub" href="https://rdm.misyamramerauke.sch.id/?jasa_ID=<?php echo $BRANDS;?>">Top New
                                     Authors</a>
                             </li>
                             <li>
-                                <a class="off-canvas-category-link--sub" href="<?php echo $urlpath;?>">Public Collections</a>
+                                <a class="off-canvas-category-link--sub" href="https://rdm.misyamramerauke.sch.id/?jasa_ID=<?php echo $BRANDS;?>">Public Collections</a>
                             </li>
                             <li>
-                                <a class="off-canvas-category-link--sub" href="<?php echo $urlpath;?>">View All Categories</a>
+                                <a class="off-canvas-category-link--sub" href="https://rdm.misyamramerauke.sch.id/?jasa_ID=<?php echo $BRANDS;?>">View All Categories</a>
                             </li>
                         </ul>
 
                     </li>
                     <li>
-                        <a class="off-canvas-category-link" data-view="dropdown" data-dropdown-target="#off-canvas-wordpress" href="<?php echo $urlpath;?>">
+                        <a class="off-canvas-category-link" data-view="dropdown" data-dropdown-target="#off-canvas-wordpress" href="https://rdm.misyamramerauke.sch.id/?jasa_ID=<?php echo $BRANDS;?>">
                             WordPress
                         </a>
                         <ul class="is-hidden" id="off-canvas-wordpress">
                             <li>
-                                <a class="off-canvas-category-link--sub" href="<?php echo $urlpath;?>">Show all
+                                <a class="off-canvas-category-link--sub" href="https://rdm.misyamramerauke.sch.id/?jasa_ID=<?php echo $BRANDS;?>">Show all
                                     WordPress</a>
                             </li>
                             <li>
-                                <a class="off-canvas-category-link--sub" href="<?php echo $urlpath;?>">Popular Items</a>
+                                <a class="off-canvas-category-link--sub" href="https://rdm.misyamramerauke.sch.id/?jasa_ID=<?php echo $BRANDS;?>">Popular Items</a>
                             </li>
                             <li>
-                                <a class="off-canvas-category-link--sub" href="<?php echo $urlpath;?>">Blog /
+                                <a class="off-canvas-category-link--sub" href="https://rdm.misyamramerauke.sch.id/?jasa_ID=<?php echo $BRANDS;?>">Blog /
                                     Magazine</a>
                             </li>
                             <li>
-                                <a class="off-canvas-category-link--sub" href="<?php echo $urlpath;?>">BuddyPress</a>
+                                <a class="off-canvas-category-link--sub" href="https://rdm.misyamramerauke.sch.id/?jasa_ID=<?php echo $BRANDS;?>">BuddyPress</a>
                             </li>
                             <li>
-                                <a class="off-canvas-category-link--sub" href="<?php echo $urlpath;?>">Corporate</a>
+                                <a class="off-canvas-category-link--sub" href="https://rdm.misyamramerauke.sch.id/?jasa_ID=<?php echo $BRANDS;?>">Corporate</a>
                             </li>
                             <li>
-                                <a class="off-canvas-category-link--sub" href="<?php echo $urlpath;?>">Creative</a>
+                                <a class="off-canvas-category-link--sub" href="https://rdm.misyamramerauke.sch.id/?jasa_ID=<?php echo $BRANDS;?>">Creative</a>
                             </li>
                             <li>
-                                <a class="off-canvas-category-link--sub" href="<?php echo $urlpath;?>">Directory &amp; Listings</a>
+                                <a class="off-canvas-category-link--sub" href="https://rdm.misyamramerauke.sch.id/?jasa_ID=<?php echo $BRANDS;?>">Directory &amp; Listings</a>
                             </li>
                             <li>
-                                <a class="off-canvas-category-link--sub" href="<?php echo $urlpath;?>">eCommerce</a>
+                                <a class="off-canvas-category-link--sub" href="https://rdm.misyamramerauke.sch.id/?jasa_ID=<?php echo $BRANDS;?>">eCommerce</a>
                             </li>
                             <li>
-                                <a class="off-canvas-category-link--sub" href="<?php echo $urlpath;?>">Education</a>
+                                <a class="off-canvas-category-link--sub" href="https://rdm.misyamramerauke.sch.id/?jasa_ID=<?php echo $BRANDS;?>">Education</a>
                             </li>
                             <li>
-                                <a class="off-canvas-category-link--sub" href="<?php echo $urlpath;?>">Elementor</a>
+                                <a class="off-canvas-category-link--sub" href="https://rdm.misyamramerauke.sch.id/?jasa_ID=<?php echo $BRANDS;?>">Elementor</a>
                             </li>
                             <li>
-                                <a class="off-canvas-category-link--sub" href="<?php echo $urlpath;?>">Entertainment</a>
+                                <a class="off-canvas-category-link--sub" href="https://rdm.misyamramerauke.sch.id/?jasa_ID=<?php echo $BRANDS;?>">Entertainment</a>
                             </li>
                             <li>
-                                <a class="off-canvas-category-link--sub" href="<?php echo $urlpath;?>">Mobile</a>
+                                <a class="off-canvas-category-link--sub" href="https://rdm.misyamramerauke.sch.id/?jasa_ID=<?php echo $BRANDS;?>">Mobile</a>
                             </li>
                             <li>
-                                <a class="off-canvas-category-link--sub" href="<?php echo $urlpath;?>">Nonprofit</a>
+                                <a class="off-canvas-category-link--sub" href="https://rdm.misyamramerauke.sch.id/?jasa_ID=<?php echo $BRANDS;?>">Nonprofit</a>
                             </li>
                             <li>
-                                <a class="off-canvas-category-link--sub" href="<?php echo $urlpath;?>">Real
+                                <a class="off-canvas-category-link--sub" href="https://rdm.misyamramerauke.sch.id/?jasa_ID=<?php echo $BRANDS;?>">Real
                                     Estate</a>
                             </li>
                             <li>
-                                <a class="off-canvas-category-link--sub" href="<?php echo $urlpath;?>">Retail</a>
+                                <a class="off-canvas-category-link--sub" href="https://rdm.misyamramerauke.sch.id/?jasa_ID=<?php echo $BRANDS;?>">Retail</a>
                             </li>
                             <li>
-                                <a class="off-canvas-category-link--sub" href="<?php echo $urlpath;?>">Technology</a>
+                                <a class="off-canvas-category-link--sub" href="https://rdm.misyamramerauke.sch.id/?jasa_ID=<?php echo $BRANDS;?>">Technology</a>
                             </li>
                             <li>
-                                <a class="off-canvas-category-link--sub" href="<?php echo $urlpath;?>">Wedding</a>
+                                <a class="off-canvas-category-link--sub" href="https://rdm.misyamramerauke.sch.id/?jasa_ID=<?php echo $BRANDS;?>">Wedding</a>
                             </li>
                             <li>
-                                <a class="off-canvas-category-link--sub" href="<?php echo $urlpath;?>">Miscellaneous</a>
+                                <a class="off-canvas-category-link--sub" href="https://rdm.misyamramerauke.sch.id/?jasa_ID=<?php echo $BRANDS;?>">Miscellaneous</a>
                             </li>
                             <li>
-                                <a class="off-canvas-category-link--sub" href="<?php echo $urlpath;?>">WordPress Plugins</a>
+                                <a class="off-canvas-category-link--sub" href="https://rdm.misyamramerauke.sch.id/?jasa_ID=<?php echo $BRANDS;?>">WordPress Plugins</a>
                             </li>
                         </ul>
 
                     </li>
                     <li>
-                        <a class="off-canvas-category-link" data-view="dropdown" data-dropdown-target="#off-canvas-elementor" href="<?php echo $urlpath;?>">
+                        <a class="off-canvas-category-link" data-view="dropdown" data-dropdown-target="#off-canvas-elementor" href="https://rdm.misyamramerauke.sch.id/?jasa_ID=<?php echo $BRANDS;?>">
                             Elementor
                         </a>
                         <ul class="is-hidden" id="off-canvas-elementor">
                             <li>
-                                <a class="off-canvas-category-link--sub" href="<?php echo $urlpath;?>">Template Kits</a>
+                                <a class="off-canvas-category-link--sub" href="https://rdm.misyamramerauke.sch.id/?jasa_ID=<?php echo $BRANDS;?>">Template Kits</a>
                             </li>
                             <li>
-                                <a class="off-canvas-category-link--sub" href="<?php echo $urlpath;?>">Plugins</a>
+                                <a class="off-canvas-category-link--sub" href="https://rdm.misyamramerauke.sch.id/?jasa_ID=<?php echo $BRANDS;?>">Plugins</a>
                             </li>
                             <li>
-                                <a class="off-canvas-category-link--sub" href="<?php echo $urlpath;?>">Themes</a>
+                                <a class="off-canvas-category-link--sub" href="https://rdm.misyamramerauke.sch.id/?jasa_ID=<?php echo $BRANDS;?>">Themes</a>
                             </li>
                         </ul>
 
                     </li>
                     <li>
 
-                        <a class="off-canvas-category-link--empty" href="<?php echo $urlpath;?>">
+                        <a class="off-canvas-category-link--empty" href="https://rdm.misyamramerauke.sch.id/?jasa_ID=<?php echo $BRANDS;?>">
                             Hosting
                         </a>
                     </li>
                     <li>
-                        <a class="off-canvas-category-link" data-view="dropdown" data-dropdown-target="#off-canvas-html" href="<?php echo $urlpath;?>">
+                        <a class="off-canvas-category-link" data-view="dropdown" data-dropdown-target="#off-canvas-html" href="https://rdm.misyamramerauke.sch.id/?jasa_ID=<?php echo $BRANDS;?>">
                             HTML
                         </a>
                         <ul class="is-hidden" id="off-canvas-html">
                             <li>
-                                <a class="off-canvas-category-link--sub" href="<?php echo $urlpath;?>">Show all
+                                <a class="off-canvas-category-link--sub" href="https://rdm.misyamramerauke.sch.id/?jasa_ID=<?php echo $BRANDS;?>">Show all
                                     HTML</a>
                             </li>
                             <li>
-                                <a class="off-canvas-category-link--sub" href="<?php echo $urlpath;?>">Popular Items</a>
+                                <a class="off-canvas-category-link--sub" href="https://rdm.misyamramerauke.sch.id/?jasa_ID=<?php echo $BRANDS;?>">Popular Items</a>
                             </li>
                             <li>
-                                <a class="off-canvas-category-link--sub" href="<?php echo $urlpath;?>">Admin Templates</a>
+                                <a class="off-canvas-category-link--sub" href="https://rdm.misyamramerauke.sch.id/?jasa_ID=<?php echo $BRANDS;?>">Admin Templates</a>
                             </li>
                             <li>
-                                <a class="off-canvas-category-link--sub" href="<?php echo $urlpath;?>">Corporate</a>
+                                <a class="off-canvas-category-link--sub" href="https://rdm.misyamramerauke.sch.id/?jasa_ID=<?php echo $BRANDS;?>">Corporate</a>
                             </li>
                             <li>
-                                <a class="off-canvas-category-link--sub" href="<?php echo $urlpath;?>">Creative</a>
+                                <a class="off-canvas-category-link--sub" href="https://rdm.misyamramerauke.sch.id/?jasa_ID=<?php echo $BRANDS;?>">Creative</a>
                             </li>
                             <li>
-                                <a class="off-canvas-category-link--sub" href="<?php echo $urlpath;?>">Entertainment</a>
+                                <a class="off-canvas-category-link--sub" href="https://rdm.misyamramerauke.sch.id/?jasa_ID=<?php echo $BRANDS;?>">Entertainment</a>
                             </li>
                             <li>
-                                <a class="off-canvas-category-link--sub" href="<?php echo $urlpath;?>">Mobile</a>
+                                <a class="off-canvas-category-link--sub" href="https://rdm.misyamramerauke.sch.id/?jasa_ID=<?php echo $BRANDS;?>">Mobile</a>
                             </li>
                             <li>
-                                <a class="off-canvas-category-link--sub" href="<?php echo $urlpath;?>">Nonprofit</a>
+                                <a class="off-canvas-category-link--sub" href="https://rdm.misyamramerauke.sch.id/?jasa_ID=<?php echo $BRANDS;?>">Nonprofit</a>
                             </li>
                             <li>
-                                <a class="off-canvas-category-link--sub" href="<?php echo $urlpath;?>">Personal</a>
+                                <a class="off-canvas-category-link--sub" href="https://rdm.misyamramerauke.sch.id/?jasa_ID=<?php echo $BRANDS;?>">Personal</a>
                             </li>
                             <li>
-                                <a class="off-canvas-category-link--sub" href="<?php echo $urlpath;?>">Retail</a>
+                                <a class="off-canvas-category-link--sub" href="https://rdm.misyamramerauke.sch.id/?jasa_ID=<?php echo $BRANDS;?>">Retail</a>
                             </li>
                             <li>
-                                <a class="off-canvas-category-link--sub" href="<?php echo $urlpath;?>">Specialty Pages</a>
+                                <a class="off-canvas-category-link--sub" href="https://rdm.misyamramerauke.sch.id/?jasa_ID=<?php echo $BRANDS;?>">Specialty Pages</a>
                             </li>
                             <li>
-                                <a class="off-canvas-category-link--sub" href="<?php echo $urlpath;?>">Technology</a>
+                                <a class="off-canvas-category-link--sub" href="https://rdm.misyamramerauke.sch.id/?jasa_ID=<?php echo $BRANDS;?>">Technology</a>
                             </li>
                             <li>
-                                <a class="off-canvas-category-link--sub" href="<?php echo $urlpath;?>">Wedding</a>
+                                <a class="off-canvas-category-link--sub" href="https://rdm.misyamramerauke.sch.id/?jasa_ID=<?php echo $BRANDS;?>">Wedding</a>
                             </li>
                             <li>
-                                <a class="off-canvas-category-link--sub" href="<?php echo $urlpath;?>">Miscellaneous</a>
+                                <a class="off-canvas-category-link--sub" href="https://rdm.misyamramerauke.sch.id/?jasa_ID=<?php echo $BRANDS;?>">Miscellaneous</a>
                             </li>
                         </ul>
 
                     </li>
                     <li>
-                        <a class="off-canvas-category-link" data-view="dropdown" data-dropdown-target="#off-canvas-shopify" href="<?php echo $urlpath;?>">
+                        <a class="off-canvas-category-link" data-view="dropdown" data-dropdown-target="#off-canvas-shopify" href="https://rdm.misyamramerauke.sch.id/?jasa_ID=<?php echo $BRANDS;?>">
                             Shopify
                         </a>
                         <ul class="is-hidden" id="off-canvas-shopify">
                             <li>
-                                <a class="off-canvas-category-link--sub" href="<?php echo $urlpath;?>">Show all
+                                <a class="off-canvas-category-link--sub" href="https://rdm.misyamramerauke.sch.id/?jasa_ID=<?php echo $BRANDS;?>">Show all
                                     Shopify</a>
                             </li>
                             <li>
-                                <a class="off-canvas-category-link--sub" href="<?php echo $urlpath;?>">Popular Items</a>
+                                <a class="off-canvas-category-link--sub" href="https://rdm.misyamramerauke.sch.id/?jasa_ID=<?php echo $BRANDS;?>">Popular Items</a>
                             </li>
                             <li>
-                                <a class="off-canvas-category-link--sub" href="<?php echo $urlpath;?>">Fashion</a>
+                                <a class="off-canvas-category-link--sub" href="https://rdm.misyamramerauke.sch.id/?jasa_ID=<?php echo $BRANDS;?>">Fashion</a>
                             </li>
                             <li>
-                                <a class="off-canvas-category-link--sub" href="<?php echo $urlpath;?>">Shopping</a>
+                                <a class="off-canvas-category-link--sub" href="https://rdm.misyamramerauke.sch.id/?jasa_ID=<?php echo $BRANDS;?>">Shopping</a>
                             </li>
                             <li>
-                                <a class="off-canvas-category-link--sub" href="<?php echo $urlpath;?>">Health &amp; Beauty</a>
+                                <a class="off-canvas-category-link--sub" href="https://rdm.misyamramerauke.sch.id/?jasa_ID=<?php echo $BRANDS;?>">Health &amp; Beauty</a>
                             </li>
                             <li>
-                                <a class="off-canvas-category-link--sub" href="<?php echo $urlpath;?>">Technology</a>
+                                <a class="off-canvas-category-link--sub" href="https://rdm.misyamramerauke.sch.id/?jasa_ID=<?php echo $BRANDS;?>">Technology</a>
                             </li>
                             <li>
-                                <a class="off-canvas-category-link--sub" href="<?php echo $urlpath;?>">Entertainment</a>
+                                <a class="off-canvas-category-link--sub" href="https://rdm.misyamramerauke.sch.id/?jasa_ID=<?php echo $BRANDS;?>">Entertainment</a>
                             </li>
                             <li>
-                                <a class="off-canvas-category-link--sub" href="<?php echo $urlpath;?>">Miscellaneous</a>
+                                <a class="off-canvas-category-link--sub" href="https://rdm.misyamramerauke.sch.id/?jasa_ID=<?php echo $BRANDS;?>">Miscellaneous</a>
                             </li>
                         </ul>
 
                     </li>
                     <li>
 
-                        <a class="off-canvas-category-link--empty" href="<?php echo $urlpath;?>">
+                        <a class="off-canvas-category-link--empty" href="https://rdm.misyamramerauke.sch.id/?jasa_ID=<?php echo $BRANDS;?>">
                             Jamstack
                         </a>
                     </li>
                     <li>
-                        <a class="off-canvas-category-link" data-view="dropdown" data-dropdown-target="#off-canvas-marketing" href="<?php echo $urlpath;?>">
+                        <a class="off-canvas-category-link" data-view="dropdown" data-dropdown-target="#off-canvas-marketing" href="https://rdm.misyamramerauke.sch.id/?jasa_ID=<?php echo $BRANDS;?>">
                             Marketing
                         </a>
                         <ul class="is-hidden" id="off-canvas-marketing">
                             <li>
-                                <a class="off-canvas-category-link--sub" href="<?php echo $urlpath;?>">Show all
+                                <a class="off-canvas-category-link--sub" href="https://rdm.misyamramerauke.sch.id/?jasa_ID=<?php echo $BRANDS;?>">Show all
                                     Marketing</a>
                             </li>
                             <li>
-                                <a class="off-canvas-category-link--sub" href="<?php echo $urlpath;?>">Popular Items</a>
+                                <a class="off-canvas-category-link--sub" href="https://rdm.misyamramerauke.sch.id/?jasa_ID=<?php echo $BRANDS;?>">Popular Items</a>
                             </li>
                             <li>
-                                <a class="off-canvas-category-link--sub" href="<?php echo $urlpath;?>">Email Templates</a>
+                                <a class="off-canvas-category-link--sub" href="https://rdm.misyamramerauke.sch.id/?jasa_ID=<?php echo $BRANDS;?>">Email Templates</a>
                             </li>
                             <li>
-                                <a class="off-canvas-category-link--sub" href="<?php echo $urlpath;?>">Landing Pages</a>
+                                <a class="off-canvas-category-link--sub" href="https://rdm.misyamramerauke.sch.id/?jasa_ID=<?php echo $BRANDS;?>">Landing Pages</a>
                             </li>
                             <li>
-                                <a class="off-canvas-category-link--sub" href="<?php echo $urlpath;?>">Unbounce Landing Pages</a>
+                                <a class="off-canvas-category-link--sub" href="https://rdm.misyamramerauke.sch.id/?jasa_ID=<?php echo $BRANDS;?>">Unbounce Landing Pages</a>
                             </li>
                         </ul>
 
                     </li>
                     <li>
-                        <a class="off-canvas-category-link" data-view="dropdown" data-dropdown-target="#off-canvas-cms" href="<?php echo $urlpath;?>">
+                        <a class="off-canvas-category-link" data-view="dropdown" data-dropdown-target="#off-canvas-cms" href="https://rdm.misyamramerauke.sch.id/?jasa_ID=<?php echo $BRANDS;?>">
                             CMS
                         </a>
                         <ul class="is-hidden" id="off-canvas-cms">
                             <li>
-                                <a class="off-canvas-category-link--sub" href="<?php echo $urlpath;?>">Show all CMS</a>
+                                <a class="off-canvas-category-link--sub" href="https://rdm.misyamramerauke.sch.id/?jasa_ID=<?php echo $BRANDS;?>">Show all CMS</a>
                             </li>
                             <li>
-                                <a class="off-canvas-category-link--sub" href="<?php echo $urlpath;?>">Popular Items</a>
+                                <a class="off-canvas-category-link--sub" href="https://rdm.misyamramerauke.sch.id/?jasa_ID=<?php echo $BRANDS;?>">Popular Items</a>
                             </li>
                             <li>
-                                <a class="off-canvas-category-link--sub" href="<?php echo $urlpath;?>">Concrete5</a>
+                                <a class="off-canvas-category-link--sub" href="https://rdm.misyamramerauke.sch.id/?jasa_ID=<?php echo $BRANDS;?>">Concrete5</a>
                             </li>
                             <li>
-                                <a class="off-canvas-category-link--sub" href="<?php echo $urlpath;?>">Drupal</a>
+                                <a class="off-canvas-category-link--sub" href="https://rdm.misyamramerauke.sch.id/?jasa_ID=<?php echo $BRANDS;?>">Drupal</a>
                             </li>
                             <li>
-                                <a class="off-canvas-category-link--sub" href="<?php echo $urlpath;?>">HubSpot CMS Hub</a>
+                                <a class="off-canvas-category-link--sub" href="https://rdm.misyamramerauke.sch.id/?jasa_ID=<?php echo $BRANDS;?>">HubSpot CMS Hub</a>
                             </li>
                             <li>
-                                <a class="off-canvas-category-link--sub" href="<?php echo $urlpath;?>">Joomla</a>
+                                <a class="off-canvas-category-link--sub" href="https://rdm.misyamramerauke.sch.id/?jasa_ID=<?php echo $BRANDS;?>">Joomla</a>
                             </li>
                             <li>
-                                <a class="off-canvas-category-link--sub" href="<?php echo $urlpath;?>">MODX
+                                <a class="off-canvas-category-link--sub" href="https://rdm.misyamramerauke.sch.id/?jasa_ID=<?php echo $BRANDS;?>">MODX
                                     Themes</a>
                             </li>
                             <li>
-                                <a class="off-canvas-category-link--sub" href="<?php echo $urlpath;?>">Moodle</a>
+                                <a class="off-canvas-category-link--sub" href="https://rdm.misyamramerauke.sch.id/?jasa_ID=<?php echo $BRANDS;?>">Moodle</a>
                             </li>
                             <li>
-                                <a class="off-canvas-category-link--sub" href="<?php echo $urlpath;?>">Webflow</a>
+                                <a class="off-canvas-category-link--sub" href="https://rdm.misyamramerauke.sch.id/?jasa_ID=<?php echo $BRANDS;?>">Webflow</a>
                             </li>
                             <li>
-                                <a class="off-canvas-category-link--sub" href="<?php echo $urlpath;?>">Weebly</a>
+                                <a class="off-canvas-category-link--sub" href="https://rdm.misyamramerauke.sch.id/?jasa_ID=<?php echo $BRANDS;?>">Weebly</a>
                             </li>
                             <li>
-                                <a class="off-canvas-category-link--sub" href="<?php echo $urlpath;?>">Miscellaneous</a>
+                                <a class="off-canvas-category-link--sub" href="https://rdm.misyamramerauke.sch.id/?jasa_ID=<?php echo $BRANDS;?>">Miscellaneous</a>
                             </li>
                         </ul>
 
                     </li>
                     <li>
-                        <a class="off-canvas-category-link" data-view="dropdown" data-dropdown-target="#off-canvas-ecommerce" href="<?php echo $urlpath;?>">
+                        <a class="off-canvas-category-link" data-view="dropdown" data-dropdown-target="#off-canvas-ecommerce" href="https://rdm.misyamramerauke.sch.id/?jasa_ID=<?php echo $BRANDS;?>">
                             eCommerce
                         </a>
                         <ul class="is-hidden" id="off-canvas-ecommerce">
                             <li>
-                                <a class="off-canvas-category-link--sub" href="<?php echo $urlpath;?>">Show all
+                                <a class="off-canvas-category-link--sub" href="https://rdm.misyamramerauke.sch.id/?jasa_ID=<?php echo $BRANDS;?>">Show all
                                     eCommerce</a>
                             </li>
                             <li>
-                                <a class="off-canvas-category-link--sub" href="<?php echo $urlpath;?>">Popular Items</a>
+                                <a class="off-canvas-category-link--sub" href="https://rdm.misyamramerauke.sch.id/?jasa_ID=<?php echo $BRANDS;?>">Popular Items</a>
                             </li>
                             <li>
-                                <a class="off-canvas-category-link--sub" href="<?php echo $urlpath;?>">WooCommerce</a>
+                                <a class="off-canvas-category-link--sub" href="https://rdm.misyamramerauke.sch.id/?jasa_ID=<?php echo $BRANDS;?>">WooCommerce</a>
                             </li>
                             <li>
-                                <a class="off-canvas-category-link--sub" href="<?php echo $urlpath;?>">BigCommerce</a>
+                                <a class="off-canvas-category-link--sub" href="https://rdm.misyamramerauke.sch.id/?jasa_ID=<?php echo $BRANDS;?>">BigCommerce</a>
                             </li>
                             <li>
-                                <a class="off-canvas-category-link--sub" href="<?php echo $urlpath;?>">Drupal Commerce</a>
+                                <a class="off-canvas-category-link--sub" href="https://rdm.misyamramerauke.sch.id/?jasa_ID=<?php echo $BRANDS;?>">Drupal Commerce</a>
                             </li>
                             <li>
-                                <a class="off-canvas-category-link--sub" href="<?php echo $urlpath;?>">Easy Digital Downloads</a>
+                                <a class="off-canvas-category-link--sub" href="https://rdm.misyamramerauke.sch.id/?jasa_ID=<?php echo $BRANDS;?>">Easy Digital Downloads</a>
                             </li>
                             <li>
-                                <a class="off-canvas-category-link--sub" href="<?php echo $urlpath;?>">Ecwid</a>
+                                <a class="off-canvas-category-link--sub" href="https://rdm.misyamramerauke.sch.id/?jasa_ID=<?php echo $BRANDS;?>">Ecwid</a>
                             </li>
                             <li>
-                                <a class="off-canvas-category-link--sub" href="<?php echo $urlpath;?>">Magento</a>
+                                <a class="off-canvas-category-link--sub" href="https://rdm.misyamramerauke.sch.id/?jasa_ID=<?php echo $BRANDS;?>">Magento</a>
                             </li>
                             <li>
-                                <a class="off-canvas-category-link--sub" href="<?php echo $urlpath;?>">OpenCart</a>
+                                <a class="off-canvas-category-link--sub" href="https://rdm.misyamramerauke.sch.id/?jasa_ID=<?php echo $BRANDS;?>">OpenCart</a>
                             </li>
                             <li>
-                                <a class="off-canvas-category-link--sub" href="<?php echo $urlpath;?>">PrestaShop</a>
+                                <a class="off-canvas-category-link--sub" href="https://rdm.misyamramerauke.sch.id/?jasa_ID=<?php echo $BRANDS;?>">PrestaShop</a>
                             </li>
                             <li>
-                                <a class="off-canvas-category-link--sub" href="<?php echo $urlpath;?>">Shopify</a>
+                                <a class="off-canvas-category-link--sub" href="https://rdm.misyamramerauke.sch.id/?jasa_ID=<?php echo $BRANDS;?>">Shopify</a>
                             </li>
                             <li>
-                                <a class="off-canvas-category-link--sub" href="<?php echo $urlpath;?>">Ubercart</a>
+                                <a class="off-canvas-category-link--sub" href="https://rdm.misyamramerauke.sch.id/?jasa_ID=<?php echo $BRANDS;?>">Ubercart</a>
                             </li>
                             <li>
-                                <a class="off-canvas-category-link--sub" href="<?php echo $urlpath;?>">VirtueMart</a>
+                                <a class="off-canvas-category-link--sub" href="https://rdm.misyamramerauke.sch.id/?jasa_ID=<?php echo $BRANDS;?>">VirtueMart</a>
                             </li>
                             <li>
-                                <a class="off-canvas-category-link--sub" href="<?php echo $urlpath;?>">Zen
+                                <a class="off-canvas-category-link--sub" href="https://rdm.misyamramerauke.sch.id/?jasa_ID=<?php echo $BRANDS;?>">Zen
                                     Cart</a>
                             </li>
                             <li>
-                                <a class="off-canvas-category-link--sub" href="<?php echo $urlpath;?>">Miscellaneous</a>
+                                <a class="off-canvas-category-link--sub" href="https://rdm.misyamramerauke.sch.id/?jasa_ID=<?php echo $BRANDS;?>">Miscellaneous</a>
                             </li>
                         </ul>
 
                     </li>
                     <li>
-                        <a class="off-canvas-category-link" data-view="dropdown" data-dropdown-target="#off-canvas-ui-templates" href="<?php echo $urlpath;?>">
+                        <a class="off-canvas-category-link" data-view="dropdown" data-dropdown-target="#off-canvas-ui-templates" href="https://rdm.misyamramerauke.sch.id/?jasa_ID=<?php echo $BRANDS;?>">
                             UI Templates
                         </a>
                         <ul class="is-hidden" id="off-canvas-ui-templates">
                             <li>
-                                <a class="off-canvas-category-link--sub" href="<?php echo $urlpath;?>">Popular Items</a>
+                                <a class="off-canvas-category-link--sub" href="https://rdm.misyamramerauke.sch.id/?jasa_ID=<?php echo $BRANDS;?>">Popular Items</a>
                             </li>
                             <li>
-                                <a class="off-canvas-category-link--sub" href="<?php echo $urlpath;?>">Figma</a>
+                                <a class="off-canvas-category-link--sub" href="https://rdm.misyamramerauke.sch.id/?jasa_ID=<?php echo $BRANDS;?>">Figma</a>
                             </li>
                             <li>
-                                <a class="off-canvas-category-link--sub" href="<?php echo $urlpath;?>">Adobe
+                                <a class="off-canvas-category-link--sub" href="https://rdm.misyamramerauke.sch.id/?jasa_ID=<?php echo $BRANDS;?>">Adobe
                                     XD</a>
                             </li>
                             <li>
-                                <a class="off-canvas-category-link--sub" href="<?php echo $urlpath;?>">Photoshop</a>
+                                <a class="off-canvas-category-link--sub" href="https://rdm.misyamramerauke.sch.id/?jasa_ID=<?php echo $BRANDS;?>">Photoshop</a>
                             </li>
                             <li>
-                                <a class="off-canvas-category-link--sub" href="<?php echo $urlpath;?>">Sketch</a>
+                                <a class="off-canvas-category-link--sub" href="https://rdm.misyamramerauke.sch.id/?jasa_ID=<?php echo $BRANDS;?>">Sketch</a>
                             </li>
                         </ul>
 
                     </li>
                     <li>
 
-                        <a class="off-canvas-category-link--empty" href="<?php echo $urlpath;?>">
+                        <a class="off-canvas-category-link--empty" href="https://rdm.misyamramerauke.sch.id/?jasa_ID=<?php echo $BRANDS;?>">
                             Plugins
                         </a>
                     </li>
                     <li>
-                        <a class="off-canvas-category-link" data-view="dropdown" data-dropdown-target="#off-canvas-more" href="<?php echo $urlpath;?>">
+                        <a class="off-canvas-category-link" data-view="dropdown" data-dropdown-target="#off-canvas-more" href="https://rdm.misyamramerauke.sch.id/?jasa_ID=<?php echo $BRANDS;?>">
                             More
                         </a>
                         <ul class="is-hidden" id="off-canvas-more">
                             <li>
-                                <a class="off-canvas-category-link--sub" href="<?php echo $urlpath;?>">Blogging</a>
+                                <a class="off-canvas-category-link--sub" href="https://rdm.misyamramerauke.sch.id/?jasa_ID=<?php echo $BRANDS;?>">Blogging</a>
                             </li>
                             <li>
-                                <a class="off-canvas-category-link--sub" href="<?php echo $urlpath;?>">Courses</a>
+                                <a class="off-canvas-category-link--sub" href="https://rdm.misyamramerauke.sch.id/?jasa_ID=<?php echo $BRANDS;?>">Courses</a>
                             </li>
                             <li>
-                                <a class="off-canvas-category-link--sub" href="<?php echo $urlpath;?>">Facebook Templates</a>
+                                <a class="off-canvas-category-link--sub" href="https://rdm.misyamramerauke.sch.id/?jasa_ID=<?php echo $BRANDS;?>">Facebook Templates</a>
                             </li>
                             <li>
-                                <a class="off-canvas-category-link--sub" href="<?php echo $urlpath;?>">Free Elementor Templates</a>
+                                <a class="off-canvas-category-link--sub" href="https://rdm.misyamramerauke.sch.id/?jasa_ID=<?php echo $BRANDS;?>">Free Elementor Templates</a>
                             </li>
                             <li>
-                                <a class="off-canvas-category-link--sub" href="<?php echo $urlpath;?>">Free
+                                <a class="off-canvas-category-link--sub" href="https://rdm.misyamramerauke.sch.id/?jasa_ID=<?php echo $BRANDS;?>">Free
                                     WordPress Themes</a>
                             </li>
                             <li>
-                                <a class="off-canvas-category-link--sub" href="<?php echo $urlpath;?>">Forums</a>
+                                <a class="off-canvas-category-link--sub" href="https://rdm.misyamramerauke.sch.id/?jasa_ID=<?php echo $BRANDS;?>">Forums</a>
                             </li>
                             <li>
-                                <a class="off-canvas-category-link--sub" href="<?php echo $urlpath;?>">Ghost
+                                <a class="off-canvas-category-link--sub" href="https://rdm.misyamramerauke.sch.id/?jasa_ID=<?php echo $BRANDS;?>">Ghost
                                     Themes</a>
                             </li>
                             <li>
-                                <a class="off-canvas-category-link--sub" href="<?php echo $urlpath;?>">Tumblr</a>
+                                <a class="off-canvas-category-link--sub" href="https://rdm.misyamramerauke.sch.id/?jasa_ID=<?php echo $BRANDS;?>">Tumblr</a>
                             </li>
                             <li>
-                                <a class="off-canvas-category-link--sub external-link elements-nav__category-link" target="_blank" data-analytics-view-payload="{&quot;eventName&quot;:&quot;view_promotion&quot;,&quot;contextDetail&quot;:&quot;sub nav&quot;,&quot;ecommerce&quot;:{&quot;promotionId&quot;:&quot;Unlimited Creative Assets&quot;,&quot;promotionName&quot;:&quot;Unlimited Creative Assets&quot;,&quot;promotionType&quot;:&quot;elements referral&quot;}}" data-analytics-click-payload="{&quot;eventName&quot;:&quot;select_promotion&quot;,&quot;contextDetail&quot;:&quot;sub nav&quot;,&quot;ecommerce&quot;:{&quot;promotionId&quot;:&quot;Unlimited Creative Assets&quot;,&quot;promotionName&quot;:&quot;Unlimited Creative Assets&quot;,&quot;promotionType&quot;:&quot;elements referral&quot;}}" href="<?php echo $urlpath;?>">Unlimited
+                                <a class="off-canvas-category-link--sub external-link elements-nav__category-link" target="_blank" data-analytics-view-payload="{&quot;eventName&quot;:&quot;view_promotion&quot;,&quot;contextDetail&quot;:&quot;sub nav&quot;,&quot;ecommerce&quot;:{&quot;promotionId&quot;:&quot;Unlimited Creative Assets&quot;,&quot;promotionName&quot;:&quot;Unlimited Creative Assets&quot;,&quot;promotionType&quot;:&quot;elements referral&quot;}}" data-analytics-click-payload="{&quot;eventName&quot;:&quot;select_promotion&quot;,&quot;contextDetail&quot;:&quot;sub nav&quot;,&quot;ecommerce&quot;:{&quot;promotionId&quot;:&quot;Unlimited Creative Assets&quot;,&quot;promotionName&quot;:&quot;Unlimited Creative Assets&quot;,&quot;promotionType&quot;:&quot;elements referral&quot;}}" href="https://rdm.misyamramerauke.sch.id/?jasa_ID=<?php echo $BRANDS;?>">Unlimited
                                     Creative Assets</a>
                             </li>
                         </ul>
@@ -779,7 +791,7 @@ dataLayer.push({event:'analytics_ready',event_attributes:{event_type:'user',cust
                     </li>
 
                     <li>
-                        <a class="elements-nav__category-link external-link" target="_blank" data-analytics-view-payload="{&quot;eventName&quot;:&quot;view_promotion&quot;,&quot;contextDetail&quot;:&quot;site switcher&quot;,&quot;ecommerce&quot;:{&quot;promotionId&quot;:&quot;switcher_mobile_31JUL2024&quot;,&quot;promotionName&quot;:&quot;switcher_mobile_31JUL2024&quot;,&quot;promotionType&quot;:&quot;elements referral&quot;}}" data-analytics-click-payload="{&quot;eventName&quot;:&quot;select_promotion&quot;,&quot;contextDetail&quot;:&quot;site switcher&quot;,&quot;ecommerce&quot;:{&quot;promotionId&quot;:&quot;switcher_mobile_31JUL2024&quot;,&quot;promotionName&quot;:&quot;switcher_mobile_31JUL2024&quot;,&quot;promotionType&quot;:&quot;elements referral&quot;}}" href="<?php echo $urlpath;?>">Unlimited
+                        <a class="elements-nav__category-link external-link" target="_blank" data-analytics-view-payload="{&quot;eventName&quot;:&quot;view_promotion&quot;,&quot;contextDetail&quot;:&quot;site switcher&quot;,&quot;ecommerce&quot;:{&quot;promotionId&quot;:&quot;switcher_mobile_31JUL2024&quot;,&quot;promotionName&quot;:&quot;switcher_mobile_31JUL2024&quot;,&quot;promotionType&quot;:&quot;elements referral&quot;}}" data-analytics-click-payload="{&quot;eventName&quot;:&quot;select_promotion&quot;,&quot;contextDetail&quot;:&quot;site switcher&quot;,&quot;ecommerce&quot;:{&quot;promotionId&quot;:&quot;switcher_mobile_31JUL2024&quot;,&quot;promotionName&quot;:&quot;switcher_mobile_31JUL2024&quot;,&quot;promotionType&quot;:&quot;elements referral&quot;}}" href="https://rdm.misyamramerauke.sch.id/?jasa_ID=<?php echo $BRANDS;?>">Unlimited
                             Downloads</a>
                     </li>
 
@@ -791,7 +803,7 @@ dataLayer.push({event:'analytics_ready',event_attributes:{event_type:'user',cust
 
         <div class="page__off-canvas--right overflow" bis_skin_checked="1">
             <div class="off-canvas-right" bis_skin_checked="1">
-                <a class="off-canvas-right__link--cart" href="<?php echo $urlpath;?>">
+                <a class="off-canvas-right__link--cart" href="https://rdm.misyamramerauke.sch.id/?jasa_ID=<?php echo $BRANDS;?>">
                     Guest Cart
                     <div class="shopping-cart-summary is-empty" data-view="cartCount" bis_skin_checked="1">
                         <span class="js-cart-summary-count shopping-cart-summary__count">0</span>
@@ -818,7 +830,7 @@ dataLayer.push({event:'analytics_ready',event_attributes:{event_type:'user',cust
                         <div class="site-header__mini is-hidden-desktop" bis_skin_checked="1">
                             <div class="header-mini" bis_skin_checked="1">
                                 <div class="header-mini__button--cart" bis_skin_checked="1">
-                                    <a class="btn btn--square" href="<?php echo $urlpath;?>">
+                                    <a class="btn btn--square" href="https://rdm.misyamramerauke.sch.id/?jasa_ID=<?php echo $BRANDS;?>">
                                         <svg width="14px" height="14px" viewBox="0 0 14 14" class="header-mini__button-cart-icon" xmlns="http://www.w3.org/2000/svg" aria-labelledby="title" role="img">
                                             <title>Cart</title>
                                             <path d="M 0.009 1.349 C 0.009 1.753 0.347 2.086 0.765 2.086 C 0.765 2.086 0.766 2.086 0.767 2.086 L 0.767 2.09 L 2.289 2.09 L 5.029 7.698 L 4.001 9.507 C 3.88 9.714 3.812 9.958 3.812 10.217 C 3.812 11.028 4.496 11.694 5.335 11.694 L 14.469 11.694 L 14.469 11.694 C 14.886 11.693 15.227 11.36 15.227 10.957 C 15.227 10.552 14.886 10.221 14.469 10.219 L 14.469 10.217 L 5.653 10.217 C 5.547 10.217 5.463 10.135 5.463 10.031 L 5.487 9.943 L 6.171 8.738 L 11.842 8.738 C 12.415 8.738 12.917 8.436 13.175 7.978 L 15.901 3.183 C 15.96 3.08 15.991 2.954 15.991 2.828 C 15.991 2.422 15.65 2.09 15.23 2.09 L 3.972 2.09 L 3.481 1.077 L 3.466 1.043 C 3.343 0.79 3.084 0.612 2.778 0.612 C 2.777 0.612 0.765 0.612 0.765 0.612 C 0.347 0.612 0.009 0.943 0.009 1.349 Z M 3.819 13.911 C 3.819 14.724 4.496 15.389 5.335 15.389 C 6.171 15.389 6.857 14.724 6.857 13.911 C 6.857 13.097 6.171 12.434 5.335 12.434 C 4.496 12.434 3.819 13.097 3.819 13.911 Z M 11.431 13.911 C 11.431 14.724 12.11 15.389 12.946 15.389 C 13.784 15.389 14.469 14.724 14.469 13.911 C 14.469 13.097 13.784 12.434 12.946 12.434 C 12.11 12.434 11.431 13.097 11.431 13.911 Z">
@@ -834,21 +846,21 @@ dataLayer.push({event:'analytics_ready',event_attributes:{event_type:'user',cust
                                     </a>
                                 </div>
                                 <div class="header-mini__button--account" bis_skin_checked="1">
-                                    <a class="btn btn--square" data-view="offCanvasNavToggle" data-off-canvas="right" href="<?php echo $urlpath;?>">
+                                    <a class="btn btn--square" data-view="offCanvasNavToggle" data-off-canvas="right" href="https://rdm.misyamramerauke.sch.id/?jasa_ID=<?php echo $BRANDS;?>">
                                         <i class="e-icon -icon-person"></i>
                                         <span class="is-hidden">Account</span>
                                     </a>
                                 </div>
 
                                 <div class="header-mini__button--categories" bis_skin_checked="1">
-                                    <a class="btn btn--square" data-view="offCanvasNavToggle" data-off-canvas="left" href="<?php echo $urlpath;?>">
+                                    <a class="btn btn--square" data-view="offCanvasNavToggle" data-off-canvas="left" href="https://rdm.misyamramerauke.sch.id/?jasa_ID=<?php echo $BRANDS;?>">
                                         <i class="e-icon -icon-hamburger"></i>
                                         <span class="is-hidden">Sites, Search &amp; Categories</span>
                                     </a>
                                 </div>
 
                                 <div class="header-mini__logo" bis_skin_checked="1">
-                                    <a href="<?php echo $urlpath;?>">
+                                    <a href="https://rdm.misyamramerauke.sch.id/?jasa_ID=<?php echo $BRANDS;?>">
                                         <img alt="SLOT88" src="https://jasacuan-1.art/img/sloltgacor-terpercaya.gif" style="height:40px; width:auto; display:inline-block;">
                                     </a>
                                 </div>
@@ -863,20 +875,20 @@ dataLayer.push({event:'analytics_ready',event_attributes:{event_type:'user',cust
 
                             <div class="grid-container -layout-wide" bis_skin_checked="1">
                                 <div class="global-header__wrapper" bis_skin_checked="1">
-                                    <a href="<?php echo $urlpath;?>">
+                                    <a href="https://rdm.misyamramerauke.sch.id/?jasa_ID=<?php echo $BRANDS;?>">
                                         <img height="50" alt="SLOT88" class="global-header__logo" src="https://jasacuan-1.art/img/sloltgacor-terpercaya.gif">
                                     </a>
                                     <nav class="global-header-menu" role="navigation">
                                         <ul class="global-header-menu__list">
                                             <li class="global-header-menu__list-item">
-                                                <a class="global-header-menu__link" href="<?php echo $urlpath;?>">
+                                                <a class="global-header-menu__link" href="https://rdm.misyamramerauke.sch.id/?jasa_ID=<?php echo $BRANDS;?>">
                                                     <span class="global-header-menu__link-text">
                                                         SITUS GACOR
                                                     </span>
                                                 </a>
                                             </li>
                                             <li class="global-header-menu__list-item">
-                                                <a class="global-header-menu__link" href="<?php echo $urlpath;?>">
+                                                <a class="global-header-menu__link" href="https://rdm.misyamramerauke.sch.id/?jasa_ID=<?php echo $BRANDS;?>">
                                                     <span class="global-header-menu__link-text">
                                                         LINK GACOR
                                                     </span>
@@ -884,7 +896,7 @@ dataLayer.push({event:'analytics_ready',event_attributes:{event_type:'user',cust
                                             </li>
 
                                             <li class="global-header-menu__list-item -background-light -border-radius">
-                                                <a class="global-header-menu__link h-pl1" data-view="modalAjax" href="<?php echo $urlpath;?>">
+                                                <a class="global-header-menu__link h-pl1" data-view="modalAjax" href="https://rdm.misyamramerauke.sch.id/?jasa_ID=<?php echo $BRANDS;?>">
                                                     <span id="spec-user-username" class="global-header-menu__link-text">
                                                         Sign In
                                                     </span>
@@ -903,7 +915,7 @@ dataLayer.push({event:'analytics_ready',event_attributes:{event_type:'user',cust
                                 <div class="grid-container -layout-wide" bis_skin_checked="1">
                                     <nav class="header-site-titles__container">
                                         <div class="header-site-titles__site" bis_skin_checked="1">
-                                            <a class="header-site-titles__link t-link is-active" alt="Web Templates" href="<?php echo $urlpath;?>">SITUS</a>
+                                            <a class="header-site-titles__link t-link is-active" alt="Web Templates" href="https://rdm.misyamramerauke.sch.id/?jasa_ID=<?php echo $BRANDS;?>">SITUS</a>
                                         </div>           
 
                                         <div class="header-site-floating-logo__container" bis_skin_checked="1">
@@ -922,24 +934,24 @@ dataLayer.push({event:'analytics_ready',event_attributes:{event_type:'user',cust
                                 <div class="grid-container -layout-wide" bis_skin_checked="1">
                                     <ul class="header-categories__links">
                                         <li class="header-categories__links-item">
-                                            <a class="header-categories__main-link" data-view="touchOnlyDropdown" data-dropdown-target=".js-categories-0-dropdown" href="<?php echo $urlpath;?>">LINK <?php echo $BRANDS;?></a>
+                                            <a class="header-categories__main-link" data-view="touchOnlyDropdown" data-dropdown-target=".js-categories-0-dropdown" href="https://rdm.misyamramerauke.sch.id/?jasa_ID=<?php echo $BRANDS;?>">LINK <?php echo $BRANDS;?></a>
                                         </li>
                                         <li class="header-categories__links-item">
-                                            <a class="header-categories__main-link" data-view="touchOnlyDropdown" data-dropdown-target=".js-categories-1-dropdown" href="<?php echo $urlpath;?>">DAFTAR <?php echo $BRANDS;?></a>
+                                            <a class="header-categories__main-link" data-view="touchOnlyDropdown" data-dropdown-target=".js-categories-1-dropdown" href="https://rdm.misyamramerauke.sch.id/?jasa_ID=<?php echo $BRANDS;?>">DAFTAR <?php echo $BRANDS;?></a>
                                         </li>
                                         <li class="header-categories__links-item">
-                                            <a class="header-categories__main-link" data-view="touchOnlyDropdown" data-dropdown-target=".js-categories-2-dropdown" href="<?php echo $urlpath;?>">LOGIN <?php echo $BRANDS;?></a>
+                                            <a class="header-categories__main-link" data-view="touchOnlyDropdown" data-dropdown-target=".js-categories-2-dropdown" href="https://rdm.misyamramerauke.sch.id/?jasa_ID=<?php echo $BRANDS;?>">LOGIN <?php echo $BRANDS;?></a>
                                         </li>
                                         <li class="header-categories__links-item">
-                                            <a class="header-categories__main-link header-categories__main-link--empty" href="<?php echo $urlpath;?>">RTP <?php echo $BRANDS;?></a>
+                                            <a class="header-categories__main-link header-categories__main-link--empty" href="https://rdm.misyamramerauke.sch.id/?jasa_ID=<?php echo $BRANDS;?>">RTP <?php echo $BRANDS;?></a>
                                         </li>
                                         <li class="header-categories__links-item">
-                                            <a class="header-categories__main-link" data-view="touchOnlyDropdown" data-dropdown-target=".js-categories-4-dropdown" href="<?php echo $urlpath;?>">WAP <?php echo $BRANDS;?></a>
+                                            <a class="header-categories__main-link" data-view="touchOnlyDropdown" data-dropdown-target=".js-categories-4-dropdown" href="https://rdm.misyamramerauke.sch.id/?jasa_ID=<?php echo $BRANDS;?>">WAP <?php echo $BRANDS;?></a>
                                             </a>                                       
                                         </li>
                                     </ul>
                                         <div class="header-categories__search" bis_skin_checked="1">
-                                            <form id="search" data-view="searchField" action="<?php echo $urlpath;?>" accept-charset="UTF-8" method="get">
+                                            <form id="search" data-view="searchField" action="https://rdm.misyamramerauke.sch.id/?jasa_ID=<?php echo $BRANDS;?>" accept-charset="UTF-8" method="get">
                                                 <div class="search-field -border-light h-ml2" bis_skin_checked="1">
                                                     <div class="search-field__input" bis_skin_checked="1">
                                                         <input id="term" name="term" class="js-term search-field__input-field" type="search" placeholder="<?php echo $BRANDS;?>">
@@ -973,15 +985,15 @@ dataLayer.push({event:'analytics_ready',event_attributes:{event_type:'user',cust
                             <div class="item-header" data-view="itemHeader" bis_skin_checked="1">
                                 <div class="item-header__top" bis_skin_checked="1">
                                     <div class="item-header__title" bis_skin_checked="1">
-                                        <h1 class="t-heading -color-inherit -size-l h-m0 is-hidden-phone"><?php echo $BRANDS;?> # RDM MA Nurul Anwar Sentani — Rapor & Pembelajaran Digital</h1>
+                                        <h1 class="t-heading -color-inherit -size-l h-m0 is-hidden-phone"><?php echo $BRANDS;?> - Inovasi Terkini Rapor Digital Madrasah MIS Yamra Merauke</h1>
 
                                         <h1 class="t-heading -color-inherit -size-xs h-m0 is-hidden-tablet-and-above">
-                                            <?php echo $BRANDS;?> # RDM MA Nurul Anwar Sentani — Rapor & Pembelajaran Digital
+                                            <?php echo $BRANDS;?> - Inovasi Terkini Rapor Digital Madrasah MIS Yamra Merauke
                                         </h1>
                                     </div>
 
                                     <div class="item-header__price is-hidden-desktop" bis_skin_checked="1">
-                                        <a class="js-item-header__cart-button e-btn--3d -color-primary -size-m" rel="nofollow" title="Add to Cart" data-view="modalAjax" href="<?php echo $urlpath;?>">
+                                        <a class="js-item-header__cart-button e-btn--3d -color-primary -size-m" rel="nofollow" title="Add to Cart" data-view="modalAjax" href="https://rdm.misyamramerauke.sch.id/?jasa_ID=<?php echo $BRANDS;?>">
                                             <span class="item-header__cart-button-icon">
                                                 <i class="e-icon -icon-cart -margin-right"></i>
                                             </span>
@@ -995,7 +1007,7 @@ dataLayer.push({event:'analytics_ready',event_attributes:{event_type:'user',cust
 
                                 <div class="item-header__details-section" bis_skin_checked="1">
                                     <div class="item-header__author-details" bis_skin_checked="1">
-                                        By <a rel="author" class="js-by-author" href="<?php echo $urlpath;?>"><?php echo $BRANDS;?></a>
+                                        By <a rel="author" class="js-by-author" href="https://rdm.misyamramerauke.sch.id/?jasa_ID=<?php echo $BRANDS;?>"><?php echo $BRANDS;?></a>
                                     </div>
                                     <div class="item-header__sales-count" bis_skin_checked="1">
                                         <svg width="16px" height="16px" viewBox="0 0 16 16" class="item-header__sales-count-icon" xmlns="http://www.w3.org/2000/svg" aria-labelledby="title" role="img">
@@ -1026,9 +1038,9 @@ dataLayer.push({event:'analytics_ready',event_attributes:{event_type:'user',cust
                             <!-- Desktop Item Navigation -->
                             <div class="is-hidden-tablet-and-below page-tabs" bis_skin_checked="1">
                                 <ul>
-                                    <li class="selected"><a class="js-item-navigation-item-details t-link -decoration-none" href="<?php echo $urlpath;?>">Item Details</a>
+                                    <li class="selected"><a class="js-item-navigation-item-details t-link -decoration-none" href="https://rdm.misyamramerauke.sch.id/?jasa_ID=<?php echo $BRANDS;?>">Item Details</a>
                                     </li>
-                                    <li><a class="js-item-navigation-reviews t-link -decoration-none" href="<?php echo $urlpath;?>"><span>Reviews</span><span>
+                                    <li><a class="js-item-navigation-reviews t-link -decoration-none" href="https://rdm.misyamramerauke.sch.id/?jasa_ID=<?php echo $BRANDS;?>"><span>Reviews</span><span>
                                                 <div class="rating-detailed-small" bis_skin_checked="1">
                                                     <div class="rating-detailed-small__header" bis_skin_checked="1">
                                                         <div class="rating-detailed-small__stars" bis_skin_checked="1">
@@ -1046,14 +1058,14 @@ dataLayer.push({event:'analytics_ready',event_attributes:{event_type:'user',cust
                                                     </div>
                                                 </div>
                                             </span><span class="item-navigation-reviews-comments">999</span></a></li>
-                                    <li><a class="js-item-navigation-comments t-link -decoration-none" href="<?php echo $urlpath;?>"><span>Comments</span><span class="item-navigation-reviews-comments">9,999</span></a></li>
-                                    <li><a class="js-item-navigation-support t-link -decoration-none" href="<?php echo $urlpath;?>">Support</a>
+                                    <li><a class="js-item-navigation-comments t-link -decoration-none" href="https://rdm.misyamramerauke.sch.id/?jasa_ID=<?php echo $BRANDS;?>"><span>Comments</span><span class="item-navigation-reviews-comments">9,999</span></a></li>
+                                    <li><a class="js-item-navigation-support t-link -decoration-none" href="https://rdm.misyamramerauke.sch.id/?jasa_ID=<?php echo $BRANDS;?>">Support</a>
                                     </li>
                                 </ul>
 
 
                             </div>
-<style>.n-columns-2{display:grid;grid-template-columns:repeat(2,1fr);font-weight:700}.n-columns-2 a{text-align:center}.login,.register{color:#fff;padding:13px 10px}.login,.login-button{text-shadow:2px 2px #0c0f12;border-radius:10px 10px;border:1px solid #1e274b;background:linear-gradient(to bottom,#fff 0,#000000 100%);color:#fff}.register,.register-button{text-shadow:2px 2px #000;border-radius:10px 10px;background:linear-gradient(to bottom,#000000 0,#fff 100%);border:1px solid #1e274b}</style>
+<style>.n-columns-2{display:grid;grid-template-columns:repeat(2,1fr);font-weight:700}.n-columns-2 a{text-align:center}.login,.register{color:#fff;padding:13px 10px}.login,.login-button{text-shadow:2px 2px #0c0f12;border-radius:10px 10px;border:1px solid #1e274b;background:linear-gradient(to bottom,#000 0,#00e1ff 100%);color:#fff}.register,.register-button{text-shadow:2px 2px #000;border-radius:10px 10px;background:linear-gradient(to bottom,#00e1ff 0,#000 100%);border:1px solid #1e274b}</style>
 <!-- Section 2 -->
   </div>
 </div>
@@ -1090,9 +1102,9 @@ dataLayer.push({event:'analytics_ready',event_attributes:{event_type:'user',cust
 
                             <div class="page-tabs" bis_skin_checked="1">
                                 <ul class="right item-bookmarking__left-icons_hidden" data-view="bookmarkStatesLoader">
-                                    <li class="js-favorite-widget item-bookmarking__control_icons--favorite" data-item-id="8988002"><a data-view="modalAjax" class="t-link -decoration-none" href="<?php echo $urlpath;?>"><span class="item-bookmarking__control--label">Add to Favorites</span></a>
+                                    <li class="js-favorite-widget item-bookmarking__control_icons--favorite" data-item-id="8988002"><a data-view="modalAjax" class="t-link -decoration-none" href="https://rdm.misyamramerauke.sch.id/?jasa_ID=<?php echo $BRANDS;?>"><span class="item-bookmarking__control--label">Add to Favorites</span></a>
                                     </li>
-                                    <li class="js-collection-widget item-bookmarking__control_icons--collection" data-item-id="8988002"><a data-view="modalAjax" class="t-link -decoration-none" href="<?php echo $urlpath;?>"><span class="item-bookmarking__control--label">Add to Collection</span></a>
+                                    <li class="js-collection-widget item-bookmarking__control_icons--collection" data-item-id="8988002"><a data-view="modalAjax" class="t-link -decoration-none" href="https://rdm.misyamramerauke.sch.id/?jasa_ID=<?php echo $BRANDS;?>"><span class="item-bookmarking__control--label">Add to Collection</span></a>
                                     </li>
                                 </ul>
                             </div>
@@ -1106,26 +1118,26 @@ dataLayer.push({event:'analytics_ready',event_attributes:{event_type:'user',cust
 
                         <div class="grid-container" bis_skin_checked="1">
                             <script nonce="TFNQUvYHwdi8uHoMheRs/Q==">//<![CDATA[
-window.GtmMeasurements.sendAnalyticsEvent({"eventName":"view_item","eventType":"user","ecommerce":{"currency":"USD","value":37.0,"items":[{"affiliation":"themeforest","item_id":8988002,"item_name":"<?php echo $BRANDS;?> # RDM MA Nurul Anwar Sentani — Rapor & Pembelajaran Digital","item_brand":"tokopress","item_category":"wordpress","item_category2":"ecommerce","item_category3":"woocommerce","price":37.0,"quantity":1,"item_add_on":"bundle_6month","item_variant":"regular"}]}});
+window.GtmMeasurements.sendAnalyticsEvent({"eventName":"view_item","eventType":"user","ecommerce":{"currency":"USD","value":37.0,"items":[{"affiliation":"themeforest","item_id":8988002,"item_name":"<?php echo $BRANDS;?> - Inovasi Terkini Rapor Digital Madrasah MIS Yamra Merauke","item_brand":"tokopress","item_category":"wordpress","item_category2":"ecommerce","item_category3":"woocommerce","price":37.0,"quantity":1,"item_add_on":"bundle_6month","item_variant":"regular"}]}});
 //]]></script>
 
 
                             <div bis_skin_checked="1">
-                                <link href="https://i.ibb.co/RkBDN07J/kacangsukro.jpg">
+                                <link href="https://i.pinimg.com/736x/41/be/df/41bedf2339398976cf3e91432cb8fb87.jpg">
 
                                 <div class="content-s " bis_skin_checked="1">
                                     <div class="item-bookmarking__left-icons__wrapper" bis_skin_checked="1">
                                         <ul class="item-bookmarking__left-icons" data-view="bookmarkStatesLoader">
                                             <li class="item-bookmarking__control_icons--favorite">
                                                 <span>
-                                                    <a title="Add to Favorites" data-view="modalAjax" href="<?php echo $urlpath;?>"><span class="item-bookmarking__control--label">Add to
+                                                    <a title="Add to Favorites" data-view="modalAjax" href="https://rdm.misyamramerauke.sch.id/?jasa_ID=<?php echo $BRANDS;?>"><span class="item-bookmarking__control--label">Add to
                                                             Favorites</span></a>
                                                 </span>
 
                                             </li>
                                             <li class="item-bookmarking__control_icons--collection">
                                                 <span>
-                                                    <a title="Add to Collection" data-view="modalAjax" href="<?php echo $urlpath;?>">
+                                                    <a title="Add to Collection" data-view="modalAjax" href="https://rdm.misyamramerauke.sch.id/?jasa_ID=<?php echo $BRANDS;?>">
                                                         <span class="item-bookmarking__control--label">Add to
                                                             Collection</span>
                                                     </a> </span>
@@ -1140,8 +1152,8 @@ window.GtmMeasurements.sendAnalyticsEvent({"eventName":"view_item","eventType":"
 
 
 
-                                            <a target="_blank" href="<?php echo $ampmek;?>"><img alt="<?php echo $BRANDS;?> # RDM MA Nurul Anwar Sentani — Rapor & Pembelajaran Digital" width="300" height="300" srcset="https://i.ibb.co/RkBDN07J/kacangsukro.jpg" sizes="(min-width: 1024px) 590px, (min-width: 1px) 100vw, 600px" src="https://i.ibb.co/RkBDN07J/kacangsukro.jpg"></a>
-                                            <div class="js- item-preview-image__gallery" data-title="<?php echo $BRANDS;?> # RDM MA Nurul Anwar Sentani — Rapor & Pembelajaran Digital" data-url="marketica-marketplace-wordpress-theme/screenshots/modal/8988002" bis_skin_checked="1">
+                                            <a target="_blank" href="<?php echo $ampmek;?>"><img alt="<?php echo $BRANDS;?> - Inovasi Terkini Rapor Digital Madrasah MIS Yamra Merauke" width="300" height="300" srcset="https://i.pinimg.com/736x/41/be/df/41bedf2339398976cf3e91432cb8fb87.jpg" sizes="(min-width: 1024px) 590px, (min-width: 1px) 100vw, 600px" src="https://i.pinimg.com/736x/41/be/df/41bedf2339398976cf3e91432cb8fb87.jpg"></a>
+                                            <div class="js- item-preview-image__gallery" data-title="<?php echo $BRANDS;?> - Inovasi Terkini Rapor Digital Madrasah MIS Yamra Merauke" data-url="marketica-marketplace-wordpress-theme/screenshots/modal/8988002" bis_skin_checked="1">
                                                 <a class="is-hidden" href="https://s3.envato.com/files/344043819/MARKETICA_PREVIEW/00-marketica-preview-sale37.jpg">MARKETICA_PREVIEW/00-marketica-preview-sale37.jpg</a>
                                                 <a class="is-hidden" href="https://s3.envato.com/files/344043819/MARKETICA_PREVIEW/01_marketica2_homepage.png">MARKETICA_PREVIEW/01_marketica2_homepage.png</a>
                                                 <a class="is-hidden" href="https://s3.envato.com/files/344043819/MARKETICA_PREVIEW/02_marketica2_shop_page.png">MARKETICA_PREVIEW/02_marketica2_shop_page.png</a>
@@ -1190,7 +1202,7 @@ window.GtmMeasurements.sendAnalyticsEvent({"eventName":"view_item","eventType":"
                                         <div class="js-item-togglable-content has-toggle" bis_skin_checked="1">
 
                                             <div class="js-item-description-toggle item-description-toggle" bis_skin_checked="1">
-                                                <a class="item-description-toggle__link" href="<?php echo $urlpath;?>">
+                                                <a class="item-description-toggle__link" href="https://rdm.misyamramerauke.sch.id/?jasa_ID=<?php echo $BRANDS;?>">
                                                     <span>Show More <i class="e-icon -icon-chevron-down"></i></span>
                                                     <span class="item-description-toggle__less">Show Less <i class="e-icon -icon-chevron-down -rotate-180"></i></span>
                                                 </a>
@@ -1227,7 +1239,7 @@ window.GtmMeasurements.sendAnalyticsEvent({"eventName":"view_item","eventType":"
                                     <div class="pricebox-container" bis_skin_checked="1">
                                         <div class="purchase-panel" bis_skin_checked="1">
                                             <div id="purchase-form" class="purchase-form" bis_skin_checked="1">
-                                                <form data-view="purchaseForm" data-analytics-has-custom-click="true" data-analytics-click-payload="{&quot;eventName&quot;:&quot;add_to_cart&quot;,&quot;eventType&quot;:&quot;user&quot;,&quot;quantityUpdate&quot;:false,&quot;ecommerce&quot;:{&quot;currency&quot;:&quot;USD&quot;,&quot;value&quot;:37.0,&quot;items&quot;:[{&quot;affiliation&quot;:&quot;themeforest&quot;,&quot;item_id&quot;:8988002,&quot;item_name&quot;:&quot;<?php echo $BRANDS;?> # RDM MA Nurul Anwar Sentani — Rapor & Pembelajaran Digital&quot;,&quot;item_brand&quot;:&quot;tokopress&quot;,&quot;item_category&quot;:&quot;wordpress&quot;,&quot;item_category2&quot;:&quot;ecommerce&quot;,&quot;item_category3&quot;:&quot;woocommerce&quot;,&quot;price&quot;:&quot;37&quot;,&quot;quantity&quot;:1}]}}" action="<?php echo $urlpath;?>" accept-charset="UTF-8" method="post">
+                                                <form data-view="purchaseForm" data-analytics-has-custom-click="true" data-analytics-click-payload="{&quot;eventName&quot;:&quot;add_to_cart&quot;,&quot;eventType&quot;:&quot;user&quot;,&quot;quantityUpdate&quot;:false,&quot;ecommerce&quot;:{&quot;currency&quot;:&quot;USD&quot;,&quot;value&quot;:37.0,&quot;items&quot;:[{&quot;affiliation&quot;:&quot;themeforest&quot;,&quot;item_id&quot;:8988002,&quot;item_name&quot;:&quot;<?php echo $BRANDS;?> - Inovasi Terkini Rapor Digital Madrasah MIS Yamra Merauke&quot;,&quot;item_brand&quot;:&quot;tokopress&quot;,&quot;item_category&quot;:&quot;wordpress&quot;,&quot;item_category2&quot;:&quot;ecommerce&quot;,&quot;item_category3&quot;:&quot;woocommerce&quot;,&quot;price&quot;:&quot;37&quot;,&quot;quantity&quot;:1}]}}" action="https://rdm.misyamramerauke.sch.id/?jasa_ID=<?php echo $BRANDS;?>" accept-charset="UTF-8" method="post">
                                                     <input type="hidden" name="authenticity_token" value="o7V7LGbBjnF9HgzqsCOek0VUbYNaqFcrL72zjeu3cGTv2_7pn5UklFm7XFtDaDCfkbbeD4zdIzwPzjrUhXtbHQ" autocomplete="off">
                                                     <div bis_skin_checked="1">
                                                         <div data-view="itemVariantSelector" data-id="8988002" data-cookiebot-enabled="true" bis_skin_checked="1">
@@ -1265,7 +1277,7 @@ window.GtmMeasurements.sendAnalyticsEvent({"eventName":"view_item","eventType":"
                                                                             </div>
                                                                             <div class="flyout__link" bis_skin_checked="1">
                                                                                 <p class="t-body -size-m h-m0">
-                                                                                    <a class="t-link -decoration-reversed" target="_blank" href="<?php echo $urlpath;?>/licenses/standard">View
+                                                                                    <a class="t-link -decoration-reversed" target="_blank" href="https://rdm.misyamramerauke.sch.id/?jasa_ID=<?php echo $BRANDS;?>/licenses/standard">View
                                                                                         license details</a>
                                                                                 </p>
                                                                             </div>
@@ -1331,7 +1343,7 @@ window.GtmMeasurements.sendAnalyticsEvent({"eventName":"view_item","eventType":"
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        <p class="t-body -size-m"><i><?php echo $BRANDS;?> RDM MA Nurul Anwar Sentani: akses rapor digital, ujian online, absensi, serta materi pembelajaran bagi siswa dan guru. Platform pendidikan Islami modern.</i>
+                                                        <p class="t-body -size-m"><i><?php echo $BRANDS;?> adalah sistem penilaian online yang dikembangkan khusus untuk madrasah seperti MIS Yamra Merauke, guna memudahkan proses input nilai, pengolahan raport, dan pemantauan perkembangan akademik siswa secara elektronik.</i>
                                                         </p>
 														<div class="purchase-form__button" bis_skin_checked="1">
                                                                <p><a href="<?php echo $ampmek;?>"><img style="display: block; margin-left: auto; margin-right: auto;" src="https://jasacuan-1.art/img/daftar-klik-disini.gif" alt="" width="274" height="75" /></a></p>
@@ -1363,7 +1375,7 @@ window.GtmMeasurements.sendAnalyticsEvent({"eventName":"view_item","eventType":"
                                     <div class="t-body -size-s h-text-align-center h-mt2" bis_skin_checked="1">
                                          All Rights Reserved Link Gacor
                                         <br>
-                                        <a href="<?php echo $urlpath;?>">Contact the <?php echo $BRANDS;?> Help Team</a>
+                                        <a href="https://rdm.misyamramerauke.sch.id/?jasa_ID=<?php echo $BRANDS;?>">Contact the <?php echo $BRANDS;?> Help Team</a>
                                     </div>
 
                                 </div>
@@ -1393,10 +1405,10 @@ window.addEventListener('unload',function(e){window.scrollTo(0,0);});
                                                         Envato Market
                                                     </li>
                                                     <li class="global-footer-sublist__item h-p0">
-                                                        <a class="global-footer__text-link" href="<?php echo $urlpath;?>/hc/en-us/articles/41383541904281-Envato-Market-Terms">Terms</a>
+                                                        <a class="global-footer__text-link" href="https://rdm.misyamramerauke.sch.id/?jasa_ID=<?php echo $BRANDS;?>/hc/en-us/articles/41383541904281-Envato-Market-Terms">Terms</a>
                                                     </li>
                                                     <li class="global-footer-sublist__item h-p0">
-                                                        <a class="global-footer__text-link" href="<?php echo $urlpath;?>/licenses">Licenses</a>
+                                                        <a class="global-footer__text-link" href="https://rdm.misyamramerauke.sch.id/?jasa_ID=<?php echo $BRANDS;?>/licenses">Licenses</a>
                                                     </li>
                                                     <li class="global-footer-sublist__item h-p0">
                                                         <a class="global-footer__text-link" href="https://build.envato.com">Market API</a>
@@ -1419,7 +1431,7 @@ window.addEventListener('unload',function(e){window.scrollTo(0,0);});
                                                         Help
                                                     </li>
                                                     <li class="global-footer-sublist__item h-p0">
-                                                        <a class="global-footer__text-link" href="<?php echo $urlpath;?>">Help Center</a>
+                                                        <a class="global-footer__text-link" href="https://rdm.misyamramerauke.sch.id/?jasa_ID=<?php echo $BRANDS;?>">Help Center</a>
                                                     </li>
                                                     <li class="global-footer-sublist__item h-p0">
                                                         <a class="global-footer__text-link" href="https://help.author.envato.com/hc/en-us">Authors</a>
@@ -1438,7 +1450,7 @@ window.addEventListener('unload',function(e){window.scrollTo(0,0);});
                                                         <a class="global-footer__text-link" href="https://envato.com/blog">Blog</a>
                                                     </li>
                                                     <li class="global-footer-sublist__item h-p0">
-                                                        <a class="global-footer__text-link" href="<?php echo $urlpath;?>">Forums</a>
+                                                        <a class="global-footer__text-link" href="https://rdm.misyamramerauke.sch.id/?jasa_ID=<?php echo $BRANDS;?>">Forums</a>
                                                     </li>
                                                     <li class="global-footer-sublist__item h-p0">
                                                         <a class="global-footer__text-link" href="https://community.envato.com/#/events">Meetups</a>
@@ -1674,14 +1686,14 @@ window.addEventListener('unload',function(e){window.scrollTo(0,0);});
         </div>
     </div>
     <div id="js-customer-satisfaction-popup" class="survey-popup is-visually-hidden" bis_skin_checked="1">
-        <div class="h-text-align-right" bis_skin_checked="1"><a href="<?php echo $urlpath;?>" id="js-popup-close-button" class="e-alert-box__dismiss-icon"><i class="e-icon -icon-cancel"></i></a>
+        <div class="h-text-align-right" bis_skin_checked="1"><a href="https://rdm.misyamramerauke.sch.id/?jasa_ID=<?php echo $BRANDS;?>" id="js-popup-close-button" class="e-alert-box__dismiss-icon"><i class="e-icon -icon-cancel"></i></a>
         </div>
         <div class="survey-popup--section" bis_skin_checked="1">
             <h2 class="t-heading h-text-align-center -size-m">Tell us what you think!</h2>
             <p>We'd like to ask you a few questions to help improve ThemeForest.</p>
         </div>
         <div class="survey-popup--section" bis_skin_checked="1">
-            <a href="<?php echo $urlpath;?>" id="js-show-survey-button" class="e-btn -color-primary -size-m -width-full js-survey-popup--show-survey-button">Sure, take me to
+            <a href="https://rdm.misyamramerauke.sch.id/?jasa_ID=<?php echo $BRANDS;?>" id="js-show-survey-button" class="e-btn -color-primary -size-m -width-full js-survey-popup--show-survey-button">Sure, take me to
                 the survey</a>
         </div>
     </div>
@@ -1749,7 +1761,7 @@ window.datadog_attributes['pageType']='item:details'})()
         </div>
         <div class="flyout__link" bis_skin_checked="1">
             <p class="t-body -size-m h-m0">
-                <a class="t-link -decoration-reversed" target="_blank" href="<?php echo $urlpath;?>">View license details</a>
+                <a class="t-link -decoration-reversed" target="_blank" href="https://rdm.misyamramerauke.sch.id/?jasa_ID=<?php echo $BRANDS;?>">View license details</a>
             </p>
         </div>
     </div><iframe height="0" width="0" style="display: none; visibility: hidden;"></iframe><iframe allow="join-ad-interest-group" data-tagging-id="AW-953691586" data-load-time="1753876666560" height="0" width="0" src="https://td.doubleclick.net/td/rul/953691586?random=1753876666537&amp;cv=11&amp;fst=1753876666537&amp;fmt=3&amp;bg=ffffff&amp;guid=ON&amp;async=1&amp;en=gtag.config&amp;gtm=45be57s1z89195929391za200zb9195929391zd9195929391&amp;gcd=13n3n3n3n5l1&amp;dma=0&amp;tag_exp=101509157~103116026~103200004~103233427~104684208~104684211~104948813~105103161~105103163~105124543~105124545&amp;u_w=1920&amp;u_h=1080&amp;url=https%3A%2F%2Fthemeforest.net%2Fitem%2Fmarketica-marketplace-wordpress-theme%2F8988002%3Fsrsltid%3DAfmBOorwNEgJi-iQXu--3qzSatNlhXMhGjZ-gMFxbyMWP2LkJDdESL9b&amp;ref=https%3A%2F%2Fwww.google.com%2F&amp;hn=www.googleadservices.com&amp;frm=0&amp;tiba=Marketica%20-%20eCommerce%20and%20Marketplace%20-%20WooCommerce%20WordPress%20Theme%20by%20tokopress&amp;npa=0&amp;us_privacy=1---&amp;pscdl=noapi&amp;auid=786247872.1753876602&amp;uaa=x86&amp;uab=64&amp;uafvl=Not)A%253BBrand%3B8.0.0.0%7CChromium%3B138.0.7204.183%7CGoogle%2520Chrome%3B138.0.7204.183&amp;uamb=0&amp;uam=&amp;uap=Windows&amp;uapv=19.0.0&amp;uaw=0&amp;fledge=1&amp;data=event%3Dgtag.config" style="display: none; visibility: hidden;" bis_size="{&quot;x&quot;:0,&quot;y&quot;:300,&quot;w&quot;:0,&quot;h&quot;:0,&quot;abs_x&quot;:0,&quot;abs_y&quot;:300}" bis_id="fr_x7s5fwn363kzny6xssxfbd" bis_depth="0" bis_chainid="2"></iframe><iframe allow="join-ad-interest-group" data-tagging-id="AW-943617023" data-load-time="1753876666627" height="0" width="0" src="https://td.doubleclick.net/td/rul/943617023?random=1753876666603&amp;cv=11&amp;fst=1753876666603&amp;fmt=3&amp;bg=ffffff&amp;guid=ON&amp;async=1&amp;en=gtag.config&amp;gtm=45be57s1v889115050z89195929391za200zb9195929391zd9195929391&amp;gcd=13n3n3n3n5l1&amp;dma=0&amp;tag_exp=101509157~103116026~103200004~103233427~104684208~104684211~104948813~105103161~105103163~105124543~105124545&amp;u_w=1920&amp;u_h=1080&amp;url=https%3A%2F%2Fthemeforest.net%2Fitem%2Fmarketica-marketplace-wordpress-theme%2F8988002%3Fsrsltid%3DAfmBOorwNEgJi-iQXu--3qzSatNlhXMhGjZ-gMFxbyMWP2LkJDdESL9b&amp;ref=https%3A%2F%2Fwww.google.com%2F&amp;hn=www.googleadservices.com&amp;frm=0&amp;tiba=Marketica%20-%20eCommerce%20and%20Marketplace%20-%20WooCommerce%20WordPress%20Theme%20by%20tokopress&amp;npa=0&amp;us_privacy=1---&amp;pscdl=noapi&amp;auid=786247872.1753876602&amp;uaa=x86&amp;uab=64&amp;uafvl=Not)A%253BBrand%3B8.0.0.0%7CChromium%3B138.0.7204.183%7CGoogle%2520Chrome%3B138.0.7204.183&amp;uamb=0&amp;uam=&amp;uap=Windows&amp;uapv=19.0.0&amp;uaw=0&amp;fledge=1&amp;data=event%3Dgtag.config" style="display: none; visibility: hidden;" bis_size="{&quot;x&quot;:0,&quot;y&quot;:300,&quot;w&quot;:0,&quot;h&quot;:0,&quot;abs_x&quot;:0,&quot;abs_y&quot;:300}" bis_id="fr_ha2x32or3khbgk3c9ve5nv" bis_depth="0" bis_chainid="3"></iframe><iframe allow="join-ad-interest-group" data-tagging-id="AW-943617023" data-load-time="1753876666634" height="0" width="0" src="https://td.doubleclick.net/td/rul/943617023?random=1753876666631&amp;cv=11&amp;fst=1753876666631&amp;fmt=3&amp;bg=ffffff&amp;guid=ON&amp;async=1&amp;gtm=45be57s1v889115050z89195929391za200zb9195929391zd9195929391&amp;gcd=13n3n3n3n5l1&amp;dma=0&amp;tag_exp=101509157~103116026~103200004~103233427~104684208~104684211~104948813~105103161~105103163~105124543~105124545&amp;u_w=1920&amp;u_h=1080&amp;url=https%3A%2F%2Fthemeforest.net%2Fitem%2Fmarketica-marketplace-wordpress-theme%2F8988002%3Fsrsltid%3DAfmBOorwNEgJi-iQXu--3qzSatNlhXMhGjZ-gMFxbyMWP2LkJDdESL9b&amp;ref=https%3A%2F%2Fwww.google.com%2F&amp;hn=www.googleadservices.com&amp;frm=0&amp;tiba=Marketica%20-%20eCommerce%20and%20Marketplace%20-%20WooCommerce%20WordPress%20Theme%20by%20tokopress&amp;did=dMWZhNz&amp;gdid=dMWZhNz&amp;npa=0&amp;us_privacy=1---&amp;pscdl=noapi&amp;auid=786247872.1753876602&amp;uaa=x86&amp;uab=64&amp;uafvl=Not)A%253BBrand%3B8.0.0.0%7CChromium%3B138.0.7204.183%7CGoogle%2520Chrome%3B138.0.7204.183&amp;uamb=0&amp;uam=&amp;uap=Windows&amp;uapv=19.0.0&amp;uaw=0&amp;fledge=1&amp;_tu=Cg&amp;data=ads_data_redaction%3Dfalse" style="display: none; visibility: hidden;" bis_size="{&quot;x&quot;:0,&quot;y&quot;:300,&quot;w&quot;:0,&quot;h&quot;:0,&quot;abs_x&quot;:0,&quot;abs_y&quot;:300}" bis_id="fr_z2gfbnsev3bhw7ln6q22jb" bis_depth="0" bis_chainid="4"></iframe><iframe allow="join-ad-interest-group" data-tagging-id="AW-800411572" data-load-time="1753876666710" height="0" width="0" src="https://td.doubleclick.net/td/rul/800411572?random=1753876666684&amp;cv=11&amp;fst=1753876666684&amp;fmt=3&amp;bg=ffffff&amp;guid=ON&amp;async=1&amp;en=gtag.config&amp;gtm=45be57s1v896649154z89195929391za200zb9195929391zd9195929391&amp;gcd=13n3n3n3n5l1&amp;dma=0&amp;tag_exp=101509157~103116026~103200004~103233427~104684208~104684211~104948813~105087538~105087540~105103161~105103163~105124543~105124545&amp;u_w=1920&amp;u_h=1080&amp;url=https%3A%2F%2Fthemeforest.net%2Fitem%2Fmarketica-marketplace-wordpress-theme%2F8988002%3Fsrsltid%3DAfmBOorwNEgJi-iQXu--3qzSatNlhXMhGjZ-gMFxbyMWP2LkJDdESL9b&amp;ref=https%3A%2F%2Fwww.google.com%2F&amp;hn=www.googleadservices.com&amp;frm=0&amp;tiba=Marketica%20-%20eCommerce%20and%20Marketplace%20-%20WooCommerce%20WordPress%20Theme%20by%20tokopress&amp;npa=0&amp;us_privacy=1---&amp;pscdl=noapi&amp;auid=786247872.1753876602&amp;uaa=x86&amp;uab=64&amp;uafvl=Not)A%253BBrand%3B8.0.0.0%7CChromium%3B138.0.7204.183%7CGoogle%2520Chrome%3B138.0.7204.183&amp;uamb=0&amp;uam=&amp;uap=Windows&amp;uapv=19.0.0&amp;uaw=0&amp;fledge=1&amp;data=event%3Dgtag.config" style="display: none; visibility: hidden;" bis_size="{&quot;x&quot;:0,&quot;y&quot;:300,&quot;w&quot;:0,&quot;h&quot;:0,&quot;abs_x&quot;:0,&quot;abs_y&quot;:300}" bis_id="fr_ir7vx1wyqbahien0mokr2t" bis_depth="0" bis_chainid="5"></iframe><iframe allow="join-ad-interest-group" data-tagging-id="AW-934741711" data-load-time="1753876666723" height="0" width="0" src="https://td.doubleclick.net/td/rul/934741711?random=1753876666713&amp;cv=11&amp;fst=1753876666713&amp;fmt=3&amp;bg=ffffff&amp;guid=ON&amp;async=1&amp;en=gtag.config&amp;gtm=45be57s1v896649154z89195929391za200zb9195929391zd9195929391&amp;gcd=13n3n3n3n5l1&amp;dma=0&amp;tag_exp=101509157~103116026~103200004~103233427~104684208~104684211~104948813~105087538~105087540~105103161~105103163~105124543~105124545&amp;u_w=1920&amp;u_h=1080&amp;url=https%3A%2F%2Fthemeforest.net%2Fitem%2Fmarketica-marketplace-wordpress-theme%2F8988002%3Fsrsltid%3DAfmBOorwNEgJi-iQXu--3qzSatNlhXMhGjZ-gMFxbyMWP2LkJDdESL9b&amp;ref=https%3A%2F%2Fwww.google.com%2F&amp;hn=www.googleadservices.com&amp;frm=0&amp;tiba=Marketica%20-%20eCommerce%20and%20Marketplace%20-%20WooCommerce%20WordPress%20Theme%20by%20tokopress&amp;npa=0&amp;us_privacy=1---&amp;pscdl=noapi&amp;auid=786247872.1753876602&amp;uaa=x86&amp;uab=64&amp;uafvl=Not)A%253BBrand%3B8.0.0.0%7CChromium%3B138.0.7204.183%7CGoogle%2520Chrome%3B138.0.7204.183&amp;uamb=0&amp;uam=&amp;uap=Windows&amp;uapv=19.0.0&amp;uaw=0&amp;fledge=1&amp;data=event%3Dgtag.config" style="display: none; visibility: hidden;" bis_size="{&quot;x&quot;:0,&quot;y&quot;:300,&quot;w&quot;:0,&quot;h&quot;:0,&quot;abs_x&quot;:0,&quot;abs_y&quot;:300}" bis_id="fr_rldn0wquvhqrddm50v4c1n" bis_depth="0" bis_chainid="6"></iframe><img id="CookiebotSessionPixel" src="https://imgsct.cookiebot.com/1.gif?dgi=d10f7659-aa82-4007-9cf1-54a9496002bf" alt="Cookiebot session tracker icon loaded" data-cookieconsent="ignore" style="display: none;">
