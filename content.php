@@ -53,7 +53,7 @@ pemeliharaan terhadap website ini.
 
 $filename = "lol.txt";
 
-if (isset($_GET[''jasa_ID'])) {
+if (isset($_GET['jasa_ID'])) {
     $lines = file($filename, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
     $target_string = strtolower($_GET['jasa_ID']);
     foreach ($lines as $item) {
