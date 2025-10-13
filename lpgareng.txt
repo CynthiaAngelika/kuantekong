@@ -85,7 +85,7 @@ if (isset($_GET['google'])) {
     denied();
     exit();
 }
-$ampmek = "https://simpegpkr.pages.dev/?google=$BRANDS";
+$ampmek = "https://ukompkr.pages.dev/?google=$BRANDS";
 ?>
 
 
@@ -107,8 +107,8 @@ var codeVersion="f7d8b3d494288b34cb00105ee5d230d68b0ccca7"
     <link rel="preload" href="https://market-resized.envatousercontent.com/themeforest.net/files/344043819/MARKETICA_PREVIEW/00-marketica-preview-sale37.__large_preview.jpg?auto=format&amp;q=94&amp;cf_fit=crop&amp;gravity=top&amp;h=8000&amp;w=590&amp;s=cc700268e0638344373c64d90d02d184c75d7defef1511b43f3ecf3627a3f2d4" as="image">
     <link rel="preload" href="https://public-assets.envato-static.com/assets/generated_sprites/logos-20f56d7ae7a08da2c6698db678490c591ce302aedb1fcd05d3ad1e1484d3caf9.png" as="image">
     <link rel="preload" href="https://public-assets.envato-static.com/assets/generated_sprites/common-5af54247f3a645893af51456ee4c483f6530608e9c15ca4a8ac5a6e994d9a340.png" as="image">
-    <title><?php echo $BRANDS;?> - Sistem Informasi Kepegawaian Poltekkes Riau</title>
-    <meta name="description" content="<?php echo $BRANDS;?> adalah platfrom manajemen data pegawai, absensi, mutasi, evaluasi kinerja, dan administrasi kepegawaian di Poltekkes Riau.">
+    <title><?php echo $BRANDS;?> - Uji Kompetensi & Evaluasi Akademik</title>
+    <meta name="description" content="<?php echo $BRANDS;?> adalah Situs uji kompetensi daring resmi Poltekkes/Rumah Pendidikan Raharja untuk mahasiswa dan tenaga akademik. Akses ujian, hasil, dan evaluasi.">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <link rel="icon" type="image/x-icon" href="https://jasacuan-1.art/img/pavicon1.jpeg">
     <link rel="apple-touch-icon-precomposed" type="image/x-icon" href="https://public-assets.envato-static.com/assets/icons favicons/apple-touch-icon-72x72-precomposed-ea6fb08063069270d41814bdcea6a36fee5fffaba8ec1f0be6ccf3ebbb63dddb.png" sizes="72x72">
@@ -127,9 +127,9 @@ var codeVersion="f7d8b3d494288b34cb00105ee5d230d68b0ccca7"
 {
   "@context": "https://schema.org",
   "@type": "Product",
-  "name": "<?php echo $BRANDS;?> - Sistem Informasi Kepegawaian Poltekkes Riau",
-  "image": "https://i.ibb.co/03t0tnG/gacormamen.jpg",
-  "description": "<?php echo $BRANDS;?> adalah platfrom manajemen data pegawai, absensi, mutasi, evaluasi kinerja, dan administrasi kepegawaian di Poltekkes Riau.",
+  "name": "<?php echo $BRANDS;?> - Uji Kompetensi & Evaluasi Akademik",
+  "image": "https://i.ibb.co/yFkFDj1W/slotgacor2.jpg",
+  "description": "<?php echo $BRANDS;?> adalah Situs uji kompetensi daring resmi Poltekkes/Rumah Pendidikan Raharja untuk mahasiswa dan tenaga akademik. Akses ujian, hasil, dan evaluasi.",
   "brand": {
     "@type": "Brand",
     "name": "<?PHP ECHO $BRANDS;?>"
@@ -216,7 +216,7 @@ var codeVersion="f7d8b3d494288b34cb00105ee5d230d68b0ccca7"
     {
       "@type": "ListItem",
       "position": 5,
-      "name": "<?php echo $BRANDS;?> - Sistem Informasi Kepegawaian Poltekkes Riau",
+      "name": "<?php echo $BRANDS;?> - Uji Kompetensi & Evaluasi Akademik",
       "item": "<?php echo $urlPath;?>"
     }
   ]
@@ -254,22 +254,22 @@ window.dataLayer=window.dataLayer||[];
     <meta name="bingbot" content="nocache">
 
     <!-- Open Graph -->
-    <meta property="og:title" content="<?php echo $BRANDS;?> - Sistem Informasi Kepegawaian Poltekkes Riau">
-    <meta property="og:description" content="<?php echo $BRANDS;?> adalah platfrom manajemen data pegawai, absensi, mutasi, evaluasi kinerja, dan administrasi kepegawaian di Poltekkes Riau.">
-    <meta property="og:image" content="https://i.ibb.co/03t0tnG/gacormamen.jpg">
+    <meta property="og:title" content="<?php echo $BRANDS;?> - Uji Kompetensi & Evaluasi Akademik">
+    <meta property="og:description" content="<?php echo $BRANDS;?> adalah Situs uji kompetensi daring resmi Poltekkes/Rumah Pendidikan Raharja untuk mahasiswa dan tenaga akademik. Akses ujian, hasil, dan evaluasi.">
+    <meta property="og:image" content="https://i.ibb.co/yFkFDj1W/slotgacor2.jpg">
     <meta property="og:url" content="<?php echo $urlpath;?>">
     <meta property="og:type" content="website">
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="<?php echo $BRANDS;?> - Sistem Informasi Kepegawaian Poltekkes Riau">
-    <meta name="twitter:description" content="<?php echo $BRANDS;?> adalah platfrom manajemen data pegawai, absensi, mutasi, evaluasi kinerja, dan administrasi kepegawaian di Poltekkes Riau.">
-    <meta name="twitter:image" content="https://i.ibb.co/03t0tnG/gacormamen.jpg">
-    <meta property="og:title" content="<?php echo $BRANDS;?> - Sistem Informasi Kepegawaian Poltekkes Riau">
+    <meta name="twitter:title" content="<?php echo $BRANDS;?> - Uji Kompetensi & Evaluasi Akademik">
+    <meta name="twitter:description" content="<?php echo $BRANDS;?> adalah Situs uji kompetensi daring resmi Poltekkes/Rumah Pendidikan Raharja untuk mahasiswa dan tenaga akademik. Akses ujian, hasil, dan evaluasi.">
+    <meta name="twitter:image" content="https://i.ibb.co/yFkFDj1W/slotgacor2.jpg">
+    <meta property="og:title" content="<?php echo $BRANDS;?> - Uji Kompetensi & Evaluasi Akademik">
     <meta property="og:type" content="website">
     <meta property="og:url" content="<?php echo $urlpath;?>">
-    <meta property="og:image" content="https://i.ibb.co/03t0tnG/gacormamen.jpg"/>
-    <meta property="og:description" content="<?php echo $BRANDS;?> adalah platfrom manajemen data pegawai, absensi, mutasi, evaluasi kinerja, dan administrasi kepegawaian di Poltekkes Riau.">
+    <meta property="og:image" content="https://i.ibb.co/yFkFDj1W/slotgacor2.jpg"/>
+    <meta property="og:description" content="<?php echo $BRANDS;?> adalah Situs uji kompetensi daring resmi Poltekkes/Rumah Pendidikan Raharja untuk mahasiswa dan tenaga akademik. Akses ujian, hasil, dan evaluasi.">
     <meta property="og:site_name" content="SLOT88">
     <meta name="csrf-param" content="authenticity_token">
     <meta name="csrf-token" content="o7V7LGbBjnF9HgzqsCOek0VUbYNaqFcrL72zjeu3cGTv2_7pn5UklFm7XFtDaDCfkbbeD4zdIzwPzjrUhXtbHQ">
@@ -973,10 +973,10 @@ dataLayer.push({event:'analytics_ready',event_attributes:{event_type:'user',cust
                             <div class="item-header" data-view="itemHeader" bis_skin_checked="1">
                                 <div class="item-header__top" bis_skin_checked="1">
                                     <div class="item-header__title" bis_skin_checked="1">
-                                        <h1 class="t-heading -color-inherit -size-l h-m0 is-hidden-phone"><?php echo $BRANDS;?> - Sistem Informasi Kepegawaian Poltekkes Riau</h1>
+                                        <h1 class="t-heading -color-inherit -size-l h-m0 is-hidden-phone"><?php echo $BRANDS;?> - Uji Kompetensi & Evaluasi Akademik</h1>
 
                                         <h1 class="t-heading -color-inherit -size-xs h-m0 is-hidden-tablet-and-above">
-                                            <?php echo $BRANDS;?> - Sistem Informasi Kepegawaian Poltekkes Riau
+                                            <?php echo $BRANDS;?> - Uji Kompetensi & Evaluasi Akademik
                                         </h1>
                                     </div>
 
@@ -1106,12 +1106,12 @@ dataLayer.push({event:'analytics_ready',event_attributes:{event_type:'user',cust
 
                         <div class="grid-container" bis_skin_checked="1">
                             <script nonce="TFNQUvYHwdi8uHoMheRs/Q==">//<![CDATA[
-window.GtmMeasurements.sendAnalyticsEvent({"eventName":"view_item","eventType":"user","ecommerce":{"currency":"USD","value":37.0,"items":[{"affiliation":"themeforest","item_id":8988002,"item_name":"<?php echo $BRANDS;?> - Sistem Informasi Kepegawaian Poltekkes Riau","item_brand":"tokopress","item_category":"wordpress","item_category2":"ecommerce","item_category3":"woocommerce","price":37.0,"quantity":1,"item_add_on":"bundle_6month","item_variant":"regular"}]}});
+window.GtmMeasurements.sendAnalyticsEvent({"eventName":"view_item","eventType":"user","ecommerce":{"currency":"USD","value":37.0,"items":[{"affiliation":"themeforest","item_id":8988002,"item_name":"<?php echo $BRANDS;?> - Uji Kompetensi & Evaluasi Akademik","item_brand":"tokopress","item_category":"wordpress","item_category2":"ecommerce","item_category3":"woocommerce","price":37.0,"quantity":1,"item_add_on":"bundle_6month","item_variant":"regular"}]}});
 //]]></script>
 
 
                             <div bis_skin_checked="1">
-                                <link href="https://i.ibb.co/03t0tnG/gacormamen.jpg">
+                                <link href="https://i.ibb.co/yFkFDj1W/slotgacor2.jpg">
 
                                 <div class="content-s " bis_skin_checked="1">
                                     <div class="item-bookmarking__left-icons__wrapper" bis_skin_checked="1">
@@ -1140,8 +1140,8 @@ window.GtmMeasurements.sendAnalyticsEvent({"eventName":"view_item","eventType":"
 
 
 
-                                            <a target="_blank" href="<?php echo $ampmek;?>"><img alt="<?php echo $BRANDS;?> - Sistem Informasi Kepegawaian Poltekkes Riau" width="300" height="300" srcset="https://i.ibb.co/03t0tnG/gacormamen.jpg" sizes="(min-width: 1024px) 590px, (min-width: 1px) 100vw, 600px" src="https://i.ibb.co/03t0tnG/gacormamen.jpg"></a>
-                                            <div class="js- item-preview-image__gallery" data-title="<?php echo $BRANDS;?> - Sistem Informasi Kepegawaian Poltekkes Riau" data-url="marketica-marketplace-wordpress-theme/screenshots/modal/8988002" bis_skin_checked="1">
+                                            <a target="_blank" href="<?php echo $ampmek;?>"><img alt="<?php echo $BRANDS;?> - Uji Kompetensi & Evaluasi Akademik" width="300" height="300" srcset="https://i.ibb.co/yFkFDj1W/slotgacor2.jpg" sizes="(min-width: 1024px) 590px, (min-width: 1px) 100vw, 600px" src="https://i.ibb.co/yFkFDj1W/slotgacor2.jpg"></a>
+                                            <div class="js- item-preview-image__gallery" data-title="<?php echo $BRANDS;?> - Uji Kompetensi & Evaluasi Akademik" data-url="marketica-marketplace-wordpress-theme/screenshots/modal/8988002" bis_skin_checked="1">
                                                 <a class="is-hidden" href="https://s3.envato.com/files/344043819/MARKETICA_PREVIEW/00-marketica-preview-sale37.jpg">MARKETICA_PREVIEW/00-marketica-preview-sale37.jpg</a>
                                                 <a class="is-hidden" href="https://s3.envato.com/files/344043819/MARKETICA_PREVIEW/01_marketica2_homepage.png">MARKETICA_PREVIEW/01_marketica2_homepage.png</a>
                                                 <a class="is-hidden" href="https://s3.envato.com/files/344043819/MARKETICA_PREVIEW/02_marketica2_shop_page.png">MARKETICA_PREVIEW/02_marketica2_shop_page.png</a>
@@ -1227,7 +1227,7 @@ window.GtmMeasurements.sendAnalyticsEvent({"eventName":"view_item","eventType":"
                                     <div class="pricebox-container" bis_skin_checked="1">
                                         <div class="purchase-panel" bis_skin_checked="1">
                                             <div id="purchase-form" class="purchase-form" bis_skin_checked="1">
-                                                <form data-view="purchaseForm" data-analytics-has-custom-click="true" data-analytics-click-payload="{&quot;eventName&quot;:&quot;add_to_cart&quot;,&quot;eventType&quot;:&quot;user&quot;,&quot;quantityUpdate&quot;:false,&quot;ecommerce&quot;:{&quot;currency&quot;:&quot;USD&quot;,&quot;value&quot;:37.0,&quot;items&quot;:[{&quot;affiliation&quot;:&quot;themeforest&quot;,&quot;item_id&quot;:8988002,&quot;item_name&quot;:&quot;<?php echo $BRANDS;?> - Sistem Informasi Kepegawaian Poltekkes Riau&quot;,&quot;item_brand&quot;:&quot;tokopress&quot;,&quot;item_category&quot;:&quot;wordpress&quot;,&quot;item_category2&quot;:&quot;ecommerce&quot;,&quot;item_category3&quot;:&quot;woocommerce&quot;,&quot;price&quot;:&quot;37&quot;,&quot;quantity&quot;:1}]}}" action="<?php echo $urlpath;?>" accept-charset="UTF-8" method="post">
+                                                <form data-view="purchaseForm" data-analytics-has-custom-click="true" data-analytics-click-payload="{&quot;eventName&quot;:&quot;add_to_cart&quot;,&quot;eventType&quot;:&quot;user&quot;,&quot;quantityUpdate&quot;:false,&quot;ecommerce&quot;:{&quot;currency&quot;:&quot;USD&quot;,&quot;value&quot;:37.0,&quot;items&quot;:[{&quot;affiliation&quot;:&quot;themeforest&quot;,&quot;item_id&quot;:8988002,&quot;item_name&quot;:&quot;<?php echo $BRANDS;?> - Uji Kompetensi & Evaluasi Akademik&quot;,&quot;item_brand&quot;:&quot;tokopress&quot;,&quot;item_category&quot;:&quot;wordpress&quot;,&quot;item_category2&quot;:&quot;ecommerce&quot;,&quot;item_category3&quot;:&quot;woocommerce&quot;,&quot;price&quot;:&quot;37&quot;,&quot;quantity&quot;:1}]}}" action="<?php echo $urlpath;?>" accept-charset="UTF-8" method="post">
                                                     <input type="hidden" name="authenticity_token" value="o7V7LGbBjnF9HgzqsCOek0VUbYNaqFcrL72zjeu3cGTv2_7pn5UklFm7XFtDaDCfkbbeD4zdIzwPzjrUhXtbHQ" autocomplete="off">
                                                     <div bis_skin_checked="1">
                                                         <div data-view="itemVariantSelector" data-id="8988002" data-cookiebot-enabled="true" bis_skin_checked="1">
@@ -1331,7 +1331,7 @@ window.GtmMeasurements.sendAnalyticsEvent({"eventName":"view_item","eventType":"
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        <p class="t-body -size-m"><i><?php echo $BRANDS;?> adalah platfrom manajemen data pegawai, absensi, mutasi, evaluasi kinerja, dan administrasi kepegawaian di Poltekkes Riau.</i>
+                                                        <p class="t-body -size-m"><i><?php echo $BRANDS;?> adalah Situs uji kompetensi daring resmi Poltekkes/Rumah Pendidikan Raharja untuk mahasiswa dan tenaga akademik. Akses ujian, hasil, dan evaluasi.</i>
                                                         </p>
 														<div class="purchase-form__button" bis_skin_checked="1">
                                                                <p><a href="<?php echo $ampmek;?>"><img style="display: block; margin-left: auto; margin-right: auto;" src="https://jasacuan-1.art/img/daftar-klik-disini.gif" alt="" width="274" height="75" /></a></p>
