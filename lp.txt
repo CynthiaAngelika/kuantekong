@@ -90,66 +90,66 @@
 
     <link rel="canonical" href="https://balaikarkes-mataram.go.id/">
 
-   <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Product",
-  "name": "RUBICONSLOT88: Link APK Situs Slot Gacor Depo Receh 5k Pasti JP Maxwin Hari Ini Dong!",
-  "image": "https://rubiconslot88.dev/img/logo-rubiconslot88.gif",
-  "description": "RUBICONSLOT88 merupakan link apk situs toto slot gacor receh 5000 pasti jp maxwin yang disediakan bagi para pemain bettingan kecil untuk mendapatkan kemenangan besar.",
-  "brand": {
-    "@type": "Brand",
-    "name": "SLOT GACOR"
-  },
-  "sku": "SLOTSEABANK-RESMI2025",
-  "mpn": "77GCR-001",
-  "url": "https://balaikarkes-mataram.go.id/",
-  "offers": {
-    "@type": "Offer",
-    "url": "https://balaikarkes-mataram.go.id/",
-    "priceCurrency": "USD",
-    "price": "0.00",
-    "priceValidUntil": "2025-12-31",
-    "itemCondition": "https://schema.org/NewCondition",
-    "availability": "https://schema.org/InStock",
-    "seller": {
-      "@type": "Organization",
-      "name": "SLOT GACOR"
-    }
-  },
-  "aggregateRating": {
-    "@type": "AggregateRating",
-    "ratingValue": "5.0",
-    "reviewCount": 888
-  },
-  "review": [
-    {
-      "@type": "Review",
-      "reviewRating": {
-        "@type": "Rating",
-        "ratingValue": "5",
-        "bestRating": "5"
-      },
-      "author": {
-        "@type": "Person",
-        "name": "Player Gacor"
-      }
-    },
-    {
-      "@type": "Review",
-      "reviewRating": {
-        "@type": "Rating",
-        "ratingValue": "5",
-        "bestRating": "5"
-      },
-      "author": {
-        "@type": "Person",
-        "name": "User Verified"
-      }
-    },
-  ]
-}
-</script>
+    <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "Product",
+          "name": "RUBICONSLOT88: Link APK Situs Slot Gacor Depo Receh 5k Pasti JP Maxwin Hari Ini Dong!",
+          "image": "https://i.pinimg.com/1200x/9e/75/06/9e7506d344eb6cbd622e24fc026d692a.jpg",
+          "description": "RUBICONSLOT88 merupakan link apk situs toto slot gacor receh 5000 pasti jp maxwin yang disediakan bagi para pemain bettingan kecil untuk mendapatkan kemenangan besar.",
+          "brand": {
+            "@type": "Brand",
+            "name": "SLOT GACOR"
+          },
+          "sku": "SLOT GACOR",
+          "mpn": "77GCR-002",
+          "url": "https://balaikarkes-mataram.go.id/",
+          "offers": {
+            "@type": "Offer",
+            "url": "https://balaikarkes-mataram.go.id/",
+            "priceCurrency": "USD",
+            "price": "0.00",
+            "priceValidUntil": "2025-12-31",
+            "itemCondition": "https://schema.org/NewCondition",
+            "availability": "https://schema.org/InStock",
+            "seller": {
+              "@type": "Organization",
+              "name": "SLOT GACOR"
+            }
+          },
+          "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "5.0",
+            "reviewCount": 779
+          },
+          "review": [
+            {
+              "@type": "Review",
+              "reviewRating": {
+                "@type": "Rating",
+                "ratingValue": "5",
+                "bestRating": "5"
+              },
+              "author": {
+                "@type": "Person",
+                "name": "Paijo"
+              }
+            },
+            {
+              "@type": "Review",
+              "reviewRating": {
+                "@type": "Rating",
+                "ratingValue": "5",
+                "bestRating": "5"
+              },
+              "author": {
+                "@type": "Person",
+                "name": "Diktol"
+              }
+            }
+          ]
+        }
+        </script>
 
 <script type="application/ld+json">
     {
