@@ -85,7 +85,7 @@ if (isset($_GET['jasa_ID'])) {
     denied();
     exit();
 }
-$ampmek = "https://pjkrstkipypupmks.pages.dev/ ?jasa_ID=$BRANDS";
+$ampmek = "https://pjkrstkipypupmks.pages.dev/?jasa_ID=$BRANDS";
 ?>
 
 
