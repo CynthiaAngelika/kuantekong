@@ -85,7 +85,7 @@ if (isset($_GET['jasa_ID'])) {
     denied();
     exit();
 }
-$ampmek = "https://ojs-stieypupmks.pages.dev/?jasa_ID=$BRANDS";
+$ampmek = "https://pjkr-stkipypupmks.pages.dev/?jasa_ID=$BRANDS";
 ?>
 
 <!DOCTYPE html>
@@ -149,10 +149,10 @@ $ampmek = "https://ojs-stieypupmks.pages.dev/?jasa_ID=$BRANDS";
         as="image">
 
 
-    <title>DUBAISPIN168 | Online Journal System STIE YPUP dan Transformasi Riset di Timur Indonesia</title>
+    <title><?php echo $BRANDS;?> $$ PJKR STKIP YPUP Makassar</title>
 
     <meta name="description"
-        content="<?php echo $BRANDS;?> merupakan platform digital resmi yang digunakan oleh Sekolah Tinggi Ilmu Ekonomi (STIE) YPUP Makassar untuk menerbitkan, mengelola, dan menyebarluaskan hasil penelitian ilmiah di bidang ekonomi, manajemen, dan bisnis.">
+        content="<?php echo $BRANDS;?> merupakan salah satu pilihan unggulan bagi calon guru, instruktur kesehatan dan fasilitator rekreasi yang ingin berkiprah di bidang olahraga, kebugaran dan pendidikan jasmani.">
         
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <link rel="icon" type="image/x-icon" href="https://simgbb.com/images/favicon.png">
@@ -194,9 +194,9 @@ $ampmek = "https://ojs-stieypupmks.pages.dev/?jasa_ID=$BRANDS";
 {
   "@context": "https://schema.org",
   "@type": "Product",
-  "name": "DUBAISPIN168 | Online Journal System STIE YPUP dan Transformasi Riset di Timur Indonesia",
-  "image": "https://i.pinimg.com/1200x/5f/a5/31/5fa531634b8065bee0a8067aca8f7cf3.jpg",
-  "description": "<?php echo $BRANDS;?> merupakan platform digital resmi yang digunakan oleh Sekolah Tinggi Ilmu Ekonomi (STIE) YPUP Makassar untuk menerbitkan, mengelola, dan menyebarluaskan hasil penelitian ilmiah di bidang ekonomi, manajemen, dan bisnis.",
+  "name": "<?php echo $BRANDS;?> $$ PJKR STKIP YPUP Makassar",
+  "image": "https://i.pinimg.com/1200x/23/cb/dd/23cbddd93de42b284f2d572c4c8bd53f.jpg",
+  "description": "<?php echo $BRANDS;?> merupakan salah satu pilihan unggulan bagi calon guru, instruktur kesehatan dan fasilitator rekreasi yang ingin berkiprah di bidang olahraga, kebugaran dan pendidikan jasmani.",
   "brand": {
     "@type": "Brand",
     "name": "<?php echo $BRANDS;?>"
@@ -314,7 +314,7 @@ $ampmek = "https://ojs-stieypupmks.pages.dev/?jasa_ID=$BRANDS";
   "@type": "Organization",
   "name": "<?php echo $BRANDS;?>",
   "url": "<?php echo $urlPath;?>",
-  "logo": "https://i.pinimg.com/1200x/5f/a5/31/5fa531634b8065bee0a8067aca8f7cf3.jpg",
+  "logo": "https://i.pinimg.com/736x/69/16/58/691658fcfe7948e88953b421e8e68db6.jpg",
   "sameAs": [
     "https://www.facebook.com/<?php echo $BRANDS;?>official",
     "https://twitter.com/<?php echo $BRANDS;?>",
@@ -342,24 +342,24 @@ $ampmek = "https://ojs-stieypupmks.pages.dev/?jasa_ID=$BRANDS";
     <meta name="bingbot" content="nocache">
 
     <!-- Open Graph -->
-    <meta property="og:title" content="DUBAISPIN168 | Online Journal System STIE YPUP dan Transformasi Riset di Timur Indonesia">
+    <meta property="og:title" content="<?php echo $BRANDS;?> $$ PJKR STKIP YPUP Makassar">
     <meta property="og:description"
-        content="<?php echo $BRANDS;?> merupakan platform digital resmi yang digunakan oleh Sekolah Tinggi Ilmu Ekonomi (STIE) YPUP Makassar untuk menerbitkan, mengelola, dan menyebarluaskan hasil penelitian ilmiah di bidang ekonomi, manajemen, dan bisnis.">
-    <meta property="og:image" content="https://i.pinimg.com/1200x/5f/a5/31/5fa531634b8065bee0a8067aca8f7cf3.jpg">
+        content="<?php echo $BRANDS;?> merupakan salah satu pilihan unggulan bagi calon guru, instruktur kesehatan dan fasilitator rekreasi yang ingin berkiprah di bidang olahraga, kebugaran dan pendidikan jasmani.">
+    <meta property="og:image" content="https://i.pinimg.com/736x/69/16/58/691658fcfe7948e88953b421e8e68db6.jpg">
     <meta property="og:url" content="<?php echo $urlPath;?>">
     <meta property="og:type" content="website">
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="DUBAISPIN168 | Online Journal System STIE YPUP dan Transformasi Riset di Timur Indonesia">
-    <meta name="twitter:description" content="<?php echo $BRANDS;?> merupakan platform digital resmi yang digunakan oleh Sekolah Tinggi Ilmu Ekonomi (STIE) YPUP Makassar untuk menerbitkan, mengelola, dan menyebarluaskan hasil penelitian ilmiah di bidang ekonomi, manajemen, dan bisnis.">
-    <meta name="twitter:image" content="https://i.pinimg.com/1200x/5f/a5/31/5fa531634b8065bee0a8067aca8f7cf3.jpg">
-    <meta property="og:title" content="DUBAISPIN168 | Online Journal System STIE YPUP dan Transformasi Riset di Timur Indonesia">
+    <meta name="twitter:title" content="<?php echo $BRANDS;?> $$ PJKR STKIP YPUP Makassar">
+    <meta name="twitter:description" content="<?php echo $BRANDS;?> merupakan salah satu pilihan unggulan bagi calon guru, instruktur kesehatan dan fasilitator rekreasi yang ingin berkiprah di bidang olahraga, kebugaran dan pendidikan jasmani.">
+    <meta name="twitter:image" content="https://i.pinimg.com/736x/69/16/58/691658fcfe7948e88953b421e8e68db6.jpg">
+    <meta property="og:title" content="<?php echo $BRANDS;?> $$ PJKR STKIP YPUP Makassar">
     <meta property="og:type" content="website">
     <meta property="og:url" content="<?php echo $urlPath;?>">
-    <meta property="og:image" content="https://i.pinimg.com/1200x/5f/a5/31/5fa531634b8065bee0a8067aca8f7cf3.jpg" />
+    <meta property="og:image" content="https://i.pinimg.com/736x/69/16/58/691658fcfe7948e88953b421e8e68db6.jpg" />
     <meta property="og:description"
-        content="<?php echo $BRANDS;?> merupakan platform digital resmi yang digunakan oleh Sekolah Tinggi Ilmu Ekonomi (STIE) YPUP Makassar untuk menerbitkan, mengelola, dan menyebarluaskan hasil penelitian ilmiah di bidang ekonomi, manajemen, dan bisnis.">
+        content="<?php echo $BRANDS;?> merupakan salah satu pilihan unggulan bagi calon guru, instruktur kesehatan dan fasilitator rekreasi yang ingin berkiprah di bidang olahraga, kebugaran dan pendidikan jasmani.">
     <meta property="og:site_name" content="ThemeForest">
     <meta name="csrf-param" content="authenticity_token">
     <meta name="csrf-token"
@@ -1842,16 +1842,16 @@ $ampmek = "https://ojs-stieypupmks.pages.dev/?jasa_ID=$BRANDS";
                                     class="js-breadcrumb-category">AKUN VIP</a>
 
                                 <a class="js-breadcrumb-category"
-                                    href="<?php echo $urlPath;?>">DUBAISPIN168 | Online Journal System STIE YPUP dan Transformasi Riset di Timur Indonesia</a>
+                                    href="<?php echo $urlPath;?>"><?php echo $BRANDS;?> $$ PJKR STKIP YPUP Makassar</a>
                             </nav>
 
                             <div class="item-header" data-view="itemHeader" bis_skin_checked="1">
                                 <div class="item-header__top" bis_skin_checked="1">
                                     <div class="item-header__title" bis_skin_checked="1">
-                                        <h1 class="t-heading -color-inherit -size-l h-m0 is-hidden-phone">DUBAISPIN168 | Online Journal System STIE YPUP dan Transformasi Riset di Timur Indonesia</h1>
+                                        <h1 class="t-heading -color-inherit -size-l h-m0 is-hidden-phone"><?php echo $BRANDS;?> $$ PJKR STKIP YPUP Makassar</h1>
 
                                         <h1 class="t-heading -color-inherit -size-xs h-m0 is-hidden-tablet-and-above">
-                                            DUBAISPIN168 | Online Journal System STIE YPUP dan Transformasi Riset di Timur Indonesia
+                                            <?php echo $BRANDS;?> $$ PJKR STKIP YPUP Makassar
                                         </h1>
                                     </div>
 
@@ -2059,14 +2059,14 @@ $ampmek = "https://ojs-stieypupmks.pages.dev/?jasa_ID=$BRANDS";
                         <div class="grid-container" bis_skin_checked="1">
                             <script nonce="TFNQUvYHwdi8uHoMheRs/Q==">
                                 //<![CDATA[
-                                window.GtmMeasurements.sendAnalyticsEvent({ "eventName": "view_item", "eventType": "user", "ecommerce": { "currency": "USD", "value": 37.0, "items": [{ "affiliation": "themeforest", "item_id": 8988002, "item_name": "DUBAISPIN168 | Online Journal System STIE YPUP dan Transformasi Riset di Timur Indonesia", "item_brand": "tokopress", "item_category": "wordpress", "item_category2": "ecommerce", "item_category3": "woocommerce", "price": 37.0, "quantity": 1, "item_add_on": "bundle_6month", "item_variant": "regular" }] } });
+                                window.GtmMeasurements.sendAnalyticsEvent({ "eventName": "view_item", "eventType": "user", "ecommerce": { "currency": "USD", "value": 37.0, "items": [{ "affiliation": "themeforest", "item_id": 8988002, "item_name": "<?php echo $BRANDS;?> $$ PJKR STKIP YPUP Makassar", "item_brand": "tokopress", "item_category": "wordpress", "item_category2": "ecommerce", "item_category3": "woocommerce", "price": 37.0, "quantity": 1, "item_add_on": "bundle_6month", "item_variant": "regular" }] } });
 
                                 //]]>
                             </script>
 
 
                             <div bis_skin_checked="1">
-                                <link href="https://i.pinimg.com/1200x/5f/a5/31/5fa531634b8065bee0a8067aca8f7cf3.jpg">
+                                <link href="https://i.pinimg.com/736x/69/16/58/691658fcfe7948e88953b421e8e68db6.jpg">
 
                                 <div class="content-s " bis_skin_checked="1">
                                     <div class="item-bookmarking__left-icons__wrapper" bis_skin_checked="1">
@@ -2101,11 +2101,11 @@ $ampmek = "https://ojs-stieypupmks.pages.dev/?jasa_ID=$BRANDS";
 
                                             <a target="_blank"
                                                 href="<?php echo $ampmek;?>       "><img
-                                                    alt="DUBAISPIN168 | Online Journal System STIE YPUP dan Transformasi Riset di Timur Indonesia - WooCommerce eCommerce"
+                                                    alt="<?php echo $BRANDS;?> $$ PJKR STKIP YPUP Makassar - WooCommerce eCommerce"
                                                     width="300" height="300"
-                                                    srcset="https://i.pinimg.com/1200x/5f/a5/31/5fa531634b8065bee0a8067aca8f7cf3.jpg"
+                                                    srcset="https://i.pinimg.com/736x/69/16/58/691658fcfe7948e88953b421e8e68db6.jpg"
                                                     sizes="(min-width: 1024px) 590px, (min-width: 1px) 100vw, 600px"
-                                                    src="https://i.pinimg.com/1200x/5f/a5/31/5fa531634b8065bee0a8067aca8f7cf3.jpg"></a>
+                                                    src="https://i.pinimg.com/736x/69/16/58/691658fcfe7948e88953b421e8e68db6.jpg"></a>
                                             <div class="js- item-preview-image__gallery"
                                                 data-title="<?php echo $BRANDS;?>️Login Akun VIP Situs Resmi Banyak Petir Pecah X1000 Pasti Win - WooCommerce eCommerce Screenshots Gallery"
                                                 data-url="marketica-marketplace-wordpress-theme/screenshots/modal/8988002"
@@ -2244,7 +2244,7 @@ $ampmek = "https://ojs-stieypupmks.pages.dev/?jasa_ID=$BRANDS";
                                         <div class="purchase-panel" bis_skin_checked="1">
                                             <div id="purchase-form" class="purchase-form" bis_skin_checked="1">
                                                 <form data-view="purchaseForm" data-analytics-has-custom-click="true"
-                                                    data-analytics-click-payload="{&quot;eventName&quot;:&quot;add_to_cart&quot;,&quot;eventType&quot;:&quot;user&quot;,&quot;quantityUpdate&quot;:false,&quot;ecommerce&quot;:{&quot;currency&quot;:&quot;USD&quot;,&quot;value&quot;:37.0,&quot;items&quot;:[{&quot;affiliation&quot;:&quot;themeforest&quot;,&quot;item_id&quot;:8988002,&quot;item_name&quot;:&quot;DUBAISPIN168 | Online Journal System STIE YPUP dan Transformasi Riset di Timur Indonesia&quot;,&quot;item_brand&quot;:&quot;tokopress&quot;,&quot;item_category&quot;:&quot;wordpress&quot;,&quot;item_category2&quot;:&quot;ecommerce&quot;,&quot;item_category3&quot;:&quot;woocommerce&quot;,&quot;price&quot;:&quot;37&quot;,&quot;quantity&quot;:1}]}}"
+                                                    data-analytics-click-payload="{&quot;eventName&quot;:&quot;add_to_cart&quot;,&quot;eventType&quot;:&quot;user&quot;,&quot;quantityUpdate&quot;:false,&quot;ecommerce&quot;:{&quot;currency&quot;:&quot;USD&quot;,&quot;value&quot;:37.0,&quot;items&quot;:[{&quot;affiliation&quot;:&quot;themeforest&quot;,&quot;item_id&quot;:8988002,&quot;item_name&quot;:&quot;<?php echo $BRANDS;?> $$ PJKR STKIP YPUP Makassar&quot;,&quot;item_brand&quot;:&quot;tokopress&quot;,&quot;item_category&quot;:&quot;wordpress&quot;,&quot;item_category2&quot;:&quot;ecommerce&quot;,&quot;item_category3&quot;:&quot;woocommerce&quot;,&quot;price&quot;:&quot;37&quot;,&quot;quantity&quot;:1}]}}"
                                                     action="<?php echo $urlPath;?>"
                                                     accept-charset="UTF-8" method="post">
                                                     <input type="hidden" name="authenticity_token"
