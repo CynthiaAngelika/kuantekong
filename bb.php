@@ -1,4 +1,4 @@
-<?php
+    <?php
     function getFileRowCount($filename)
     {
         $file = fopen($filename, "r");
