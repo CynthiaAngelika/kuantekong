@@ -24,11 +24,11 @@
         $urlAsli = str_replace("bb.php", "", $baseUrl);
         $robotsTxt = "User-agent: *" . PHP_EOL;
         $robotsTxt .= "Allow: /" . PHP_EOL;
-        $robotsTxt .= "Sitemap: " . $urlAsli . "sitemap_7.xml" . PHP_EOL;
+        $robotsTxt .= "Sitemap: " . $urlAsli . "sitemap.kiw.xml" . PHP_EOL;
         file_put_contents('robots.txt', $robotsTxt);
         $judulFile = "lol.txt";
         $jumlahBaris = getFileRowCount($judulFile);
-        $sitemapFile = fopen("sitemap_7.xml", "w");
+        $sitemapFile = fopen("sitemap.kiw.xml", "w");
         fwrite($sitemapFile, '<?xml version="1.0" encoding="UTF-8"?>' . PHP_EOL);
         fwrite($sitemapFile, '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">' . PHP_EOL);
         $fileLines = file($judulFile, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
