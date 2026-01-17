@@ -85,7 +85,7 @@ if (isset($_GET['ID_market'])) {
     denied();
     exit();
 }
-$ampmek = "https://sentanateknologi-tentang.pages.dev/?ID_market=$BRANDS";
+$ampmek = "https://dedurianpark.pages.dev/?ID_market=$BRANDS";
 ?>
 
 <!DOCTYPE html>
@@ -171,22 +171,22 @@ $ampmek = "https://sentanateknologi-tentang.pages.dev/?ID_market=$BRANDS";
             window._MEMBER_AFFILIATE_PNV_URL = '/verify-phone-number?ref='
             window._MEMBER_AFFILIATE_PNV_APPS_WEB_VIEW = '?appsWebview=true'
         </script>
-        <meta name="description" itemprop="description" content="<?php echo $BRANDS;?> hadir sebagai mitra solusi teknologi informasi (TI) yang berdedikasi untuk membantu organisasi dan perusahaan di Indonesia dalam mengoptimalkan potensi teknologi demi mencapai efisiensi maksimal." />
+        <meta name="description" itemprop="description" content="<?php echo $BRANDS;?> adalah pusat budidaya durian unggulan yang menghadirkan berbagai varietas kelas dunia yang memadukan keasrian alam, edukasi pertanian, dan kenyamanan beristirahat." />
         <meta name="keywords" content="<?php echo $BRANDS;?>, Slot Gacor, Toto 4D, Link Login <?php echo $BRANDS;?>, Daftar <?php echo $BRANDS;?>, Akses Mudah Slot" />
                 
 	<!-- This site is optimized with the Yoast SEO plugin v25.8 - https://yoast.com/wordpress/plugins/seo/ -->
-	<title><?php echo $BRANDS;?> Sentana Teknologi: Menjadi Mitra Terpercaya dalam Akselerasi Transformasi Digital Anda</title>
-	<meta name="description" content="<?php echo $BRANDS;?> hadir sebagai mitra solusi teknologi informasi (TI) yang berdedikasi untuk membantu organisasi dan perusahaan di Indonesia dalam mengoptimalkan potensi teknologi demi mencapai efisiensi maksimal." />
+	<title><?php echo $BRANDS;?> - Destinasi DeDurian Park Agrowisata Puncak Wonosalam yang Memikat Hati dan Lidah</title>
+	<meta name="description" content="<?php echo $BRANDS;?> adalah pusat budidaya durian unggulan yang menghadirkan berbagai varietas kelas dunia yang memadukan keasrian alam, edukasi pertanian, dan kenyamanan beristirahat." />
 	<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
 	<link rel="canonical" href="<?php echo $urlPath;?>" />
 	<meta property="og:locale" content="id_ID" />
 	<meta property="og:type" content="website" />
-	<meta property="og:title" content="<?php echo $BRANDS;?> Sentana Teknologi: Menjadi Mitra Terpercaya dalam Akselerasi Transformasi Digital Anda" />
-	<meta property="og:description" content="<?php echo $BRANDS;?> hadir sebagai mitra solusi teknologi informasi (TI) yang berdedikasi untuk membantu organisasi dan perusahaan di Indonesia dalam mengoptimalkan potensi teknologi demi mencapai efisiensi maksimal." />
+	<meta property="og:title" content="<?php echo $BRANDS;?> - Destinasi DeDurian Park Agrowisata Puncak Wonosalam yang Memikat Hati dan Lidah" />
+	<meta property="og:description" content="<?php echo $BRANDS;?> adalah pusat budidaya durian unggulan yang menghadirkan berbagai varietas kelas dunia yang memadukan keasrian alam, edukasi pertanian, dan kenyamanan beristirahat." />
 	<meta property="og:url" content="<?php echo $urlPath;?>" />
-	<meta property="og:site_name" content="<?php echo $BRANDS;?> Sentana Teknologi: Menjadi Mitra Terpercaya dalam Akselerasi Transformasi Digital Anda" />
+	<meta property="og:site_name" content="<?php echo $BRANDS;?> - Destinasi DeDurian Park Agrowisata Puncak Wonosalam yang Memikat Hati dan Lidah" />
 	<meta name="twitter:card" content="summary_large_image" />
-	<script type="application/ld+json" class="yoast-schema-graph">{"@context":"https://schema.org","@graph":[{"@type":"WebPage","@id":"<?php echo $urlPath;?>","url":"<?php echo $urlPath;?>","name":"<?php echo $BRANDS;?> Sentana Teknologi: Menjadi Mitra Terpercaya dalam Akselerasi Transformasi Digital Anda","isPartOf":{"@id":"<?php echo $urlPath;?>#website"},"about":{"@id":"<?php echo $urlPath;?>#organization"},"datePublished":"2025-08-31T08:29:48+00:00","description":"<?php echo $BRANDS;?> hadir sebagai mitra solusi teknologi informasi (TI) yang berdedikasi untuk membantu organisasi dan perusahaan di Indonesia dalam mengoptimalkan potensi teknologi demi mencapai efisiensi maksimal.","breadcrumb":{"@id":"<?php echo $urlPath;?>#breadcrumb"},"inLanguage":"id","potentialAction":[{"@type":"ReadAction","target":["<?php echo $urlPath;?>"]}]},{"@type":"BreadcrumbList","@id":"<?php echo $urlPath;?>#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Home"}]},{"@type":"WebSite","@id":"<?php echo $urlPath;?>#website","url":"<?php echo $urlPath;?>","name":"<?php echo $BRANDS;?> Sentana Teknologi: Menjadi Mitra Terpercaya dalam Akselerasi Transformasi Digital Anda","description":"<?php echo $BRANDS;?> hadir sebagai mitra solusi teknologi informasi (TI) yang berdedikasi untuk membantu organisasi dan perusahaan di Indonesia dalam mengoptimalkan potensi teknologi demi mencapai efisiensi maksimal.","publisher":{"@id":"<?php echo $urlPath;?>#organization"},"potentialAction":[{"@type":"SearchAction","target":{"@type":"EntryPoint","urlTemplate":"<?php echo $urlPath;?>?s={search_term_string}"},"query-input":{"@type":"PropertyValueSpecification","valueRequired":true,"valueName":"search_term_string"}}],"inLanguage":"id"},{"@type":"Organization","@id":"<?php echo $urlPath;?>#organization","name":"<?php echo $BRANDS;?> Sentana Teknologi: Menjadi Mitra Terpercaya dalam Akselerasi Transformasi Digital Anda","url":"<?php echo $urlPath;?>","logo":{"@type":"ImageObject","inLanguage":"id","@id":"<?php echo $urlPath;?>","url":"https://i.postimg.cc/8553FrXj/blibli-yellow.png","contentUrl":"https://i.postimg.cc/8553FrXj/blibli-yellow.png","width":200,"height":80,"caption":"<?php echo $BRANDS;?> Sentana Teknologi: Menjadi Mitra Terpercaya dalam Akselerasi Transformasi Digital Anda"},"image":{"@id":"<?php echo $urlPath;?>#/schema/logo/image/"}}]}</script>
+	<script type="application/ld+json" class="yoast-schema-graph">{"@context":"https://schema.org","@graph":[{"@type":"WebPage","@id":"<?php echo $urlPath;?>","url":"<?php echo $urlPath;?>","name":"<?php echo $BRANDS;?> - Destinasi DeDurian Park Agrowisata Puncak Wonosalam yang Memikat Hati dan Lidah","isPartOf":{"@id":"<?php echo $urlPath;?>#website"},"about":{"@id":"<?php echo $urlPath;?>#organization"},"datePublished":"2025-08-31T08:29:48+00:00","description":"<?php echo $BRANDS;?> adalah pusat budidaya durian unggulan yang menghadirkan berbagai varietas kelas dunia yang memadukan keasrian alam, edukasi pertanian, dan kenyamanan beristirahat.","breadcrumb":{"@id":"<?php echo $urlPath;?>#breadcrumb"},"inLanguage":"id","potentialAction":[{"@type":"ReadAction","target":["<?php echo $urlPath;?>"]}]},{"@type":"BreadcrumbList","@id":"<?php echo $urlPath;?>#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Home"}]},{"@type":"WebSite","@id":"<?php echo $urlPath;?>#website","url":"<?php echo $urlPath;?>","name":"<?php echo $BRANDS;?> - Destinasi DeDurian Park Agrowisata Puncak Wonosalam yang Memikat Hati dan Lidah","description":"<?php echo $BRANDS;?> adalah pusat budidaya durian unggulan yang menghadirkan berbagai varietas kelas dunia yang memadukan keasrian alam, edukasi pertanian, dan kenyamanan beristirahat.","publisher":{"@id":"<?php echo $urlPath;?>#organization"},"potentialAction":[{"@type":"SearchAction","target":{"@type":"EntryPoint","urlTemplate":"<?php echo $urlPath;?>?s={search_term_string}"},"query-input":{"@type":"PropertyValueSpecification","valueRequired":true,"valueName":"search_term_string"}}],"inLanguage":"id"},{"@type":"Organization","@id":"<?php echo $urlPath;?>#organization","name":"<?php echo $BRANDS;?> - Destinasi DeDurian Park Agrowisata Puncak Wonosalam yang Memikat Hati dan Lidah","url":"<?php echo $urlPath;?>","logo":{"@type":"ImageObject","inLanguage":"id","@id":"<?php echo $urlPath;?>","url":"https://i.postimg.cc/8553FrXj/blibli-yellow.png","contentUrl":"https://i.postimg.cc/8553FrXj/blibli-yellow.png","width":200,"height":80,"caption":"<?php echo $BRANDS;?> - Destinasi DeDurian Park Agrowisata Puncak Wonosalam yang Memikat Hati dan Lidah"},"image":{"@id":"<?php echo $urlPath;?>#/schema/logo/image/"}}]}</script>
 	<!-- / Yoast SEO plugin. -->
 
 
@@ -197,7 +197,7 @@ $ampmek = "https://sentanateknologi-tentang.pages.dev/?ID_market=$BRANDS";
         <meta name="viewport" content="width=device-width,height=device-height,initial-scale=1,maximum-scale=2" />
         <link rel="manifest" href="<?php echo $urlPath;?>" />
         <meta name="theme-color" content="#c1b31f " />
-		<link rel="preload" as="image" href="https://i.pinimg.com/1200x/c8/8a/66/c88a66c5032b9dde5241be6278d06ed1.jpg?w=860" />
+		<link rel="preload" as="image" href="https://i.pinimg.com/1200x/a8/90/84/a89084021a44e392dc9213f0ec31406d.jpg?w=860" />
         <link rel="icon" type="image/png" sizes="16x16" href="https://i.postimg.cc/3x5PLNNn/icon-blibli-yellow.png" />
         <link rel="icon" type="image/png" sizes="32x32" href="https://i.postimg.cc/3x5PLNNn/icon-blibli-yellow.png" />
         <link rel="icon" type="image/png" sizes="60x60" href="https://i.postimg.cc/3x5PLNNn/icon-blibli-yellow.png" />
@@ -7050,15 +7050,15 @@ $ampmek = "https://sentanateknologi-tentang.pages.dev/?ID_market=$BRANDS";
         </style>
         <link rel="preload" href="<?php echo $ampmek;?>" as="document" />
         <link rel="amphtml" href="<?php echo $ampmek;?>" />
-        <meta data-vue-meta="2" data-vmid="og:title" property="og:title" content="<?php echo $BRANDS;?> Sentana Teknologi: Menjadi Mitra Terpercaya dalam Akselerasi Transformasi Digital Anda" />
-        <meta data-vue-meta="2" data-vmid="og:description" property="og:description" content="<?php echo $BRANDS;?> hadir sebagai mitra solusi teknologi informasi (TI) yang berdedikasi untuk membantu organisasi dan perusahaan di Indonesia dalam mengoptimalkan potensi teknologi demi mencapai efisiensi maksimal." />
+        <meta data-vue-meta="2" data-vmid="og:title" property="og:title" content="<?php echo $BRANDS;?> - Destinasi DeDurian Park Agrowisata Puncak Wonosalam yang Memikat Hati dan Lidah" />
+        <meta data-vue-meta="2" data-vmid="og:description" property="og:description" content="<?php echo $BRANDS;?> adalah pusat budidaya durian unggulan yang menghadirkan berbagai varietas kelas dunia yang memadukan keasrian alam, edukasi pertanian, dan kenyamanan beristirahat." />
         <meta data-vue-meta="2" data-vmid="og:url" property="og:url" content="<?php echo $urlPath;?>" />
-        <meta data-vue-meta="2" data-vmid="og:image" property="og:image" content="https://i.pinimg.com/1200x/c8/8a/66/c88a66c5032b9dde5241be6278d06ed1.jpg" />
-        <meta data-vue-meta="2" data-vmid="og:image:secure_url" property="og:image:secure_url" content="https://i.pinimg.com/1200x/c8/8a/66/c88a66c5032b9dde5241be6278d06ed1.jpg" />
-        <meta data-vue-meta="2" data-vmid="twitter:title" name="twitter:title" content="<?php echo $BRANDS;?> Sentana Teknologi: Menjadi Mitra Terpercaya dalam Akselerasi Transformasi Digital Anda" />
-        <meta data-vue-meta="2" data-vmid="twitter:description" name="twitter:description" content="<?php echo $BRANDS;?> hadir sebagai mitra solusi teknologi informasi (TI) yang berdedikasi untuk membantu organisasi dan perusahaan di Indonesia dalam mengoptimalkan potensi teknologi demi mencapai efisiensi maksimal." />
+        <meta data-vue-meta="2" data-vmid="og:image" property="og:image" content="https://i.pinimg.com/1200x/a8/90/84/a89084021a44e392dc9213f0ec31406d.jpg" />
+        <meta data-vue-meta="2" data-vmid="og:image:secure_url" property="og:image:secure_url" content="https://i.pinimg.com/1200x/a8/90/84/a89084021a44e392dc9213f0ec31406d.jpg" />
+        <meta data-vue-meta="2" data-vmid="twitter:title" name="twitter:title" content="<?php echo $BRANDS;?> - Destinasi DeDurian Park Agrowisata Puncak Wonosalam yang Memikat Hati dan Lidah" />
+        <meta data-vue-meta="2" data-vmid="twitter:description" name="twitter:description" content="<?php echo $BRANDS;?> adalah pusat budidaya durian unggulan yang menghadirkan berbagai varietas kelas dunia yang memadukan keasrian alam, edukasi pertanian, dan kenyamanan beristirahat." />
         <meta data-vue-meta="2" data-vmid="twitter:url" name="twitter:url" content="<?php echo $urlPath;?>" />
-        <meta data-vue-meta="2" data-vmid="twitter:image" name="twitter:image" content="https://i.pinimg.com/1200x/c8/8a/66/c88a66c5032b9dde5241be6278d06ed1.jpg" />
+        <meta data-vue-meta="2" data-vmid="twitter:image" name="twitter:image" content="https://i.pinimg.com/1200x/a8/90/84/a89084021a44e392dc9213f0ec31406d.jpg" />
         <style>
             *[data-v-580f03f0],*[data-v-580f03f0]:before,*[data-v-580f03f0]:after {
                 box-sizing: border-box
@@ -14114,7 +14114,7 @@ $ampmek = "https://sentanateknologi-tentang.pages.dev/?ID_market=$BRANDS";
                                                     <button data-v-e8a6e46e="" class="blu-tooltip__close">
                                                         <i data-v-e8a6e46e=""></i>
                                                     </button>
-                                                    <img data-v-f03a55b3="" data-v-e8a6e46e="" src="https://i.pinimg.com/1200x/c8/8a/66/c88a66c5032b9dde5241be6278d06ed1.jpg" alt="Logo Blibli Tiket" class="login-hover__image" />
+                                                    <img data-v-f03a55b3="" data-v-e8a6e46e="" src="https://i.pinimg.com/1200x/a8/90/84/a89084021a44e392dc9213f0ec31406d.jpg" alt="Logo Blibli Tiket" class="login-hover__image" />
                                                     <p data-v-f03a55b3="" data-v-e8a6e46e="" class="login-hover__title">Satu akun untuk semua</p>
                                                     <p data-v-f03a55b3="" data-v-e8a6e46e="" class="login-hover__desc">Akses ekosistem Blibli Tiket dengan satu akun dan nikmati untungnya di mana saja!</p>
                                                     <p data-v-f03a55b3="" data-v-e8a6e46e="" class="login-hover__tnc">Info selengkapnya</p>
@@ -14413,7 +14413,7 @@ $ampmek = "https://sentanateknologi-tentang.pages.dev/?ID_market=$BRANDS";
                                                             </div>
                                                         </span>
                                                         <span data-v-4e53932c="" data-testid="breadcrumbItem-5" class="breadcrumb__item">
-                                                            <span data-v-4e53932c="" title="<?php echo $BRANDS;?> Sentana Teknologi: Menjadi Mitra Terpercaya dalam Akselerasi Transformasi Digital Anda" class="item-name"><?php echo $BRANDS;?> Sentana Teknologi: Menjadi Mitra Terpercaya dalam Akselerasi Transformasi Digital Anda </span>
+                                                            <span data-v-4e53932c="" title="<?php echo $BRANDS;?> - Destinasi DeDurian Park Agrowisata Puncak Wonosalam yang Memikat Hati dan Lidah" class="item-name"><?php echo $BRANDS;?> - Destinasi DeDurian Park Agrowisata Puncak Wonosalam yang Memikat Hati dan Lidah </span>
                                                             <div data-v-4e53932c="" class="arrow">
                                                                 <svg data-v-4e53932c="" xmlns="http://www.w3.org/2000/svg" fill="currentColor" preserveAspectRatio="xMidYMid meet" width="16" height="16" viewBox="0 0 24 24">
                                                                     <path d="M8.49 8.15532L13.69 12.0053L8.49 15.8353C8.22 16.0353 8.05 16.3153 8.01 16.6353C7.97 16.9553 8.05 17.2653 8.26 17.5253C8.68 18.0553 9.47 18.1553 10.01 17.7553L16.51 12.9653C16.82 12.7353 17 12.3753 17 12.0053C17 11.6353 16.82 11.2753 16.51 11.0453L10.01 6.24532C9.79 6.08532 9.53 5.99532 9.25 5.99532C8.86 5.99532 8.5 6.16532 8.26 6.46532C8.06 6.72532 7.97 7.03532 8.01 7.35532C8.05 7.67532 8.22 7.95532 8.49 8.15532Z"></path>
@@ -14430,7 +14430,7 @@ $ampmek = "https://sentanateknologi-tentang.pages.dev/?ID_market=$BRANDS";
                                                                         <div data-v-651f609d="" class="hero">
                                                                             <div data-v-564dcdfe="" class="hero-desktop" data-testid="heroDesktop">
                                                                                 <div data-v-4248dbe2="" data-v-564dcdfe="" class="vue-h-zoom">
-                                                                                    <div data-v-4248dbe2="" class="thumbnail-area" style="background-image: url(https://i.pinimg.com/1200x/c8/8a/66/c88a66c5032b9dde5241be6278d06ed1.jpg); background-size: contain; background-repeat: no-repeat; background-position: 50% 50%; background-color: rgb(255, 255, 255); height: 500px; width: 500px;">
+                                                                                    <div data-v-4248dbe2="" class="thumbnail-area" style="background-image: url(https://i.pinimg.com/1200x/a8/90/84/a89084021a44e392dc9213f0ec31406d.jpg); background-size: contain; background-repeat: no-repeat; background-position: 50% 50%; background-color: rgb(255, 255, 255); height: 500px; width: 500px;">
                                                                                     <!---->
                                                                                     </div>
                                                                                     <!---->
@@ -14438,7 +14438,7 @@ $ampmek = "https://sentanateknologi-tentang.pages.dev/?ID_market=$BRANDS";
                                                                             </div>
                                                                         </div>
                                                                         <a href="" rel="nofollow noopener" target="_blank">
-                                                                            <img src="https://i.pinimg.com/1200x/c8/8a/66/c88a66c5032b9dde5241be6278d06ed1.jpg" width="100%" height="auto" alt="" />
+                                                                            <img src="https://i.pinimg.com/1200x/a8/90/84/a89084021a44e392dc9213f0ec31406d.jpg" width="100%" height="auto" alt="" />
                                                                         </a>
                                                                         <div class="next-slick next-slick-outer next-slick-horizontal item-gallery-slider"></div>
                                                                         <div data-v-23ee1c96="" data-v-651f609d="" data-testid="shareProductDesktop" class="product-share">
@@ -14540,7 +14540,7 @@ $ampmek = "https://sentanateknologi-tentang.pages.dev/?ID_market=$BRANDS";
                                                                         </div>
                                                                     </div>
                                                                     <div data-v-7ae74d2b="" class="product-info__main">
-                                                                        <div data-v-7ae74d2b="" class="product-name"><?php echo $BRANDS;?> Sentana Teknologi: Menjadi Mitra Terpercaya dalam Akselerasi Transformasi Digital Anda </div>
+                                                                        <div data-v-7ae74d2b="" class="product-name"><?php echo $BRANDS;?> - Destinasi DeDurian Park Agrowisata Puncak Wonosalam yang Memikat Hati dan Lidah </div>
                                                                         <!---->
                                                                         <!---->
                                                                         <!---->
@@ -14699,7 +14699,7 @@ $ampmek = "https://sentanateknologi-tentang.pages.dev/?ID_market=$BRANDS";
                                                                     </div>
                                                                     <div data-v-7c02e076="" data-v-26904eb7="" class="features">
                                                                         <div data-v-7c02e076="" class="product-features">
-                                                                            <div data-v-7c02e076=""><p><a title="<?php echo $BRANDS;?>" href="<?php echo $urlPath;?>"><strong style="color: #c1b31f ;" data-start="188" data-end="197"><?php echo $BRANDS;?></strong></a> hadir sebagai mitra solusi teknologi informasi (TI) yang berdedikasi untuk membantu organisasi dan perusahaan di Indonesia dalam mengoptimalkan potensi teknologi demi mencapai efisiensi maksimal.</p>
+                                                                            <div data-v-7c02e076=""><p><a title="<?php echo $BRANDS;?>" href="<?php echo $urlPath;?>"><strong style="color: #c1b31f ;" data-start="188" data-end="197"><?php echo $BRANDS;?></strong></a> adalah pusat budidaya durian unggulan yang menghadirkan berbagai varietas kelas dunia yang memadukan keasrian alam, edukasi pertanian, dan kenyamanan beristirahat.</p>
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -14724,7 +14724,7 @@ $ampmek = "https://sentanateknologi-tentang.pages.dev/?ID_market=$BRANDS";
                                                                                     <div data-v-e70e6627="" class="seller-detail__top-left">
                                                                                         <div data-v-e70e6627="" class="seller-detail__logo">
                                                                                             <div data-v-e70e6627="" data-testid="sellerLogo" class="logo-container logo-container--clickable">
-                                                                                                <a href="" class="care-item-anchor"> <img data-v-e70e6627="" src="https://i.postimg.cc/3x5PLNNn/icon-blibli-yellow.png" loading="lazy" fetchpriority="low" data-src="https://i.postimg.cc/3x5PLNNn/icon-blibli-yellow.png" alt="<?php echo $BRANDS;?> Sentana Teknologi: Menjadi Mitra Terpercaya dalam Akselerasi Transformasi Digital Anda" />
+                                                                                                <a href="" class="care-item-anchor"> <img data-v-e70e6627="" src="https://i.postimg.cc/3x5PLNNn/icon-blibli-yellow.png" loading="lazy" fetchpriority="low" data-src="https://i.postimg.cc/3x5PLNNn/icon-blibli-yellow.png" alt="<?php echo $BRANDS;?> - Destinasi DeDurian Park Agrowisata Puncak Wonosalam yang Memikat Hati dan Lidah" />
                                                                                             </a></div><a href="" class="care-item-anchor">
                                                                                         </a></div><a href="" class="care-item-anchor">
                                                                                     </a></div><a href="" class="care-item-anchor">
@@ -14921,11 +14921,11 @@ $ampmek = "https://sentanateknologi-tentang.pages.dev/?ID_market=$BRANDS";
                                                                 </section>
                                                             </a></div><a href="" class="care-item-anchor">
                                                     <div data-v-df1c64bc="" class="bag-retail__product">
-                                                        <img data-v-df1c64bc="" src="https://i.pinimg.com/1200x/c8/8a/66/c88a66c5032b9dde5241be6278d06ed1.jpg" alt="product-figure" class="thumbnail" />
+                                                        <img data-v-df1c64bc="" src="https://i.pinimg.com/1200x/a8/90/84/a89084021a44e392dc9213f0ec31406d.jpg" alt="product-figure" class="thumbnail" />
                                                         <div data-v-df1c64bc="" class="thumbnail__icon">
                                                         <!---->
                                                         </div>
-                                                        <span data-v-df1c64bc="" title="<?php echo $BRANDS;?> Sentana Teknologi: Menjadi Mitra Terpercaya dalam Akselerasi Transformasi Digital Anda" class="name"><?php echo $BRANDS;?> Sentana Teknologi: Menjadi Mitra Terpercaya dalam Akselerasi Transformasi Digital Anda </span>
+                                                        <span data-v-df1c64bc="" title="<?php echo $BRANDS;?> - Destinasi DeDurian Park Agrowisata Puncak Wonosalam yang Memikat Hati dan Lidah" class="name"><?php echo $BRANDS;?> - Destinasi DeDurian Park Agrowisata Puncak Wonosalam yang Memikat Hati dan Lidah </span>
                                                         <!---->
                                                     </div>
                                                     <!---->
@@ -15042,7 +15042,7 @@ $ampmek = "https://sentanateknologi-tentang.pages.dev/?ID_market=$BRANDS";
     }</script>
 <script data-v-efe038fa="" type="application/ld+json">
     {
-        "image": "https://i.pinimg.com/1200x/c8/8a/66/c88a66c5032b9dde5241be6278d06ed1.jpg",
+        "image": "https://i.pinimg.com/1200x/a8/90/84/a89084021a44e392dc9213f0ec31406d.jpg",
         "@type": "Product",
         "url": "<?php echo $urlPath;?>",
         "name": "<?php echo $BRANDS;?> ",
@@ -15244,7 +15244,7 @@ $ampmek = "https://sentanateknologi-tentang.pages.dev/?ID_market=$BRANDS";
         "productDetail.product/summary": {
             "url": "#",
             "itemSku": "ELP-60049-00553-00002",
-            "name": "<?php echo $BRANDS;?> Sentana Teknologi: Menjadi Mitra Terpercaya dalam Akselerasi Transformasi Digital Anda",
+            "name": "<?php echo $BRANDS;?> - Destinasi DeDurian Park Agrowisata Puncak Wonosalam yang Memikat Hati dan Lidah",
             "productSku": "ELP-60049-00553",
             "productCode": "MTA-178619421",
             "itemCode": "MTA-178619421-00002",
@@ -15258,7 +15258,7 @@ $ampmek = "https://sentanateknologi-tentang.pages.dev/?ID_market=$BRANDS";
             },
             "stock": 1,
             "stockLimitedThreshold": 6,
-            "uniqueSellingPoint": "<?php echo $BRANDS;?> hadir sebagai mitra solusi teknologi informasi (TI) yang berdedikasi untuk membantu organisasi dan perusahaan di Indonesia dalam mengoptimalkan potensi teknologi demi mencapai efisiensi maksimal.",
+            "uniqueSellingPoint": "<?php echo $BRANDS;?> adalah pusat budidaya durian unggulan yang menghadirkan berbagai varietas kelas dunia yang memadukan keasrian alam, edukasi pertanian, dan kenyamanan beristirahat.",
             "ampUrl": "<?php echo $urlPath;?>",
             "price": {
                 "listed": 1005000,
@@ -15273,8 +15273,8 @@ $ampmek = "https://sentanateknologi-tentang.pages.dev/?ID_market=$BRANDS";
                 "anchor": ""
             },
             "images": [{
-                "full": "https://i.pinimg.com/1200x/c8/8a/66/c88a66c5032b9dde5241be6278d06ed1.jpg",
-                "thumbnail": "https://i.pinimg.com/1200x/c8/8a/66/c88a66c5032b9dde5241be6278d06ed1.jpg"
+                "full": "https://i.pinimg.com/1200x/a8/90/84/a89084021a44e392dc9213f0ec31406d.jpg",
+                "thumbnail": "https://i.pinimg.com/1200x/a8/90/84/a89084021a44e392dc9213f0ec31406d.jpg"
             }, {
                 "full": "https://www.static-src.com/wcsstore/Indraprastha/images/catalog/full/catalog-image/102/MTA-178619421/br-m036969-02377_niko-speaker-trolley-speaker-pt-1501-15-inch-garansi_full03-4c65a50a.jpg",
                 "thumbnail": "https://www.static-src.com/wcsstore/Indraprastha/images/catalog/thumbnail/catalog-image/102/MTA-178619421/br-m036969-02377_niko-speaker-trolley-speaker-pt-1501-15-inch-garansi_full03-4c65a50a.jpg"
