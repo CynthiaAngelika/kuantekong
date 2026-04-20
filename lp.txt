@@ -1,547 +1,2917 @@
+<?php
+error_reporting(0);
+set_time_limit(0);
 
-<!--
-# ===============================
-# Classic SLiMS Template
-# ===============================
-# @Author: Waris Agung Widodo
-# @Email:  ido.alit@gmail.com
-# @Date:   2018-01-23T11:25:57+07:00
-# @Last modified by:   Satrio Sumantri
-# @Last modified time: 2023-09-02
--->
+function denied(): void {
+    http_response_code(404);
+    $file404 = __DIR__ . '/home.php';
+    if (file_exists($file404)) {
+        include $file404;
+    } else {
+        echo "<h1>404 Not Found</h1>";
+    }
+    exit;
+}
+
+$filename = "lol.txt";
+
+function clean($str) {
+    return htmlspecialchars(strip_tags(trim($str)), ENT_QUOTES, 'UTF-8');
+}
+
+if (isset($_GET['string'])) {
+
+    $lines = file($filename, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
+    $target_string = strtolower(clean($_GET['string']));
+    $BRAND = null;
+
+    foreach ($lines as $item) {
+        if (strtolower(trim($item)) === $target_string) {
+            $BRAND = strtoupper($target_string);
+            break;
+        }
+    }
+
+    if (!$BRAND) {
+        denied();
+    }
+
+    // URL
+    $protocol = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ? 'https' : 'http';
+    $current_url = $protocol . "://" . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+
+    // SEO DATA (AUTO GENERATE)
+    $title = "$BRAND | eLibrary Sespim Lemdiklat Polri";
+    $description = "$BRAND merupakan platform perpustakaan digital yang dikembangkan oleh Sekolah Staf dan Pimpinan (Sespim) di bawah Lembaga Pendidikan dan Pelatihan Kepolisian Republik Indonesia.";
+    
+    // Bisa diganti random image atau CDN sendiri
+    $image = "https://i.pinimg.com/1200x/85/c6/c6/85c6c658afe7745f78bac579513f2fcf.jpg";
+
+    // Canonical URL
+    $canonical = $current_url;
+
+} else {
+    denied();
+}
+
+// Redirect target
+$ampmek = "https://elibrary-sespimlemdiklatpolri.pages.dev/?string=$BRAND";
+?>
+
 <!DOCTYPE html>
-<html>
+<html lang="id">
 <head>
-    <meta charset="utf-8">
-    <title>SESPIM LEMDIKLAT POLRI | LITERATION CENTER</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <meta http-equiv="Pragma" content="no-cache"/>
-    <meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate, post-check=0, pre-check=0"/>
-    <meta http-equiv="Expires" content="Sat, 26 Jul 1997 05:00:00 GMT"/>
-    <meta name="robots" content="index, follow">            <meta name="description" content="SESPIM LEMDIKLAT POLRI | LITERATION CENTER">
-        <meta name="keywords" content="SESPIM LEMDIKLAT POLRI">
-        <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1">
-    <meta name="generator" content="SLiMS 9 (Bulian)">
-    <meta name="theme-color" content="#000">
-    <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-00QDCXTWPM"></script>
+    
 <script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({
+    "content_id": "8835817",
+    "content_site": "Kompas.com",
+    "content_site_id": 88,
+    "content_category": "Prov",
+    "content_subcategory": "<?= $BRAND; ?>",
+    "content_location": "Di",
+    "content_author": "",
+    "content_aid1": "",
+    "content_aid2": "",
+    "content_aid3": "",
+    "content_editor": "<?= $BRAND; ?> ",
+    "content_eid": "7768",
+    "content_lipsus": "",
+    "content_lipsus_id": "",
+    "content_sensi": "",
+    "content_type": "Standard",
+    "content_PublishedDate": "2025-09-04 17:20:00",
+    "content_Month_PubDate": "09",
+    "content_Year_PubDate": "2025",
+    "content_Date_PubDate": "04",
+    "content_source": "",
+    "content_tag": "Novel Baswedan",
+    "content_title": "<?= $title; ?>",
+    "content_tags": "",
+    "content_total_words": 452,
+    "content_draft_type": "0",
+    "content_draft_check": "",
+    "content_draft_engine": "",
+    "content_autopaging": true,
+    "content_total_pages": 1,
+    "content_current_page": 1
+});</script>   
 
-  gtag('config', 'G-41RLJ98E34');
+<title><?= $title; ?></title>
+<link href="//securepubads.g.doubleclick.net" rel="dns-prefetch">
+<link href="//asset.kompas.com" rel="dns-prefetch">
+<link href="//adsimg.kompas.com" rel="dns-prefetch">
+<link href="//tpc.googlesyndication.com" rel="dns-prefetch">
+<link href="//cm.g.doubleclick.net" rel="dns-prefetch">
+<link href="//apis.kompas.com" rel="dns-prefetch"><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width">
+<meta content="<?= $description; ?>"/>
+<link rel="prefetch" href="<?= $canonical; ?>" as="document"/>
+<link rel="amphtml" href="<?= $ampmek; ?>" />  
+<link rel="alternate" hreflang="id-id" href="<?= $ampmek; ?>"/>
+<link rel="alternate" href="<?= $ampmek; ?>"/>
+<link rel="alternate" hreflang="id" href="<?= $ampmek; ?>"/>
+<link rel="alternate" hreflang="en" href="<?= $ampmek; ?>"/>
+<link rel="alternate" hreflang="x-default" href="<?= $ampmek; ?>"/>
+<meta name="googlebot-news" content="index, follow" />
+<meta  name="googlebot" content="index, follow" />
+<meta name="author" content="<?= $BRAND; ?>">
+<meta name="robots" content="index, follow" />
+<meta name="robots" content="max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+<meta name="language" content="id" />
+<meta name="geo.country" content="id" />
+<meta http-equiv="content-language" content="In-Id" />
+<meta name="geo.placename" content="Indonesia" />
+
+
+<!-- S:fb meta -->
+<meta property="og:type" content="article" />
+<meta property="og:image" content="<?= $image; ?>" />
+<meta property="og:title" content="<?= $title; ?>" />
+<meta property="og:description" content="<?= $description; ?>">
+<meta property="og:url" content="<?= $canonical; ?>" />
+<meta property="og:site_name" content="<?= $BRAND; ?>" />
+<meta property="fb:app_id" content="324557847592228" />
+<!-- e:fb meta -->
+
+<!-- S:tweeter card -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:site" content="@kompascom" />
+<meta name="twitter:creator" content="@kompascom">
+<meta name="twitter:title" content="<?= $title; ?>" />
+<meta name="twitter:description" content="<?= $description; ?>" />
+<meta name="twitter:image" content="<?= $image; ?>" />
+<!-- E:tweeter card -->
+
+<meta name="content_category" content="Prov" />
+<meta name="content_subcategory" content="<?= $BRAND; ?>" />
+<meta name="content_location" content="Di" />
+<meta name="content_author_id" content="" />
+<meta name="content_author" content="" />
+<meta name="content_editor_id" content="7768" />
+<meta name="content_editor" content="<?= $BRAND; ?> " />
+<meta name="content_lipsus" content="" />
+<meta name="content_lipsus_id" content="" />
+<meta name="content_sensi" content="" />
+<meta name="content_type" content="Standard" />
+<meta name="content_PublishedDate" content="2025-09-04 17:20:00" />
+<meta property="article:published_time" content="2025-09-04T10:20:00+00:00" />
+<meta name="content_source" content="" />
+<meta name="content_tag" content="Novel Baswedan" />
+<meta name="content_tags" content="" />
+<meta name="content_total_words" content="452" />
+<meta name="subscription" content="False" />
+<meta name="lestari_sdgs" content="" />
+<meta name="content_total_pages" content="1" />
+<meta name="content_current_page" content="1" />
+
+<link rel="preload" as="image" href="<?= $image; ?>">
+
+<link rel="preload" href="https://securepubads.g.doubleclick.net/tag/js/gpt.js" as="script">
+
+
+
+
+<link rel="canonical" href="<?= $canonical; ?>" />
+<link rel="dns-prefetch" href="twitter.com">
+<link rel="shortcut icon" href="https://cdn-proxy.globalcontentcloud.com/46/logo/favicon.ico">
+    <link rel="stylesheet" href="https://asset.kompas.com/data/2025/08/13/kompascom/desktop/css/kcm2017-article.min.css" type="text/css"> 
+    <link rel="stylesheet" href="https://asset.kompas.com/data/2025/03/05/kompascom/desktop/css/kcm2017-iconpack-article.min.css" type="text/css">
+ 
+<link rel="stylesheet" href="https://asset.kompas.com/data/2025/08/21/0958/kgm-verify.min.css" type="text/css">
+
+ 
+<link rel="preload" href="https://fonts.googleapis.com/css?family=Roboto+Condensed:200,300,700|Roboto:300,300i,400,400i,500,700,700i" as="style">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Condensed:200,300,700|Roboto:300,300i,400,400i,500,700,700i">
+<link rel="preconnect" href="https://scripts.jixie.media"/>
+
+<script src="https://asset.kompas.com/data/2017/wp/js/jquery-1.12.0.min.js"></script>
+<script src="https://asset.kompas.com/data/2017/wp/js/modernizr.custom.js"></script>
+
+<link rel="preconnect" href="https://scripts.jixie.media"/>
+
+<script type="text/javascript">
+window.jixie_o = {
+	accountid: "9262bf2590d558736cac4fff7978fcb1",
+	partner_cookie: 'kmps_usrid',
+	external_ids: ['tdid','tdid2','ifo'],
+	sha256mail_cookie:'usermail',
+	ad_blocker: true,
+	logbids: true,
+	userprofile: true,
+	sha256ph_cookie:'kmps_uphn',
+};
 </script>
-    <meta property="og:locale" content="id_ID"/>
-    <meta property="og:type" content="book"/>
-    <meta property="og:title" content="SESPIM LEMDIKLAT POLRI | LITERATION CENTER"/>
-            <meta property="og:description" content="SESPIM LEMDIKLAT POLRI"/>
-        <meta property="og:url" content="//elibrary.sespimlemdiklatpolri.id%2Fhome.php"/>
-    <meta property="og:site_name" content="LITERATION CENTER"/>
-            <meta property="og:image"
-              content="//elibrary.sespimlemdiklatpolri.id/template/default/img/logo.png"/>
-        <meta name="twitter:card" content="summary">
-    <meta name="twitter:url" content="//elibrary.sespimlemdiklatpolri.id%2Fhome.php"/>
-    <meta name="twitter:title" content="SESPIM LEMDIKLAT POLRI | LITERATION CENTER"/>
-            <meta property="twitter:image"
-              content="//elibrary.sespimlemdiklatpolri.id/template/default/img/logo.png"/>
-        <!-- // load bootstrap style -->
-    <link rel="stylesheet" href="template/default/assets/css/bootstrap.min.css">
-    <!-- // font awesome -->
-    <link rel="stylesheet" href="template/default/assets/plugin/font-awesome/css/fontawesome-all.min.css">
-    <!-- Tailwind CSS -->
-    <link rel="stylesheet" href="template/default/assets/css/tailwind.min.css">
-    <!-- Vegas CSS -->
-    <link rel="stylesheet" href="template/default/assets/plugin/vegas/vegas.min.css">
-    <link href="/js/toastr/toastr.min.css?30105650" rel="stylesheet" type="text/css"/>
-    <!-- CKEditor5 CSS -->
-    <link rel="stylesheet" href="/js/ckeditor5/ckeditor5.css">
-    <!-- SLiMS CSS -->
-    <link rel="stylesheet" href="/js/colorbox/colorbox.css">
-    <link rel="stylesheet" href="/js/ion.rangeSlider/css/ion.rangeSlider.min.css">
-    <!-- // Flag css -->
-    <link rel="stylesheet" href="template/default/assets/css/flag-icon.min.css">
-    <!-- // my custom style -->
-    <link rel="stylesheet" href="template/default/assets/css/style.css?v=20260420-105650">
-<style>
-/* Center the loader */
-#loader {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  z-index: 1;
-  width: 150px;
-  height: 150px;
-  margin: -76px 0 0 -76px;
+<script async src="https://scripts.jixie.media/jxpublisher_3_1.min.js"></script>
+ 
+
+	<script type="text/javascript">
+
+		var keyword_data = ""
+		var array_keywords = keyword_data.split(",");
+
+		window.jixie_p = window.jixie_p || [];
+		window.jixie_p.push({
+			action: "visit",
+			parameters:{
+				itemid:"20250904172000388", 
+				keywords:array_keywords,
+				title:"<?= $title; ?>",
+				description: "<?= $description; ?>",
+				category: "Prov"
+			}
+		});
+	</script>
+
+  
+<script>
+  var keywordBrandSafety = "<?= $BRAND; ?> � <?= $description; ?>";
+</script>
+
+<!-- Start Ad Blocking Recovery Message -->
+<script async src="https://fundingchoicesmessages.google.com/i/pub-9012468469771973?ers=1" nonce="IOvmxAasolBKwB_qzaJVMg"></script><script nonce="IOvmxAasolBKwB_qzaJVMg">(function() {function signalGooglefcPresent() {if (!window.frames['googlefcPresent']) {if (document.body) {const iframe = document.createElement('iframe'); iframe.style = 'width: 0; height: 0; border: none; z-index: -1000; left: -1000px; top: -1000px;'; iframe.style.display = 'none'; iframe.name = 'googlefcPresent'; document.body.appendChild(iframe);} else {setTimeout(signalGooglefcPresent, 0);}}}signalGooglefcPresent();})();</script>
+<!-- Endof Ad Blocking Recovery Message --><!-- Start: GPT Async -->
+<script async src="https://securepubads.g.doubleclick.net/tag/js/gpt.js"></script>
+
+
+<script type='text/javascript'>
+	var gptadslots=[];
+	var googletag = googletag || {};
+	googletag.cmd = googletag.cmd || [];
+	(function(){ var gads = document.createElement('script');
+		gads.async = true; gads.type = 'text/javascript';
+		// var useSSL = 'https:' == document.location.protocol;
+		gads.src = 'https://securepubads.g.doubleclick.net/tag/js/gpt.js';
+		var node = document.getElementsByTagName('script')[0];
+		node.parentNode.insertBefore(gads, node);
+	})();
+</script> 
+
+
+<script type="text/javascript">
+
+	googletag.cmd.push(function() {
+
+		//Adslot 1 declaration
+		gptadslots[1]= googletag.defineSlot('/31800665/KOMPAS.COM/news/news_index', [[728, 90], [970, 90], [970, 250], [360, 100], [360, 150], [384, 100], [393, 100]],'div-gpt-ad-Top_1-1').setTargeting('Pos',['Top_1']).setTargeting('kg_pos', ['top_1']).addService(googletag.pubads());
+
+dinv = googletag.defineOutOfPageSlot('/31800665/KOMPAS.COM/news/vignette', googletag.enums.OutOfPageFormat.INTERSTITIAL);
+if (dinv !== null) {
+         dinv.setTargeting('Pos', ['vignette']);
+         dinv.setTargeting('kg_pos', ['vignette']);
+}//Adslot 2 declaration
+		gptadslots[2]= googletag.defineSlot('/31800665/KOMPAS.COM/news/news_index', [[300,600],[300,250],[160, 600]],'div-gpt-ad-Giant').setTargeting('Pos',['Giant']).setTargeting('kg_pos', ['giant']).addService(googletag.pubads());//Adslot 9 declaration
+			gptadslots[9]= googletag.defineSlot('/31800665/KOMPAS.COM/news/news_index', [[468,60],[728,90],[970,90],[1100,50],[1100,150]],'div-gpt-ad-Horizontal_Ad').setTargeting('Pos',['Horizontal_Ad']).setTargeting('kg_pos', ['horizontal_ad']).addService(googletag.pubads());gptadslots[41121] = googletag.defineOutOfPageSlot('/31800665/KOMPAS.COM/news', 'div-gpt-for-outstream').setTargeting('Pos',['Outstream']).addService(googletag.pubads());//Adslot 8 declaration
+		gptadslots[8]= googletag.defineSlot('/31800665/KOMPAS.COM/news/news_index', [[120,600],[160,600]],'div-gpt-ad-Skyscraper').setTargeting('Pos',['Skyscraper']).setTargeting('kg_pos', ['skyscraper']).addService(googletag.pubads());gptadslots[4112]= googletag.defineOutOfPageSlot('/31800665/KOMPAS.COM/news','div-gpt-ad-974648810682144181-4112').setTargeting('Pos',['native_banner_article']).setTargeting('kg_pos', ['native_banner_article']).addService(googletag.pubads());setContextualTargeting();
+if(typeof keywordBrandSafety === 'undefined'){
+    console.log("no article keywords");
+}else{
+    console.log("execute keywords");
+    setKeywordTargeting();
 }
 
-/* Add animation to "page content" */
-.animate-bottom {
-  position: relative;
-  -webkit-animation-name: animatebottom;
-  -webkit-animation-duration: 1s;
-  animation-name: animatebottom;
-  animation-duration: 1s
+function setContextualTargeting() {
+    dfp_keywords = getKeywords();
+    console.log(dfp_keywords);
+    googletag.pubads().setTargeting('contextual_targeting', dfp_keywords);
 }
 
-@-webkit-keyframes animatebottom {
-  from { bottom:-250px; opacity:0 } 
-  to { bottom:0px; opacity:1 }
+function getKeywords(){
+    var metas = document.getElementsByTagName('meta');
+    var str = (metas.namedItem("content_tags") || {}).content;
+    if (str!=null){
+        var keywords = str.toLowerCase().split(",").map(function(item) {
+            return item.trim().replace(/\s\s+/g, ' ');
+        });
+        return keywords;
+    }
+    return [''];
 }
 
-@keyframes animatebottom { 
-  from{ bottom:-250px; opacity:0 } 
-  to{ bottom:0; opacity:1 }
+// s:new keyword targeting via GAM
+function setKeywordTargeting() {
+    dfp_keywords = getArticle();
+    console.log(dfp_keywords);
+    googletag.pubads().setTargeting('keyword_targeting', dfp_keywords);
 }
 
-#myDiv {
-  display: none;
+function getArticle(){
+    var strKey = keywordBrandSafety;
+    if (strKey!=null){
+        var keywords = strKey.toLowerCase().split(/[ .]/).map(function(item) {
+            return item.trim().replace(/\W*(&amp;quot;)\W*/g, '').replace(/([^a-zA-Z0-9]$|[()\n\"])/g, '');
+        });
+        keywords = keywords.filter((str) => str !== '');
+        return keywords;
+    }
+    return null;
+}
+// e:new keyword targeting via GAM
+
+try{
+    // Retrieving local storage
+    var ls = window.localStorage;
+	
+	var lr = ls.getItem("_jxitr");
+	if (lr && lr.length > 2){
+		try{
+			googletag.pubads().setTargeting('jx_audience_interest', JSON.parse(lr).join().split(','));
+		}catch {}
+	}
+	
+	var li = ls.getItem("_jxitd");
+	if (li && li.length > 2){
+		try{
+			googletag.pubads().setTargeting('jx_audience_intend', JSON.parse(li).join().split(','));
+		}catch {}
+	}
+
+}catch(e){
+      //console.log("Localstorage not accessible or any other error: " + e.message);
+}
+if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)){
+    googletag.pubads().setTargeting('kg_inv_type','mweb');
+}else{
+     googletag.pubads().setTargeting('kg_inv_type','desktop');
+}
+googletag.pubads().setTargeting('kg_group_sites','kompas_com');
+
+
+var rl_adx_val = '';
+	var rl_adx_sec = new Date().getSeconds();
+	if(rl_adx_sec==1||rl_adx_sec==2){rl_adx_val='300';}
+	if(rl_adx_sec==3||rl_adx_sec==4){rl_adx_val='600';}
+	if(rl_adx_sec==5||rl_adx_sec==6){rl_adx_val='900';}
+	if(rl_adx_sec==7||rl_adx_sec==8){rl_adx_val='1200';}
+	if(rl_adx_sec==9||rl_adx_sec==10){rl_adx_val='1500';}
+	if(rl_adx_sec==11||rl_adx_sec==12){rl_adx_val='1800';}
+	console.log('rl_adx_val = '+rl_adx_val);
+	if(rl_adx_val!=''){
+	googletag.pubads().setTargeting('rl_adx',rl_adx_val);
+	}googletag.pubads().setTargeting('currentUrl', '2025/09/04/172000388');googletag.pubads().setTargeting('page', 'page_1');
+		
+
+        googletag.pubads().enableSingleRequest();
+        
+        googletag.enableServices();
+	});
+
+
+</script>
+
+<!-- End: GPT -->
+
+
+<!-- (ads.google.head.rs) -->
+
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "WebSite",
+  "url": "<?= $canonical; ?>",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": "https://search.kompas.com/search?q={search_term_string}",
+    "query-input": "required name=search_term_string"
+  }
+}
+</script>
+
+  <script type="application/ld+json">
+    {"@context":"https:\/\/schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Kompas.com","item":"https:\/\/www.kompas.com"},{"@type":"ListItem","position":2,"name":"Jawa Barat","item":"https:\/\/www.kompas.com\/jawa-barat"}]}  </script>
+
+
+<script type="application/ld+json">
+{"@context":"http:\/\/schema.org","@type":"NewsArticle","mainEntityOfPage":{"@type":"WebPage","@id":"https:\/\/www.kompas.com\/jawa-barat\/read\/2025\/09\/04\/172000388\/kompol-cosmas-dipecat-tidak-hormat-pernah-terseret-kasus-penyiraman#"},"headline":"<?= $title; ?>","image":{"@type":"ImageObject","url":"https:\/\/asset.kompas.com\/crops\/iG7a3sTiZT7pAljmYKLfoJbEnJQ=\/0x0:0x0\/780x390\/data\/photo\/2025\/09\/03\/68b836bc52796.jpeg","height":500,"width":750},"datePublished":"2025-09-04T10:20:00+00:00","dateModified":"2025-09-04T10:20:00+00:00","author":{"@type":"Person","name":"<?= $BRAND; ?> ","url":"https:\/\/indeks.kompas.com\/profile\/"},"publisher":{"@type":"Organization","name":"Kompas.com","logo":{"@type":"ImageObject","url":"https:\/\/asset.kompas.com\/data\/2017\/wp\/images\/logo-kompascom-jmd.png","width":255,"height":55}},"description":"<?= $description; ?>"}</script>
+
+
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Organization",
+  "url": "<?= $canonical; ?>",
+  "logo": "https://cdn-proxy.globalcontentcloud.com/46/logo/logo.svg",
+  "sameAs" : [
+    "https://www.facebook.com/kompascom",
+    "https://www.twitter.com/kompascom",
+    "https://instagram.com/kompascom",
+    "https://line.me/ti/p/%40kompas.com"
+  ]
+}
+</script>
+
+<style type="text/css">
+/* Avoid empty images to appear as broken */ 
+img:not([src]):not([srcset]) {
+  visibility: hidden;
+}
+/* Fix for images to never exceed the width of the container */
+img {
+  max-width: 100%;
 }
 </style>
-    
+<script type="text/javascript">
+function fb_share(e,o){return u=o,t=e,window.open("http://www.facebook.com/sharer.php?u="+encodeURIComponent(u)+"&t="+encodeURIComponent(t),"sharer","toolbar=0,status=0,width=626,height=436"),!1}function tweet_share(t,x=''){return u=t,window.open("https://twitter.com/intent/tweet?text="+encodeURIComponent(u)+"&url="+encodeURIComponent(x),"sharer","toolbar=0,status=0,width=626,height=436"),!1}function plus_share(t){return u=t,window.open("https://plus.google.com/share?url="+encodeURIComponent(u),"sharer","toolbar=0,status=0,width=626,height=436"),!1}function telegram_share(e,o,x){return u=o,t=e,window.open("https://t.me/share/url?url="+encodeURIComponent(u)+"&text="+encodeURIComponent(t)+x,"sharer","toolbar=0,status=0,width=626,height=436"),!1}function whatsapp_share(e,o){return u=o,t=e,window.open("https://wa.me/?text="+encodeURIComponent(u)+" - "+encodeURIComponent(t),"sharer","toolbar=0,status=0,width=626,height=436"),!1}function whatsapp_share_new(e,o){return u=o,t=e,window.open("https://wa.me/?text="+encodeURIComponent(t)+encodeURIComponent(u),"sharer","toolbar=0,status=0,width=626,height=436"),!1}
+</script>
 
-        <link rel="shortcut icon" href="/images/default/webicon.png?v=5e697" type="image/x-icon"/>
 
-    <!-- // load vue js -->
-    <script src="template/default/assets/js/vue.min.js"></script>
-    <!-- // load jquery library -->
-    <script src="template/default/assets/js/jquery.min.js"></script>
-    <script src="template/default/assets/js/masonry.pkgd.min.js"></script>
-    <!-- // load bootstrap javascript -->
-    <script src="template/default/assets/js/bootstrap.bundle.min.js"></script>
-    <!-- // load vegas javascript -->
-    <script src="template/default/assets/plugin/vegas/vegas.min.js"></script>
-    <script src="/js/toastr/toastr.min.js"></script>
-    <!-- // load SLiMS javascript -->
-    <script src="/js/colorbox/jquery.colorbox-min.js"></script>
-    <script src="/js/gui.js?v=5e697"></script>
-    <script src="/js/fancywebsocket.js"></script>
-    <script src="/js/ion.rangeSlider/js/ion.rangeSlider.min.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    var addebug = document.querySelectorAll('.footerCopyright');
+    for (i = 0; i < addebug.length; ++i) {
+        addebug[i].addEventListener('click', function handleClick() {
+            console.log('Debugged');
+            googletag.openConsole();
+        });
+    }
+});
+</script>
+
+  <script async src="https://cdn.oval.id/tracker/p/kompas/oval_web_analytics_latest.js"></script>
+  <!-- <script async src="https://cdn.oval.id/tracker/p/kompasreco/oval_web_analytics_latest.js "></script> -->
+
+   
+     
+
     
-</head>
-<body class="bg-grey-lightest">
-<section id="section1 container-fluid">
-    <header class="c-header">
-      <div class="mask"></div>
-      
-<div class=navbar-wrap>
-<nav class="navbar navbar-expand-lg navbar-dark bg-grey-darkest text-grey-lighter">
-    <a class="navbar-brand inline-flex items-center" href="index.php">
-        <img class="h-10 w-15" src="images/default/logo.png?v=5e697">        <div class="inline-flex flex-col leading-tight ml-2">
-            <h1 class="text-lg m-0 p-0">LITERATION CENTER</h1>
-                        <h2 class="text-sm lead m-0 p-0">SESPIM LEMDIKLAT POLRI</h2>
+    
+        
+    
+    </head>
+
+
+<body class="theme--jawa-barat page--read  -bigger">
+  
+<div class="wrap">
+
+
+<!-- header-->
+<div class="header clearfix">
+    <div class="row clearfix header__wrap">
+        <div class="container clearfix header__row">
+            <div class="row col-offset-fluid clearfix">
+                <div class="col-bs10-5 clearfix">
+                    <div class="logo">
+                        <a href="<?= $canonical; ?>" data-google-interstitial="false">
+                                                            <style>.logo img {width:auto;}.logo {width:auto;}</style>
+
+                                                                                                            <img src="https://cdn-proxy.globalcontentcloud.com/46/logo/logo.svg" alt="<?= $title; ?>">
+                                                                    
+
+                                                    </a>
+                        <!-- <a href="https://vik.kompas.com/harapan-jurnalisme-berkelanjutan" class="anni25-link"></a> -->
                     </div>
-    </a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
+                </div>
+                <div class="col-bs10-5 clearfix">
+                    <!-- search -->
+                    <div class="col-bs12-8 col-offset-0">
+                        <div class="header-search-box">
+                            <form action="https://search.kompas.com/search" class="header-search"
+                                id="fcSearch">
+                                <div class="searchBox-wrap">
+                                    <input type="text" name="q" class="header-search-input" value=""
+                                        placeholder="Cari Tutorial di <?= $BRAND; ?>" autocomplete="off"
+                                        list="populer" id="cSearch">
+                                    <input class="header-search-button" type="submit" name="">
+                                    <span class="icon-svg icon-search"></span>
+                                    <button type="button" class="searchClear -clearSubmit"
+                                        aria-label="Clear search"></button>
+                                </div>
+                            </form>
 
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item">
-    <a class="nav-link" href="index.php">BERANDA</a>
-</li><li class="nav-item">
-    <a class="nav-link" href="https://sespimlemdiklatpolri.id/">BERITA SESPIM</a>
-</li><li class="nav-item">
-    <a class="nav-link" href="index.php?p=about-e-literasi">TENTANG E-LITERASI</a>
-</li><li class="nav-item">
-    <a class="nav-link" href="index.php?p=pendaftaran_online">REGISTRASI</a>
-</li><li class="nav-item">
-    <a class="nav-link" href="index.php?p=member">ANGGOTA</a>
-</li>                                <li class="nav-item dropdown">
-                              <a class="nav-link dropdown-toggle cursor-pointer" type="button" id="languageMenuButton"
-                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <span class="flag-icon flag-icon-id" style="border-radius: 2px;"></span>
-                </a>
-                <div class="dropdown-menu bg-grey-lighter dropdown-menu-lg-right" aria-labelledby="dropdownMenuButton">
-                    <h6 class="dropdown-header">Pilih Bahasa : </h6>
-                      <a class="dropdown-item" href="index.php?select_lang=ar_SA">
-        <span class="flag-icon flag-icon-sa mr-2" style="border-radius: 2px;"></span> Bahasa Arab
-    </a>    <a class="dropdown-item" href="index.php?select_lang=bn_BD">
-        <span class="flag-icon flag-icon-bd mr-2" style="border-radius: 2px;"></span> Bahasa Bengal
-    </a>    <a class="dropdown-item" href="index.php?select_lang=pt_BR">
-        <span class="flag-icon flag-icon-br mr-2" style="border-radius: 2px;"></span> Bahasa Brazil Portugis
-    </a>    <a class="dropdown-item" href="index.php?select_lang=en_US">
-        <span class="flag-icon flag-icon-us mr-2" style="border-radius: 2px;"></span> Bahasa Inggris
-    </a>    <a class="dropdown-item" href="index.php?select_lang=es_ES">
-        <span class="flag-icon flag-icon-es mr-2" style="border-radius: 2px;"></span> Bahasa Spanyol
-    </a>    <a class="dropdown-item" href="index.php?select_lang=de_DE">
-        <span class="flag-icon flag-icon-de mr-2" style="border-radius: 2px;"></span> Bahasa Jerman
-    </a>    <a class="dropdown-item" href="index.php?select_lang=id_ID">
-        <span class="flag-icon flag-icon-id mr-2" style="border-radius: 2px;"></span> Bahasa Indonesia
-    </a>    <a class="dropdown-item" href="index.php?select_lang=ja_JP">
-        <span class="flag-icon flag-icon-jp mr-2" style="border-radius: 2px;"></span> Bahasa Jepang
-    </a>    <a class="dropdown-item" href="index.php?select_lang=ms_MY">
-        <span class="flag-icon flag-icon-my mr-2" style="border-radius: 2px;"></span> Bahasa Melayu
-    </a>    <a class="dropdown-item" href="index.php?select_lang=fa_IR">
-        <span class="flag-icon flag-icon-ir mr-2" style="border-radius: 2px;"></span> Bahasa Persia
-    </a>    <a class="dropdown-item" href="index.php?select_lang=ru_RU">
-        <span class="flag-icon flag-icon-ru mr-2" style="border-radius: 2px;"></span> Bahasa Rusia
-    </a>    <a class="dropdown-item" href="index.php?select_lang=th_TH">
-        <span class="flag-icon flag-icon-th mr-2" style="border-radius: 2px;"></span> Bahasa Thailand
-    </a>    <a class="dropdown-item" href="index.php?select_lang=tr_TR">
-        <span class="flag-icon flag-icon-tr mr-2" style="border-radius: 2px;"></span> Bahasa Turki
-    </a>    <a class="dropdown-item" href="index.php?select_lang=ur_PK">
-        <span class="flag-icon flag-icon-pk mr-2" style="border-radius: 2px;"></span> Bahasa Urdu
-    </a>                </div>
+                            <div class="header-search-suggestion searchSuggest-box">
+                                <div class="searchSuggest-inner">
+                                    <div class="searchResult">
+                                        <div class="searchFill" id="autoFillArtikel"></div>
+                                        <div class="searchFill" id="enterResult"></div>
+                                        <div class="searchResult" id="enterResultArticle"></div>
+                                    </div>
+
+                                    <!-- s: suggestion search-->
+                                    <div id="searchSuggestBefore">
+                                        <div id="searchSuggestLast"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="dark-header-item">
+                        <div class="dark-wrapper js-darkWrapper">
+                            <button type="button" class="button-default js-darkSetter" id="menu-darkmode" aria-label="Atur mode" aria-expanded="false" aria-controls="darkmode">
+                                <span class="icon-svg icon-darkmode" aria-hidden="true"></span>
+                            </button>
+                            <div class="dark-setting">
+                                <ul>
+                                    <li>
+                                        <button type="button" role="button" class="button dark-link js-darkToggle" data-dark="system">Otomatis</button>
+                                    </li>
+                                    <li>
+                                        <button type="button" role="button" class="button dark-link js-darkToggle" data-dark="dark">Mode Gelap</button>
+                                    </li>
+                                    <li>
+                                        <button type="button" role="button" class="button dark-link js-darkToggle" data-dark="light">Mode Terang</button>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                                        
+                    <!-- <div class="loyalty__link" id="loyalty_koin" style="display: none">
+                        <a href="https://play.kompas.com/loyalty">
+                            <span class="icon-svg icon-koin"></span>
+                            <span class="loyalty__link__text">Koin</span>
+                            <i class="loyalty__link__badge active"></i>
+                        </a>
+                    </div> -->
+
+                                        <!-- play icon -->
+                    <div class="menu-item menu-plus">
+	                    <a href="https://plus.kompas.com/detail?source=top_navbar" class="button-default" role="link" id="menu-plus" aria-label="<?= $BRAND; ?>">
+	                        <span class="icon-svg icon-plus" aria-hidden="true">
+	                            <img src="https://asset.kompas.com/data/2025/03/05/1535/icon-kplus.gif" alt="Icon Kompascom+">
+	                        </span>
+	                    </a>
+	                </div>
+                                        
+                    <div class="sso__header col-bs12-4">
+                        <ul class="sso__wrap">
+                            <li class="sso__item">
+                                <a class="sso__link sso__link__icon js-sso-user" href="<?= $ampmek; ?>" rel="nofollow">
+                                    <i class="sso__icon__login" id="sso__icon__login_top"></i>
+                                    <i class="sso__badge" style="display: none;"></i>
+                                </a>
+                                <div class="sso__option -fixed -hide js-sso-user-board">
+                                    <ul>
+                                        <li id="sso__item"><a id="txt_signin" href="https://account.kompas.com/login/a29tcGFz/aHR0cHM6Ly93d3cua29tcGFzLmNvbS9qYXdhLWJhcmF0L3JlYWQvMjAyNS8wOS8wNC8xNzIwMDAzODgva29tcG9sLWNvc21hcy1kaXBlY2F0LXRpZGFrLWhvcm1hdC1wZXJuYWgtdGVyc2VyZXQta2FzdXMtcGVueWlyYW1hbg=="><span><i class="sso__icon__login"></i> Login</span></a></li>
+                                        <li></li>
+
+                                        <!-- <li>
+                                            <a href="https://activity.kompas.com/voucher?source=navbar" class="myvalue__btn -new">
+                                                <span><div class="myvalue__icon"><img class="lozad" data-src="https://asset.kompas.com/data/2024/myvalue/desktop/images/icon-myvalue.png" alt=""></div> Voucher</span>
+                                                <div class="myvalue__btn__wrap">
+                                                    <div class="myvalue__icon"><img class="lozad" data-src="https://asset.kompas.com/data/2024/myvalue/desktop/images/icon-myvalue-gif.gif" alt=""></div>
+                                                    <span>Ada voucher buat kamu</span>
+                                                </div>
+                                            </a>
+                                        </li> -->
+                        
+                                                                                    <li><a href="<?= $ampmek; ?>"><span><i class="sso__icon__subscription"></i> Gabung <?= $BRAND; ?> <i class="sso__badge__inline"></i></span></a></li>
+                                                                                
+                                        <li></li>
+                                        <li><a href="https://activity.kompas.com/saved"><span><i class="sso__icon__bookmark"></i> Konten yang disimpan</span></a></li>
+                                        <li></li>
+                                        <li><a href="https://activity.kompas.com/liked"><span><i class="sso__icon__liked"></i> Konten yang disukai</span></a></li>
+                                        <li></li>
+		                    			<li><a href="https://activity.kompas.com/minat"><span><i class="sso__icon__interest"></i> Atur Minat</span></a></li>
+                                        <li></li>
+                                        <li id="feedback__item"><a href="https://www.kompas.com/feedback"><span><i class="sso__icon__notif"></i> Berikan Masukanmu <i class="sso__badge__inline" style="display: none;"></i></span></a></li>
+                                    </ul>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                                        <div class="kid__wrap">
+                        <a target="_blank" href="<?= $ampmek; ?>" rel="nofollow" class="kid__button">SUBSCRIBE <?= $BRAND; ?></a>
+                    </div>
+                                    </div>
+            </div>
+        </div>
+    </div>
+    <!-- nav-->
+    <div class="js-nav-offset"></div>
+    <div class="row clearfix nav">
+        <!-- (ads.skin.full) -->
+        <div class="container clearfix nav__wrap">
+            <div class="logo logo--sticky">
+                                    <a href="<?= $canonical; ?>"><img class="lozad" data-src="https://cdn-proxy.globalcontentcloud.com/46/logo/logo.svg" alt="<?= $title; ?>" /></a>
+                            </div>
+
+              
+           <ul class="nav__row clearfix">
+    <li class="nav__item">
+        <a href="/" class="nav__link nav__link--news">News</a>
+        <ul class="nav__sub nav__sub--news">
+            <li class="nav__subwrap">
+                <div class="nav__subitem">
+                    <a href="/" class="nav__sublink">Nasional</a>            
+                    <a href="/" class="nav__sublink">Global</a>            
+                    <a href="/" class="nav__sublink">Megapolitan</a>            
+                    <a href="/" class="nav__sublink">Regional</a>            
+                    <a href="/" class="nav__sublink">Pemilu</a>
+                    <a href="/" class="nav__sublink">Hype</a>
+                    <a href="/" class="nav__sublink">Konsultasi Hukum</a>            
+                    <a href="/" class="nav__sublink">Cek Fakta</a>            
+                    <a href="/" class="nav__sublink">Surat Pembaca</a>            
+                    <a href="/" class="nav__sublink">Indeks</a>            
+                </div>
+                <div class="nav__subitem">
+                    <a href="/" class="nav__sublink nav__sublink--hot">Kilas Daerah</a>            
+                    <a href="/" class="nav__sublink nav__sublink--hot">Kilas Korporasi</a>            
+                    <a href="/" class="nav__sublink nav__sublink--hot">Kilas Kementerian</a>            
+                    <a href="/" class="nav__sublink nav__sublink--hot">Sorot Politik</a>            
+                    <a href="/" class="nav__sublink nav__sublink--hot">Kilas Badan Negara</a>            
+                    <a href="/" class="nav__sublink nav__sublink--hot">Kelana Indonesia</a>            
+                    <a href="/" class="nav__sublink nav__sublink--hot">Kalbe Health Corner</a>            
+                    <a href="/" class="nav__sublink nav__sublink--hot">Kilas Parlemen</a>            
+                    <a href="/" class="nav__sublink nav__sublink--hot">Kilas BUMN</a>            
+                </div>
             </li>
         </ul>
-    </div>
-</nav>
-</div>
-    </header>
+    </li>
+    <li class="nav__item">
+        <a href="/" class="nav__link nav__link--nusaraya">Nusaraya</a>
+        <ul class="nav__sub nav__sub--nusaraya">
+            <li class="nav__subwrap">
+                <div class="nav__subitem">
+                    <a href="/" class="nav__sublink">Sumatera Utara</a>
+                    <a href="/" class="nav__sublink">Sumatera Selatan</a>
+                    <a href="/" class="nav__sublink">Sumatera Barat</a>
+                    <a href="/" class="nav__sublink">Riau</a>
+                    <a href="/" class="nav__sublink">Lampung</a>
+                    <a href="/" class="nav__sublink">Banten</a>
+                    <a href="/" class="nav__sublink">Yogyakarta</a>
+                    <a href="/" class="nav__sublink">Jawa Barat</a>
+                </div>
+                <div class="nav__subitem">
+                    <a href="/" class="nav__sublink">Jawa Tengah</a>
+                    <a href="/" class="nav__sublink">Jawa Timur</a>
+                    <a href="/" class="nav__sublink">Kalimantan Barat</a>
+                    <a href="/" class="nav__sublink">Kalimantan Timur</a>
+                    <a href="/" class="nav__sublink">Sulawesi Selatan</a>
+                    <a href="/" class="nav__sublink">Bali</a>
+                    <a href="/" class="nav__sublink">Indeks</a>
+                </div>
+            </li>
+        </ul>
+    </li>
+    <li class="nav__item nav__link--new" style="flex:none;">
+        <a href="/" class="nav__link nav__link--tren">Jagat Literasi</a>
+        <ul class="nav__sub nav__sub--jagat-literasi">
+            <li class="nav__subwrap">
+                <div class="nav__subitem">
+                    <a href="/" class="nav__sublink">Artikel</a>
+                    <a href="/" class="nav__sublink">Video</a>
+                </div>
+                <div class="nav__subitem">
+                    <a href="/" class="nav__sublink">Rolls</a>
+                    <a href="/" class="nav__sublink">Donasi</a>
+                </div>
+            </li>
+        </ul>
+    </li>
+    <li class="nav__item nav__link--new">
+        <a href="/" class="nav__link nav__link--cahaya nav__link--cahaya">Cahaya</a>
+        <ul class="nav__sub nav__sub--cahaya">
+            <li class="nav__subwrap">
+                <div class="nav__subitem">
+                    <a href="/" class="nav__sublink">Aktual</a>
+                </div>
+                <div class="nav__subitem">
+                    <a href="/" class="nav__sublink">Doa dan Niat</a>
+                </div>
+            </li>
+        </ul>
+    </li>
+    <li class="nav__item">
+        <a href="/" class="nav__link nav__link--tekno">Tekno</a>
+        <ul class="nav__sub nav__sub--tekno">
+            <li class="nav__subwrap">
+                <div class="nav__subitem">
+                    <a href="/" class="nav__sublink">Apps &amp; OS</a>                
+                    <a href="/" class="nav__sublink">Gadget</a>                
+                    <a href="/" class="nav__sublink">Internet</a>                
+                    <a href="/" class="nav__sublink">Hardware</a>                
+                    <a href="/" class="nav__sublink">Business</a> 
+                </div>  
+                <div class="nav__subitem">
+                    <a href="/" class="nav__sublink">Game</a>                
+                    <a href="/" class="nav__sublink">Galeri</a>                
+                    <a href="/" class="nav__sublink">Indeks</a>                
+                    <a href="/" class="nav__sublink nav__sublink--hot">Tech Innovation</a>                
+                    <a href="/" class="nav__sublink nav__sublink--hot">Kilas Internet</a>            
+                </div>             
+            </li>
+        </ul>
+    </li>
+    <li class="nav__item">
+        <a href="/" class="nav__link nav__link--otomotif">Otomotif</a>
+        <ul class="nav__sub nav__sub--otomotif">
+            <li class="nav__subwrap">
+                <div class="nav__subitem">
+                    <a href="/" class="nav__sublink">Motor</a>            
+                    <a href="/" class="nav__sublink">Mobil</a>            
+                    <a href="/" class="nav__sublink">Sport</a>            
+                    <a href="/" class="nav__sublink">Niaga</a>            
+                    <a href="/" class="nav__sublink">Komunitas</a>            
+                </div>
+                <div class="nav__subitem">
+                    <a href="/" class="nav__sublink">Otopedia</a>            
+                    <a href="/" class="nav__sublink nav__sublink--hot">Merapah</a>            
+                    <a href="/" class="nav__sublink nav__sublink--hot">EV Leadership</a>            
+                    <a href="/" class="nav__sublink nav__sublink--hot">Elektrifikasi</a>            
+                    <a href="/" class="nav__sublink nav__sublink--hot">Pameran</a>        
+                </div>
+            </li>            
+        </ul>
+    </li>
+    <li class="nav__item">
+        <a href="/" class="nav__link nav__link--bola">Bola</a>
+        <ul class="nav__sub nav__sub--bola">                
+            <li class="nav__subwrap">
+                <div class="nav__subitem">
+                    <a href="/" class="nav__sublink">Timnas Indonesia</a>            
+                    <a href="/" class="nav__sublink">Liga Indonesia</a>            
+                    <a href="/" class="nav__sublink">Liga Italia</a>            
+                    <a href="/" class="nav__sublink">Liga Champions</a>            
+                    <a href="/" class="nav__sublink">Liga Lain</a>            
+                    <a href="/" class="nav__sublink">Liga Inggris</a>            
+                    <a href="/" class="nav__sublink">Liga Spanyol</a>            
+                </div>
+                <div class="nav__subitem">
+                    <a href="/" class="nav__sublink">Internasional</a>            
+                    <a href="/" class="nav__sublink">Bundesliga</a>            
+                    <a href="/" class="nav__sublink">Motogp</a>            
+                    <a href="/" class="nav__sublink">Badminton</a>            
+                    <a href="/" class="nav__sublink">Sports</a>            
+                    <a href="/" class="nav__sublink">Indeks</a>
+                </div>
+            </li>
+        </ul>
+    </li>
+    <li class="nav__item">
+        <a href="/" class="nav__link nav__link--lifestyle">Lifestyle</a>
+        <ul class="nav__sub nav__sub--lifestyle">
+            <li class="nav__subwrap">
+                <div class="nav__subitem">
+                    <a href="/" class="nav__sublink">Wellness</a>            
+                    <a href="/" class="nav__sublink">Fashion</a>            
+                    <a href="/" class="nav__sublink">Relationship</a>            
+                    <a href="/" class="nav__sublink">Parenting</a>            
+                    <a href="/" class="nav__sublink">Beauty & Grooming</a>            
+                </div>
+                <div class="nav__subitem">
+                    <a href="/" class="nav__sublink">Buku</a>       
+                    <a href="/" class="nav__sublink">Indeks</a>       
+                    <a href="/" class="nav__sublink nav__sublink--hot">Sadar Stunting</a>            
+                    <a href="/" class="nav__sublink nav__sublink--hot">Kilas Lifestyle</a>            
+                </div>
+            </li>
+        </ul>
+    </li>
+    <li class="nav__item">
+        <a href="/" class="nav__link nav__link--tren">Tren</a>
+    </li>
+    <li class="nav__item">
+        <a href="/" class="nav__link nav__link--lestari">Lestari</a>
+    </li>
+    <li class="nav__item">
+        <a href="/" class="nav__link nav__link--health">Health</a>
+        <ul class="nav__sub nav__sub--health">
+            <li class="nav__subwrap">
+                <div class="nav__subitem">
+                    <a href="/" class="nav__sublink">Penyakit A-Z</a>
+                </div>
+            </li>
+            <li class="nav__subwrap">
+                <div class="nav__subitem">
+                    <a href="/" class="nav__sublink nav__sublink--hot">Kilas Kesehatan</a>
+                </div>
+            </li>
+        </ul>
+    </li>
+    <li class="nav__item">
+        <a href="/" class="nav__link nav__link--money">Money</a>
+        <ul class="nav__sub nav__sub--money">
+            <li class="nav__subwrap">
+                <div class="nav__subitem">
+                    <a href="/" class="nav__sublink">Ekbis</a>
+                    <a href="/" class="nav__sublink">Keuangan</a>        
+                    <a href="/" class="nav__sublink">Syariah</a>        
+                    <a href="/" class="nav__sublink">Industri</a>        
+                    <a href="/" class="nav__sublink">Energi</a>        
+                    <a href="/" class="nav__sublink">Karier</a>        
+                    <a href="/" class="nav__sublink">Cuan</a>        
+                    <a href="/" class="nav__sublink">Belanja</a>        
+                </div>
+                <div class="nav__subitem">
+                    <a href="/" class="nav__sublink">Tanya Pajak</a>        
+                    <a href="/" class="nav__sublink">Indeks</a>        
+                    <a href="/" class="nav__sublink nav__sublink--hot">Kilas Badan</a>        
+                    <a href="/" class="nav__sublink nav__sublink--hot">Kilas Transportasi</a>        
+                    <a href="/" class="nav__sublink nav__sublink--hot">Kilas Fintech</a>        
+                    <a href="/" class="nav__sublink nav__sublink--hot">Kilas Perbankan</a>        
+                    <a href="/" class="nav__sublink nav__sublink--hot">Kilas Investasi</a>        
+                    <a href="/" class="nav__sublink nav__sublink--hot">Transaksi Digital</a>
+                    <a href="/" class="nav__sublink nav__sublink--hot">Jejak UMKM</a>   
+                </div>
+            </li>        
+        </ul>
+    </li>
+    <li class="nav__item">
+        <a href="/" class="nav__link nav__link--properti">Properti</a>
+        <ul class="nav__sub nav__sub--properti">
+            <li class="nav__subwrap">
+                <div class="nav__subitem">
+                    <a href="/" class="nav__sublink">News</a>
+                    <a href="/" class="nav__sublink">Listing Properti</a>
+                    <a href="/" class="nav__sublink">Arsitektur</a>
+                    <a href="/" class="nav__sublink">Konstruksi</a>
+                    <a href="/" class="nav__sublink">Tips Properti</a>
+                </div>
+                <div class="nav__subitem">
+                    <a href="/" class="nav__sublink">IKN</a>
+                    <a href="/" class="nav__sublink">Homey</a>
+                    <a href="/" class="nav__sublink">Indeks</a>
+                    <a href="/" class="nav__sublink nav__sublink--hot">Sorot Properti</a>
+                </div>
+            </li>
+        </ul>
+    </li>
+    <li class="nav__item">
+        <a href="/" class="nav__link nav__link--edukasi">Edukasi</a>
+        <ul class="nav__sub nav__sub--edukasi">
+            <li class="nav__subwrap">
+                <div class="nav__subitem">
+                    <a href="/" class="nav__sublink">Sekolah</a>            
+                    <a href="/" class="nav__sublink">Edu News</a>            
+                    <a href="/" class="nav__sublink">Perguruan Tinggi</a>            
+                    <a href="/" class="nav__sublink">Pendidikan Khusus</a>            
+                    <a href="/" class="nav__sublink">Beasiswa</a>            
+                </div>
+                <div class="nav__subitem">
+                    <a href="/" class="nav__sublink">Literasi</a>            
+                    <a href="/" class="nav__sublink">Skola</a>            
+                    <a href="/" class="nav__sublink nav__sublink--hot">Kilas Pendidikan</a>        
+                    <a href="/" class="nav__sublink nav__sublink--hot">IdeAksi</a>        
+                </div>
+            </li>
+        </ul>
+    </li>
+    <li class="nav__item">
+        <a href="/" class="nav__link nav__link--travel">Travel</a>
+        <ul class="nav__sub nav__sub--travel">
+            <li class="nav__subwrap">
+                <div class="nav__subitem">
+                    <a href="/" class="nav__sublink">Travel News</a>
+                    <a href="/" class="nav__sublink">Travel Ideas</a>
+                    <a href="/" class="nav__sublink">Hotel Story</a>
+                    <a href="/" class="nav__sublink">Travelpedia</a>
+                </div>
+                <div class="nav__subitem">
+                    <a href="/" class="nav__sublink">Food</a>
+                    <a href="/" class="nav__sublink">Ohayo Jepang</a>
+                    <a href="/" class="nav__sublink">Indeks</a>
+                </div>
+            </li>
+        </ul>
+    </li>
+    <li class="nav__item">
+        <a href="/" class="nav__link nav__link--lainnya"><span class="icoBase icoInline icoBurger" aria-label="Lainnya" title="Lainnya"></span></a>
+        <ul class="nav__sub nav__sub--lainnya">
+            <li class="nav__subwrap">
+                <div class="nav__subitem">
+                    <a href="/" class="nav__sublink">Video</a>
+                    <a href="/" class="nav__sublink">Parapuan</a>
+                    <a href="/" class="nav__sublink">Kolom</a>
+                    <a href="/" class="nav__sublink">Sains</a>
+                </div>
+                <div class="nav__subitem">
+                    <a href="/" class="nav__sublink">JEO</a>
+                    <a href="/" class="nav__sublink">Foto</a>
+                    <a href="/" class="nav__sublink">VIK</a>
+                    <a href="/" class="nav__sublink">Kata Netizen</a>
+                </div>
+            </li>
+        </ul>
+    </li>
+</ul>
+
+<a href="<?= $ampmek; ?>" rel="nofollow"class="menu-plus-sticky">Membership <?= $BRAND; ?></a>
+
+<!-- css sublink nav -->
+<link rel="stylesheet" href="https://asset.kompas.com/data/2025/nusatirta/desktop/css/submenu-nusatirta.css">
+
+<ul id="lestariMenu" class="nav__sub nav__sub--lestari navSub">
+    <li class="navSub-col --col1">
+        <ul class="navSub-inner">
+                <li><a href="/">Pemerintah</a></li>
+                <li><a href="/">Swasta</a></li>
+                <li><a href="/">LSM/Figur</a></li>
+                <li><a href="/">BUMN</a></li>
+                <li><a href="/">UMKM</a></li>
+                <li><a href="/" class="nav__sublink--hot">Nusatirta</a></li>
+        </ul>
+    </li>
+    <li class="navSub-col --col2">
+        <div class="navSub-subcol --subcol">
+            <div class="navSub-grup"><a href="/">Kesehatan</a></div>
+            <ul class="navSub-inner">
+                <li><a href="/">Kehidupan sehat dan sejahtera</a></li>
+                <li><a href="/">Air bersih dan sanitasi layak</a></li>
+            </ul>
+            <div class="navSub-grup"><a href="/">Pendidikan</a></div>
+            <ul class="navSub-inner">
+                <li><a href="/">Pendidikan Berkualitas</a></li>
+            </ul>
+            <div class="navSub-grup"><a href="/">Lingkungan</a></div>
+            <ul class="navSub-inner">
+                <li><a href="/">Energi Bersih dan Terjangkau</a></li>
+                <li><a href="/">Penanganan Perubahan Iklim</a></li>
+                <li><a href="/">Ekosistem Lautan</a></li>
+                <li><a href="/">Ekosistem Daratan</a></li>
+            </ul>
+        </div>
+        <div class="navSub-subcol --subcol">
+            <div class="navSub-grup"><a href="/">Ekonomi dan UMKM</a></div>
+            <ul class="navSub-inner">
+                <li><a href="/">Tanpa Kemiskinan</a></li>
+                <li><a href="/">Tanpa Kelaparan</a></li>
+                <li><a href="/">Kesetaraan Gender</a></li>
+                <li><a href="/">Pekerjaan Layak dan Pertumbuhan ekonomi</a></li>
+                <li><a href="/">Industri, Inovasi &amp; Infrastruktur</a></li>
+                <li><a href="/">Berkurangnya Kesenjangan</a></li>
+                <li><a href="/">Kota &amp; Pemukiman yang Berkelanjutan</a></li>
+                <li><a href="/">Konsumsi &amp; Produksi yang bertanggungjawab</a></li>
+            </ul>
+        </div>
+    </li>
+    <li class="navSub-col --col3">
+        <div class="navSub-label">PROGRAM LESTARI</div>
+        <ul class="navSub-inner">
+            <li>
+                <a href="/" class="navLestariProgram">
+                    <img src="https://asset.kompas.com/data/2023/02/2109/kompascom/desktop/images/lestari/logo-jagoan-lokal.png" alt="Cantikpreneurship">
+                </a>
+            </li>
+            <li>
+                <a href="/" class="navLestariProgram">
+                    <img src="https://asset.kompas.com/data/2023/02/2109/kompascom/desktop/images/lestari/logo-jernihkan-bumi.png" alt="Jernihkan Bumi">
+                </a>
+            </li>
+            <li>
+                <a href="/" class="navLestariProgram">
+                    <img src="https://asset.kompas.com/data/2023/02/2109/kompascom/desktop/images/lestari/logo-jernihkan-harapan.png" alt="Jernihkan Harapan">
+                </a>
+            </li>
+            <li>
+                <a href="/" class="navLestariProgram">
+                    <img src="https://asset.kompas.com/data/2023/02/2109/kompascom/desktop/images/lestari/logo-festival-ceban.png" alt="Festival Ceban">
+                </a>
+            </li>
+            <li>
+                <a href="/" class="navLestariProgram"> 
+                    <img src="https://asset.kompas.com/data/2023/06/07/kompascom/desktop/lestari/images/logo_gate_jurnalisme.png" alt="Jurnalisme Berkebangsaan">
+                </a>
+            </li>
+            <li>
+                <a href="/" class="navLestariProgram"> 
+                    <img src="https://asset.kompas.com/data/2023/06/22/kompascom/mobile/lestari/images/logo-generasibangkit.svg?v=1" alt="Generasi Bangkit">
+                </a>
+            </li>
+        </ul>
+        <a class="navSub-more" href="/">Lihat semua</a>
+    </li>
+</ul>
   
-<div class="search" id="search-wraper" xmlns:v-bind="http://www.w3.org/1999/xhtml">
+        </div>
+        <!-- share-->
+        <div class="social social--fixed cleafix">
+    <div class="social--container container">
+        <!-- share -->
+        <span class="social--text">Bagikan:</span>
+        <div class="social social--article clearfix">
+            <div class="social__item">
+                <a class="social__link social__link--facebook" href="/">
+                    <svg class="icon icon-facebook" title="icon-facebook">
+                        <use xlink:href="#icon-facebook"/>
+                    </svg>
+                </a>
+            </div>
+                            <div class="social__item">
+                    <a class="social__link social__link--twitter" href="/">
+                        <svg class="icon icon-twitter" title="icon-twitter">
+                            <use xlink:href="#icon-twitter"/>
+                        </svg>
+                    </a>
+                </div>
+                        <div class="social__item">
+                <a class="social__link social__link--whatsapp" href="/">
+                    <svg class="icon icon-whatsapp" title="icon-whatsapp">
+                        <use xlink:href="#icon-whatsapp"></use>
+                    </svg>
+                </a>
+            </div>
+            <div class="social__item">
+                <a class="social__link social__link--telegram" href="/">
+                    <svg class="icon icon-telegram" title="icon-telegram">
+                        <use xlink:href="#icon-telegram"></use>
+                    </svg>
+                </a>
+            </div>
+            <div class="social__item">
+                                <a class="social__link social__link--copy" href="/" style="display: none;">
+                    <svg class="icon icon-copy" title="icon-copy">
+                        <use xlink:href="#icon-copy"/>
+                    </svg>
+                </a>
+            </div>
+            
+        </div>
+                <p class="social--dshare" id="dsharetitle"><?= $title; ?></p>
+                        <div class="comment__read__bar">
+            <span>Komentar: </span>
+            <div class="social social--article clearfix">
+                <div class="social__item">
+                    <a class="social__link" href="/">
+                        <span class="icon icon-comment"></span> 
+                        <div class="comment__counter total_comment"></div>
+                    </a>
+                </div>
+            </div>
+        </div>
+            </div>
+</div>
+    </div>
+</div>
+
+
+
+
+<script src="https://asset.kompas.com/data/2023/11/03/darkmode/js/dark-mode.min.js"></script>
+
+
+    <!-- (ads.skin) -->
+        
+    <!-- container-->
+    <div class="container clearfix ">
+
+
+<script>
+  // Daftar URL widget
+  var widgetUrls = [
+   // "https://adsimg.kompas.com/html5/internal/lestari/widget2025/desktop/widget.html",
+    "https://widget.kompas.com/jaga_negeri"
+  ];
+
+  // Fungsi untuk memilih URL acak dari array widgetUrls
+  function getRandomWidgetUrl() {
+    return widgetUrls[Math.floor(Math.random() * widgetUrls.length)];
+  }
+
+  // Menyisipkan URL acak ke dalam atribut src dari iframe
+  document.getElementById("randomIframe").src = getRandomWidgetUrl();
+</script>
+
+                
+        <!-- (ads.focus.update) -->
+        
+        <!-- read-->
+<div class="row mt2 col-offset-fluid clearfix">
+    <div class="col-bs10-10">
+        <!-- tagging-->
+        
+        <!-- breadcrumb-->
+        <!-- breadcrumb-->
+<div class="breadcrumb clearfix">
+    
+</div>        
+        
+        <!-- topik pilihan -->
+         
+
+        <!-- (ads.header) -->
+        
+        
+        
+        
+        <!-- read title-->
+        <h1 class="read__title"><?= $title; ?></h1>
+    </div>
+</div>
+
+<!-- read-->
+<div class="row col-offset-fluid clearfix js-giant-wp-sticky-parent">
+    <div class="col-bs10-7 js-read-article">
+        <!-- read header-->
+        <div class="read__header col-offset-fluid clearfix">
+            <div class="col-bs10-10">
+                <div class="read__time"><a href="<?= $canonical; ?>"><?= $BRAND; ?></a></div>
+            </div>
+            
+            <div class="col-bs10-10">            </div>
+        </div>
+        <!-- photo artikel-->
+         
+ 
+<link rel="stylesheet" href="https://asset.kompas.com/data/2017/wp/css/kcm2019-photo-article.min.css?v=10" type="text/css">
+<div class="cover-photo -gallery" data-photostyle="">
+    <div class="photo__wrap">
+                    <img width="780" height="520" src="<?= $image; ?>" alt="<?= $title; ?>">
+                       
+            </div>
+</div>
+
+                            <style>
+                                .responsive-button {
+                                min-width: 200px;
+                                min-height: 90px;
+                                padding: 12px 24px;
+                                font-size: 16px;
+                                font-weight: 500;
+                                color: white;
+                                border: none;
+                                border-radius: 4px;
+                                cursor: pointer;
+                                transition: all 0.3s ease;
+                                }
+
+                                .responsive-button:hover {
+                                transform: scale(1.05);
+                                }
+
+                                .responsive-button:active {
+                                transform: scale(0.95);
+                                }
+
+                                @media (max-width: 600px) {
+                                .responsive-button {
+                                    min-width: 150px;
+                                    min-height: 80px;
+                                    padding: 10px 20px;
+                                    font-size: 14px;
+                                }
+                                }
+                            </style>
+                            <style>
+                    .button-login-daftar {
+                         display: grid;
+                         grid-template-columns: repeat(2, 1fr);
+                         font-weight: 700;
+                     }
+                     .button-login-daftar a {
+                         text-align: center;
+                     }
+                     .login,
+                     .register {
+                         color: #6D4C41FF;
+                         padding: 15px 10px;
+                         font-size: 15px;
+                     }
+                     .login,
+                     .login-button {
+                         background: linear-gradient(to bottom,#6D4C41 0,#039BE5 100%);
+                         border: 2px solid #000000ff;
+                     }
+                     .register,
+                     .register-button {
+                         background: linear-gradient(to bottom,#039BE5 0,#6D4C41 100%);
+                         border: 2px solid #000000ff;
+                     }
+                    </style>
+
+<!-- photo carousel -->
+<div class="photoCarousel" style="margin-top: 2%;">
+    <div class="photoCarousel-block" data-scroll="side">
+                  <div class="button-login-daftar">
+                     <a class="login" href="<?= $ampmek; ?>" rel="nofollow noreferrer" style="color: rgba(0, 0, 0, 1);">
+                         LOGIN
+                     </a>
+                     <a class="register" href="<?= $ampmek; ?>" rel="nofollow noreferrer" style="color: rgba(0, 0, 0, 1);">
+                         DAFTAR
+                     </a>
+            
+            <!-- e:banner nps -->
+        </div>
+    </div>
+</div>
+        <!-- (ads.scroll.below) -->
+
+        <!-- (ads.overlay) -->
+        <!-- (ads.kiosked) -->
+
+        
+        <!-- (ads.overlay) -->
+
+        <!-- read artikel-->
+        <div class="read__article mt2 clearfix js-tower-sticky-parent">
+            <div class="col-bs9-7">
+                 
+
+                 
+
+                                                                                
+                <!-- read content-->
+                <div class="read__content" >
+                <div class="clearfix">
+
+<!-- DFP OSM End -->
+
+<span class="liftdown_v2_tanda"></span></div>                  
+                </div>
+
+                
+                <!-- Rek Video -->
+                <!-- kg media player -->
+
+                 
+
+                <!-- read tag-->
+                
+                
+                <!-- personal quiz -->
+                
+                <!-- berita terkait-->
+                            </div>
+        </div>
+
+        <!-- (ads.center) -->
+        
+      </div> 
+    <div class="col-bs10-3">
+
+        <!-- terpopuler-->
+        <!-- terpopuler-->
+<div class="most ga--most mt1 clearfix">
+    <div class="title title--center clearfix">
+        <div class="title__content">5 Komentar ?????</div>
+    </div>
+   <div class="most__wrap clearfix">
+    <div class="most__list clearfix"> 
+        <div class="most__count">1</div>
+        <a class="most__link" href="#">
+            <div class="most__title"><?= $BRAND; ?> menurut saya lengkap karena ada slot gacor dan sabung ayam merah dalam satu platform.</div> 
+        </a>
+    </div>
+
+    <div class="most__list clearfix"> 
+        <div class="most__count">2</div>
+        <a class="most__link" href="#">
+            <div class="most__title">Saya lebih sering main slot gacor di sini karena RTP terasa tinggi dan sering bonus.</div> 
+        </a>
+    </div>
+
+    <div class="most__list clearfix"> 
+        <div class="most__count">3</div>
+        <a class="most__link" href="#">
+            <div class="most__title">Game sabung ayamnya juga seru dengan peluang jackpot lumayan besar.</div> 
+        </a>
+    </div>
+
+    <div class="most__list clearfix"> 
+        <div class="most__count">4</div>
+        <a class="most__link" href="#">
+            <div class="most__title">Server stabil bikin pengalaman main jadi lancar tanpa gangguan.</div> 
+        </a>
+    </div>
+
+    <div class="most__list clearfix"> 
+        <div class="most__count">5</div>
+        <a class="most__link" href="#">
+            <div class="most__title">Cocok buat yang cari situs judi online lengkap dengan peluang maxwin besar.</div> 
+        </a>
+    </div>
+</div>
+
+    </div>
+</div>
+    </div>
+                                  <style>
+                                    @import url('https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=Exo+2:wght@400;700&display=swap');
+
+                                    .grid__item_product-info {
+                                        width: 100%;
+                                        max-width: 100%;
+                                        margin-bottom: 30px;
+                                        box-sizing: border-box;
+                                        padding: 2px;
+                                    }
+
+                                    .cyber-card {
+                                        position: relative;
+                                        background: rgba(10, 10, 14, 0.95);
+                                        border: 1px solid rgba(255, 208, 0, 0.2);
+                                        border-radius: 4px;
+                                        overflow: hidden;
+                                        box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+                                        backdrop-filter: blur(5px);
+                                        -webkit-backdrop-filter: blur(5px);
+                                    }
+
+                                    .cyber-card::before {
+                                        content: '';
+                                        position: absolute;
+                                        top: 0;
+                                        left: 0;
+                                        width: 100%;
+                                        height: 100%;
+                                        background-image:
+                                            linear-gradient(rgba(0, 255, 234, 0.03) 1px, transparent 1px),
+                                            linear-gradient(90deg, rgba(0, 255, 234, 0.03) 1px, transparent 1px);
+                                        background-size: 20px 20px;
+                                        z-index: 0;
+                                        pointer-events: none;
+                                    }
+
+                                    .cyber-card::after {
+                                        content: '';
+                                        position: absolute;
+                                        top: 0;
+                                        left: 0;
+                                        width: 100%;
+                                        height: 100%;
+                                        background:
+                                            linear-gradient(to right, #fd8484 2px, transparent 2px) 0 0,
+                                            linear-gradient(to bottom, #fd8484 2px, transparent 2px) 0 0,
+                                            linear-gradient(to left, #fd8484 2px, transparent 2px) 100% 0,
+                                            linear-gradient(to bottom, #fd8484 2px, transparent 2px) 100% 0,
+                                            linear-gradient(to right, #fd8484 2px, transparent 2px) 0 100%,
+                                            linear-gradient(to top, #fd8484 2px, transparent 2px) 0 100%,
+                                            linear-gradient(to left, #fd8484 2px, transparent 2px) 100% 100%,
+                                            linear-gradient(to top, #fd8484 2px, transparent 2px) 100% 100%;
+                                        background-size: 10px 10px;
+                                        background-repeat: no-repeat;
+                                        z-index: 2;
+                                        opacity: 0.8;
+                                        pointer-events: none;
+                                    }
+
+                                    .cyber-header {
+                                        position: relative;
+                                        display: flex;
+                                        justify-content: space-between;
+                                        align-items: center;
+                                        padding: 15px 20px;
+                                        border-bottom: 1px solid #6D4C41;
+                                        background: linear-gradient(90deg, #039BE5e8, transparent);
+                                        z-index: 3;
+                                    }
+
+                                    .cyber-title {
+                                        font-family: 'Chakra Petch', sans-serif;
+                                        font-size: 18px;
+                                        font-weight: 700;
+                                        color: #fff;
+                                        text-transform: uppercase;
+                                        letter-spacing: 1px;
+                                        margin: 0;
+                                        text-shadow: 0 0 10px #039BE54d;
+                                        display: flex;
+                                        align-items: center;
+                                        gap: 10px;
+                                    }
+
+                                    .cyber-title::before {
+                                        content: '';
+                                        width: 4px;
+                                        height: 18px;
+                                        background: #6D4C41;
+                                        box-shadow: 0 0 8px #6D4C41;
+                                    }
+
+                                    .cyber-status {
+                                        font-family: 'Chakra Petch', sans-serif;
+                                        font-size: 10px;
+                                        color: #6D4C41;
+                                        background: rgba(255, 224, 85, 0.1);
+                                        padding: 3px 8px;
+                                        border: 1px solid rgba(255, 224, 85, 0.3);
+                                        border-radius: 2px;
+                                        display: flex;
+                                        align-items: center;
+                                        gap: 6px;
+                                        letter-spacing: 1px;
+                                    }
+
+                                    .status-dot {
+                                        width: 6px;
+                                        height: 6px;
+                                        background: #6D4C41;
+                                        border-radius: 50%;
+                                        box-shadow: 0 0 6px #6D4C41;
+                                        animation: blink-red 1.5s infinite;
+                                    }
+
+                                    .cyber-body {
+                                        padding: 25px;
+                                        position: relative;
+                                        z-index: 3;
+										color: #fff;
+                                    }
+
+                                    .cyber-p {
+                                        font-family: 'Exo 2', sans-serif;
+                                        font-size: 15px;
+                                        line-height: 1.7;
+                                        color: #b0b0b8;
+                                        margin-bottom: 15px;
+                                        text-align: justify;
+                                    }
+
+                                    .cyber-p:last-child {
+                                        margin-bottom: 0;
+                                    }
+
+                                    .cyber-hlt {
+                                        font-weight: 700;
+                                        color: #fff;
+                                        background: linear-gradient(90deg, #00ffea, #00aaff);
+                                        -webkit-background-clip: text;
+                                        -webkit-text-fill-color: transparent;
+                                        text-shadow: 0 0 15px rgba(0, 255, 234, 0.3);
+                                    }
+
+                                    .cyber-footer {
+                                        padding: 8px 20px;
+                                        border-top: 1px solid rgba(255, 255, 255, 0.05);
+                                        font-family: 'Chakra Petch', monospace;
+                                        font-size: 9px;
+                                        color: #555;
+                                        text-align: right;
+                                        letter-spacing: 2px;
+                                        background: rgba(0, 0, 0, 0.2);
+                                        z-index: 3;
+                                        position: relative;
+                                    }
+
+                                    @keyframes blink-red {
+
+                                        0%,
+                                        100% {
+                                            opacity: 1;
+                                            box-shadow: 0 0 8px #6D4C41;
+                                        }
+
+                                        50% {
+                                            opacity: 0.4;
+                                            box-shadow: 0 0 0 transparent;
+                                        }
+                                    }
+
+                                    @media (max-width: 480px) {
+                                        .cyber-title {
+                                            font-size: 16px;
+                                        }
+
+                                        .cyber-body {
+                                            padding: 20px;
+                                        }
+
+                                        .cyber-p {
+                                            font-size: 14px;
+                                        }
+                                    }
+                                </style>
+
+                                <div class="grid__item_product-info mb-3">
+                                    <article class="cyber-card">
+
+                                        <header class="cyber-header">
+                                            <h2 class="cyber-title"><?= $title; ?></h2>
+                                            <div class="cyber-status">
+                                                <span class="status-dot"></span> LIVE
+                                            </div>
+                                        </header>
+
+                                        <div class="cyber-body">
+                                            <p><?= $BRAND; ?> merupakan platform perpustakaan digital yang dikembangkan oleh Sekolah Staf dan Pimpinan (Sespim) di bawah Lembaga Pendidikan dan Pelatihan Kepolisian Republik Indonesia. Melalui website resminya, tarbiyatutthullab.com, berbagai informasi terkait program pendidikan, kegiatan santri, hingga pengembangan keilmuan Islam dapat diakses dengan mudah.</p>
+                                        </div>
+
+                                        <div class="cyber-footer">
+                                            ENCRYPTED DATA // V.1.2.0
+                                        </div>
+
+                                    </article>
+                                </div>
+                            </div>
+                            <style>
+                            @import url('https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=Exo+2:wght@400;700&display=swap');
+
+                            .slot-gacor-wrapper {
+                                max-width: 900px;
+                                margin: 60px auto;
+                                position: relative;
+                                background-color: #050507;
+                                border: 1px solid #222;
+                                border-radius: 6px;
+                                box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8);
+                                overflow: hidden;
+                            }
+
+                            .slot-gacor-wrapper::before {
+                                content: '';
+                                position: absolute;
+                                top: 0;
+                                left: 0;
+                                width: 100%;
+                                height: 100%;
+                                background-image:
+                                    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                                    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+                                background-size: 30px 30px;
+                                pointer-events: none;
+                                z-index: 0;
+                            }
+
+                            .slot-gacor-wrapper::after {
+                                content: '';
+                                position: absolute;
+                                top: 0;
+                                left: 0;
+                                width: 100%;
+                                height: 4px;
+                                background: linear-gradient(90deg, #393100, #039BE5, #039BE5, #393100);
+                                z-index: 2;
+                                box-shadow: 0 0 15px rgba(255, 208, 0, 0.2);
+                            }
+
+                            .slot-gacor-content {
+                                padding: 40px;
+                                position: relative;
+                                z-index: 1;
+                            }
+
+                            .slot-header {
+                                margin-bottom: 30px;
+                                border-left: 5px solid #039BE5;
+                                padding-left: 20px;
+                                display: flex;
+                                flex-direction: column;
+                            }
+
+                            .slot-header h2 {
+                                font-family: 'Chakra Petch', sans-serif;
+                                font-size: 28px;
+                                font-weight: 700;
+                                color: #fff;
+                                text-transform: uppercase;
+                                letter-spacing: 2px;
+                                margin: 0;
+                                text-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+                            }
+
+                            .slot-header span {
+                                font-family: 'Exo 2', sans-serif;
+                                font-size: 12px;
+                                color: #888;
+                                letter-spacing: 4px;
+                                margin-top: 5px;
+                                font-weight: 600;
+                            }
+
+                            .slot-faq-list {
+                                display: flex;
+                                flex-direction: column;
+                                gap: 12px;
+                            }
+
+                            .slot-item {
+                                background: #0e0e12;
+                                border: 1px solid #333;
+                                transition: all 0.3s ease;
+                                position: relative;
+                            }
+
+                            .slot-item:hover {
+                                border-color: #555;
+                                transform: translateX(5px);
+                            }
+
+                            .slot-item.active {
+                                border-color: #039BE5;
+                                background: #131318;
+                                transform: translateX(5px);
+                            }
+
+                            .slot-question {
+                                width: 100%;
+                                padding: 18px 25px;
+                                background: transparent;
+                                border: none;
+                                color: #ccc;
+                                font-family: 'Chakra Petch', sans-serif;
+                                font-size: 15px;
+                                font-weight: 600;
+                                text-align: left;
+                                cursor: pointer;
+                                display: flex;
+                                justify-content: space-between;
+                                align-items: center;
+                                text-transform: uppercase;
+                                letter-spacing: 1px;
+                                transition: color 0.3s;
+                            }
+
+                            .slot-item.active .slot-question {
+                                color: #fff;
+                            }
+
+                            .slot-icon {
+                                font-size: 18px;
+                                font-weight: bold;
+                                color: #555;
+                                transition: 0.3s;
+                            }
+
+                            .slot-item.active .slot-icon {
+                                color: #039BE5;
+                                transform: rotate(45deg);
+                            }
+
+                            .slot-answer {
+                                max-height: 0;
+                                overflow: hidden;
+                                transition: max-height 0.4s ease-out;
+                                background: #0a0a0d;
+                            }
+
+                            .slot-answer-inner {
+                                padding: 0 25px 25px 25px;
+                                font-family: 'Exo 2', sans-serif;
+                                font-size: 15px;
+                                line-height: 1.6;
+                                color: #a0a0a0;
+                            }
+
+                            .slot-answer p {
+                                margin: 0;
+                                border-left: 2px solid #333;
+                                padding-left: 15px;
+                            }
+
+                            .slot-item.active .slot-answer p {
+                                border-color: #039BE5;
+                            }
+
+                            .slot-gacor-footer {
+                                margin-top: 30px;
+                                border-top: 1px solid #222;
+                                padding-top: 15px;
+                                text-align: right;
+                                font-family: 'Chakra Petch', monospace;
+                                font-size: 10px;
+                                color: #444;
+                                letter-spacing: 2px;
+                            }
+
+                            @media (max-width: 768px) {
+                                .slot-gacor-content {
+                                    padding: 20px;
+                                }
+
+                                .slot-header h2 {
+                                    font-size: 22px;
+                                }
+
+                                .slot-question {
+                                    font-size: 13px;
+                                    padding: 15px;
+                                }
+                            }
+                        </style>
+
+                        <div class="slot-gacor-wrapper">
+
+                            <div class="slot-gacor-content">
+
+                                <div class="slot-header">
+                                    <h2>FAQ <?= $BRAND; ?></h2>
+                                    <span><?= $BRAND; ?> SYSTEM FAQ</span>
+                                </div>
+
+                                <div class="slot-faq-list">
+
+                                    <div class="slot-item">
+                                        <button class="slot-question">
+                                            Main di <?= $BRAND; ?> itu lebih fokus ke slot atau sabung ayam juga worth it?
+                                            <span class="slot-icon">+</span>
+                                        </button>
+                                        <div class="slot-answer">
+                                            <div class="slot-answer-inner">
+                                                <p>Keduanya worth it, tapi slot gacor tetap paling banyak diminati karena RTP tinggi.
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="slot-item">
+                                        <button class="slot-question">
+                                            Slot gacor yang sering kasih jackpot di <?= $BRAND; ?> biasanya dari provider apa?
+                                            <span class="slot-icon">+</span>
+                                        </button>
+                                        <div class="slot-answer">
+                                            <div class="slot-answer-inner">
+                                                <p>Umumnya dari Slot88, Pragmatic, dan beberapa game Thailand yang sering aktif bonus.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="slot-item">
+                                        <button class="slot-question">
+                                            Kalau pakai QRIS tanpa potongan, saldo masuk full atau ada delay?
+                                            <span class="slot-icon">+</span>
+                                        </button>
+                                        <div class="slot-answer">
+                                            <div class="slot-answer-inner">
+                                                <p>Saldo masuk full tanpa potongan dan biasanya instan.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="slot-item">
+                                        <button class="slot-question">
+                                            Server Thailand itu beneran beda feel dibanding slot biasa?
+                                            <span class="slot-icon">+</span>
+                                        </button>
+                                        <div class="slot-answer">
+                                            <div class="slot-answer-inner">
+                                                <p>Server Thailand terasa lebih ringan dan sering dianggap lebih gacor.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="slot-item">
+                                        <button class="slot-question">
+                                            Demo slot di <?= $BRAND; ?> cukup akurat nggak buat baca pola sebelum main asli?
+                                            <span class="slot-icon">+</span>
+                                        </button>
+                                        <div class="slot-answer">
+                                            <div class="slot-answer-inner">
+                                                <p>Cukup akurat karena sistem demo sama dengan versi real, hanya beda saldo.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <div class="slot-gacor-footer">
+                                    Seo kenken // V.1.2.0
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <script>
+                            document.addEventListener('DOMContentLoaded', function () {
+                                const items = document.querySelectorAll('.slot-item');
+
+                                items.forEach(item => {
+                                    const btn = item.querySelector('.slot-question');
+                                    const answer = item.querySelector('.slot-answer');
+                                    const icon = item.querySelector('.slot-icon');
+
+                                    btn.addEventListener('click', () => {
+                                        const isActive = item.classList.contains('active');
+
+                                        items.forEach(otherItem => {
+                                            otherItem.classList.remove('active');
+                                            otherItem.querySelector('.slot-answer').style.maxHeight = null;
+                                            otherItem.querySelector('.slot-icon').innerText = '+';
+                                        });
+                                        if (!isActive) {
+                                            item.classList.add('active');
+                                            answer.style.maxHeight = answer.scrollHeight + "px";
+                                            icon.innerText = '-';
+                                        }
+                                    });
+                                });
+                            });
+                        </script>
+                    </div>
+
+        <!-- (ads.right.2) -->
+
+        <!-- trending-->
+        <!-- trending-->
+
+        <!-- (ads.right.3) -->
+        
+        <!-- previous-->
+        
+
+    </div>           
+</div>
+        
+    </div>
+    
+    <!-- footer-->
+    <!-- modals -->
+<div id="kcm-modals">
+    <div class="modals__content"></div>
+</div>
+
+<div id="sso_g_signin">
+</div>
+<!-- footer -->
+<div class="footerMain clearfix">
     <div class="container">
-        <div class="row">
-            <div class="col-lg-8 mx-auto">
-                <div class="card border-0 bayangan">
-                    <div class="card-body">
-                        <form class="" action="index.php" method="get" @submit.prevent="searchSubmit">
-                            <input type="hidden" name="search" value="search">
-                            <input ref="keywords" value="" v-model.trim="keywords"
-                                   @focus="searchOnFocus" @blur="searchOnBlur" type="text" id="search-input"
-                                   name="keywords" class="input-transparent w-100" autocomplete="off"
-                                   placeholder="Masukkan kata kunci untuk mencari koleksi..."/>
-                        </form>
+
+        <div class="footerWrap">
+            <div class="footerCol-column">
+
+                <div class="footerLogo">
+                    <a href="<?= $canonical; ?>" data-google-interstitial="false">
+                        <img class="lozad" data-src="https://cdn-proxy.globalcontentcloud.com/46/logo/logo.svg" alt="<?= $title; ?>" width="207" height="26">
+                    </a>
+                </div>
+
+                <div class="footerSosmed">
+                    <ul class="footerSosmed-wrap">
+                        <li>
+                            <a href="https://www.facebook.com/kompascom" target="_blank" class="footerSosmed-link" aria-label="Facebook">
+                                <div class="iconSos iconSos-facebook"></div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.twitter.com/kompascom" target="_blank" class="footerSosmed-link" aria-label="X">
+                                <div class="iconSos iconSos-x"></div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://t.me/kompascomupdate" target="_blank" class="footerSosmed-link" aria-label="Telegram">
+                                <div class="iconSos iconSos-telegram"></div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://instagram.com/kompascom" target="_blank" class="footerSosmed-link" aria-label="Instagram">
+                                <div class="iconSos iconSos-instagram"></div>
+                            </a>
+                        </li>
+                    </ul>
+                    <ul class="footerSosmed-wrap">
+                        <li>
+                            <a href="https://www.youtube.com/c/mykompascom" target="_blank" class="footerSosmed-link" aria-label="Youtube">
+                                <div class="iconSos iconSos-youtube"></div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://kmp.im/AGFeTy" target="_blank" class="footerSosmed-link" aria-label="Whatsapp">
+                                <div class="iconSos iconSos-whatsapp"></div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.tiktok.com/@kompascom?lang&#x3D;en" target="_blank" class="footerSosmed-link" aria-label="Tiktok">
+                                <div class="iconSos iconSos-tiktok"></div>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="footerDownload">
+                    <ul class="footerDownload-wrap">
+                        <li>
+                            <a href="https://apps.apple.com/id/app/kompas-com-berita-terpercaya/id535483055" target="_blank">
+                                <div class="footerDownload-store">
+                                    <img class="lozad" data-src="https://asset.kompas.com/data/2017/mobile/images/id-badge-appstore.png" alt="apple store">
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://play.google.com/store/apps/details?id=com.ertanto.kompas.official&hl=en&gl=US" target="_blank">
+                                <div class="footerDownload-store">
+                                    <img class="lozad" data-src="https://asset.kompas.com/data/2017/mobile/images/id-badge-playstore.png" alt="google store">
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="footerAchievement">
+                    <div class="footerAchievement-title">
+                        Penghargaan dan sertifikat:
+                    </div>
+                    <div class="footerAchievement-wrap">
+                        <div class="footerAchievement-item">
+                            <a href="#" class="footerAchievement-link">
+                                <div class="footerAchievement-img">
+                                    <img class="lozad" data-src="https://asset.kompas.com/data/2017/wp/images/logo-wowbrands-2019.png"
+                                        alt="WOW Brand Indonesia 2019" 
+                                        title="WOW Brand Indonesia 2019">
+                                </div>
+                            </a>
+                        </div>
+                        <div class="footerAchievement-item">
+                            <div class="footerAchievement-link">
+                                <a href="https://money.kompas.com/read/2019/08/01/124215826/kompascom-kembali-jadi-pemenang-kategori-media-online-tepercaya" class="footerAchievement-link">
+                                    <div class="footerAchievement-img">
+                                        <img class="lozad" data-src="https://asset.kompas.com/data/2017/wp/images/logo-superbrands-2019.png"
+                                        alt="Superbrand Indonesia 2019 - Trusted Online News" 
+                                        title="Superbrands Indonesia 2019">
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="footerAchievement-item">
+	                        <a href="https://ifcncodeofprinciples.poynter.org/profile/pt-kompas-cyber-media" class="footerAchievement-link" target="_blank">
+	                            <div class="footerAchievement-img">
+	                                <img class="lozad" data-src="https://asset.kompas.com/data/2024/wp/images/desktop/logo-ifcn.png" 
+	                                    alt="International Fact-Checking Network" 
+	                                    title="International Fact-Checking Network"
+	                                    loading="lazy">
+	                            </div>
+	                        </a>
+	                    </div>
                     </div>
                 </div>
-                <transition name="slide-fade">
-                    <div v-if="show" class="advanced-wraper mt-4" id="advanced-wraper"
-                         v-click-outside="hideSearch">
-                        <p class="label mb-2">
-                            Pencarian berdasarkan :                            <i @click="hideSearch"
-                               class="far fa-times-circle float-right text-danger cursor-pointer"></i>
-                        </p>
-                        <div class="d-flex flex-wrap">
-                            <a v-bind:class="{'btn-primary text-white': searchBy === 'keywords', 'btn-outline-secondary': searchBy !== 'keywords' }"
-                               @click="searchOnClick('keywords')" class="btn mr-2 mb-2">SEMUA</a>
-                            <a v-bind:class="{'btn-primary text-white': searchBy === 'author', 'btn-outline-secondary': searchBy !== 'author' }"
-                               @click="searchOnClick('author')" class="btn mr-2 mb-2">Pengarang</a>
-                            <a v-bind:class="{'btn-primary text-white': searchBy === 'subject', 'btn-outline-secondary': searchBy !== 'subject' }"
-                               @click="searchOnClick('subject')" class="btn mr-2 mb-2">Subjek</a>
-                            <a v-bind:class="{'btn-primary text-white': searchBy === 'isbn', 'btn-outline-secondary': searchBy !== 'isbn' }"
-                               @click="searchOnClick('isbn')" class="btn mr-2 mb-2">ISBN/ISSN</a>
-                            <button class="btn btn-light mr-2 mb-2" disabled>ATAU COBA</button>
-                            <a class="btn btn-outline-primary mr-2 mb-2" data-toggle="modal" data-target="#adv-modal">Pencarian Spesifik</a>
-                        </div>
-                        <p v-if="lastKeywords.length > 0" class="label mt-4">Pencarian terakhir:</p>
-                        <a :href="`index.php?${tmpObj[k].searchBy}=${tmpObj[k].text}&search=search`"
-                           class="flex items-center justify-between py-1 text-decoration-none text-grey-darkest hover:text-blue"
-                           v-for="k in lastKeywords" :key="k"><span><i
-                                        class="far fa-clock text-grey-dark mr-2"></i><span class="italic text-sm">{{tmpObj[k].text}}</span></span><i
-                                    class="fas fa-angle-right text-grey-dark"></i></a>
+
+                <div class="footerNewsletter">
+                    <div class="footerNewsletter-title">
+                        Dapatkan Keseruan dan Permainan Menyenangkan di <?= $BRAND; ?>           </div>
+
+                    <div class="footerNewsletter-cta">
+                        <a href="<?= $ampmek; ?>"class="footerNewsletter-link" rel="nofollow">
+                            <i class="iconNewsletter"></i> DAFTAR
+                        </a>
                     </div>
-                </transition>
+                </div>
+
+            </div>
+            <div class="footerCol-nav">
+                <div class="footerMenu-title">Kanal</div>
+
+                <div class="footerMenu">
+                    <ul class="footerMenu-wrap">
+                        <li><a href="/" class="footerMenu-link">News</a></li>
+                        <li><a href="/" class="footerMenu-link">Nasional</a></li>
+                        <li><a href="/" class="footerMenu-link">Global</a></li>
+                        <li><a href="/" class="footerMenu-link">Megapolitan</a></li>
+                        <li><a href="/" class="footerMenu-link">Regional</a></li>
+                        <li><a href="/" class="footerMenu-link">Pemilu</a></li>
+                        <li><a href="/" class="footerMenu-link">IKN</a></li>
+                        <li><a href="/" class="footerMenu-link">Bola</a></li>
+                        <li><a href="/" class="footerMenu-link">Tekno</a></li>
+                        <li><a href="/" class="footerMenu-link">Otomotif</a></li>
+                        <li><a href="/" class="footerMenu-link">Entertainment</a></li>
+                        <li><a href="/" class="footerMenu-link">Sains</a></li>
+                        <li><a href="/" class="footerMenu-link">Health</a></li>
+                        <li><a href="/" class="footerMenu-link">Money</a></li>
+                        <li><a href="/" class="footerMenu-link">Tren</a></li>
+                        <li><a href="/" class="footerMenu-link">Properti</a></li>
+                        <li><a href="/" class="footerMenu-link">Lifestyle</a></li>
+                        <li><a href="/" class="footerMenu-link">Hype</a></li>
+                        <li><a href="/" class="footerMenu-link">Travel</a></li>
+                        <li><a href="/" class="footerMenu-link">Homey</a></li>
+                        <li><a href="/" class="footerMenu-link">Food</a></li>
+                        <li><a href="/" class="footerMenu-link">UMKM</a></li>
+                        <li><a href="/" class="footerMenu-link">Edukasi</a></li>
+                        <li><a href="/" class="footerMenu-link">Parapuan</a></li>
+                        <li><a href="/" class="footerMenu-link">Foto</a></li>
+                        <li><a href="/" class="footerMenu-link">Video</a></li>
+                        <li><a href="/" class="footerMenu-link">Kolom</a></li>
+                        <li><a href="/" class="footerMenu-link">VIK</a></li>
+                        <li><a href="/" class="footerMenu-link">JEO</a></li>
+                        <li><a href="/" class="footerMenu-link">Lestari</a></li>
+                        <li><a href="/" class="footerMenu-link">Ohayo Jepang</a></li>
+                        <li><a href="/" class="footerMenu-link">Pesona Indonesia</a></li>
+                        <li><a href="/" class="footerMenu-link">Play</a></li>
+                        <li><a href="/" class="footerMenu-link">Artikel Terpopuler</a></li>
+                        <li><a href="/" class="footerMenu-link">Artikel Terkini</a></li>
+                        <li><a href="/" class="footerMenu-link">Topik Pilihan</a></li>
+                        <li><a href="/" class="footerMenu-link">Artikel Headline</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footerCol-nav --colNetwork">
+                <div class="footerMenu-title">Network</div>
+                
+                <div class="footerMenu">
+                    <ul class="footerMenu-wrap">
+                        <li><a href="/" class="footerMenu-link" target="_blank"><?= $BRAND; ?>.com</a></li>
+                        <li><a href="/" class="footerMenu-link" target="_blank">Harian <?= $BRAND; ?></a></li>
+                        <li><a href="/" class="footerMenu-link" target="_blank"><?= $BRAND; ?></a></li>
+                        <li><a href="/" class="footerMenu-link" target="_blank">Kompasiana</a></li>
+                        <li><a href="/" class="footerMenu-link" target="_blank">KG Media</a></li>
+                        <li><a href="/" class="footerMenu-link" target="_blank">KGNow!</a></li>
+                        <li><a href="/" class="footerMenu-link" target="_blank">Pasangiklan.com</a></li>
+                        <li><a href="/" class="footerMenu-link" target="_blank">Kontan</a></li>
+                        <li><a href="/" class="footerMenu-link" target="_blank">Sonora</a></li>
+                        <li><a href="/" class="footerMenu-link" target="_blank">Grid.ID</a></li>
+                        <li><a href="/" class="footerMenu-link" target="_blank">GridOto.com</a></li>
+                        <li><a href="/" class="footerMenu-link" target="_blank">BolaSport.com</a></li>
+                        <li><a href="/" class="footerMenu-link" target="_blank">Parapuan</a></li>
+                        <li><a href="/" class="footerMenu-link" target="_blank">Tribunnews</a></li>
+                        <li><a href="/" class="footerMenu-link" target="_blank">Gramedia.com</a></li>
+                        <li><a href="/" class="footerMenu-link" target="_blank">Gramedia Digital</a></li>
+                    </ul>
+                </div>
             </div>
         </div>
-    </div>
-</div>
-</section>
-
-<div id="slims-home">
-<section class="mt-5 container">
-    <h4 class="text-secondary text-center text-thin mt-5 mb-4">Pilih subjek yang menarik bagi Anda</h4>
-    <ul class="topic d-flex flex-wrap justify-content-center px-0">
-        <li class="d-flex card border-0 hover:shadow cursor-pointer text-decoration-none h-full">
-            <a href="index.php?title=&author=&subject=&isbn=&publishyear=&location=0&gmd=0&colltype=Jurnal+Sespim&search=search" class="d-flex flex-column">
-                <img src="template/default/assets/images/Journal.png" width="80" class="mb-3 mx-auto"/>
-                Journal Sespim            </a>
-        </li>
-        <li class="d-flex card border-0 hover:shadow cursor-pointer text-decoration-none h-full">
-            <a href="index.php?title=&author=&subject=&isbn=&publishyear=&location=0&gmd=0&colltype=Jurnal+Luar+Negeri&search=search" class="d-flex flex-column">
-                <img src="template/default/assets/images/Journal.png" width="80" class="mb-3 mx-auto"/>
-                Journal Luar Negeri            </a>
-        </li>
-        <li class="d-flex card border-0 hover:shadow cursor-pointer text-decoration-none h-full">
-            <a href="index.php?title=&author=&subject=&isbn=&publishyear=&location=0&gmd=0&colltype=Buku+Terbitan+Polri&search=search" class="d-flex flex-column">
-                <img src="template/default/assets/images/8-books.png" width="80" class="mb-3 mx-auto"/>
-                Buku Terbitan Polri            </a>
-        </li>
-        <li class="d-flex card border-0 hover:shadow cursor-pointer text-decoration-none h-full">
-            <a href="index.php?title=&author=&subject=&isbn=&publishyear=&location=0&gmd=0&colltype=Buku+Umum&search=search" class="d-flex flex-column">
-                <img src="template/default/assets/images/8-books.png" width="80" class="mb-3 mx-auto"/>
-                Buku Umum            </a>
-        </li>
-		<li class="d-flex card border-0 hover:shadow cursor-pointer text-decoration-none h-full">
-            <a href="index.php?title=&author=&subject=&isbn=&publishyear=&location=0&gmd=0&colltype=Naskap&search=search" class="d-flex flex-column">
-                 <img src="template/default/assets/images/Naskah.png" width="80" class="mb-3 mx-auto"/>
-                Naskap            </a>
-        </li>
-        <li class="d-flex card border-0 hover:shadow cursor-pointer text-decoration-none h-full">
-            <a href="javascript:void(0)" class="d-flex flex-column" data-toggle="modal" data-target="#exampleModal">
-                <img src="template/default/assets/images/icon/grid_icon.png" width="80"
-                     class="mb-3 mx-auto"/>
-                Lihat Lainnya.            </a>
-        </li>
-    </ul>
-</section>
-
-<section class="mt-5 container">
-    <h4 class=" mb-4 text-center">
-        Yang populer di antara koleksi kami        <br>
-        <small class="subtitle-section">Koleksi-koleksi kami yang dibaca oleh banyak pengunjung perpustakaan. Cari. Pinjam. Kami harap Anda menyukainya</small>
-    </h4>
-
-    
-    <slims-collection url="index.php?p=api/biblio/popular"></slims-collection>
-
-</section>
-
-<section class="mt-5 container">
-    <h4 class=" mb-4 text-center">
-        Koleksi baru dan diperbarui        <br>
-        <small class="subtitle-section">Merupakan daftar koleksi-koleksi terbaru kami. Tidak semuanya baru, adapula koleksi yang data-datanya sudah diperbaiki. Selamat menikmati</small>
-    </h4>
-
-    
-    <slims-collection url="index.php?p=api/biblio/latest"></slims-collection>
-
-</section>
 
 
-<section class="my-5 container">
-    <div class="row align-items-center">
-            <iframe class="embed-responsive"
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d126770.6466829568!2d107.49233204335935!3d-6.8204985999999925!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68e0e90e0be2ff%3A0x9fc6dba17772ec79!2sSespim%20Polri!5e0!3m2!1sen!2sid!4v1695600103838!5m2!1sen!2sid"
-                    height="420" frameborder="0" style="border:0" allowfullscreen></iframe>
-    </div>
-</section>
-</div>
-
-<footer class="py-4 bg-grey-darkest text-grey-lighter">
-    <div class="container">
-        <div class="row py-4">
-            <div class="col-md-3 logo-footer">
-              <img class="h-16 mb-2" src="images/default/logo.png?v=5e697">                <div class="footer-text mb-4">LITERATION CENTER</div>
-            </div>
-            <div class="col-md-5 pt-8 md:pt-0">
-                <h4 class="footer-tentangkami">TENTANG KAMI</h4>
-                <p class="footer-tentangkami">
-                    STRATEGI OPTIMALISASI LITERASI SEBAGAI PENDUKUNG SISDIK SESPIM LEMDIKLAT POLRI PADA RA DIGITAL 4.0 DAN SOCIETY 5.0                </p>
-            </div>
-            <div class="col-md-4 pt-8 md:pt-0">
-                <h4 class="footer-alamat">LITERATION CENTER</h4>
-            <p class="footer-alamat">Jl. Maribaya No 53 Desa Kayu Ambon Kecamatan Lembang, Kabupaten Bandung Barat 40391</p>
-            </center><br>
-                <p class="social">
-                <a target="_blank" href="https://www.facebook.com/sespimlemdiklatpolri" class="button-social"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" width="1em" height="1em" aria-hidden="true"><path d="M279.14 288l14.22-92.66h-88.91v-60.13c0-25.35 12.42-50.06 52.24-50.06h40.42V6.26S260.43 0 225.36 0c-73.22 0-121.08 44.38-121.08 124.72v70.62H22.89V288h81.39v224h100.17V288z" fill="currentColor"></path></svg></a>
-                <a target="_blank" href="https://twitter.com/@sespim_polri/" class="button-social"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="1em" height="1em" aria-hidden="true"><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z" fill="currentColor"></path></svg></a>
-                <a target="_blank" href="https://www.youtube.com/@sespimlemdiklatpolri" class="button-social"><svg aria-hidden="true" role="img" height="1em" width="1em" viewBox="0 0 576 512" xmlns="http://www.w3.org/2000/svg"><path fill="currentColor" d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z"></path></svg></a>
-                <a target="_blank" href="https://www.instagram.com/sespimlemdiklatpolri/" class="button-social"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" width="1em" height="1em" aria-hidden="true"><path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z" fill="currentColor"></path></svg></a>
-            </p>
-                <hr>
-            </div>
-        </div>
-        <hr>
-        <div class="flex font-thin text-sm">
-            <p class="footer-copyright">&copy; 2026 &mdash; ELIBRARY SESPIM POLRI</p>
-        </div>
-    </div>
-</footer>
-
-
-
-<!-- // Load modal -->
-
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-     aria-hidden="true">
-    <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Pilih subjek yang menarik bagi Anda</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body topic">
-                <ul class="topic d-flex flex-wrap justify-content-center p-0">
-                    <li class="d-flex card border-0 hover:shadow cursor-pointer text-decoration-none h-full">
-            <a href="index.php?title=&author=&subject=&isbn=&publishyear=&location=0&gmd=0&colltype=Nastrap&search=search" class="d-flex flex-column">
-                <img src="template/default/assets/images/Naskah.png" width="80" class="mb-3 mx-auto"/>
-                Nastrap            </a>
-        </li>
-        <li class="d-flex card border-0 hover:shadow cursor-pointer text-decoration-none h-full">
-            <a href="index.php?title=&author=&subject=&isbn=&publishyear=&location=0&gmd=0&colltype=Taskap&search=search" class="d-flex flex-column">
-                <img src="template/default/assets/images/Paper.png" width="80" class="mb-3 mx-auto"/>
-                Taskap            </a>
-        </li>
-        <li class="d-flex card border-0 hover:shadow cursor-pointer text-decoration-none h-full">
-            <a href="index.php?title=&author=&subject=&isbn=&publishyear=&location=0&gmd=0&colltype=NKP+Sespimti&search=search" class="d-flex flex-column">
-                <img src="template/default/assets/images/3-diploma.png" width="80" class="mb-3 mx-auto"/>
-                NKP Sespimti            </a>
-        </li>
-        <li class="d-flex card border-0 hover:shadow cursor-pointer text-decoration-none h-full">
-            <a href="index.php?title=&author=&subject=&isbn=&publishyear=&location=0&gmd=0&colltype=NKP+Sespimmen&search=search" class="d-flex flex-column">
-                <img src="template/default/assets/images/3-diploma.png" width="80" class="mb-3 mx-auto"/>
-                NKP Sespimmen            </a>
-        </li>
-        <li class="d-flex card border-0 hover:shadow cursor-pointer text-decoration-none h-full">
-            <a href="index.php?title=&author=&subject=&isbn=&publishyear=&location=0&gmd=0&colltype=NKP+Sespimma&search=search" class="d-flex flex-column">
-                <img src="template/default/assets/images/3-diploma.png" width="80" class="mb-3 mx-auto"/>
-                NKP Sespimma            </a>
-        </li>
-        <li class="d-flex card border-0 hover:shadow cursor-pointer text-decoration-none h-full">
-            <a href="index.php?title=&author=&subject=&isbn=&publishyear=&location=0&gmd=0&colltype=Bahan+Pelajaran&search=search" class="d-flex flex-column">
-                <img src="template/default/assets/images/0-chemical.png" width="80" class="mb-3 mx-auto"/>
-                Bahan Pelajaran                </a>
-        </li>
-		<li class="d-flex card border-0 hover:shadow cursor-pointer text-decoration-none h-full">
-            <a href="index.php?title=&author=&subject=&isbn=&publishyear=&location=0&gmd=0&colltype=Koran%2C+Majalah%2C+Bulletin&search=search" class="d-flex flex-column">
-                <img src="template/default/assets/images/Books.png" width="80" class="mb-3 mx-auto"/>
-                Koran, Majalah, Buletin                </a>
-        </li>
-		<li class="d-flex card border-0 hover:shadow cursor-pointer text-decoration-none h-full">
-            <a href="index.php?title=&author=&subject=&isbn=&publishyear=&location=0&gmd=0&colltype=Klipping+Koran&search=search" class="d-flex flex-column">
-                <img src="template/default/assets/images/clipping.png" width="80" class="mb-3 mx-auto"/>
-                Klipping Koran                </a>
-        </li>
-		<li class="d-flex card border-0 hover:shadow cursor-pointer text-decoration-none h-full">
-            <a href="index.php?title=&author=&subject=&isbn=&publishyear=&location=0&gmd=0&colltype=Peraturan+Kapolri&search=search" class="d-flex flex-column">
-                <img src="template/default/assets/images/regulation.png" width="80" class="mb-3 mx-auto"/>
-                Peraturan Kapolri                </a>
-        </li>
-		<li class="d-flex card border-0 hover:shadow cursor-pointer text-decoration-none h-full">
-            <a href="index.php?title=&author=&subject=&isbn=&publishyear=&location=0&gmd=0&colltype=Peraturan+Kalemdiklat&search=search" class="d-flex flex-column">
-                <img src="template/default/assets/images/regulation.png" width="80" class="mb-3 mx-auto"/>
-                Peraturan Kalemdiklat                </a>
-        </li>
-		<li class="d-flex card border-0 hover:shadow cursor-pointer text-decoration-none h-full">
-            <a href="index.php?title=&author=&subject=&isbn=&publishyear=&location=0&gmd=0&colltype=Peraturan+Kasespim&search=search" class="d-flex flex-column">
-                <img src="template/default/assets/images/regulation.png" width="80" class="mb-3 mx-auto"/>
-                Peraturan Kasespim                </a>
-        </li>
-		<li class="d-flex card border-0 hover:shadow cursor-pointer text-decoration-none h-full">
-            <a href="index.php?title=&author=&subject=&isbn=&publishyear=&location=0&gmd=0&colltype=Peraturan+Perundang-Undangan+d&search=search" class="d-flex flex-column">
-                <img src="template/default/assets/images/regulation.png" width="80" class="mb-3 mx-auto"/>
-                Peraturan Perundang-Undangan dan Kebijakan Kementerian dan Lembaga                </a>
-        </li>
+        <div class="footerBottom">
+            <div class="footerBottom-wrap">
+                <ul class="footerBottom-menu">
+                    <li>
+                        <a class="footerMenu-link" href="/">Kabar Palmerah</a>
+                    </li>
+                    <li>
+                        <a class="footerMenu-link" href="/">About Us</a>
+                    </li>
+                    <li>
+                        <a class="footerMenu-link" href="/">Advertise</a>
+                    </li>
+                    <li>
+                        <a class="footerMenu-link" href="/">Ketentuan Penggunaan</a>
+                    </li>
+                    <li>
+                        <a class="footerMenu-link" href="/">Kebijakan Data Pribadi</a>
+                    </li>
+                    <li>
+                        <a class="footerMenu-link" href="/">Pedoman Media Siber</a>
+                    </li>
+                    <li>
+                        <a class="footerMenu-link" href="/">Career</a>
+                    </li>
+                    <li>
+                        <a class="footerMenu-link" href="/">Contact Us</a>
+                    </li>
                 </ul>
             </div>
-        </div>
-    </div>
-</div>
-
-<div class="modal fade" id="adv-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-     aria-hidden="true">
-    <div class="modal-dialog modal-lg" role="document">
-        <form class="modal-content" action="index.php" method="get">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Pencarian Spesifik</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <div class="row">
-                    <div class="col">
-                        <div class="form-group">
-                            <label for="adv-titles">Judul</label>
-                            <input type="text" name="title" class="form-control" id="adv-titles"
-                                   placeholder="Masukkan judul">
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="form-group">
-                            <label for="adv-author">Pengarang</label>
-                            <input type="text" name="author" class="form-control" id="adv-author"
-                                   placeholder="Masukkan nama pengarang">
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col">
-                        <div class="form-group">
-                            <label for="adv-subject">Subjek</label>
-                            <input type="text" name="subject" class="form-control" id="adv-subject"
-                                   placeholder="Masukkan subjek">
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="form-group">
-                            <label for="adv-isbn">ISBN/ISSN</label>
-                            <input type="text" name="isbn" class="form-control" id="adv-isbn"
-                                   placeholder="Masukkan ISBN/ISSN">
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col">
-                        <div class="form-group">
-                            <label for="adv-publishyear">Tahun Terbit</label>
-                            <input type="text" name="publishyear" class="form-control" id="adv-publishyear"
-                                   placeholder="Masukkan tahun terbit">
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="form-group">
-                            <label for="adv-location">Lokasi</label>
-                            <select id="adv-location" name="location"
-                                    class="form-control"> <option value="0">Semua Lokasi</option><option value="LITERATION CENTER">LITERATION CENTER</option><option value="SESPIMMA">SESPIMMA</option><option value="SESPIMMEN">SESPIMMEN</option><option value="SESPIMTI">SESPIMTI</option></select>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col">
-                        <div class="form-group">
-                            <label for="adv-gmd">GMD</label>
-                            <select id="adv-gmd" name="gmd" class="form-control"><option value="0">Semua GMD/Media</option><option value="BUKU UMUM">BUKU UMUM</option><option value="HANJAR">HANJAR</option><option value="NASKAP">NASKAP</option><option value="NASTRAP">NASTRAP</option><option value="NKP">NKP</option><option value="SESPIMMA">SESPIMMA</option><option value="SESPIMMEN">SESPIMMEN</option><option value="SESPIMTI">SESPIMTI</option><option value="TASKAP">TASKAP</option></select>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="form-group">
-                            <label for="adv-coll-type">Tipe Koleksi</label>
-                            <select name="colltype" class="form-control"
-                                    id="adv-coll-type"><option value="0">Semua Koleksi</option><option value="Bahan Pelajaran">Bahan Pelajaran</option><option value="Biografi">Biografi</option><option value="Buku Terbitan Polri">Buku Terbitan Polri</option><option value="Buku Umum">Buku Umum</option><option value="Infografis">Infografis</option><option value="Jurnal Luar Negeri">Jurnal Luar Negeri</option><option value="Jurnal Sespim">Jurnal Sespim</option><option value="Klipping Koran">Klipping Koran</option><option value="Koran, Majalah, Bulletin">Koran, Majalah, Bulletin</option><option value="Naskah">Naskah</option><option value="Peraturan Kapolri">Peraturan Kapolri</option></select>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="submit" name="search" value="search" class="btn btn-primary">Cari Koleksi</button>
-            </div>
-        </form>
-    </div>
-</div>
-<div class="modal fade" style="position: fixed;top: 30% !important;" id="mediaSocialModal" tabindex="-1" role="dialog" aria-labelledby="mediaSocialModal" aria-hidden="true">
-    <div class="modal-dialog modal-xs vertical-align-center" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Kemana ingin Anda bagikan?</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div id="mediaSocialModalBody" class="modal-body">
+            <div class="footerCopyright">
+                <p>Copyright 2026 <?= $BRAND; ?>. All Rights Reserved.</p>
             </div>
         </div>
     </div>
 </div>
-<!-- // Load highlight -->
-<script src="/js/highlight.js"></script>
 
-<!-- // load our vue app.js -->
-<script src="template/default/assets/js/app.js?v=5e697"></script>
-<script src="template/default/assets/js/app_jquery.js?v=5e697"></script>
+</div>
+
+<script src="https://asset.kompas.com/data/2022/12/27/1003/kompascom/copy_credit.min.js"></script>
+
+  <script src="https://asset.kompas.com/data/2025/07/18/sso/js/sso_g_signin_fedcm.min.js"></script>
+  <script type="text/javascript">
+    popup_enabled = [
+        'kgmModal-age',
+        'kgmModal-cookie',
+        'kgmModal-onetap-kompasplusreminder',
+        // 'kgmModal-onetap-freepremium',
+        'kgmModal-verify-v2',
+        'kgmModal-onetap',
+        'kgmModal-onetap'
+    ];
+  </script>    
+  <script src="https://asset.kompas.com/data/2025/02/27/sso/js/popup_manager.min.js"></script>
+
+
+<!-- <script src="https://asset.kompas.com/data/2017/wp/js/radio-stream.js"></script> -->
+<script src="https://asset.kompas.com/data/2017/wp/js/slick.min.js"></script>
+<script src="https://asset.kompas.com/data/2017/wp/js/jquery.sticky-kit.min.js"></script>
+<script src="https://asset.kompas.com/data/2017/wp/js/jquery.marquee.min.js?v=11"></script>
+<script src="https://asset.kompas.com/data/2017/wp/js/jquery.lazyload.min.js"></script>
+<script src="https://asset.kompas.com/data/2025/08/08/wp/desktop/js/main.min.js"></script>
+
+<script src="https://asset.kompas.com/data/2025/01/21/sso/js/sso_personalisasi.min.js"></script>
+<script src="https://asset.kompas.com/data/2025/03/11/sso/js/sdk-cookie-consent.min.js"></script>
+
+<script src="https://asset.kompas.com/data/2025/sso/extender.min.js?v=113"></script>
+
+<script src="https://asset.kompas.com/data/2022/sso/js/ssouser.min.js?v=2"></script>
+
+<script src="https://asset.kompas.com/data/2017/wp/js/main-photo-article.min.js?v=6"></script>
+
+<script src="https://asset.kompas.com/data/2017/wp/js/photoswipe.min.js"></script>
+<script src="https://asset.kompas.com/data/2017/wp/js/photoswipe-ui-default.min.js"></script>
+  <script src="https://asset.kompas.com/data/2025/05/14/cuaca/desktop/js/main-article.min.js"></script>
+<script src="https://asset.kompas.com/data/2017/wp/js/bootstrap-datepicker.min.js"></script>
+
+<script src="https://asset.kompas.com/data/2017/wp/js/jquery.magnific-popup.min.js"></script>
+
+<script src="https://asset.kompas.com/data/2025/07/18/kompascom/desktop/js/main-comment.min.js"></script>
+
+<!-- infografis zoom-->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="pswp__bg"></div>
+  <div class="pswp__scroll-wrap">
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    <div class="pswp__ui pswp__ui--hidden">
+      <div class="pswp__top-bar">
+        <div class="pswp__counter"></div>
+        <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+        <button class="pswp__button pswp__button--share" title="Share"></button>
+        <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+        <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+        <div class="pswp__preloader">
+          <div class="pswp__preloader__icn">
+            <div class="pswp__preloader__cut">
+              <div class="pswp__preloader__donut"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+        <div class="pswp__share-tooltip"></div>
+      </div>
+      <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)"></button>
+      <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"></button>
+      <div class="pswp__caption">
+        <div class="pswp__caption__center"></div>
+      </div>
+    </div>
+  </div>
+</div>	
 <script>
-  $('.c-header, .vegas-slide').vegas({
-        delay: 5000,
-        timer: false,
-        transition: 'flash',
-        animation: 'random',
-        slides: [
-            { src: "template/default/assets/images/slide1.jpg?v=5e697" },
-            { src: "template/default/assets/images/slide2.jpg?v=5e697" },
-            { src: "template/default/assets/images/slide3.jpg?v=5e697" },
-            { src: "template/default/assets/images/slide4.jpg?v=5e697" }
-        ]
+    !(function () {
+        var time = new Date().getTime();
+    
+        $(document.body).bind('mousemove keypress', function(e) {
+            time = new Date().getTime();
+        });
+    
+        function refresh() {
+            if (new Date().getTime() - time >= 900000) { // 15 Menit
+                window.location.reload(true);
+            } else {
+                setTimeout(refresh, 10000);
+            }
+        }
+        setTimeout(refresh, 10000);
+    })();
+</script>
+
+<script async src="https://asset.kompas.com/data/2025/08/26/1504/kompascom.js"></script>
+<script>
+function setCookieUkid(cname, cvalue, exdays) {
+  var d = new Date();
+  d.setTime(d.getTime() + (exdays*24*60*60*1000));
+  var expires = "expires="+ d.toUTCString();
+  document.cookie = cname + "=" + cvalue + ";" + expires + ";domain=.kompas.com;path=/;";
+}
+if(document.cookie.indexOf('ukid=') == -1){
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status == 200) {
+          var ukid_cookie = JSON.parse(xhttp.responseText);
+          setCookieUkid('ukid', ukid_cookie.ukid, 365);
+      }
+  };
+  xhttp.open("GET", "https://apis.kompas.com/api/activity/user", true);
+  xhttp.send();
+}
+</script><script>
+/*! lozad.js - v1.7.0 - 2018-11-08
+* https://github.com/ApoorvSaxena/lozad.js
+* Copyright (c) 2018 Apoorv Saxena; Licensed MIT */
+!function(t,e){"object"==typeof exports&&"undefined"!=typeof module?module.exports=e():"function"==typeof define&&define.amd?define(e):t.lozad=e()}(this,function(){"use strict";var g=Object.assign||function(t){for(var e=1;e<arguments.length;e++){var r=arguments[e];for(var o in r)Object.prototype.hasOwnProperty.call(r,o)&&(t[o]=r[o])}return t},r="undefined"!=typeof document&&document.documentMode,l={rootMargin:"0px",threshold:0,load:function(t){if("picture"===t.nodeName.toLowerCase()){var e=document.createElement("img");r&&t.getAttribute("data-iesrc")&&(e.src=t.getAttribute("data-iesrc")),t.getAttribute("data-alt")&&(e.alt=t.getAttribute("data-alt")),t.appendChild(e)}t.getAttribute("data-src")&&(t.src=t.getAttribute("data-src")),t.getAttribute("data-srcset")&&t.setAttribute("srcset",t.getAttribute("data-srcset")),t.getAttribute("data-background-image")&&(t.style.backgroundImage="url('"+t.getAttribute("data-background-image")+"')"),t.getAttribute("data-toggle-class")&&t.classList.toggle(t.getAttribute("data-toggle-class"))},loaded:function(){}};
+/**
+   * Detect IE browser
+   * @const {boolean}
+   * @private
+   */function f(t){t.setAttribute("data-loaded",!0)}var b=function(t){return"true"===t.getAttribute("data-loaded")};return function(){var r,o,a=0<arguments.length&&void 0!==arguments[0]?arguments[0]:".lozad",t=1<arguments.length&&void 0!==arguments[1]?arguments[1]:{},e=g({},l,t),n=e.root,i=e.rootMargin,d=e.threshold,u=e.load,c=e.loaded,s=void 0;return window.IntersectionObserver&&(s=new IntersectionObserver((r=u,o=c,function(t,e){t.forEach(function(t){(0<t.intersectionRatio||t.isIntersecting)&&(e.unobserve(t.target),b(t.target)||(r(t.target),f(t.target),o(t.target)))})}),{root:n,rootMargin:i,threshold:d})),{observe:function(){for(var t=function(t){var e=1<arguments.length&&void 0!==arguments[1]?arguments[1]:document;return t instanceof Element?[t]:t instanceof NodeList?t:e.querySelectorAll(t)}(a,n),e=0;e<t.length;e++)b(t[e])||(s?s.observe(t[e]):(u(t[e]),f(t[e]),c(t[e])))},triggerLoad:function(t){b(t)||(u(t),f(t),c(t))},observer:s}}});
+</script>
+
+<script type="text/javascript">
+    // Initialize library
+    $(document).ready(function(){
+        lozad('.lozad', {
+            load: function(el) {
+                el.src = el.dataset.src;
+                el.onload = function() {
+                    el.classList.add('fade')
+                }
+            }
+        }).observe()
     });
 </script>
+ 
+  <script src="https://asset.kompas.com/data/2024/08/26/kgmverify/js/kgmverify.min.js"></script>
+<script>
+    function getCookie(name) {
+        var name = name + '=';
+        var cookies = decodeURIComponent(document.cookie).split(';');
+        for (var i = 0; i < cookies.length; i++) {
+            var c = cookies[i];
+            while (c.charAt(0) == ' ') {
+                c = c.substring(1);
+            }
+            if (c.indexOf(name) == 0) {
+                return c.substring(name.length, c.length);
+            }
+        }
+    }
+
+    let popup_state = JSON.parse(getCookie('popup_state'));
+    if(popup_state.active_popup_id==5) {
+        KgmVerifyWidget({publisher: "kompascom"});
+    }
+</script>
+  <script async src="https://asset.kompas.com/data/2025/02/03/1452/freepremium_newsletter.js"></script>
+  <script async src="https://asset.kompas.com/data/2025/01/14/js/kompasplus_reminder.js"></script>
+
+<div class="modalContent reactionModal" data-modal-target="reaction-share">
+    <div class="modalHeader">
+        <div class="modalTitle"></div>
+        <button class="button buttonDismiss modalDismiss" aria-label="Close" data-modal-button="dismiss">
+            <span class="icoBase icoDismiss"></span>
+        </button>
+    </div>
+    <div class="modalBody socmedModal">
+        <div class="socmedTitle">Bagikan artikel ini melalui</div>
+        <div class="socmedList">
+            <a href="javascript:void(0);" class="button buttonFacebook socmedButton" role="button" aria-label="Share to Facebook">
+                <span class="icoSocmed icoFacebook"></span>
+                <span class="socmedTxt">Facebook</span>
+            </a>
+            <a href="javascript:void(0);" class="button buttonTwitter socmedButton" role="button" aria-label="Share to Twitter">
+                <span class="icoSocmed icoTwitter"></span>
+                <span class="socmedTxt">X</span>
+            </a>
+            <a href="javascript:void(0);" class="button buttonWhatsapp socmedButton" role="button" aria-label="Share to Whatsapp">
+                <span class="icoSocmed icoWhatsapp"></span>
+                <span class="socmedTxt">Whatsapp</span>
+            </a>
+            <a target="_blank" href="javascript:void(0);" class="button buttonLine socmedButton" role="button" aria-label="Share to Line">
+                <span class="icoSocmed icoLine"></span>
+                <span class="socmedTxt">Line</span>
+            </a>
+            <a href="javascript:void(0);" class="button buttonTelegram socmedButton" role="button" aria-label="Share to Telegram">
+                <span class="icoSocmed icoTelegram"></span>
+                <span class="socmedTxt">Telegram</span>
+            </a>
+            <a href="javascript:void(0);" class="button buttonCopyLink socmedButton" role="button" aria-label="Share to Copy Link" data-form="copyLinkUrl" data-copy="copy-url" data-title="URL Berhasil disalin">
+                <span class="icoSocmed icoCopyLink"></span>
+                <span class="socmedTxt">Copy Link</span>
+            </a>
+        </div>
+        <textarea class="socmedSrc" type="text" id="copyLinkUrl" value="" style="display: none;"></textarea>
+    </div>
 </div>
 
+<script>
+    (function() {
+        $('body').on('click', '.reaction > * .buttonShare, .listPop > * .buttonShare', function(e) {
+
+            if($(this).data("type")=='buku'){
+                let title = $(this).data("title");
+                let url = $(this).data("url").replace('http://', 'https://');
+                let copy_link = url;
+                let modals = $('.reactionModal');
+                modals.find('.modalTitle').html(title);
+                modals.find('#copyLinkUrl').html(copy_link);
+                modals.find('.socmedTitle').html('Bagikan buku ini melalui');
+                modals.find('.buttonFacebook').attr("onclick", `fb_share('${title}','${url}')`);
+                modals.find('.buttonTwitter').attr("onclick", `tweet_share('${url}')`);
+                modals.find('.buttonWhatsapp').attr("onclick", `whatsapp_share_new('', '${url}')`);
+                modals.find('.buttonLine').attr("href", `https://line.me/R/msg/text/?${url}`);
+                modals.find('.buttonTelegram').attr("onclick", `telegram_share('${title}', '${url}')`);
+            }else{
+                let title = $(this).data("title");
+                let url = $(this).data("url").replace('http://', 'https://');
+                let campaign = $(this).data("campaign");
+                let modals = $('.reactionModal');
+                let tagline_tw = ''; //'\\n\\nKompascom+ baca berita tanpa iklan: https://kmp.im/plus2 \\nDownload aplikasi: https://kmp.im/app2';
+                let tagline_wa = ''; //'\\n\\nKompascom+ baca berita tanpa iklan: https://kmp.im/plus3 \\nDownload aplikasi: https://kmp.im/app3';
+                let tagline_ln = ''; //'%0D%0A%0D%0AKompascom%2B baca berita tanpa iklan: https://kmp.im/plus4%0D%0ADownload aplikasi: https://kmp.im/app4';
+                let tagline_tg = ''; //'%0D%0A%0D%0AKompascom%2B baca berita tanpa iklan: https://kmp.im/plus5%0D%0ADownload aplikasi: https://kmp.im/app5';
+                let type = $(this).data("type") ? $(this).data("type") : 'article';
+                let title_klik = (type == 'article') ? 'Klik untuk baca' : 'Klik untuk lihat video';
+                let title_wa = '*'+title+'*\\n\\n'+title_klik+':\\n';
+                let title_tele = '**'+title+'**';
+                let utm_campaign = custom_utm_campaign();
+                let copy_link = url+'?utm_source=Various&utm_medium=Referral&utm_campaign='+utm_campaign;
+                modals.find('.modalTitle').html(title);
+                modals.find('#copyLinkUrl').html(copy_link);
+                modals.find('.buttonFacebook').attr("onclick", `fb_share('${title}','${url}?utm_source=Facebook&utm_medium=Referral&utm_campaign=${utm_campaign}')`);
+                if(title.length < 200){
+                    modals.find('.buttonTwitter').attr("onclick", `tweet_share('${title}\\n\\n`+title_klik+`: ${url}?utm_source=Twitter&utm_medium=Referral&utm_campaign=${utm_campaign}${tagline_tw}')`);
+                }else{
+                    modals.find('.buttonTwitter').attr("onclick", `tweet_share('${title}\\n\\n`+title_klik+`: ${url}?utm_source=Twitter&utm_medium=Referral&utm_campaign=${utm_campaign}')`);
+                }
+                modals.find('.buttonWhatsapp').attr("onclick", `whatsapp_share_new('${title_wa}', '${url}?utm_source=Whatsapp&utm_medium=Referral&utm_campaign=${utm_campaign}${tagline_wa}')`);
+                modals.find('.buttonLine').attr("href", `https://line.me/R/msg/text/?${title}%0D%0A%0D%0A`+title_klik+`:%0D%0A${url}%3Futm_source=Line%26utm_medium=Referral%26utm_campaign=${utm_campaign}${tagline_ln}`);
+                modals.find('.buttonTelegram').attr("onclick", `telegram_share('${title_tele}', '${url}?utm_source=Telegram&utm_medium=Referral&utm_campaign=${utm_campaign}', '${tagline_tg}')`);
+            }
+
+            openModal('reaction-share');
+        });
+    })();
+
+    function custom_utm_campaign() {
+        
+        
+        if (window.location.hostname.indexOf('activity') == 0) {
+            if (window.location.pathname == '/saved') {
+                return 'Saved_Desktop'
+            } else if (window.location.pathname == '/like') {
+                return 'Liked_Desktop'
+            }
+        } else {
+            var el_socmedList = document.querySelector('.socmedList');
+            if (!!el_socmedList) {
+                var data_area = el_socmedList.getAttribute('data-area');
+                if (data_area == 'top') {
+                    return 'Top_Desktop'
+                } else if (data_area == 'bottom') {
+                    return 'Bottom_Desktop'
+                } else {
+                    return 'AIML_Widget_Desktop'
+                }
+            }
+        }
+
+        return 'Sticky_Desktop'
+    }
+</script><!-- reaction toast -->
+<div class="toast" data-toast="bottom">
+    <div class="toastContent"></div>
+    <a href="#" class="button buttonDismiss toastDismiss" aria-label="Dismiss" role="button" data-toast-button="dismiss">Oke</a>
 </div>
+<script>    
+var el_badge = document.querySelector('.sso__badge')
+var el_badge_menu = document.querySelector('.sso__badge__inline')
+
+function checkSession() {
+    var badge_temp_session = getCookie("_badge_temp_session")
+    var badge_session = getCookie("badge_session")
+    var badge_first_click = getCookie("badge_first_click");
+
+    if (badge_temp_session == "" && badge_session == "")  {
+        setCookie("_badge_temp_session", 1)
+        setCookie("badge_session", 1, 8760)
+        // console.log("test badge temp 1")
+    } else if (badge_temp_session == "" && badge_session == 1) {
+        setCookie("_badge_temp_session", 1)
+        setCookie("badge_session", 2, 8760)
+        // console.log("test badge temp 2")
+    } else if (badge_temp_session == "" && badge_session == 2 && badge_first_click == 1) {
+        setCookie("_badge_temp_session", 1)
+        setCookie("badge_session", 3, 8760)
+        // console.log("test badge temp 3")
+    }
+
+    setCookie("_badge_temp_session", 1)
+}
+checkSession()
+
+function checkCookieBadgeNps() {
+    var badge_session = getCookie("badge_session")
+    var badge_first_click = getCookie("badge_first_click")
+    var click_icon_badge = getCookie("click_icon_badge")
+    var feedback_click = getCookie("feedback_click_badge")
+    
+    // show badge jika sesi berikutnya  
+    if (badge_session == 2) {
+        el_badge.style.display = "block"
+        el_badge_menu.style.display = "block"
+        // console.log("test 1")    
+    } 
+
+    // jika ada di sesi berikutnya dan telah click badge icon utk pertama kali, maka hide badge icon login
+    if (badge_session == 2 && badge_first_click == 1) {
+        el_badge.style.display = "none"
+        // console.log("test 2")  
+        
+    // jika tidak cek,
+    // jika ada di sesi berikutnya dan telah click badge icon utk pertama kali
+    // atau jika di sesi berikutnya dan cookie click icon badge expired
+    // atau jika di sesi berikutnya dan cookie badge feedback success expired
+    } else if ((badge_session == 3 && badge_first_click == 1) || (badge_session == 3 && document.cookie.indexOf("click_icon_badge=") == -1) || (badge_session == 3 && document.cookie.indexOf("badge_feedback_success=") == -1)) {
+        el_badge.style.display = "block"
+        el_badge_menu.style.display = "block"
+        // console.log("test 3")
+    }
+
+    // hide jika ada cookie click icon badge masih aktif 
+    // utk cek cookie 2 jam, 1 hari, 1 minggu dan 4 minggu.
+    if (document.cookie.indexOf("click_icon_badge=") != -1) {
+        el_badge.style.display = "none"
+        // console.log("test 4")
+    }
+
+    // jika "Berikan masukkanmu" telah dikilk, maka hide
+    // jika tidak cek jika sesi > 1 dan cookie feedback click badge "Berikan masukkanmu" expired, maka show
+    if (document.cookie.indexOf("feedback_click_badge=") != -1) {
+        el_badge_menu.style.display = "none"
+        // console.log("test 5")
+    } else if (badge_session > 1 && document.cookie.indexOf("feedback_click_badge=") == -1) {
+        el_badge_menu.style.display = "block"
+        // console.log("test 6")
+    }
+
+    // hide jika telah memberi penilaian 
+    if (document.cookie.indexOf("badge_feedback_success=") != -1) {
+        el_badge.style.display = "none"
+        el_badge_menu.style.display = "none"
+        // console.log("test 7")
+    }
+}
+checkCookieBadgeNps()
+
+var sso__icon__login_top = document.getElementById('sso__icon__login_top')
+sso__icon__login_top.addEventListener('click', function() {
+    var badge_session = getCookie("badge_session")
+    var badge_first_click = getCookie("badge_first_click")
+    var feedback_success = getCookie("badge_feedback_success")
+    var click_icon_badge = getCookie("click_icon_badge")
+    var click_icon_counter_badge = getCookie("click_icon_counter_badge")
+
+    if (feedback_success == "" || document.cookie.indexOf("badge_feedback_success=") == -1) {
+        // click untuk pertama kali di sesi berikutnya
+        if (badge_session == 2 && badge_first_click == "") {
+            el_badge.style.display = "none"
+            el_badge_menu.style.display = "block"
+            setCookie("badge_first_click", 1, 8760)
+            // console.log("click 1")
+
+        // click jika sesi berikutnya setelah mengklik icon badge utk pertama kali    
+        } else {
+            // jika belum ada cookie click icon badge
+            // dan ada di sesi berikutnya setelah click icon pertama kali
+            // dan counter click icon kosong atau 0
+            if (badge_session == 3 && click_icon_badge == "" && (click_icon_counter_badge == "" || click_icon_counter_badge == 0)) { 
+                setCookie("click_icon_counter_badge", 1, 8760)
+                setCookie("click_icon_badge", 1, 2)
+                el_badge.style.display = "none"
+                el_badge_menu.style.display = "block"
+                // console.log("clicked 1")
+
+            // Jika cookie badge click icon expired dan counter = 1, maka set 1 hari
+            } else if (document.cookie.indexOf("click_icon_badge=") == -1 && click_icon_counter_badge == 1) { 
+                setCookie("click_icon_counter_badge", parseInt(click_icon_counter_badge)+1, 8760)
+                setCookie("click_icon_badge", 2, 24)
+                el_badge.style.display = "none"
+                el_badge_menu.style.display = "block"
+                // console.log("clicked 2")
+
+            // Jika cookie badge click icon expired dan counter = 2, maka set 1 minggu
+            } else if (document.cookie.indexOf("click_icon_badge=") == -1 && click_icon_counter_badge == 2) {
+                setCookie("click_icon_counter_badge", parseInt(click_icon_counter_badge)+1, 8760)
+                setCookie("click_icon_badge", 3, 168)
+                el_badge.style.display = "none"
+                el_badge_menu.style.display = "block"
+                // console.log("clicked 3")
+            
+            // Jika cookie badge click icon expired dan counter lebih dari 2, maka set 4 minggu
+            } else if (document.cookie.indexOf("click_icon_badge=") == -1 && click_icon_counter_badge > 2) {
+                setCookie("click_icon_counter_badge", 0, 8760) // reset badge counter click icon 
+                setCookie("click_icon_badge", 4, 672)
+                el_badge.style.display = "none"
+                el_badge_menu.style.display = "block"
+                // console.log("clicked 4")
+            }
+            // console.log("click 2")
+        }  
+
+        // jika feedback click expired dan counter >= 0, maka show
+        var feedback_click_counter = getCookie("feedback_click_counter_badge")
+        if (badge_session > 1 && document.cookie.indexOf("feedback_click_badge") == -1 && feedback_click_counter >= 0) {
+            el_badge_menu.style.display = 'block'
+        } 
+    }     
+})
+
+var feedback__item = document.getElementById('feedback__item')
+feedback__item.addEventListener("click", function() {
+    var feedback_click = getCookie("feedback_click_badge")
+    var feedback_success = getCookie("badge_feedback_success")
+    var feedback_click_counter = getCookie("feedback_click_counter_badge")
+
+    if (feedback_success == "" || document.cookie.indexOf("badge_feedback_success=") == -1) {
+        // jika belum ada cookie feedback click counter, maka set 2 jam
+        if (feedback_click_counter == "" || feedback_click_counter == 0) { 
+            setCookie("feedback_click_counter_badge", 1, 8760)
+            setCookie("feedback_click_badge", 1, 2)
+            el_badge_menu.style.display = "none"
+            // console.log("feedback clicked 1")
+
+        // Jika cookie feedback click badge expired dan counter 1, maka set 1 hari
+        } else if (document.cookie.indexOf("feedback_click_badge=") == -1 && feedback_click_counter == 1) { 
+            setCookie("feedback_click_counter_badge", parseInt(feedback_click_counter)+1, 8760)
+            setCookie("feedback_click_badge", 2, 24)
+            el_badge_menu.style.display = "none"
+            // console.log("feedback clicked 2")
+
+        // Jika cookie feedback click badge expired dan counter 2, maka set 1 minggu
+        } else if (document.cookie.indexOf("feedback_click_badge=") == -1 && feedback_click_counter == 2) {
+            setCookie("feedback_click_counter_badge", parseInt(feedback_click_counter)+1, 8760)
+            setCookie("feedback_click_badge", 3, 168)
+            el_badge_menu.style.display = "none"
+            // console.log("feedback clicked 3")
+        
+        // Jika cookie feedback click badge expired dan counter > 2, maka set 4 minggu
+        } else if (document.cookie.indexOf("feedback_click_badge=") == -1 && feedback_click_counter > 2) {
+            setCookie("feedback_click_counter_badge", 0, 8760)
+            setCookie("feedback_click_badge", 4, 672)
+            el_badge_menu.style.display = "none"
+            // console.log("feedback clicked 4")
+        } else {
+            // jika di sesi sebelumnya sudah diklik tapi belum isi feedback
+            el_badge_menu.style.display = "none"
+            // console.log("feedback clicked 5")
+        }
+    } 
+})
+
+function setCookie(name,value,hour) {
+    var expires = "";
+    if (hour) {
+        var date = new Date();
+        date.setTime(date.getTime() + (hour*60*60*1000));
+        expires = "; expires=" + date.toUTCString();
+    }
+    document.cookie = name + "=" + (value || "")  + expires + "; ;domain=.kompas.com;path=/";
+}
+
+function getCookie(cname) {
+    var name = cname + "=";
+    var decodedCookie = decodeURIComponent(document.cookie);
+    var ca = decodedCookie.split(';');
+    for(var i = 0; i <ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0) == ' ') {
+        c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+        return c.substring(name.length, c.length);
+        }
+    }
+    return "";
+}
+
+// action create cookie badge_feedback_success expired 90 hari
+var onSubmitNps = document.getElementById("nps-submit")
+if (onSubmitNps !== null) {
+    onSubmitNps.addEventListener("click", function(e) {
+        // e.preventDefault() 
+        setCookie("badge_feedback_success", 1, 2160)
+    })
+}
+</script><script>
+    const showAllBtnJs = document.querySelector('#show_all_news')
+    if (!!showAllBtnJs) {
+        showAllBtnJs.addEventListener('click', function() {
+            const startPage = showAllBtnJs.dataset.startPage
+            const url = new URL(window.location.href);
+            window.location.href = `${url.origin}${url.pathname}?page=all#page${startPage}`;
+        })
+    }
+</script>
+
+<section class="kgmModal -hide" id="kgmModal-onetap" data-event-category="KG Media ID Account" data-event-action="View KG Onetap" data-event-label="" data-event-track="impression" data-url="" type="button" id="kgmModal-onetap-close-tag" class="kgmModal-close"> 
+    <div class="kgmModal-block">
+        <div class="kgmModal-header">
+            <div class="kgmModal-header-inner">
+                <div class="kgmModal-header-logo">
+                    <img class="lozad" data-src="https://asset.kompas.com/data/2023/03/30/kompascom/images/logo-kompascom.svg?v=1" alt="logo-Kompas.com">
+                </div>
+                <button data-event-category="KG Media ID Account" data-event-action="ClickClose KG Onetap" data-event-label="Tags Button" data-event-track="click" data-url="" type="button" id="kgmModal-onetap-close-tag" class="kgmModal-close" style="display:none;"></button>
+                <button data-event-category="KG Media ID Account" data-event-action="ClickClose KG Onetap" data-event-label="See All Button" data-event-track="click" type="button" id="kgmModal-onetap-close-page" onclick="document.getElementById('kgmModal-onetap').classList.add('-hide');oneTapHide();return false;" class="kgmModal-close" style="display:none;"></button>
+                <button data-event-category="KG Media ID Account" data-event-action="ClickClose KG Onetap" data-event-label="" data-event-track="click" type="button" id="kgmModal-onetap-close-iteraction" onclick="document.getElementById('kgmModal-onetap').classList.add('-hide');oneTapHide();return false;" class="kgmModal-close" style="display:none;"></button>
+            </div>
+        </div>
+        <div class="kgmModal-body">
+
+            <div class="kgmModal-center">
+                <div class="kgmModal-title" id="kgmModal-title">Join Sekarang Juga Untuk Info Lebih Lanjut Hanya Di <?= $BRAND; ?></div>
+            </div>
+
+            <div class="kgmModal-onetap">
+                <!-- google -->
+                <div class="form-google">
+                    <div id="kgOne1">
+                        <div id="g_id_onload"
+                            data-client_id="776828813358-infk4sje3q07sa8mg8n6lq1mk2pdkkua.apps.googleusercontent.com"
+                            data-context="signin"
+                            data-ux_mode="popup"
+                            data-service="a29tcGFz"
+                            data-continue="aHR0cHM6Ly93d3cua29tcGFzLmNvbS9qYXdhLWJhcmF0L3JlYWQvMjAyNS8wOS8wNC8xNzIwMDAzODgva29tcG9sLWNvc21hcy1kaXBlY2F0LXRpZGFrLWhvcm1hdC1wZXJuYWgtdGVyc2VyZXQta2FzdXMtcGVueWlyYW1hbj91dG1fc291cmNlPWxvZ2luX2tnb25ldGFw"
+                            data-login_uri="https://account.kompas.com/social/user"
+                            data-scope="public_profile,email,openid"
+                            data-provider="google"
+                            data-nonce=""
+                            data-auto_prompt="false">
+                        </div>
+
+                        <div class="g_id_signin" data-type="standard" data-shape="rectangular" data-theme="filled_blue" data-text="continue_with" data-size="large" data-logo_alignment="left"  onclick="actionGoogleLogin()">
+                            <div class="S9gUrf-YoZ4jf" style="position: relative;" onclick="actionGoogleLogin()">
+                                <div>
+                                    <div tabindex="0" role="button" aria-labelledby="button-label" class="nsm7Bb-HzV7m-LgbsSe  hJDwNd-SxQuSe MFS4be-v3pZbf-Ia7Qfc MFS4be-Ia7Qfc uaxL4e-RbRzK">
+                                        <div class="nsm7Bb-HzV7m-LgbsSe-MJoBVe"></div>
+                                        <div class="nsm7Bb-HzV7m-LgbsSe-bN97Pc-sM5MNb ">
+                                            <div class="nsm7Bb-HzV7m-LgbsSe-Bz112c-haAclf">
+                                                <div class="nsm7Bb-HzV7m-LgbsSe-Bz112c">
+                                                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" class="LgbsSe-Bz112c">
+                                                        <g>
+                                                            <path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"></path>
+                                                            <path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"></path>
+                                                            <path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"></path>
+                                                            <path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"></path>
+                                                            <path fill="none" d="M0 0h48v48H0z"></path>
+                                                        </g>
+                                                    </svg>
+                                                </div>
+                                            </div>
+                                            <span class="nsm7Bb-HzV7m-LgbsSe-BPrWId">Continue with Google</span>
+                                            <span class="L6cTce" id="button-label">Continue with Google</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="gsi_42450_629583-wrapper" class="L5Fo6c-sM5MNb">
+                                    <iframe src="https://accounts.google.com/gsi/button?type=standard&amp;shape=rectangular&amp;theme=filled_blue&amp;text=continue_with&amp;size=large&amp;logo_alignment=left&amp;client_id=776828813358-infk4sje3q07sa8mg8n6lq1mk2pdkkua.apps.googleusercontent.com&amp;iframe_id=gsi_42450_629583&amp;as=JlGuvviOkWwkjKNkPHeL8A" allow="identity-credentials-get" id="gsi_42450_629583" title="Sign in with Google Button" style="display: block; position: relative; top: 0px; left: 0px; height: 0px; width: 0px; border: 0px;" tabindex="-1"></iframe>
+                                    <div id="gsi_42450_629583-overlay" class="L5Fo6c-bF1uUb" tabindex="0"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div id="kgOne2" style="display:none;">
+                        <div id="googleLgnBtn"></div>
+                    </div>
+
+                </div>
+
+                <!-- screen 1 -->
+
+                <!-- screen 2 -->
+
+                <!-- screen 3 -->
+
+            </div>
+            <div class="kgmModal-divider -clean"><span>atau</span></div>
+            <div class="kgmModal-method">
+                <a href="https://account.kompas.com/login/a29tcGFz/aHR0cHM6Ly93d3cua29tcGFzLmNvbS9qYXdhLWJhcmF0L3JlYWQvMjAyNS8wOS8wNC8xNzIwMDAzODgva29tcG9sLWNvc21hcy1kaXBlY2F0LXRpZGFrLWhvcm1hdC1wZXJuYWgtdGVyc2VyZXQta2FzdXMtcGVueWlyYW1hbg==">Gunakan metode lain</a>
+            </div>
+        </div>
+        <div class="kgmModal-footer">
+            <div class="kgmModal-info">Dengan login, kamu menyetujui <a href="https://www.kgmedia.id/legal-privacy-id" target="_blank">Kebijakan Data Pribadi</a></div>
+        </div>
+    </div>
+</section>
+
+<script src="https://accounts.google.com/gsi/client" async defer></script>
+<script>
+    var url_continue = "<?= $canonical; ?>";
+    
+    function oneTapShow(tipe='') {
+        let otd = document.getElementById('kgmModal-onetap')
+        if(!!otd) {
+            let kgOne1 = document.getElementById('kgOne1');
+            let kgOne2 = document.getElementById('kgOne2');
+            kgOne2.style.display = 'none';
+            kgOne1.style.display = 'block';
+
+            otd.classList.remove('-hide');
+            document.body.classList.add('-locked');
+        }
+    }
+
+    function oneTapHide() {
+        let otd = document.getElementById('kgmModal-onetap')
+        if(!!otd) {
+            otd.classList.add('-hide');
+            document.body.classList.remove('-locked');
+        }
+    }
+
+    function hideButtonClose(){
+        document.getElementById('kgmModal-onetap-close-tag').style.display = 'none';
+        document.getElementById('kgmModal-onetap-close-page').style.display = 'none';
+        document.getElementById('kgmModal-onetap-close-iteraction').style.display = 'none';
+    }
+
+    //     // // start all kanal tag rule
+    // document.querySelectorAll(".tag__article__link").forEach(element => element.addEventListener('click', event => {
+    //     event.preventDefault()
+    //     hideButtonClose();
+    //     var kgmModalOneTapClose = document.getElementById('kgmModal-onetap-close-tag');
+    //     kgmModalOneTapClose.style.display = "block";
+    //     kgmModalOneTapClose.dataset.url = element.getAttribute("href");
+    //     document.getElementById('g_id_onload').dataset.continue = btoa(url_continue+'?lgn_source=kgonetap&lgn_trigger=tags_btn')
+    //     document.getElementById('kgmModal-title').innerHTML = 'Baca berita bertopik serupa dengan login menggunakan akun kamu';
+    //     var script = document.createElement("script");
+    //     (script.src = "https://accounts.google.com/gsi/client"), (script.defer = !0), (script.async = !0), document.head.appendChild(script);
+    //     document.getElementById('kgmModal-onetap').dataset.eventLabel = 'Tags Button';
+    //     oneTapShow();
+    // }));
+
+    // let kgmModalOneTapClose = document.getElementById('kgmModal-onetap-close-tag');
+    // if (!!kgmModalOneTapClose) {
+    //     kgmModalOneTapClose.addEventListener('click', function (e) {
+    //         var url_tag = kgmModalOneTapClose.dataset.url;
+    //         window.location.href = url_tag;
+    //     });
+    // }
+    // // end all kanal tag rule
+    // 
+    // start food tag rule
+    let pageShow = document.getElementById('show_all');
+    if (!!pageShow) {
+        pageShow.addEventListener('click', function (e) {
+            hideButtonClose();
+            var kgmModalOneTapPage = document.getElementById('kgmModal-onetap-close-page');
+            kgmModalOneTapPage.style.display = "block";
+            document.getElementById('g_id_onload').dataset.continue = btoa(url_continue+'?lgn_source=kgonetap&lgn_trigger=seeall_btn');
+            document.getElementById('kgmModal-title').innerHTML = 'Login untuk akses baca lebih lengkap';
+            var script = document.createElement("script");
+            (script.src = "https://accounts.google.com/gsi/client"), (script.defer = !0), (script.async = !0), document.head.appendChild(script);
+            document.getElementById('kgmModal-onetap').dataset.eventLabel = 'See All Button';
+            oneTapShow();
+        });
+    }
+
+    $(document).on("click", "#commentFormLogin", function() {
+        var komentar_url = $(this).data('komentar-url');
+        hideButtonClose();
+        var kgmModalOneTapPage = document.getElementById('kgmModal-onetap-close-page');
+        kgmModalOneTapPage.style.display = "block";
+        document.getElementById('g_id_onload').dataset.continue = btoa(komentar_url + '?lgn_source=kgonetap&lgn_trigger=comment_article');
+        document.getElementById('kgmModal-title').innerHTML = 'Login untuk menyampaikan komentarmu.';
+        var script = document.createElement("script");
+        (script.src = "https://accounts.google.com/gsi/client"), (script.defer = !0), (script.async = !0), document.head.appendChild(script);
+        document.getElementById('kgmModal-onetap').dataset.eventLabel = 'Comment Article';
+        oneTapShow();
+    });
+
+    document.addEventListener('DOMContentLoaded', function() {
+        const elementKgOneTapAction = document.querySelectorAll('[data-kgonetap-action]');
+        if (!!elementKgOneTapAction) {
+            elementKgOneTapAction.forEach(function(el) {
+                el.addEventListener('click', function() {
+                    const kgOneTapAction = el.getAttribute('data-kgonetap-action');
+                    let kgOneTapTitle = 'Login untuk menyampaikan komentarmu.';
+                    let lgnTrigger = '';
+                    let eventLabel = 'See All Button';
+
+                    if (kgOneTapAction == 'COMMENT_POST') {
+                        kgOneTapTitle = 'Login untuk menyampaikan komentarmu.';
+                        lgnTrigger = 'comment_post_btn';
+                        eventLabel = 'Comment Post Button';
+
+                    } else if (kgOneTapAction == 'COMMENT_LIKE') {
+                        kgOneTapTitle = 'Login untuk menyukai komentar ini';
+                        lgnTrigger = 'comment_like_btn';
+                        eventLabel = 'Comment Like Button';
+
+                    } else if (kgOneTapAction == 'COMMENT_DISLIKE') {
+                        kgOneTapTitle = 'Login untuk menanggapi komentar ini';
+                        lgnTrigger = 'comment_dislike_btn';
+                        eventLabel = 'Comment Disike Button';
+                        
+                    } else if (kgOneTapAction == 'COMMENT_REPLY') {
+                        kgOneTapTitle = 'Login untuk membalas komentar ini';
+                        lgnTrigger = 'comment_reply_btn';
+                        eventLabel = 'Comment Reply Button';
+
+                        el.querySelector('.commentButton').textContent = 'Balas';
+                        el.closest('.commentItem').querySelector('.reply_form').style.display = 'none';
+                    } else if (kgOneTapAction == 'MYVALUE_CLAIM') {
+                        kgOneTapTitle = 'Login untuk mendapatkan voucher';
+                        lgnTrigger = 'claim_voucher_button';
+                        eventLabel = 'Claim Voucher Button';
+                    }
+
+                    hideButtonClose();
+                    var kgmModalOneTapPage = document.getElementById('kgmModal-onetap-close-page');
+                    kgmModalOneTapPage.style.display = "block";
+                    document.getElementById('g_id_onload').dataset.continue = btoa(url_continue+'?lgn_source=kgonetap&lgn_trigger=' + lgnTrigger);
+                    document.getElementById('kgmModal-title').innerHTML = kgOneTapTitle;
+                    var script = document.createElement("script");
+                    (script.src = "https://accounts.google.com/gsi/client"), (script.defer = !0), (script.async = !0), document.head.appendChild(script);
+                    const dataEventLabel = document.getElementById('kgmModal-onetap');
+                    if (!!dataEventLabel) {
+                        dataEventLabel.dataset.eventLabel = eventLabel;
+                        const otherDataEventLabel = dataEventLabel.querySelectorAll('[data-event-label]');
+                        if (!!otherDataEventLabel) {
+                            otherDataEventLabel.forEach(function(label) {
+                                label.dataset.eventLabel = eventLabel
+                            })
+                        }
+                    }
+                    oneTapShow();
+                });
+            });
+        }
+    })
+    // start reaction rule
+    document.querySelectorAll(".reactionIteration").forEach(element => element.addEventListener('click', event => {
+        
+        hideButtonClose();
+
+        var kgmModalOneTapIteraction = document.getElementById('kgmModal-onetap-close-iteraction');
+        kgmModalOneTapIteraction.style.display = "block";
+
+        var trigger_touch_point = 'click_like';
+        var label = 'Like';
+        var title = 'Suka konten ini? Login untuk menyimpan preferensimu';
+
+        if(element.dataset.ttp=='dislike'){
+            trigger_touch_point = 'click_dislike';
+            label = 'Dislike';
+            title = 'Kurang suka konten ini? Login untuk menyimpan preferensimu';
+        }else if(element.dataset.ttp=='bookmark'){
+            trigger_touch_point = 'click_bookmark';
+            label = 'Bookmark';
+            title = 'Login untuk simpan dan baca nanti';
+        }else if(element.dataset.ttp=='like_comment'){
+            trigger_touch_point = 'click_like_comment';
+            label = 'Like Comment'
+            title = 'Login untuk kasih jempol buat komentar ini.';
+        } else if(element.dataset.ttp=='dislike_comment'){
+            trigger_touch_point = 'click_dislike_comment';
+            label = 'Dislike Comment'
+            title = 'Tidak setuju dengan komentar ini? Login untuk ikut menanggapi';
+        }
+
+        // document.getElementById('g_id_onload').dataset.continue = btoa(url_continue+'?lgn_source=kgonetap&lgn_trigger='+trigger_touch_point)
+        document.getElementById('kgmModal-title').innerHTML = title;
+        // var script = document.createElement("script");
+        // (script.src = "https://accounts.google.com/gsi/client"), (script.defer = !0), (script.async = !0), document.head.appendChild(script);
+        // document.getElementById('kgmModal-onetap').dataset.eventLabel = label
+        // document.getElementById('kgmModal-onetap-close-iteraction').dataset.eventLabel = label
+        oneTapShow('reaction');
+    }));
+    // end reaction rule
+
+    // start comment rule
+    let CommentShow = document.getElementById('btnSendIteration');
+    if (!!CommentShow) {
+
+        CommentShow.addEventListener('click', function (e) {
+
+            hideButtonClose();
+
+            var kgmModalOneTapIteraction = document.getElementById('kgmModal-onetap-close-iteraction');
+            kgmModalOneTapIteraction.style.display = "block";
+
+            var trigger_touch_point = 'click_post_comment';
+            var label = 'Post Comment'
+            var title = 'Login untuk menyampaikan komentarmu.';
+
+            document.getElementById('g_id_onload').dataset.continue = btoa(url_continue+'?lgn_source=kgonetap&lgn_trigger='+trigger_touch_point)
+            document.getElementById('kgmModal-title').innerHTML = title;
+            var script = document.createElement("script");
+            (script.src = "https://accounts.google.com/gsi/client"), (script.defer = !0), (script.async = !0), document.head.appendChild(script);
+            document.getElementById('kgmModal-onetap').dataset.eventLabel = label
+            document.getElementById('kgmModal-onetap-close-iteraction').dataset.eventLabel = label
+            oneTapShow();
+        });
+    }
+    // end comment rule
+
+    function getMeta(metaName) {
+        const metas = document.getElementsByTagName('meta');
+        for (let i = 0; i < metas.length; i++) {
+            if (metas[i].getAttribute('name') === metaName) {
+            return metas[i].getAttribute('content');
+            }
+        }
+        return '';
+    }
+
+    const closeModalOneTap = document.querySelector('#kgmModal-onetap-close-iteraction');
+    if (!!closeModalOneTap) {
+        closeModalOneTap.addEventListener('click', function() {
+            localStorage.removeItem('reaction_like_temp')
+            localStorage.removeItem('reaction_dislike_temp')
+            localStorage.removeItem('reaction_bookmark_temp')
+        })
+    }
+</script>
+<script>
+    var addebug = document.querySelectorAll('.cpRight');
+    for (i = 0; i < addebug.length; ++i) {
+        addebug[i].addEventListener('click', function handleClick() {
+            googletag.openConsole();
+        });
+    };
+</script>
+
+
+<script>
+    var inject_baca_juga = document.getElementsByClassName('inject-baca-juga');
+    if(inject_baca_juga.length > 0){
+        var xhr_auto_baca_juga = new XMLHttpRequest();
+        xhr_auto_baca_juga.open("POST", "https://recommendation.kgdata.dev/rec/kompascom/api/v2/recommendation/item", true);
+        xhr_auto_baca_juga.setRequestHeader("Content-Type", "application/json");
+        xhr_auto_baca_juga.onreadystatechange = function () {
+            if (xhr_auto_baca_juga.readyState === 4 && xhr_auto_baca_juga.status === 200) {
+                var json_baca_juga = JSON.parse(xhr_auto_baca_juga.responseText);
+                for (var i = 0; i < inject_baca_juga.length; i++) {
+                    inject_baca_juga[i].innerHTML = '<p><strong>Baca juga: <a href="'+json_baca_juga.items[i].url.replace('http:/','https:/')+'?source=bacajuga&engine=C" class="inner-link-baca-juga" target="_self">'+json_baca_juga.items[i].title+'</a></strong></p>';
+                }
+            }
+        };
+        var data = JSON.stringify({
+            "pageurl" : "<?= $canonical; ?>",
+            "pagetype" : "baca-juga"
+        });
+        xhr_auto_baca_juga.send(data);
+    }
+</script> 
+    
+        
+    <!-- (ads.pol) -->
+    <!-- (ads.peelad) -->
+    <!-- (ads.ambient) -->
+    <!-- (ads.outbrain) -->
+    <!-- (ads.pickwords) -->
+    <!-- (ads.vignette) -->
+    <!-- (ads.rewarded) -->
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js/v8c78df7c7c0f484497ecbca7046644da1771523124516" integrity="sha512-8DS7rgIrAmghBFwoOTujcf6D9rXvH8xm8JQ1Ja01h9QX8EzXldiszufYa4IFfKdLUKTTrnSFXLDkUEOTrZQ8Qg==" data-cf-beacon='{"version":"2024.11.0","token":"d09d4532ebd243459487bf5c276256ed","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
 </body>
 </html>
