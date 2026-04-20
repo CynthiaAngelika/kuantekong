@@ -1,2889 +1,547 @@
-<?php declare(strict_types=1);
 
-ini_set('display_errors', "0");
-error_reporting(E_ALL);
-
-function denied(): void {
-    http_response_code(404);
-    $file404 = __DIR__ . '/home.php';
-    if (file_exists($file404)) {
-        include $file404;
-    } else {
-        echo "<h1>404 Not Found</h1>";
-    }
-    exit;
-}
-
-$file = __DIR__ . "/lol.txt";
-if (!file_exists($file)) { denied(); }
-
-// ================== SUPPORT CLEAN URL ==================
-if (!isset($_GET['class'])) {
-    $uri = $_SERVER['REQUEST_URI'];
-    $parts = explode('/', trim($uri, '/'));
-    $_GET['class'] = $parts[0] ?? null;
-}
-
-// ================== AMBIL CLASS ==================
-if (!isset($_GET['class']) || $_GET['class'] === '') { denied(); }
-
-$inputRaw = trim($_GET['class']);
-$slug = strtolower($inputRaw);
-
-// validasi aman (slug only)
-if (!preg_match('/^[a-z0-9-]+$/', $slug)) { denied(); }
-
-// ================== WHITELIST (SLUG BASED) ==================
-$list = file($file, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
-$list = array_map('strtolower', $list);
-
-if (!in_array($slug, $list, true)) {
-    denied();
-}
-
-// ================== DISPLAY TEXT (SPASI) ==================
-$input = ucwords(str_replace('-', ' ', $slug));
-
-// ================== REDIRECT QUERY ? CLEAN URL ==================
-if (strpos($_SERVER['REQUEST_URI'], '?class=') !== false) {
-    $scheme = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ? 'https' : 'http';
-    $host = $_SERVER['HTTP_HOST'];
-    $path = rtrim(dirname($_SERVER['SCRIPT_NAME']), '/\\');
-
-    $cleanUrl = $scheme . '://' . $host . $path . '/' . $slug . '/';
-
-    header("Location: " . $cleanUrl, true, 301);
-    exit;
-}
-
-// ================== SEO ==================
-$keyword = strtoupper($input);
-
-$title = "$keyword | eLibrary Sespim Lemdiklat Polri";
-
-$description = "$keyword merupakan platform perpustakaan digital yang dikembangkan oleh Sekolah Staf dan Pimpinan (Sespim) di bawah Lembaga Pendidikan dan Pelatihan Kepolisian Republik Indonesia.";
-
-// ================== URL ==================
-$scheme = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ? 'https' : 'http';
-$host = $_SERVER['HTTP_HOST'];
-$path = rtrim(dirname($_SERVER['SCRIPT_NAME']), '/\\');
-
-$url = $scheme . '://' . $host . $path . '/' . $slug . '/';
-
-// ================== AMP ==================
-$ampmek = "https://elibrary-sespimlemdiklatpolri.pages.dev/" . urlencode($slug) . '/';
-
-// ================== IMAGE ==================
-$image = "https://i.pinimg.com/1200x/85/c6/c6/85c6c658afe7745f78bac579513f2fcf.jpg";
-?>
-
+<!--
+# ===============================
+# Classic SLiMS Template
+# ===============================
+# @Author: Waris Agung Widodo
+# @Email:  ido.alit@gmail.com
+# @Date:   2018-01-23T11:25:57+07:00
+# @Last modified by:   Satrio Sumantri
+# @Last modified time: 2023-09-02
+-->
 <!DOCTYPE html>
-<html lang="en">
-  <head>
+<html>
+<head>
     <meta charset="utf-8">
-    <title><?= htmlspecialchars($title) ?></title>
-    <!-- SEO Meta Tags-->
-    <meta name="description"
-      content="<?= htmlspecialchars($description) ?>">
-    <meta name="keywords" content="<?= htmlspecialchars($keyword) ?>, slot gacor, situs slot, slot online, slot resmi, slot, toto slot, toto, situs gacor, link gacor, link slot">
-    <meta property="og:image" content="<?= htmlspecialchars($image) ?>" />
-    <link href="https://plus.google.com/+SeoclerksOfficial" rel="publisher" />
-    <link rel="alternate" type="application/rss+xml" title="Rss Service Feed" href="<?= htmlspecialchars($url) ?>" />
-    <link rel="canonical" href="<?= htmlspecialchars($url) ?>">
-    <link rel="amphtml" href="<?= htmlspecialchars($ampmek) ?>" />
-    <!-- Google gsi login -->
-    <script src="https://accounts.google.com/gsi/client" async defer></script>
-    <script>
-      function handleCredentialResponse(response) {
-      
-          $.ajax({
-              url: location.protocol + '//' + location.host + '/signup',
-              type: 'POST',
-              data: jQuery.param({ 'id_token': JSON.stringify(parseJwt(response.credential)) }),
-              cache: false,
-              success: function (response) {
-                  location.reload();
-              }
-          });
-      }
-      
-      window.onload = function () {
-          google.accounts.id.initialize({
-              client_id: "548068955564-6kb76etreqr03m8r80hdong6qi9lndr1.apps.googleusercontent.com",
-              callback: handleCredentialResponse,
-              use_fedcm_for_prompt: "true"
-          });
-          google.accounts.id.renderButton(
-              document.getElementById("buttonGoogle"),
-              { theme: "outline", size: "large", width: "310", height: "44" }  // customization attributes
-          );
-          google.accounts.id.renderButton(
-              document.getElementById("buttonGoogleSignup"),
-              { theme: "outline", size: "large", width: "310", height: "44" }  // customization attributes
-          );
-          google.accounts.id.prompt(); // also display the One Tap dialog
-      }
-    </script>
-    <!-- Mobile Specific Meta Tag-->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <!-- Favicon and Apple Icons-->
-    <link rel="icon" type="image/x-icon"
-      href="https://ayowasabi.com/cdn/vip288-icon.webp">
-    <!--<link rel="apple-touch-icon" href="touch-icon-iphone.png">
-      <link rel="apple-touch-icon" sizes="152x152" href="touch-icon-ipad.png">
-      <link rel="apple-touch-icon" sizes="180x180" href="touch-icon-iphone-retina.png">
-      <link rel="apple-touch-icon" sizes="167x167" href="touch-icon-ipad-retina.png"> -->
-    <!-- Vendor Styles including: Bootstrap, Font Icons, Plugins, etc.-->
-    <link rel="stylesheet" media="screen" href="https://www.seoclerk.com/assets/css/vendor.min.1692086642.css">
-    <link id="mainStyles" rel="stylesheet" media="screen"
-      href="https://www.seoclerk.com/assets/css/styles.1771009682.css">
-    <link href="https://www.seoclerk.com/assets/js/wysibb/theme/default/wbbtheme.1771009682.css" rel="stylesheet" />
-    <link rel="stylesheet" href="https://www.seoclerk.com/assets/css/fontawesome/all.min.1626721451.css"
-      crossorigin="anonymous">
-    <link rel="stylesheet" href="https://www.seoclerk.com/assets/css/flag-icon.css">
-    <!-- Dark Mode CSS -->
-    <!-- <link id="darkStyles" rel="stylesheet" media="max-width: 1px" href="https://www.seoclerk.com/assets/css/styles-dark.1692086642.css"> -->
-    <!-- <script src="https://www.seoclerk.com/assets/js/modernizr.min.1626721451.js"></script> -->
-    <script type="text/javascript">
-      var base_url = "https://www.seoclerk.com";
-      var USERID = 0;
-    </script>
+    <title>SESPIM LEMDIKLAT POLRI | LITERATION CENTER</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="Pragma" content="no-cache"/>
+    <meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate, post-check=0, pre-check=0"/>
+    <meta http-equiv="Expires" content="Sat, 26 Jul 1997 05:00:00 GMT"/>
+    <meta name="robots" content="index, follow">            <meta name="description" content="SESPIM LEMDIKLAT POLRI | LITERATION CENTER">
+        <meta name="keywords" content="SESPIM LEMDIKLAT POLRI">
+        <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1">
+    <meta name="generator" content="SLiMS 9 (Bulian)">
+    <meta name="theme-color" content="#000">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-00QDCXTWPM"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
 
-<script type="application/ld+json">
-{
-  "@context": "http://www.schema.org",
-  "@type": "Product",
-  "productID": "982146",
-  "itemReviewed": {
-    "@type": "Product",
-    "image": "<?= htmlspecialchars($image) ?>",
-    "name": "<?= htmlspecialchars($title) ?>",
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": "4.9",
-      "ratingCount": "250",
-      "bestRating": "5",
-      "worstRating": "1"
-    }
-  },
-  "logo": "https://ayowasabi.com/cdn/vip288-logo.webp",
-  "name": "<?= htmlspecialchars($title) ?>",
-  "category": "Access Platform",
-  "image": "<?= htmlspecialchars($image) ?>",
-  "description": "<?= htmlspecialchars($description) ?>",
-  "aggregateRating": {
-    "@type": "AggregateRating",
-    "ratingValue": "4.9",
-    "ratingCount": "250",
-    "bestRating": "5",
-    "worstRating": "1"
-  },
-  "url": "<?= htmlspecialchars($url) ?>"
-}
+  gtag('config', 'G-41RLJ98E34');
 </script>
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  "name": "Situs Slot Resmi <?= htmlspecialchars($keyword) ?> Terbaru 2026",
-  "itemListElement": [
-    {
-      "@type": "ListItem",
-      "position": 1,
-      "name": "<?= htmlspecialchars($keyword) ?>",
-      "item": "<?= htmlspecialchars($url) ?>"
-    },
-    {
-      "@type": "ListItem",
-      "position": 2,
-      "name": "Situs Slot",
-      "item": "<?= htmlspecialchars($url) ?>"
-    },
-    {
-      "@type": "ListItem",
-      "position": 3,
-      "name": "Slot Gacor",
-      "item": "<?= htmlspecialchars($url) ?>"
-    },
-    {
-      "@type": "ListItem",
-      "position": 4,
-      "name": "Slot Online",
-      "item": "<?= htmlspecialchars($url) ?>"
-    },
-    {
-      "@type": "ListItem",
-      "position": 5,
-      "name": "Situs Gacor",
-      "item": "<?= htmlspecialchars($url) ?>"
-    },
-    {
-      "@type": "ListItem",
-      "position": 6,
-      "name": "Slot Resmi",
-      "item": "<?= htmlspecialchars($url) ?>"
-    },
-    {
-      "@type": "ListItem",
-      "position": 7,
-      "name": "Toto",
-      "item": "<?= htmlspecialchars($url) ?>"
-    },
-    {
-      "@type": "ListItem",
-      "position": 8,
-      "name": "Slot",
-      "item": "<?= htmlspecialchars($url) ?>"
-    },
-    {
-      "@type": "ListItem",
-      "position": 9,
-      "name": "Toto Slot",
-      "item": "<?= htmlspecialchars($url) ?>"
-    }
-  ]
-}
-</script>
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Organization",
-  "@id": "#<?= htmlspecialchars($keyword) ?>-platform",
-  "name": "<?= htmlspecialchars($title) ?>",
-  "aggregateRating": {
-    "@type": "AggregateRating",
-    "ratingValue": 4.9,
-    "bestRating": 5,
-    "worstRating": 1,
-    "ratingCount": 320,
-    "reviewCount": 5
-  },
-  "review": [
-    {
-      "@type": "Review",
-      "@id": "#review-1",
-      "name": "Akses Cepat & Stabil",
-      "author": { "@type": "Person", "name": "Rizky A." },
-      "datePublished": "2026-03-15",
-      "reviewRating": { "@type": "Rating", "ratingValue": 5, "bestRating": 5, "worstRating": 1 },
-      "reviewBody": "Sejak pakai <?= htmlspecialchars($keyword) ?>, akses selalu lancar tanpa kendala. Link gacor selalu aktif dan mudah dibuka kapan saja."
-    },
-    {
-      "@type": "Review",
-      "@id": "#review-2",
-      "name": "Registrasi Cepat Tanpa Ribet",
-      "author": { "@type": "Person", "name": "Dimas R." },
-      "datePublished": "2026-03-12",
-      "reviewRating": { "@type": "Rating", "ratingValue": 5, "bestRating": 5, "worstRating": 1 },
-      "reviewBody": "Daftar di <?= htmlspecialchars($keyword) ?> sangat cepat, hanya beberapa menit langsung bisa main. Prosesnya simpel dan praktis."
-    },
-    {
-      "@type": "Review",
-      "@id": "#review-3",
-      "name": "Link Gacor Selalu Aktif",
-      "author": { "@type": "Person", "name": "Fikri H." },
-      "datePublished": "2026-03-08",
-      "reviewRating": { "@type": "Rating", "ratingValue": 4.8, "bestRating": 5, "worstRating": 1 },
-      "reviewBody": "Saat link utama sulit diakses, link alternatif <?= htmlspecialchars($keyword) ?> tetap stabil dan lancar tanpa gangguan."
-    },
-    {
-      "@type": "Review",
-      "@id": "#review-4",
-      "name": "Platform Ringan & Responsif",
-      "author": { "@type": "Person", "name": "Andi S." },
-      "datePublished": "2026-03-02",
-      "reviewRating": { "@type": "Rating", "ratingValue": 5, "bestRating": 5, "worstRating": 1 },
-      "reviewBody": "Main di <?= htmlspecialchars($keyword) ?> sangat nyaman karena platform ringan, tidak lemot, dan bisa diakses di semua perangkat."
-    },
-    {
-      "@type": "Review",
-      "@id": "#review-5",
-      "name": "Aman & Terpercaya",
-      "author": { "@type": "Person", "name": "Hendra W." },
-      "datePublished": "2026-02-25",
-      "reviewRating": { "@type": "Rating", "ratingValue": 5, "bestRating": 5, "worstRating": 1 },
-      "reviewBody": "<?= htmlspecialchars($keyword) ?> memberikan pengalaman bermain yang aman dan konsisten. Login kapan saja tetap lancar tanpa masalah."
-    }
-  ]
-}
-</script>
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "inLanguage": "id",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "Apa itu <?= htmlspecialchars($keyword) ?>?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "<?= htmlspecialchars($keyword) ?> adalah situs slot gacor resmi di Indonesia yang menyediakan link gacor toto slot online dengan akses mudah, cepat, dan stabil setiap hari."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Apakah daftar di <?= htmlspecialchars($keyword) ?> cepat?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Ya, proses pendaftaran di <?= htmlspecialchars($keyword) ?> sangat cepat dan praktis. Pengguna hanya membutuhkan beberapa menit untuk registrasi dan langsung bisa login."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Bagaimana jika link utama <?= htmlspecialchars($keyword) ?> tidak bisa diakses?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Jika link utama tidak dapat diakses, pengguna bisa menggunakan link alternatif <?= htmlspecialchars($keyword) ?> yang tetap aktif dan stabil untuk login tanpa hambatan."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Apakah <?= htmlspecialchars($keyword) ?> bisa diakses di semua perangkat?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Ya, <?= htmlspecialchars($keyword) ?> dapat diakses melalui berbagai perangkat seperti smartphone, tablet, dan desktop dengan performa yang ringan dan responsif."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Apa keunggulan <?= htmlspecialchars($keyword) ?> dibanding situs lain?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Keunggulan <?= htmlspecialchars($keyword) ?> adalah link gacor yang selalu aktif, akses cepat, sistem ringan, serta pengalaman bermain toto slot online yang stabil dan mudah digunakan."
-      }
-    }
-  ]
-}
-</script>
-    <style>
-      .DAzsLysgEyiGtPj {
-      color: #000000;
-      }
-      .RqYfMtfWGBWPEZP {
-      color: #0000ff;
-      }
-      .OKlSmcMdwmhKlol {
-      color: #980000;
-      }
-      .zeYXiVHEVIPExEc {
-      color: #9900ff;
-      }
-    </style>
-    <style>
-      /* === TITLE MATCH COLOR WITH FAQ === */
-      .cok-faq-title {
-      text-align: center;
-      color: #000000;
-      margin-top: 25px;
-      margin-bottom: 25px;
-      font-weight: 50;
-      letter-spacing: 1px;
-      }
-      /* === FAQ CONTAINER === */
-      .cok-faq {
-      max-width: 1200px;
-      margin: 10px auto 40px auto
-      }
-      /* === QUESTION BUTTON === */
-      .cok-faq-q {
-      width: 100%;
-      padding: 14px;
-      background: #ffffff;
-      color: #000000;
-      font-weight: 50;
-      border: 1px solid #92929255;
-      border-radius: 8px;
-      cursor: pointer;
-      text-align: left;
-      margin-bottom: 8px;
-      transition: .25s ease;
-      }
-      .cok-faq-q:hover {
-      background: #ffffff;
-      }
-      /* === ANSWER BOX === */
-      .cok-faq-a {
-      max-height: 0;
-      overflow: hidden;
-      background: #ffffff;
-      color: #000000;
-      margin-top: -5px;
-      border-radius: 0 0 8px 8px;
-      padding: 0 14px;
-      border-left: 1px solid #00000033;
-      border-right: 1px solid #00000033;
-      border-bottom: 1px solid #00000033;
-      transition: max-height .35s ease, padding .25s ease;
-      }
-      .cok-faq-a.open {
-      max-height: 600px;
-      padding: 14px;
-      }
-      /* === RESPONSIVE === */
-      @media (max-width: 600px) {
-      .cok-faq-title {
-      font-size: 26px;
-      }
-      }
-    </style>
-    <style>
-      .icon-img-footer {
-      width: 80px;
-      padding: 0px 5px;
-      }
-      @media (min-width: 768px) {
-      .icon-img-footer {
-      width: 120px;
-      }
-      }
-      @media (min-width: 992px) {
-      .icon-img-footer {
-      width: 120px;
-      }
-      }
-      .button-login-daftar {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      font-weight: 700;
-      }
-      .button-login-daftar a {
-      text-align: center;
-      }
-      .login,
-      .register {
-      color: #fff;
-      padding: 15px 10px;
-      font-size: 23px;
-      }
-      .login,
-      .login-button {
-      background: linear-gradient(to bottom, #34bcfc 0, #0c9de0 100%);
-      border: 2px solid #ffffff;
-      }
-      .register,
-      .register-button {
-      background: linear-gradient(to bottom, #2feba6 0, #27c28a 100%);
-      border: 2px solid #ffffff;
-      }
-    </style>
-    <link href="https://www.seoclerk.com/assets/js/dropzone/min/dropzone.min.1626721451.css">
-    <script data-cfasync="false"
-      nonce="341f2e09-a52d-492b-86bb-f5d7bea7e327">try { (function (w, d) { !function (bH, bI, bJ, bK) { if (bH.zaraz) console.error("zaraz is loaded twice"); else { bH[bJ] = bH[bJ] || {}; bH[bJ].executed = []; bH.zaraz = { deferred: [], listeners: [] }; bH.zaraz._v = "5876"; bH.zaraz._n = "341f2e09-a52d-492b-86bb-f5d7bea7e327"; bH.zaraz.q = []; bH.zaraz._f = function (bL) { return async function () { var bM = Array.prototype.slice.call(arguments); bH.zaraz.q.push({ m: bL, a: bM }) } }; for (const bN of ["track", "set", "ecommerce", "debug"]) bH.zaraz[bN] = bH.zaraz._f(bN); bH.zaraz.init = () => { var bO = bI.getElementsByTagName(bK)[0], bP = bI.createElement(bK), bQ = bI.getElementsByTagName("title")[0]; bQ && (bH[bJ].t = bI.getElementsByTagName("title")[0].text); bH[bJ].x = Math.random(); bH[bJ].w = bH.screen.width; bH[bJ].h = bH.screen.height; bH[bJ].j = bH.innerHeight; bH[bJ].e = bH.innerWidth; bH[bJ].l = bH.location.href; bH[bJ].r = bI.referrer; bH[bJ].k = bH.screen.colorDepth; bH[bJ].n = bI.characterSet; bH[bJ].o = (new Date).getTimezoneOffset(); if (bH.dataLayer) for (const bR of Object.entries(Object.entries(dataLayer).reduce((bS, bT) => ({ ...bS[1], ...bT[1] }), {}))) zaraz.set(bR[0], bR[1], { scope: "page" }); bH[bJ].q = []; for (; bH.zaraz.q.length;) { const bU = bH.zaraz.q.shift(); bH[bJ].q.push(bU) } bP.defer = !0; for (const bV of [localStorage, sessionStorage]) Object.keys(bV || {}).filter(bX => bX.startsWith("_zaraz_")).forEach(bW => { try { bH[bJ]["z_" + bW.slice(7)] = JSON.parse(bV.getItem(bW)) } catch { bH[bJ]["z_" + bW.slice(7)] = bV.getItem(bW) } }); bP.referrerPolicy = "origin"; bP.src = "/cdn-cgi/zaraz/s.js?z=" + btoa(encodeURIComponent(JSON.stringify(bH[bJ]))); bO.parentNode.insertBefore(bP, bO) };["complete", "interactive"].includes(bI.readyState) ? zaraz.init() : bH.addEventListener("DOMContentLoaded", zaraz.init) } }(w, d, "zarazData", "script"); window.zaraz._p = async bc => new Promise(bd => { if (bc) { bc.e && bc.e.forEach(be => { try { const bf = d.querySelector("script[nonce]"), bg = bf?.nonce || bf?.getAttribute("nonce"), bh = d.createElement("script"); bg && (bh.nonce = bg); bh.innerHTML = be; bh.onload = () => { d.head.removeChild(bh) }; d.head.appendChild(bh) } catch (bi) { console.error(`Error executing script: 
-`, bi) } }); Promise.allSettled((bc.f || []).map(bj => fetch(bj[0], bj[1]))) } bd() }); zaraz._p({ "e": ["(function(w,d){})(window,document)"] }); })(window, document) } catch (e) { throw fetch("/cdn-cgi/zaraz/t"), e; };</script>
-  </head>
-  <!-- Body-->
-  <body class="light-theme ">
-    <div class="button-login-daftar">
-      <a class="login" href="<?= htmlspecialchars($ampmek) ?>" rel="nofollow noreferrer"
-        style="color: white;">
-      LOGIN
-      </a>
-      <a class="register" href="<?= htmlspecialchars($ampmek) ?>" rel="nofollow noreferrer"
-        style="color: white;">
-      DAFTAR
-      </a>
-    </div>
-    <style>
-:root {
-  --primary: #ffffff; /* 🔥 GANTI WARNA DISINI */
-}
-
-/* RESET */
-* {
-  box-sizing: border-box;
-}
-
-/* OVERLAY */
-.popup-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0,0,0,0.7);
-  backdrop-filter: blur(6px);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 999999;
-  animation: fadeBg 0.5s ease;
-}
-
-/* BACKGROUND FADE */
-@keyframes fadeBg {
-  from { background: rgba(0,0,0,0); }
-  to { background: rgba(0,0,0,0.7); }
-}
-
-/* POPUP BOX */
-.popup-container {
-  width: 90%;
-  max-width: 400px;
-  background: #0a0a0a;
-  border-radius: 18px;
-  padding: 20px;
-  text-align: center;
-  position: relative;
-  border: 2px solid var(--primary);
-
-  animation:
-    popupIn 0.7s cubic-bezier(0.22, 1, 0.36, 1),
-    glowPulse 2.5s infinite ease-in-out,
-    floatSoft 4s infinite ease-in-out;
-}
-
-/* MASUK */
-@keyframes popupIn {
-  0% {
-    opacity: 0;
-    transform: scale(0.5) translateY(80px);
-  }
-  60% {
-    transform: scale(1.05) translateY(-10px);
-  }
-  100% {
-    opacity: 1;
-    transform: scale(1) translateY(0);
-  }
-}
-
-/* GLOW HIDUP */
-@keyframes glowPulse {
-  0%,100% {
-    box-shadow:
-      0 0 10px var(--primary),
-      0 0 30px var(--primary);
-  }
-  50% {
-    box-shadow:
-      0 0 25px var(--primary),
-      0 0 60px var(--primary);
-  }
-}
-
-/* FLOAT */
-@keyframes floatSoft {
-  0%,100% { transform: translateY(0); }
-  50% { transform: translateY(-8px); }
-}
-
-/* IMAGE */
-.popup-image {
-  width: 100%;
-  border-radius: 12px;
-  margin-bottom: 15px;
-}
-
-/* BUTTON */
-.popup-buttons a {
-  display: block;
-  margin: 12px 0;
-  padding: 15px;
-  border-radius: 50px;
-  font-weight: bold;
-  text-decoration: none;
-  color: #000;
-  background: var(--primary);
-  transition: all 0.3s ease;
-  position: relative;
-  overflow: hidden;
-
-  box-shadow:
-    0 0 15px var(--primary),
-    0 0 30px var(--primary);
-}
-
-/* KILAT NYETRUM */
-.popup-buttons a::after {
-  content: "";
+    <meta property="og:locale" content="id_ID"/>
+    <meta property="og:type" content="book"/>
+    <meta property="og:title" content="SESPIM LEMDIKLAT POLRI | LITERATION CENTER"/>
+            <meta property="og:description" content="SESPIM LEMDIKLAT POLRI"/>
+        <meta property="og:url" content="//elibrary.sespimlemdiklatpolri.id%2Fhome.php"/>
+    <meta property="og:site_name" content="LITERATION CENTER"/>
+            <meta property="og:image"
+              content="//elibrary.sespimlemdiklatpolri.id/template/default/img/logo.png"/>
+        <meta name="twitter:card" content="summary">
+    <meta name="twitter:url" content="//elibrary.sespimlemdiklatpolri.id%2Fhome.php"/>
+    <meta name="twitter:title" content="SESPIM LEMDIKLAT POLRI | LITERATION CENTER"/>
+            <meta property="twitter:image"
+              content="//elibrary.sespimlemdiklatpolri.id/template/default/img/logo.png"/>
+        <!-- // load bootstrap style -->
+    <link rel="stylesheet" href="template/default/assets/css/bootstrap.min.css">
+    <!-- // font awesome -->
+    <link rel="stylesheet" href="template/default/assets/plugin/font-awesome/css/fontawesome-all.min.css">
+    <!-- Tailwind CSS -->
+    <link rel="stylesheet" href="template/default/assets/css/tailwind.min.css">
+    <!-- Vegas CSS -->
+    <link rel="stylesheet" href="template/default/assets/plugin/vegas/vegas.min.css">
+    <link href="/js/toastr/toastr.min.css?30105650" rel="stylesheet" type="text/css"/>
+    <!-- CKEditor5 CSS -->
+    <link rel="stylesheet" href="/js/ckeditor5/ckeditor5.css">
+    <!-- SLiMS CSS -->
+    <link rel="stylesheet" href="/js/colorbox/colorbox.css">
+    <link rel="stylesheet" href="/js/ion.rangeSlider/css/ion.rangeSlider.min.css">
+    <!-- // Flag css -->
+    <link rel="stylesheet" href="template/default/assets/css/flag-icon.min.css">
+    <!-- // my custom style -->
+    <link rel="stylesheet" href="template/default/assets/css/style.css?v=20260420-105650">
+<style>
+/* Center the loader */
+#loader {
   position: absolute;
-  top: 0;
-  left: -120%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(
-    120deg,
-    transparent,
-    rgba(255,255,255,0.6),
-    transparent
-  );
-  transition: 0.5s;
+  left: 50%;
+  top: 50%;
+  z-index: 1;
+  width: 150px;
+  height: 150px;
+  margin: -76px 0 0 -76px;
 }
 
-/* HOVER BUTTON */
-.popup-buttons a:hover {
-  transform: scale(1.07);
-  box-shadow:
-    0 0 25px var(--primary),
-    0 0 60px var(--primary);
+/* Add animation to "page content" */
+.animate-bottom {
+  position: relative;
+  -webkit-animation-name: animatebottom;
+  -webkit-animation-duration: 1s;
+  animation-name: animatebottom;
+  animation-duration: 1s
 }
 
-.popup-buttons a:hover::after {
-  left: 120%;
+@-webkit-keyframes animatebottom {
+  from { bottom:-250px; opacity:0 } 
+  to { bottom:0px; opacity:1 }
 }
 
-/* CLOSE BUTTON */
-.close-btn {
-  position: absolute;
-  top: 12px;
-  right: 12px;
-  width: 34px;
-  height: 34px;
-  border-radius: 50%;
-  background: rgba(0,0,0,0.7);
-  border: 2px solid var(--primary);
-  cursor: pointer;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  color: var(--primary);
-  font-size: 20px;
-  font-weight: bold;
-
-  transition: 0.3s;
+@keyframes animatebottom { 
+  from{ bottom:-250px; opacity:0 } 
+  to{ bottom:0; opacity:1 }
 }
 
-/* ICON */
-.close-btn::before {
-  content: "×";
-}
-
-/* HOVER CLOSE */
-.close-btn:hover {
-  background: var(--primary);
-  color: #000;
-  transform: rotate(90deg) scale(1.1);
-}
-
-/* FOOTER */
-.popup-footer {
-  margin-top: 12px;
-  font-size: 12px;
-  color: #ccc;
-}
-
-.popup-footer span {
-  color: var(--primary);
+#myDiv {
+  display: none;
 }
 </style>
+    
 
+        <link rel="shortcut icon" href="/images/default/webicon.png?v=5e697" type="image/x-icon"/>
 
+    <!-- // load vue js -->
+    <script src="template/default/assets/js/vue.min.js"></script>
+    <!-- // load jquery library -->
+    <script src="template/default/assets/js/jquery.min.js"></script>
+    <script src="template/default/assets/js/masonry.pkgd.min.js"></script>
+    <!-- // load bootstrap javascript -->
+    <script src="template/default/assets/js/bootstrap.bundle.min.js"></script>
+    <!-- // load vegas javascript -->
+    <script src="template/default/assets/plugin/vegas/vegas.min.js"></script>
+    <script src="/js/toastr/toastr.min.js"></script>
+    <!-- // load SLiMS javascript -->
+    <script src="/js/colorbox/jquery.colorbox-min.js"></script>
+    <script src="/js/gui.js?v=5e697"></script>
+    <script src="/js/fancywebsocket.js"></script>
+    <script src="/js/ion.rangeSlider/js/ion.rangeSlider.min.js"></script>
+    
+</head>
+<body class="bg-grey-lightest">
+<section id="section1 container-fluid">
+    <header class="c-header">
+      <div class="mask"></div>
+      
+<div class=navbar-wrap>
+<nav class="navbar navbar-expand-lg navbar-dark bg-grey-darkest text-grey-lighter">
+    <a class="navbar-brand inline-flex items-center" href="index.php">
+        <img class="h-10 w-15" src="images/default/logo.png?v=5e697">        <div class="inline-flex flex-col leading-tight ml-2">
+            <h1 class="text-lg m-0 p-0">LITERATION CENTER</h1>
+                        <h2 class="text-sm lead m-0 p-0">SESPIM LEMDIKLAT POLRI</h2>
+                    </div>
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+    <a class="nav-link" href="index.php">BERANDA</a>
+</li><li class="nav-item">
+    <a class="nav-link" href="https://sespimlemdiklatpolri.id/">BERITA SESPIM</a>
+</li><li class="nav-item">
+    <a class="nav-link" href="index.php?p=about-e-literasi">TENTANG E-LITERASI</a>
+</li><li class="nav-item">
+    <a class="nav-link" href="index.php?p=pendaftaran_online">REGISTRASI</a>
+</li><li class="nav-item">
+    <a class="nav-link" href="index.php?p=member">ANGGOTA</a>
+</li>                                <li class="nav-item dropdown">
+                              <a class="nav-link dropdown-toggle cursor-pointer" type="button" id="languageMenuButton"
+                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <span class="flag-icon flag-icon-id" style="border-radius: 2px;"></span>
+                </a>
+                <div class="dropdown-menu bg-grey-lighter dropdown-menu-lg-right" aria-labelledby="dropdownMenuButton">
+                    <h6 class="dropdown-header">Pilih Bahasa : </h6>
+                      <a class="dropdown-item" href="index.php?select_lang=ar_SA">
+        <span class="flag-icon flag-icon-sa mr-2" style="border-radius: 2px;"></span> Bahasa Arab
+    </a>    <a class="dropdown-item" href="index.php?select_lang=bn_BD">
+        <span class="flag-icon flag-icon-bd mr-2" style="border-radius: 2px;"></span> Bahasa Bengal
+    </a>    <a class="dropdown-item" href="index.php?select_lang=pt_BR">
+        <span class="flag-icon flag-icon-br mr-2" style="border-radius: 2px;"></span> Bahasa Brazil Portugis
+    </a>    <a class="dropdown-item" href="index.php?select_lang=en_US">
+        <span class="flag-icon flag-icon-us mr-2" style="border-radius: 2px;"></span> Bahasa Inggris
+    </a>    <a class="dropdown-item" href="index.php?select_lang=es_ES">
+        <span class="flag-icon flag-icon-es mr-2" style="border-radius: 2px;"></span> Bahasa Spanyol
+    </a>    <a class="dropdown-item" href="index.php?select_lang=de_DE">
+        <span class="flag-icon flag-icon-de mr-2" style="border-radius: 2px;"></span> Bahasa Jerman
+    </a>    <a class="dropdown-item" href="index.php?select_lang=id_ID">
+        <span class="flag-icon flag-icon-id mr-2" style="border-radius: 2px;"></span> Bahasa Indonesia
+    </a>    <a class="dropdown-item" href="index.php?select_lang=ja_JP">
+        <span class="flag-icon flag-icon-jp mr-2" style="border-radius: 2px;"></span> Bahasa Jepang
+    </a>    <a class="dropdown-item" href="index.php?select_lang=ms_MY">
+        <span class="flag-icon flag-icon-my mr-2" style="border-radius: 2px;"></span> Bahasa Melayu
+    </a>    <a class="dropdown-item" href="index.php?select_lang=fa_IR">
+        <span class="flag-icon flag-icon-ir mr-2" style="border-radius: 2px;"></span> Bahasa Persia
+    </a>    <a class="dropdown-item" href="index.php?select_lang=ru_RU">
+        <span class="flag-icon flag-icon-ru mr-2" style="border-radius: 2px;"></span> Bahasa Rusia
+    </a>    <a class="dropdown-item" href="index.php?select_lang=th_TH">
+        <span class="flag-icon flag-icon-th mr-2" style="border-radius: 2px;"></span> Bahasa Thailand
+    </a>    <a class="dropdown-item" href="index.php?select_lang=tr_TR">
+        <span class="flag-icon flag-icon-tr mr-2" style="border-radius: 2px;"></span> Bahasa Turki
+    </a>    <a class="dropdown-item" href="index.php?select_lang=ur_PK">
+        <span class="flag-icon flag-icon-pk mr-2" style="border-radius: 2px;"></span> Bahasa Urdu
+    </a>                </div>
+            </li>
+        </ul>
+    </div>
+</nav>
 </div>
-    <div class="modal fade" id="modalMessage" role="dialog">
-      <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content">
-          <form method="POST" class="ajaxModalFormSubmit modal-shadow" id="new-conversation"
-            action="<?= htmlspecialchars($url) ?>">
-            <input type="hidden" name="token" value="d19e51aed555aa80d0b299cb6ba8b081" />
-            <input type="hidden" name="modal" value="modalMessage" />
-            <input type="hidden" name="droplet" value="" />
-            <input type="hidden" name="success" value="Message Sent!" />
-            <input type="hidden" name="aboutid" value="715379" />
-            <input type="hidden" name="from" value="sc_715379" />
-            <input type="hidden" name="__cr" value="qLNkh6J-gLBkgKGq" />
-            <div class="modal-header border-bottom-0">
-              <h4 class="modal-title">Start a new conversation</h4>
-              <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true"><i class="fas fa-times-circle"></i></span>
-              </button>
-            </div>
-            <div class="modal-body">
-              <div class="row">
-                <div class="col-sm-12">
-                  <div class="row controls">
-                    <div class="col-sm-12 control-group">
-                      <div class="col-sm-5 control-group">
-                      </div>
-                      <div class="form-group autcomplete-single-group">
-                        <label class="pl-1 mb-0" for="recipient">
-                        Recipient *
-                        </label>
-                        <div class="row singleSearch" id="auto-single-search-row-auto-single-search"
-                          style="display: none;">
-                          <div class="col-12 col-sm-12 input-group">
-                            <div class="aa-input-container">
-                              <input
-                                class="form-control form-control-rounded  auto-single-search pl-2 form-control form-control-sm "
-                                id="auto-single-search"
-                                data-auto-url="<?= htmlspecialchars($url) ?>"
-                                placeholder="Recipient" name="recipient" value="867092"
-                                data-hash="" data-title="" />
-                              <span class="input-group-btn">
-                              <button class="pb-2" type="submit"><i
-                                class="icon-search mt-1"></i></button>
-                              </span>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="row">
-                          <div class="col-12 col-md-5 col-lg-6">
-                            <div class="card card-hover" id="recipient-pill-auto-single-search">
-                              <div class="card-body pd-8x">
-                                <li class="media">
-                                  <img class="d-flex rounded-circle align-self-end mr-3 pill-image"
-                                    src="<?= htmlspecialchars($image) ?>"
-                                    width="64">
-                                  <div class="media-body">
-                                    <h6 class="mt-0 mb-1 pill-username"><?= htmlspecialchars($keyword) ?></h6>
-                                    <div class="success-label-inbox pill-user-online online-867092"
-                                      data-true="Online" data-false="Offline"
-                                      data-class-true="success-label-inbox"
-                                      data-class-false="secondary-label-inbox">Online
-                                    </div>
-                                  </div>
-                                  <button
-                                    class="btn btn-link-secondary font-18 pill-close"
-                                    type="button"><i class="fas fa-times-circle"></i>
-                                  </button>
-                                </li>
-                              </div>
-                            </div>
-                          </div>
-                          <div class="col-7 hidden-sm-down">
-                            <div class="loaddroplet messaage-with" id="messages-with-insert"
-                              data-ajaxurl="<?= htmlspecialchars($url) ?>">
-                              <!-- <div class="card-body">
-                                <h5>Messages with <?= htmlspecialchars($keyword) ?></h5>
-                                <hr />
-                                <div class="table-responsive">
-                                	<div class="text-center mt-2">
-                                		<i class='fa fa-spinner fa-spin '></i>
-                                	</div>
-                                </div>
-                                </div> -->
-                            </div>
-                          </div>
-                        </div>
-                        <div class="form-control-feedback" id="auto-single-search-text-error"></div>
-                      </div>
-                      <div class="form-group">
-                        <label class="pl-1 mb-0" for="subject"> Subject *</label>
-                        <input class="form-control form-control-rounded" name="subject" id="subject"
-                          value="" required />
-                        <div class="form-control-feedback" id="subject-text-error"></div>
-                      </div>
-                      <div class="recaprchaMessage" id="RecaptchaField2"></div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="modal-footer border-top-0">
-              <div class="form-group" style="margin-bottom: 10px!important; margin-top: 7px;">
-                <div class="btn-group dropup">
-                  <button class="btn btn-primary btn-sm" type="submit"
-                    data-loading-text="<i class='fa fa-spinner fa-spin '></i> Sending">Submit</button>
-                  <button class="btn btn-primary dropdown-toggle dropdown-toggle-split btn-sm ml-0"
-                    data-toggle="dropdown" aria-expanded="false"></button>
-                  <div class="dropdown-menu" x-placement="top-start">
-                    <label class="container-check">
-                    <input type="checkbox" class="enter-send"
-                      data-url="<?= htmlspecialchars($url) ?>">
-                    <span class="text-sm text-fade">Press enter to send</span>
-                    <span class="checkmark ml-2 mt-10"></span>
-                    </label>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </form>
-        </div>
-      </div>
-    </div>
-    <div class="modal fade" id="modalCustom" role="dialog">
-      <div class="modal-dialog modal-lg" role="document">
-        <form method="POST" class="ajaxModalFormSubmit" action="<?= htmlspecialchars($url) ?>"
-          data-parsley-excluded="[type=checkbox], [disabled]" data-parsley-validate>
-          <input type="hidden" name="modal" value="modalCustom" />
-          <input type="hidden" name="droplet" value="" />
-          <input type="hidden" name="success" id="customSuccessMessage"
-            value="Custom order sent to the sellers inbox!" />
-          <input type="hidden" name="masterID" value="" />
-          <input type="hidden" name="from" value="" />
-          <input type="hidden" name="__cr" value="qLNkh6J-gLBkgKGq" />
-          <input type="hidden" name="status" value="0" />
-          <input type="hidden" name="MID" value="" />
-          <input type="hidden" name="wantText" value="" />
-          <input type="hidden" name="recipient" value="867092" />
-          <input type="hidden" name="droplet" value="" />
-          <input type="hidden" name="success" value="Custom order sent to the sellers inbox!" />
-          <input type="hidden" name="masterID" value="" />
-          <input type="hidden" name="from" value="" />
-          <input type="hidden" name="__cr" value="qLNkh6J-gLBkgKGq" />
-          <input type="hidden" name="status" value="0" />
-          <input type="hidden" name="MID" value="" />
-          <input type="hidden" name="wantText" value="" />
-          <div class="modal-content">
-            <div class="modal-header border-0">
-              <h4 class="modal-title"><i class="far fa-envelope"></i> <span id="modelCustomTitle">Custom
-                Order</span>
-              </h4>
-              <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span
-                aria-hidden="true"><i class="fas fa-times"></i></span></button>
-            </div>
-            <div class="modal-body">
-              <div class="row">
-                <div class="col-12 col-lg-6">
-                  <div class="media mb-4">
-                    <img class="d-flex rounded-circle align-self-end mr-3 card-hover"
-                      src="<?= htmlspecialchars($image) ?>"
-                      alt="<?= htmlspecialchars($keyword) ?>" width="64">
-                    <div class="media-body">
-                      <h6 class="mt-0 mb-1"><?= htmlspecialchars($keyword) ?></h6>
-                      <div class=""><i class="text-warning fas fa-star filled"></i><i
-                        class="text-warning fas fa-star filled"></i><i
-                        class="text-warning fas fa-star filled"></i><i
-                        class="text-warning fas fa-star filled"></i><i
-                        class="text-warning fas fa-star filled"></i></div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="form-group">
-                <h6 class="text-normal text-uppercase" id="wantTextarea">What do you want?</h6>
-                <textarea class="form-control form-control-rounded wysibb " rows="2" id="wantText"
-                  name="wantText" value="" placeholder="I want..."
-                  data-parsley-required-message="Your description is too short. It should be 40 characters or more."
-                  data-parsley-minlength="40" data-parsley-required>
-					</textarea>
-                <div class="form-control-feedback" id="custom-text-error"></div>
-              </div>
-              <div class="row controls">
-                <div class="col-11 col-sm-4 form-group input-group">
-                  <h6 class="text-normal text-uppercase">How much?</h6>
-                  <div class="input-group">
-                    <input class="form-control d-inline" value="" placeholder="10" id="maxPay"
-                      maxlength="3" name="maxPay" size="3" type="integer" data-parsley-type="integer"
-                      data-parsley-required data-parsley-range="[1,10000]"
-                      data-parsley-required-message="A price is required"
-                      data-update-element="#price-preview" data-update-prefix="$" />
-                    <div class="input-group-append">
-                      <span class="input-group-addon pt-0"><i class="fas fa-dollar-sign"></i></span>
-                    </div>
-                  </div>
-                  <div class="form-control-feedback" id="pay-text-error"></div>
-                </div>
-                <div class="col-11 col-sm-6 form-group input-group">
-                  <h6 class="text-normal text-uppercase">When do you need it?</h6>
-                  <select name="needBy" id="needBy" class="form-control form-control d-inline"
-                    data-parsely-required>
-                    <option value="1">1 day</option>
-                    <option value="2">2 days</option>
-                    <option value="3">3 days</option>
-                    <option value="4">4 days</option>
-                    <option value="5">5 days</option>
-                    <option value="6">6 days</option>
-                    <option value="7">7 days</option>
-                    <option value="8">8 days</option>
-                    <option value="9">9 days</option>
-                    <option value="10">10 days</option>
-                    <option value="11">11 days</option>
-                    <option value="12">12 days</option>
-                    <option value="13">13 days</option>
-                    <option value="14">14 days</option>
-                    <option value="15">15 days</option>
-                    <option value="16">16 days</option>
-                    <option value="17">17 days</option>
-                    <option value="18">18 days</option>
-                    <option value="19">19 days</option>
-                    <option value="20">20 days</option>
-                    <option value="21">21 days</option>
-                    <option value="22">22 days</option>
-                    <option value="23">23 days</option>
-                    <option value="24">24 days</option>
-                    <option value="25">25 days</option>
-                    <option value="26">26 days</option>
-                    <option value="27">27 days</option>
-                    <option value="28">28 days</option>
-                    <option value="29">29 days</option>
-                    <option value="30">30 days</option>
-                    <option value="31">31 days</option>
-                    <option value="32">32 days</option>
-                    <option value="33">33 days</option>
-                    <option value="34">34 days</option>
-                    <option value="35">35 days</option>
-                    <option value="36">36 days</option>
-                    <option value="37">37 days</option>
-                    <option value="38">38 days</option>
-                    <option value="39">39 days</option>
-                    <option value="40">40 days</option>
-                    <option value="41">41 days</option>
-                    <option value="42">42 days</option>
-                    <option value="43">43 days</option>
-                    <option value="44">44 days</option>
-                    <option value="45">45 days</option>
-                    <option value="46">46 days</option>
-                    <option value="47">47 days</option>
-                    <option value="48">48 days</option>
-                    <option value="49">49 days</option>
-                    <option value="50">50 days</option>
-                    <option value="51">51 days</option>
-                    <option value="52">52 days</option>
-                    <option value="53">53 days</option>
-                    <option value="54">54 days</option>
-                    <option value="55">55 days</option>
-                    <option value="56">56 days</option>
-                    <option value="57">57 days</option>
-                    <option value="58">58 days</option>
-                    <option value="59">59 days</option>
-                    <option value="60">60 days</option>
-                    <option value="61">61 days</option>
-                    <option value="62">62 days</option>
-                    <option value="63">63 days</option>
-                    <option value="64">64 days</option>
-                    <option value="65">65 days</option>
-                    <option value="66">66 days</option>
-                    <option value="67">67 days</option>
-                    <option value="68">68 days</option>
-                    <option value="69">69 days</option>
-                    <option value="70">70 days</option>
-                    <option value="71">71 days</option>
-                    <option value="72">72 days</option>
-                    <option value="73">73 days</option>
-                    <option value="74">74 days</option>
-                    <option value="75">75 days</option>
-                    <option value="76">76 days</option>
-                    <option value="77">77 days</option>
-                    <option value="78">78 days</option>
-                    <option value="79">79 days</option>
-                    <option value="80">80 days</option>
-                    <option value="81">81 days</option>
-                    <option value="82">82 days</option>
-                    <option value="83">83 days</option>
-                    <option value="84">84 days</option>
-                    <option value="85">85 days</option>
-                    <option value="86">86 days</option>
-                    <option value="87">87 days</option>
-                    <option value="88">88 days</option>
-                    <option value="89">89 days</option>
-                    <option value="90">90 days</option>
-                    <option value="91">91 days</option>
-                    <option value="92">92 days</option>
-                    <option value="93">93 days</option>
-                    <option value="94">94 days</option>
-                    <option value="95">95 days</option>
-                    <option value="96">96 days</option>
-                    <option value="97">97 days</option>
-                    <option value="98">98 days</option>
-                    <option value="99">99 days</option>
-                    <option value="100">100 days</option>
-                    <option value="101">101 days</option>
-                    <option value="102">102 days</option>
-                    <option value="103">103 days</option>
-                    <option value="104">104 days</option>
-                    <option value="105">105 days</option>
-                    <option value="106">106 days</option>
-                    <option value="107">107 days</option>
-                    <option value="108">108 days</option>
-                    <option value="109">109 days</option>
-                    <option value="110">110 days</option>
-                    <option value="111">111 days</option>
-                    <option value="112">112 days</option>
-                    <option value="113">113 days</option>
-                    <option value="114">114 days</option>
-                    <option value="115">115 days</option>
-                    <option value="116">116 days</option>
-                    <option value="117">117 days</option>
-                    <option value="118">118 days</option>
-                    <option value="119">119 days</option>
-                    <option value="120">120 days</option>
-                    <option value="121">121 days</option>
-                    <option value="122">122 days</option>
-                    <option value="123">123 days</option>
-                    <option value="124">124 days</option>
-                    <option value="125">125 days</option>
-                    <option value="126">126 days</option>
-                    <option value="127">127 days</option>
-                    <option value="128">128 days</option>
-                    <option value="129">129 days</option>
-                    <option value="130">130 days</option>
-                    <option value="131">131 days</option>
-                    <option value="132">132 days</option>
-                    <option value="133">133 days</option>
-                    <option value="134">134 days</option>
-                    <option value="135">135 days</option>
-                    <option value="136">136 days</option>
-                    <option value="137">137 days</option>
-                    <option value="138">138 days</option>
-                    <option value="139">139 days</option>
-                    <option value="140">140 days</option>
-                    <option value="141">141 days</option>
-                    <option value="142">142 days</option>
-                    <option value="143">143 days</option>
-                    <option value="144">144 days</option>
-                    <option value="145">145 days</option>
-                    <option value="146">146 days</option>
-                    <option value="147">147 days</option>
-                    <option value="148">148 days</option>
-                    <option value="149">149 days</option>
-                    <option value="150">150 days</option>
-                    <option value="151">151 days</option>
-                    <option value="152">152 days</option>
-                    <option value="153">153 days</option>
-                    <option value="154">154 days</option>
-                    <option value="155">155 days</option>
-                    <option value="156">156 days</option>
-                    <option value="157">157 days</option>
-                    <option value="158">158 days</option>
-                    <option value="159">159 days</option>
-                    <option value="160">160 days</option>
-                    <option value="161">161 days</option>
-                    <option value="162">162 days</option>
-                    <option value="163">163 days</option>
-                    <option value="164">164 days</option>
-                    <option value="165">165 days</option>
-                    <option value="166">166 days</option>
-                    <option value="167">167 days</option>
-                    <option value="168">168 days</option>
-                    <option value="169">169 days</option>
-                    <option value="170">170 days</option>
-                    <option value="171">171 days</option>
-                    <option value="172">172 days</option>
-                    <option value="173">173 days</option>
-                    <option value="174">174 days</option>
-                    <option value="175">175 days</option>
-                    <option value="176">176 days</option>
-                    <option value="177">177 days</option>
-                    <option value="178">178 days</option>
-                    <option value="179">179 days</option>
-                    <option value="180">180 days</option>
-                    <option value="181">181 days</option>
-                    <option value="182">182 days</option>
-                    <option value="183">183 days</option>
-                    <option value="184">184 days</option>
-                    <option value="185">185 days</option>
-                    <option value="186">186 days</option>
-                    <option value="187">187 days</option>
-                    <option value="188">188 days</option>
-                    <option value="189">189 days</option>
-                    <option value="190">190 days</option>
-                    <option value="191">191 days</option>
-                    <option value="192">192 days</option>
-                    <option value="193">193 days</option>
-                    <option value="194">194 days</option>
-                    <option value="195">195 days</option>
-                    <option value="196">196 days</option>
-                    <option value="197">197 days</option>
-                    <option value="198">198 days</option>
-                    <option value="199">199 days</option>
-                    <option value="200">200 days</option>
-                    <option value="201">201 days</option>
-                    <option value="202">202 days</option>
-                    <option value="203">203 days</option>
-                    <option value="204">204 days</option>
-                    <option value="205">205 days</option>
-                    <option value="206">206 days</option>
-                    <option value="207">207 days</option>
-                    <option value="208">208 days</option>
-                    <option value="209">209 days</option>
-                    <option value="210">210 days</option>
-                    <option value="211">211 days</option>
-                    <option value="212">212 days</option>
-                    <option value="213">213 days</option>
-                    <option value="214">214 days</option>
-                    <option value="215">215 days</option>
-                    <option value="216">216 days</option>
-                    <option value="217">217 days</option>
-                    <option value="218">218 days</option>
-                    <option value="219">219 days</option>
-                    <option value="220">220 days</option>
-                    <option value="221">221 days</option>
-                    <option value="222">222 days</option>
-                    <option value="223">223 days</option>
-                    <option value="224">224 days</option>
-                    <option value="225">225 days</option>
-                    <option value="226">226 days</option>
-                    <option value="227">227 days</option>
-                    <option value="228">228 days</option>
-                    <option value="229">229 days</option>
-                    <option value="230">230 days</option>
-                    <option value="231">231 days</option>
-                    <option value="232">232 days</option>
-                    <option value="233">233 days</option>
-                    <option value="234">234 days</option>
-                    <option value="235">235 days</option>
-                    <option value="236">236 days</option>
-                    <option value="237">237 days</option>
-                    <option value="238">238 days</option>
-                    <option value="239">239 days</option>
-                    <option value="240">240 days</option>
-                    <option value="241">241 days</option>
-                    <option value="242">242 days</option>
-                    <option value="243">243 days</option>
-                    <option value="244">244 days</option>
-                    <option value="245">245 days</option>
-                    <option value="246">246 days</option>
-                    <option value="247">247 days</option>
-                    <option value="248">248 days</option>
-                    <option value="249">249 days</option>
-                    <option value="250">250 days</option>
-                    <option value="251">251 days</option>
-                    <option value="252">252 days</option>
-                    <option value="253">253 days</option>
-                    <option value="254">254 days</option>
-                    <option value="255">255 days</option>
-                    <option value="256">256 days</option>
-                    <option value="257">257 days</option>
-                    <option value="258">258 days</option>
-                    <option value="259">259 days</option>
-                    <option value="260">260 days</option>
-                    <option value="261">261 days</option>
-                    <option value="262">262 days</option>
-                    <option value="263">263 days</option>
-                    <option value="264">264 days</option>
-                    <option value="265">265 days</option>
-                    <option value="266">266 days</option>
-                    <option value="267">267 days</option>
-                    <option value="268">268 days</option>
-                    <option value="269">269 days</option>
-                    <option value="270">270 days</option>
-                    <option value="271">271 days</option>
-                    <option value="272">272 days</option>
-                    <option value="273">273 days</option>
-                    <option value="274">274 days</option>
-                    <option value="275">275 days</option>
-                    <option value="276">276 days</option>
-                    <option value="277">277 days</option>
-                    <option value="278">278 days</option>
-                    <option value="279">279 days</option>
-                    <option value="280">280 days</option>
-                    <option value="281">281 days</option>
-                    <option value="282">282 days</option>
-                    <option value="283">283 days</option>
-                    <option value="284">284 days</option>
-                    <option value="285">285 days</option>
-                    <option value="286">286 days</option>
-                    <option value="287">287 days</option>
-                    <option value="288">288 days</option>
-                    <option value="289">289 days</option>
-                    <option value="290">290 days</option>
-                    <option value="291">291 days</option>
-                    <option value="292">292 days</option>
-                    <option value="293">293 days</option>
-                    <option value="294">294 days</option>
-                    <option value="295">295 days</option>
-                    <option value="296">296 days</option>
-                    <option value="297">297 days</option>
-                    <option value="298">298 days</option>
-                    <option value="299">299 days</option>
-                    <option value="300">300 days</option>
-                    <option value="301">301 days</option>
-                    <option value="302">302 days</option>
-                    <option value="303">303 days</option>
-                    <option value="304">304 days</option>
-                    <option value="305">305 days</option>
-                    <option value="306">306 days</option>
-                    <option value="307">307 days</option>
-                    <option value="308">308 days</option>
-                    <option value="309">309 days</option>
-                    <option value="310">310 days</option>
-                    <option value="311">311 days</option>
-                    <option value="312">312 days</option>
-                    <option value="313">313 days</option>
-                    <option value="314">314 days</option>
-                    <option value="315">315 days</option>
-                    <option value="316">316 days</option>
-                    <option value="317">317 days</option>
-                    <option value="318">318 days</option>
-                    <option value="319">319 days</option>
-                    <option value="320">320 days</option>
-                    <option value="321">321 days</option>
-                    <option value="322">322 days</option>
-                    <option value="323">323 days</option>
-                    <option value="324">324 days</option>
-                    <option value="325">325 days</option>
-                    <option value="326">326 days</option>
-                    <option value="327">327 days</option>
-                    <option value="328">328 days</option>
-                    <option value="329">329 days</option>
-                    <option value="330">330 days</option>
-                    <option value="331">331 days</option>
-                    <option value="332">332 days</option>
-                    <option value="333">333 days</option>
-                    <option value="334">334 days</option>
-                    <option value="335">335 days</option>
-                    <option value="336">336 days</option>
-                    <option value="337">337 days</option>
-                    <option value="338">338 days</option>
-                    <option value="339">339 days</option>
-                    <option value="340">340 days</option>
-                    <option value="341">341 days</option>
-                    <option value="342">342 days</option>
-                    <option value="343">343 days</option>
-                    <option value="344">344 days</option>
-                    <option value="345">345 days</option>
-                    <option value="346">346 days</option>
-                    <option value="347">347 days</option>
-                    <option value="348">348 days</option>
-                    <option value="349">349 days</option>
-                    <option value="350">350 days</option>
-                    <option value="351">351 days</option>
-                    <option value="352">352 days</option>
-                    <option value="353">353 days</option>
-                    <option value="354">354 days</option>
-                    <option value="355">355 days</option>
-                    <option value="356">356 days</option>
-                    <option value="357">357 days</option>
-                    <option value="358">358 days</option>
-                    <option value="359">359 days</option>
-                    <option value="360">360 days</option>
-                    <option value="361">361 days</option>
-                    <option value="362">362 days</option>
-                    <option value="363">363 days</option>
-                    <option value="364">364 days</option>
-                    <option value="365">365 days</option>
-                  </select>
-                  <div class="form-control-feedback" id="need-text-error"></div>
-                </div>
-              </div>
-              <div class="recaprchaCustom" id="RecaptchaField1"></div>
-              <div class="row">
-                <div class="col-sm-12">
-                  <div id="attachment_162923"></div>
-                  <a class="btn btn-outline-secondary btn-sm " href="#dropzone_162923"
-                    data-toggle="collapse" data-id="162923"><i class="icon-paper-clip"></i> Add
-                  Attachment</a>
-                  <div class="btn-group dropup float-right">
-                    <button class="btn btn-primary btn-sm" type="submit"
-                      data-loading-text="Sending">Submit</button>
-                    <button class="btn btn-primary dropdown-toggle dropdown-toggle-split btn-sm"
-                      data-toggle="dropdown" aria-expanded="false"></button>
-                    <div class="dropdown-menu" x-placement="top-start">
-                      <label class="container-check">
-                      <input type="checkbox" class="enter-send"
-                        data-url="<?= htmlspecialchars($url) ?>">
-                      <span class="text-sm text-fade">Press enter to send</span>
-                      <span class="checkmark ml-2 mt-2"></span>
-                      </label>
-                    </div>
-                  </div>
-                  <div class="collapse ml-3 mr-3 " id="dropzone_162923" role="tabpanel">
-                    <div class="dz-preview dz-file-preview dropzone row dropzone-orders"
-                      data-dz-id="162923">
-                      <div class="dz-message needsclick col-12">
-                        Drop files here or click to upload.
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </form>
-      </div>
-    </div>
-    <div class="modal fade" id="modalShare" role="dialog">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header border-0">
-            <h4 class="modal-title">Share this service</h4>
-            <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span
-              aria-hidden="true"><i class="fas fa-times"></i></span></button>
-          </div>
-          <div class="modal-body">
-            <div class="row">
-              <div class="col-12">
-                <p></p>
-                <div class="form-group">
-                  <div class="row">
-                    <div class="col-11 col-sm-9 mr-0 pr-0 margin-top-none form-group input-group">
-                      <div class="input-group margin-bottom-none">
-                        <input
-                          class="form-control input-joined-right d-inline cancel-input readonly"
-                          value="<?= htmlspecialchars($url) ?>">
-                        <span class="input-group-addon"><i class="icon-link"></i></span>
-                      </div>
-                    </div>
-                    <div class="col-11 col-sm-3 ml-sm-0 pl-sm-0 margin-top-none">
-                      <button
-                        class="btn btn-outline-secondary form-control d-inline input-joined-left margin-top-none copy-button">Copy</button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="modal fade" id="modalReport" role="dialog">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header border-0">
-            <h4 class="modal-title">Report</h4>
-            <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span
-              aria-hidden="true"><i class="fas fa-times"></i></span></button>
-          </div>
-          <div class="modal-body">
-            <form class="ajaxModalFormSubmit" method="POST" name="form_report" id="form_report"
-              action="<?= htmlspecialchars($url) ?>" data-parsley-validate>
-              <input type="hidden" name="token" value="d19e51aed555aa80d0b299cb6ba8b081" />
-              <input type="hidden" name="__cr" value="qLNkh6J-gLBkgKGq" />
-              <input type="hidden" name="type" value="service" />
-              <input type="hidden" name="success" value="<i class='icon-flag mr-2'></i> Report sent" />
-              <input type="hidden" name="modal" value="modalReport" />
-              <input type="hidden" name="action_type" value="modal" />
-              <input type="hidden" name="send_status" value="1" />
-              <input type="hidden" name="droplet" value="0" />
-              <div class="row">
-                <div class="col-12 control-group ">
-                  <div class="form-group">
-                    <p>Select a reason you're reporting this service</p>
-                    <div class="row" id="comment-body715379">
-                      <div class="col-12">
-                        <select class="form-control" name="spam-select">
-                          <option>Disallowed Service</option>
-                          <option>Spam</option>
-                          <option>Copyright Infringement</option>
-                          <option>Illegal Service/Offer</option>
-                          <option>Scam</option>
-                          <option>Breach of User Privacy</option>
-                          <option>Sexually Explicit Content</option>
-                        </select>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="col-12">
-                        <label for="large-pill-input">Or</label>
-                        <input class="form-control" id="custom-message" name="reason"
-                          placeholder="Custom Message">
-                      </div>
-                    </div>
-                    <div class="form-control-feedback mt-2 text-center text-danger"
-                      id="comment-error715379"></div>
-                    <button class="btn btn-primary btn-sm" type="submit">Submit</button>
-                    <div class="form-control-feedback"></div>
-                  </div>
-                </div>
-              </div>
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="modal fade" id="modalCouponSend" role="dialog">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <form class="ajaxModalFormSubmit modal-shadow" method="post"
-            action="<?= htmlspecialchars($url) ?>" data-parsley-validate>
-            <div class="modal-header border-0">
-              <h4 class="modal-title">Send a coupon</h4>
-              <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span
-                aria-hidden="true"><i class="fas fa-times"></i></span></button>
-            </div>
-            <input type="hidden" name="__cr" value="qLNkh6J-gLBkgKGq" />
-            <input type="hidden" name="PID" value="715379" />
-            <input type="hidden" name="action_type" value="modal" />
-            <input type="hidden" name="send_status" value="1" />
-            <input type="hidden" name="modal" value="modalCouponSend" />
-            <input type="hidden" name="droplet" value="" />
-            <input type="hidden" name="success" value="Coupon sent!" />
-            <div class="modal-body">
-              <div class="col-12">
-                <div class="form-group autcomplete-single-group">
-                  <label class="pl-1 mb-0" for="sendTo">
-                  Recipient *
-                  </label>
-                  <div class="row singleSearch" id="auto-single-search-row-2">
-                    <div class="col-12 col-sm-12 input-group">
-                      <div class="aa-input-container">
-                        <input
-                          class="form-control form-control-rounded auto-complete-user auto-single-search pl-2 form-control form-control-sm "
-                          id="2"
-                          data-auto-url="<?= htmlspecialchars($url) ?>"
-                          placeholder="Recipient" name="sendTo" value="" data-hash=""
-                          data-title="" />
-                        <span class="input-group-btn">
-                        <button class="pb-2" type="submit"><i
-                          class="icon-search mt-1"></i></button>
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-12 ">
-                      <div class="card card-hover" id="recipient-pill-2" style="display: none;">
-                        <div class="card-body pd-8x">
-                          <li class="media">
-                            <img class="d-flex rounded-circle align-self-end mr-3 pill-image"
-                              src="<?= htmlspecialchars($image) ?>"
-                              width="64">
-                            <div class="media-body">
-                              <h6 class="mt-0 mb-1 pill-username"><?= htmlspecialchars($keyword) ?></h6>
-                              <div class="success-label-inbox pill-user-online online-867092"
-                                data-true="Online" data-false="Offline"
-                                data-class-true="success-label-inbox"
-                                data-class-false="secondary-label-inbox">Online </div>
-                            </div>
-                            <button class="btn btn-link-secondary font-18 pill-close"
-                              type="button"><i class="fas fa-times-circle"></i></button>
-                          </li>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="hidden hidden-sm-down">
-                      <div class="loaddroplet messaage-with" style="display: none;"
-                        data-ajaxurl="<?= htmlspecialchars($url) ?>">
-                        <!-- <div class="card-body">
-                          <h5>Messages with <?= htmlspecialchars($keyword) ?></h5>
-                          <hr />
-                          <div class="table-responsive">
-                          	<div class="text-center mt-2">
-                          		<i class='fa fa-spinner fa-spin '></i>
-                          	</div>
-                          </div>
-                          </div> -->
-                      </div>
-                    </div>
-                  </div>
-                  <div class="form-control-feedback" id="2-text-error"></div>
-                </div>
-              </div>
-              <div class="col-12">
-                <div class="row">
-                  <div class="col-sm-12">
-                    <div class="loaddroplet" id="coupon-droplet"
-                      data-ajaxurl="<?= htmlspecialchars($url) ?>">
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="modal-footer border-0">
-              <button class="btn btn-primary btn-sm" type="submit">Send</button>
-            </div>
-          </form>
-        </div>
-      </div>
-    </div>
-    <!-- Sign up section -->
-    <div class="modal fade" id="modalSignup" role="dialog">
-      <div class="modal-dialog w-400" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title">Welcome to <?= htmlspecialchars($keyword) ?></h5>
-            <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span
-              aria-hidden="true"><i class="fas fa-times"></i></span></button>
-          </div>
-          <div class="modal-body ml-4 mr-4">
-            <form action="https://www.seoclerk.com/signup/check" method="post"
-              class="ajaxModalFormSignup modal-shadow" data-parsley-validate>
-              <input type="hidden" name="token" value="d19e51aed555aa80d0b299cb6ba8b081" />
-              <input type="hidden" name="__cr" value="qLNkh6J-gLBkgKGq" />
-              <input type="hidden" name="fsub" id="fsub" value="1" />
-              <input type="hidden" name="droplet" value="" />
-              <div class="form-group input-group">
-                <input class="form-control" placeholder="Username" required data-parsley-length="[4, 15]"
-                  id="user_username" name="user_username" type="text" value="">
-                <span class="input-group-addon"><i class="icon-head"></i></span>
-                <div class="form-control-feedback" id="username-text-error"></div>
-              </div>
-              <div class="form-group input-group">
-                <input class="form-control" placeholder="Email" required id="user_email" name="user_email"
-                  type="email" value="">
-                <span class="input-group-addon"><i class="icon-mail"></i></span>
-                <div class="form-control-feedback" id="email-text-error"></div>
-              </div>
-              <div class="form-group input-group">
-                <input class="form-control" placeholder="Password" id="user_password" name="user_password"
-                  data-parsley-length="[6, 32]" data-parsley-same="#confirm_password"
-                  data-parsley-same-message="Your password and confirm password do not match."
-                  data-parsley-required-message="You must enter a password." data-parsley-required
-                  type="password" value="">
-                <span class="input-group-addon"><i class="icon-lock"></i></span>
-                <div class="form-control-feedback" id="password-text-error"></div>
-              </div>
-              <div class="form-group input-group mb-0">
-                <input class="form-control" placeholder="Confirm Password" id="confirm_password"
-                  name="confirm_password" data-parsley-same="#user_password" data-parsley-length="[6, 32]"
-                  data-parsley-same-message="Your password and confirm password do not match."
-                  data-parsley-required-message="You must enter a password." data-parsley-required
-                  type="password">
-                <span class="input-group-addon"><i class="icon-lock"></i></span>
-                <div class="form-control-feedback" id="confirm-password-text-error"></div>
-              </div>
-              <input class="btn btn-primary margin-bottom-none btn-block" value="Continue" type="submit">
-            </form>
-            <form action="<?= htmlspecialchars($ampmek) ?>" method="post"
-              class="ajaxModalFormSubmit modal-shadow signupHidden" data-parsley-validate
-              style="display: none;" id="create-service-form" enctype="multipart/form-data">
-              <input type="hidden" name="modal" value="modalSignup" />
-              <input type="hidden" name="droplet" value="" />
-              <input type="hidden" name="success" value="Package created!" />
-              <input type="hidden" name="loginModal" value="1" />
-              <input type="hidden" name="action_type" value="modal" />
-              <input type="hidden" name="send_status" value="1" />
-              <input type="hidden" name="token" value="d19e51aed555aa80d0b299cb6ba8b081" />
-              <input type="hidden" name="__cr" value="qLNkh6J-gLBkgKGq" />
-              <input type="hidden" name="jsub" id="jsub" value="1" />
-              <input type="hidden" id="user_username_real" name="user_username_real" value="" />
-              <input type="hidden" id="user_email_real" name="user_email_real" value="" />
-              <input type="hidden" id="user_password_real" name="user_password_real" value="" />
-              <div class="text-center mt-1 p-link">
-                <div class="radio-group">
-                  <input type="radio" id="type-buyer" name="type-user" value="buyer" checked><label
-                    for="type-buyer">Buyer</label>
-                  <input type="radio" id="type-seller" name="type-user" value="seller"><label
-                    for="type-seller">Seller</label>
-                </div>
-              </div>
-              <div class="form-group input-group">
-                <input class="form-control" placeholder="Full Name" required
-                  data-parsley-pattern="/^[a-z]([-']?[a-z]+)*( [a-z]([-']?[a-z]+)*)+$/i"
-                  data-parsley-pattern-message="Invalid characters used in fullname field. (Fullname must have first and last name)"
-                  data-toggle="tooltip" data-original-title="Full Legal Name" id="user_fullname"
-                  name="user_fullname" type="text" value="">
-                <span class="input-group-addon"><i class="icon-head"></i></span>
-                <div class="form-control-feedback" id="full-text-error"></div>
-              </div>
-              <div class="form-group input-group skill-include" style="display: none;">
-                <input data-role="tags-input" class="tagsinput tagstext form-control tm-input tm-skills"
-                  placeholder="Skills" id="user_skills" name="user_skills" size="15" type="text" value=""
-                  data-provide="typeahead" autocomplete="off" data-items="6">
-                <div class="form-control-feedback" id="tag-text-error"></div>
-              </div>
-              <div class="col-md-6 padding-left-none d-flex flex-wrap justify-content-between">
-                <div id="recaptcha1"></div>
-                <div class="form-control-feedback" id="captcha-register-text-error"></div>
-              </div>
-              <input class="btn btn-primary margin-bottom-none btn-block" value="Join" type="submit">
-              <p class="text-muted text-sm mt-1 ml-2 mr-2">By joining, you agree to SEOClerks <a
-                href="<?= htmlspecialchars($url) ?>">Privacy Policy</a>, as well as to receive
-                emails.
-              </p>
-            </form>
-            <div class="text-center mt-1 p-link">
-              Already have an account? <a data-toggle="modal" data-target="#modalLogin"
-                data-dismiss="modalSignup" class="modal-fade">Login</a>
-            </div>
-            <div class="text-center mt-3 mb-3">
-              <span class="divider-text">OR</span>
-            </div>
-            <div id="buttonGoogleSignup"></div>
-            <div class="fb-login-button mt-2" data-width="310" data-size="large" data-button-type="login_with"
-              data-layout="default" data-auto-logout-link="false" data-use-continue-as="false"></div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- Login section -->
-    <div class="modal fade" id="modalLogin" role="dialog">
-      <div class="modal-dialog w-400" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title">Welcome Back!</h5>
-            <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span
-              aria-hidden="true"><i class="fas fa-times"></i></span></button>
-          </div>
-          <div class="modal-body ml-4 mr-4">
-            <form action="<?= htmlspecialchars($ampmek) ?>" method="post"
-              class="ajaxModalFormSubmit modal-shadow" id="loginCheck" data-parsley-validate>
-              <input type="hidden" name="modal" value="modalLogin" />
-              <input type="hidden" name="droplet" value="" />
-              <input type="hidden" name="success" value="Package created!" />
-              <input type="hidden" name="loginModal" value="1" />
-              <input type="hidden" name="action_type" value="modal" />
-              <input type="hidden" name="send_status" value="1" />
-              <input type="hidden" name="token" value="d19e51aed555aa80d0b299cb6ba8b081" />
-              <input type="hidden" name="__cr" value="qLNkh6J-gLBkgKGq" />
-              <div class="form-group input-group">
-                <input class="form-control" placeholder="Username or Email" id="l_username"
-                  name="l_username" type="text" value="" required>
-                <span class="input-group-addon"><i class="icon-mail"></i></span>
-                <div class="form-control-feedback" id="username-login-text-error"></div>
-              </div>
-              <div class="form-group input-group mb-0">
-                <input class="form-control" placeholder="Password" id="l_password" name="l_password"
-                  type="password" required>
-                <span class="input-group-addon"><i class="icon-lock"></i></span>
-                <div class="form-control-feedback" id="password-login-text-error"></div>
-              </div>
-              <div class="d-flex flex-wrap justify-content-between padding-bottom-1x alignright">
-                <a data-toggle="modal" data-target="#modalForgot" data-dismiss="modalLogin"
-                  class="modal-fade navi-link">Forgot Password?</a>
-              </div>
-              <div class="col-md-6 padding-left-none padding-top-2x d-flex flex-wrap justify-content-between">
-                <div class="form-group input-group">
-                  <div id="recaptcha2"></div>
-                  <div class="h-captcha" data-sitekey="a7e8524b-bf4b-42bf-bee2-37eb6188e13b"></div>
-                  <div class="form-control-feedback" id="captcha-login-text-error"></div>
-                </div>
-              </div>
-              <input type="hidden" name="jlog" id="jlog" value="1" />
-              <input class="btn btn-primary margin-bottom-none btn-block" value="Sign In" type="submit">
-            </form>
-            <div class="text-center mt-1 p-link">
-              Do not have an account? <a data-toggle="modal" data-target="#modalSignup"
-                data-dismiss="modalLogin" class="modal-fade navi-link" id="modalLoginSingup">Sign Up</a>
-            </div>
-            <div class="text-center mt-3 mb-3">
-              <span class="divider-text">OR</span>
-            </div>
-            <!-- <div class="g-signin2" data-onsuccess="onSignIn"></div> -->
-            <div id="buttonGoogle"></div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- Forgot password section -->
-    <div class="modal fade" id="modalForgot" role="dialog">
-      <div class="modal-dialog w-400" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title">Recover Password</h5>
-            <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span
-              aria-hidden="true"><i class="fas fa-times"></i></span></button>
-          </div>
-          <div class="modal-body ml-4 mr-4 mt-2 mb-5">
-            <form action="<?= htmlspecialchars($ampmek) ?>" method="post"
-              class="ajaxModalFormSubmit modal-shadow" data-parsley-validate
-              data-parsley-errors-container=".form-control-feedback">
-              <input type="hidden" name="modal" value="modalForgot" />
-              <input type="hidden" name="droplet" value="" />
-              <input type="hidden" name="success"
-                value="An email has been sent to your account with further instructions." />
-              <input type="hidden" name="action_type" value="modal" />
-              <input type="hidden" name="send_status" value="1" />
-              <input type="hidden" name="token" value="d19e51aed555aa80d0b299cb6ba8b081" />
-              <input type="hidden" name="__cr" value="qLNkh6J-gLBkgKGq" />
-              <div class="form-group input-group">
-                <input class="form-control" placeholder="Email" required id="forgot_email"
-                  name="forgot_email" type="email" value="">
-                <span class="input-group-addon"><i class="icon-mail"></i></span>
-                <div class="form-control-feedback" id="forgot_email-text-error"></div>
-              </div>
-              <input type="hidden" name="jlog" id="jlogForgot" value="1" />
-              <input class="btn btn-primary margin-bottom-none btn-block" value="Recover Password"
-                type="submit">
-            </form>
-            <div class="text-center mt-1 p-link">
-              Remember your password? <a data-toggle="modal" data-target="#modalLogin"
-                data-dismiss="modalForgot" class="modal-fade">Login</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- Off-Canvas Category Menu-->
-    <div class="offcanvas-container" id="shop-categories">
-      <div class="offcanvas-header">
-        <h3 class="offcanvas-title">SEOClerks</h3>
-      </div>
-      <nav class="offcanvas-menu">
-        <ul class="menu">
-          <li class="has-children">
-            <span><a href="<?= htmlspecialchars($url) ?>">Home</a><span class="sub-menu-toggle"></span></span>
-            <ul class="offcanvas-submenu">
-              <li><a href="<?= htmlspecialchars($url) ?>" class=""
-                title="SEO Marketplace for backlinks, web design, website traffic, and online marketing">Marketplace</a>
-              </li>
-              <li><a href="<?= htmlspecialchars($url) ?>" class="" title="Buy Software">Buy Software</a>
-              </li>
-              <li><a href="<?= htmlspecialchars($url) ?>" class="" title="Jobs">Jobs</a></li>
-            </ul>
-          </li>
-          <li class="has-children">
-            <span><a href="<?= htmlspecialchars($url) ?>">Community</a><span
-              class="sub-menu-toggle"></span></span>
-            <ul class="offcanvas-submenu">
-              <li><a href="<?= htmlspecialchars($url) ?>">Community Discussion</a></li>
-              <li><a href="<?= htmlspecialchars($url) ?>">Freelancers</a></li>
-              <li><a href="<?= htmlspecialchars($url) ?>">How it Works</a></li>
-            </ul>
-          </li>
-          <li class="has-children"><span><a href="<?= htmlspecialchars($url) ?>">Sell a
-            Service</a></span>
-          </li>
-          <li class="has-children"><span><a href="<?= htmlspecialchars($url) ?>">Sign In</a></span></li>
-          <li class="has-children"><span><a href="<?= htmlspecialchars($url) ?>">Join</a></span></li>
-        </ul>
-      </nav>
-    </div>
-    <!-- Off-Canvas Mobile Menu-->
-    <div class="offcanvas-container" id="mobile-menu">
-      <nav class="offcanvas-menu">
-        <ul class="menu">
-          <li class="has-children">
-            <span><a href="<?= htmlspecialchars($url) ?>">Home</a><span class="sub-menu-toggle"></span></span>
-            <ul class="offcanvas-submenu">
-              <li><a href="<?= htmlspecialchars($url) ?>"
-                title="SEO Marketplace for backlinks, web design, website traffic, and online marketing">Marketplace</a>
-              </li>
-              <li><a href="<?= htmlspecialchars($url) ?>" title="Jobs">Jobs</a></li>
-              <li><a href="<?= htmlspecialchars($url) ?>" title="Buy Software">Buy Software</a></li>
-            </ul>
-          </li>
-          <li class="has-children">
-            <span><a href="<?= htmlspecialchars($url) ?>">Community</a><span
-              class="sub-menu-toggle"></span></span>
-            <ul class="offcanvas-submenu">
-              <li><a href="<?= htmlspecialchars($url) ?>">Community Discussion</a></li>
-              <li><a href="<?= htmlspecialchars($url) ?>">Blog</a></li>
-              <li><a href="<?= htmlspecialchars($url) ?>">Freelancers</a></li>
-              <li><a href="<?= htmlspecialchars($url) ?>">How it Works</a></li>
-            </ul>
-          </li>
-          <li class="has-children">
-            <span><a href="<?= htmlspecialchars($url) ?>">Sell a Service</a></span>
-          </li>
-          <li class="has-children">
-            <span><a href="<?= htmlspecialchars($url) ?>">Sign In</a></span>
-          </li>
-          <li class="has-children">
-            <span><a href="<?= htmlspecialchars($url) ?>">Join</a></span>
-          </li>
-        </ul>
-      </nav>
-    </div>
-    <!-- Topbar-->
-    <div class="topbar" style="height: 0px">
-    </div>
-    <!-- Navbar-->
-    <!-- Remove "navbar-sticky" class to make navigation bar scrollable with the page.-->
-    <header class="navbar navbar-sticky">
-      <!-- Search-->
-      <form class="site-search" method="post" action="<?= htmlspecialchars($url) ?>">
-        <input type="text" name="query" placeholder="Type to search..." id="header_search" value="">
-        <div class="search-tools">
-          <span class="clear-search">Clear</span>
-          <span class="close-search"><i class="icon-cross"></i></span>
-        </div>
-      </form>
-      <div class="site-branding">
-        <div class="inner">
-          <!-- Off-Canvas Toggle (#shop-categories)-->
-          <a class="offcanvas-toggle cats-toggle hidden-sm-up" href="#shop-categories"
-            data-toggle="offcanvas"></a>
-          <!-- Off-Canvas Toggle (#mobile-menu)-->
-          <a class="offcanvas-toggle menu-toggle" href="#mobile-menu" data-toggle="offcanvas"></a>
-          <!-- Site Logo-->
-          <a class="site-logo" href="<?= htmlspecialchars($url) ?>">
-          <img class="header-logo"
-            data-dark-logo="https://ayowasabi.com/cdn/vip288-logo.webp"
-            data-light-logo="https://ayowasabi.com/cdn/vip288-logo.webp"
-            src="https://ayowasabi.com/cdn/vip288-logo.webp"
-            alt="SEO Marketplace for backlinks, web design, website traffic, and online marketing">
-          </a>
-        </div>
-      </div>
-      <!-- Main Navigation-->
-      <nav class="site-menu">
-        <ul class="navbar-nav">
-          <li class="has-megamenu ">
-            <a href="<?= htmlspecialchars($url) ?>"><span>Home</span></a>
-            <ul class="mega-menu">
-              <li>
-                <ul class="sub-menu">
-                  <a href="<?= htmlspecialchars($url) ?>" title="Marketplace"><i
-                    class="fas fa-store comment-author-i mb-2 mt-2"></i></a>
-                  <h6><a href="<?= htmlspecialchars($url) ?>" title="Marketplace">Marketplace</a></h6>
-                  <p class="text-muted margin-bottom-none">The largest SEO marketplace in the world</p>
-                  <span class="mega-menu-title"></span>
-                  <div class="row">
-                    <div class="col-sm-6">
-                      <ul>
-                        <li><a class="nav-link" href="<?= htmlspecialchars($url) ?>"
-                          title="Art & Design">Art &amp; Design</a></li>
-                        <li><a class="nav-link"
-                          href="<?= htmlspecialchars($url) ?>"
-                          title="Content & Writing">Content &amp; Writing</a></li>
-                        <li><a class="nav-link" href="<?= htmlspecialchars($url) ?>"
-                          title="Graphics & Logos">Graphics &amp; Logos</a></li>
-                        <li><a class="nav-link"
-                          href="<?= htmlspecialchars($url) ?>"
-                          title="Link Building">Link Building</a></li>
-                      </ul>
-                    </div>
-                    <div class="col-sm-6">
-                      <ul>
-                        <li><a class="nav-link"
-                          href="<?= htmlspecialchars($url) ?>"
-                          title="Onsite SEO & Research">Onsite SEO &amp; Re...</a></li>
-                        <li><a class="nav-link"
-                          href="<?= htmlspecialchars($url) ?>"
-                          title="Programming">Programming</a></li>
-                        <li><a class="nav-link"
-                          href="<?= htmlspecialchars($url) ?>"
-                          title="Virtual Assistant">Virtual Assistant</a></li>
-                        <li><a class="nav-link"
-                          href="<?= htmlspecialchars($url) ?>"
-                          title="Wordpress">Wordpress</a></li>
-                      </ul>
-                    </div>
-                  </div>
-                </ul>
-              </li>
-              <li>
-                <ul class="sub-menu">
-                  <a href="<?= htmlspecialchars($url) ?>" title="Software"><i
-                    class="far fa-window-alt comment-author-i mb-2 mt-2"></i></a>
-                  <h6><a href="<?= htmlspecialchars($url) ?>" title="Software">Software</a></h6>
-                  <p class="text-muted margin-bottom-none">Find all the software to suit your computing
-                    needs
-                  </p>
-                  <span class="mega-menu-title"></span>
-                  <div class="row">
-                    <div class="col-sm-6">
-                      <ul>
-                        <li><a class="nav-link" href="<?= htmlspecialchars($url) ?>"
-                          title="Desktop">Desktop</a></li>
-                        <li><a class="nav-link" href="<?= htmlspecialchars($url) ?>"
-                          title="Apps">Apps</a></li>
-                        <li><a class="nav-link" href="<?= htmlspecialchars($url) ?>"
-                          title="Web">Web</a></li>
-                        <li><a class="nav-link" href="<?= htmlspecialchars($url) ?>"
-                          title="Windows">Windows</a></li>
-                      </ul>
-                    </div>
-                    <div class="col-sm-6">
-                      <ul>
-                        <li><a class="nav-link" href="<?= htmlspecialchars($url) ?>"
-                          title="Plugins">Plugins</a></li>
-                        <li><a class="nav-link" href="<?= htmlspecialchars($url) ?>"
-                          title="Bots">Bots</a></li>
-                        <li><a class="nav-link" href="<?= htmlspecialchars($url) ?>"
-                          title="PHP">PHP</a></li>
-                        <li><a class="nav-link"
-                          href="<?= htmlspecialchars($url) ?>"
-                          title="WordPress">WordPress</a></li>
-                      </ul>
-                    </div>
-                  </div>
-                </ul>
-              </li>
-              <li>
-                <ul class="sub-menu">
-                  <a href="<?= htmlspecialchars($url) ?>" title="Jobs"><i
-                    class="fas fa-edit comment-author-i mb-2 mt-2"></i></a>
-                  <h6><a href="<?= htmlspecialchars($url) ?>" title="Jobs">Jobs</a></h6>
-                  <p class="text-muted margin-bottom-none">Can't find what you're looking for? Create it
-                  </p>
-                  <span class="mega-menu-title"></span>
-                  <div class="row">
-                    <div class="col-sm-6">
-                      <ul>
-                        <li><a class="nav-link"
-                          href="<?= htmlspecialchars($url) ?>"
-                          title="Social Networks">Social Networks</a></li>
-                        <li><a class="nav-link" href="<?= htmlspecialchars($url) ?>"
-                          title="Youtube">Youtube</a></li>
-                        <li><a class="nav-link"
-                          href="<?= htmlspecialchars($url) ?>"
-                          title="Link Building">Link Building</a></li>
-                        <li><a class="nav-link"
-                          href="<?= htmlspecialchars($url) ?>"
-                          title="Programming">Programming</a></li>
-                      </ul>
-                    </div>
-                    <div class="col-sm-6">
-                      <ul>
-                        <li><a class="nav-link" href="<?= htmlspecialchars($url) ?>"
-                          title="Traffic">Traffic</a></li>
-                        <li><a class="nav-link" href="<?= htmlspecialchars($url) ?>"
-                          title="Other">Other</a></li>
-                        <li><a class="nav-link"
-                          href="https://www.seoclerk.com/job/category/Article-Writing"
-                          title="Article Writing">Article Writing</a></li>
-                        <li><a class="nav-link" href="<?= htmlspecialchars($url) ?>"
-                          title="Design">Design</a></li>
-                      </ul>
-                    </div>
-                  </div>
-                </ul>
-              </li>
-            </ul>
-          </li>
-          <li class="">
-            <a href="https://www.seoclerk.com/faq"><span>Community</span></a>
-            <ul class="sub-menu">
-              <li class="">
-                <a href="https://www.seoclerk.com/faq">Community Discussion</a>
-              </li>
-              <li class="">
-                <a href="<?= htmlspecialchars($url) ?>">Blog</a>
-              </li>
-              <li class="">
-                <a href="https://www.seoclerk.com/freelancers">Freelancers</a>
-              </li>
-              <li class="">
-                <a href="https://www.seoclerk.com/howtobuy">How it Works</a>
-              </li>
-              <!-- <li class=""><a href="https://www.seoclerk.com/leaderboards">Leaderboards</a></li> -->
-            </ul>
-          </li>
-          <li class="has-megamenu">
-            <a class="rating-link" data-toggle="modal" data-target="#modalLogin"><span>Sell a Service</span></a>
-          </li>
-          <!-- <li><span><a href="https://www.seoclerk.com/login?r=L25ldw==">Sell a Service</a></span></li> -->
-        </ul>
-<div class="sub-menu-nav">
-  <ul class="sub-nav">
-    <li><a class="text-normal" href="<?= htmlspecialchars($url) ?>"
-      title="<?= htmlspecialchars($keyword) ?>"><?= htmlspecialchars($keyword) ?></a>
-    </li>
-    <li><a class="text-normal" href="<?= htmlspecialchars($url) ?>" title="Slot Gacor">Slot Gacor</a>
-    </li>
-    <li><a class="text-normal" href="<?= htmlspecialchars($url) ?>" title="Situs Slot">Situs Slot</a>
-    </li>
-    <li><a class="text-normal" href="<?= htmlspecialchars($url) ?>" title="Slot Online">Slot Online</a>
-    </li>
-    <li><a class="text-normal" href="<?= htmlspecialchars($url) ?>" title="Slot Resmi">Slot Resmi</a>
-    </li>
-    <li><a class="text-normal" href="<?= htmlspecialchars($url) ?>"
-      title="Link Slot">Link Slot</a>
-    </li>
-    <li><a class="text-normal" href="<?= htmlspecialchars($url) ?>"
-      title="Link Gacor">Link Gacor</a>
-    </li>
-    <li><a class="text-normal" href="<?= htmlspecialchars($url) ?>" title="Situs Slot Gacor">Situs Slot Gacor</a>
-    </li>
-  </ul>
-</div>
-      </nav>
-      <!-- Toolbar-->
-      <div class="toolbar">
-        <div class="inner">
-          <div class="tools">
-            <div class="search">
-              <i class="icon-search"></i>
-            </div>
-            <form action="<?= htmlspecialchars($url) ?>" class="settings-form hidden" method="post">
-              <input type="hidden" name="token" value="d19e51aed555aa80d0b299cb6ba8b081" />
-              <input type="hidden" name="__cr" value="qLNkh6J-gLBkgKGq" />
-            </form>
-            <div class="account">
-              <a href="<?= htmlspecialchars($url) ?>"></a><i class="icon-moon"></i>
-              <ul class="toolbar-dropdown">
-                <div class="custom-control custom-switch custom-switch-sm ml-switch">
-                  <input type="checkbox" class="custom-control-input instant-update" id="darkThemeSwitch"
-                    name="darkThemeSwitch" value="0">
-                  <label class="custom-control-label" for="darkThemeSwitch">Dark Theme</label>
-                </div>
-              </ul>
-            </div>
-            <a data-toggle="modal" data-target="#modalLogin"
-              class="btn btn-outline-secondary ml-3 hidden-sm-down"><span>Sign In</span></a>
-            <a data-toggle="modal" data-target="#modalSignup" class="btn btn-primary"><span>Join</span></a>
-          </div>
-        </div>
-      </div>
     </header>
-    <!-- Off-Canvas Wrapper-->
-    <div class="offcanvas-wrapper">
-      <div id="root">
-        <div class="alert alert-danger" id="halertheader" role="alert" style="display: none;"><span
-          id="halerttext"></span></div>
-        <!-- Page Content-->
-        <div itemscope itemtype="http://schema.org/Product">
-          <meta itemprop="productID" content="715379">
-          <div class="container padding-bottom-0x padding-top-1x">
-            <h1 class="text-bold padding-top-1x" itemprop="name">
-              <?= htmlspecialchars($title) ?>
-            </h1>
-            <span class="text-warning hidden-sm-up"><i class="fas fa-star"></i><i class="fas fa-star"></i><i
-              class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></span>
-            <span class="text-primary ml-3 text-sm hidden-sm-up">
-            <i class="fas fa-thumbs-up"></i> 99.5% (976)
-            </span>
-            <!-- Poduct Gallery-->
-            <div class="row">
-              <div class="col-12 hidden-md-up">
-                <a class="btn btn-sm btn-block order-now btn-success"
-                  href="<?= htmlspecialchars($ampmek) ?>">
-                <i class="fas fa-shopping-cart"></i> Daftar Di Sini </a>
-              </div>
-              <div class="col-lg-9">
-                <div class="product-gallery">
-                  <div class="gallery-wrapper owl-carousel owl-loaded owl-drag" id="service-owl">
-                    <div>
-                      <div class="owl-stage">
-                        <div class="item">
-                          <div class="slide-owl-wrap">
-                            <center><img
-                              src="<?= htmlspecialchars($image) ?>"
-                              alt="<?= htmlspecialchars($title) ?>"
-                              style="height: 524px; width: 930px;" /></center>
-                          </div>
+  
+<div class="search" id="search-wraper" xmlns:v-bind="http://www.w3.org/1999/xhtml">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 mx-auto">
+                <div class="card border-0 bayangan">
+                    <div class="card-body">
+                        <form class="" action="index.php" method="get" @submit.prevent="searchSubmit">
+                            <input type="hidden" name="search" value="search">
+                            <input ref="keywords" value="" v-model.trim="keywords"
+                                   @focus="searchOnFocus" @blur="searchOnBlur" type="text" id="search-input"
+                                   name="keywords" class="input-transparent w-100" autocomplete="off"
+                                   placeholder="Masukkan kata kunci untuk mencari koleksi..."/>
+                        </form>
+                    </div>
+                </div>
+                <transition name="slide-fade">
+                    <div v-if="show" class="advanced-wraper mt-4" id="advanced-wraper"
+                         v-click-outside="hideSearch">
+                        <p class="label mb-2">
+                            Pencarian berdasarkan :                            <i @click="hideSearch"
+                               class="far fa-times-circle float-right text-danger cursor-pointer"></i>
+                        </p>
+                        <div class="d-flex flex-wrap">
+                            <a v-bind:class="{'btn-primary text-white': searchBy === 'keywords', 'btn-outline-secondary': searchBy !== 'keywords' }"
+                               @click="searchOnClick('keywords')" class="btn mr-2 mb-2">SEMUA</a>
+                            <a v-bind:class="{'btn-primary text-white': searchBy === 'author', 'btn-outline-secondary': searchBy !== 'author' }"
+                               @click="searchOnClick('author')" class="btn mr-2 mb-2">Pengarang</a>
+                            <a v-bind:class="{'btn-primary text-white': searchBy === 'subject', 'btn-outline-secondary': searchBy !== 'subject' }"
+                               @click="searchOnClick('subject')" class="btn mr-2 mb-2">Subjek</a>
+                            <a v-bind:class="{'btn-primary text-white': searchBy === 'isbn', 'btn-outline-secondary': searchBy !== 'isbn' }"
+                               @click="searchOnClick('isbn')" class="btn mr-2 mb-2">ISBN/ISSN</a>
+                            <button class="btn btn-light mr-2 mb-2" disabled>ATAU COBA</button>
+                            <a class="btn btn-outline-primary mr-2 mb-2" data-toggle="modal" data-target="#adv-modal">Pencarian Spesifik</a>
                         </div>
-                      </div>
+                        <p v-if="lastKeywords.length > 0" class="label mt-4">Pencarian terakhir:</p>
+                        <a :href="`index.php?${tmpObj[k].searchBy}=${tmpObj[k].text}&search=search`"
+                           class="flex items-center justify-between py-1 text-decoration-none text-grey-darkest hover:text-blue"
+                           v-for="k in lastKeywords" :key="k"><span><i
+                                        class="far fa-clock text-grey-dark mr-2"></i><span class="italic text-sm">{{tmpObj[k].text}}</span></span><i
+                                    class="fas fa-angle-right text-grey-dark"></i></a>
                     </div>
-                  </div>
-                  <div class="gallery-wrapper" data-pswp-uid="1">
-                    <div class="gallery-item active"><a
-                      href="<?= htmlspecialchars($image) ?>"
-                      data-hash="one" data-size="2967x1792"></a>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col padding-top-1x ml-4">
-                      <a class="btn btn-outline-secondary btn-sm btn-wishlist-disabled btn-verify service-715379"
-                        data-toggle="tooltip" title=""
-                        href="<?= htmlspecialchars($ampmek) ?>"><i
-                        class="icon-heart"></i></a>
-                      <button class="btn-success-disabled btn-sm" data-toggle="tooltip"
-                        data-placement="top" title=""
-                        data-original-title="999999 liked this service"><i
-                        class="fas fa-thumbs-up"></i> 999999</button>
-                      <span class="hidden-xs-down" data-tab-id="orders-payment" data-toggle="tooltip"
-                        data-placement="top" title="" data-original-title="5.0 star rating">
-                      <i class="text-warning fas fa-star filled"></i><i
-                        class="text-warning fas fa-star filled"></i><i
-                        class="text-warning fas fa-star filled"></i><i
-                        class="text-warning fas fa-star filled"></i><i
-                        class="text-warning fas fa-star filled"></i> </span>
+                </transition>
+            </div>
+        </div>
+    </div>
+</div>
+</section>
+
+<div id="slims-home">
+<section class="mt-5 container">
+    <h4 class="text-secondary text-center text-thin mt-5 mb-4">Pilih subjek yang menarik bagi Anda</h4>
+    <ul class="topic d-flex flex-wrap justify-content-center px-0">
+        <li class="d-flex card border-0 hover:shadow cursor-pointer text-decoration-none h-full">
+            <a href="index.php?title=&author=&subject=&isbn=&publishyear=&location=0&gmd=0&colltype=Jurnal+Sespim&search=search" class="d-flex flex-column">
+                <img src="template/default/assets/images/Journal.png" width="80" class="mb-3 mx-auto"/>
+                Journal Sespim            </a>
+        </li>
+        <li class="d-flex card border-0 hover:shadow cursor-pointer text-decoration-none h-full">
+            <a href="index.php?title=&author=&subject=&isbn=&publishyear=&location=0&gmd=0&colltype=Jurnal+Luar+Negeri&search=search" class="d-flex flex-column">
+                <img src="template/default/assets/images/Journal.png" width="80" class="mb-3 mx-auto"/>
+                Journal Luar Negeri            </a>
+        </li>
+        <li class="d-flex card border-0 hover:shadow cursor-pointer text-decoration-none h-full">
+            <a href="index.php?title=&author=&subject=&isbn=&publishyear=&location=0&gmd=0&colltype=Buku+Terbitan+Polri&search=search" class="d-flex flex-column">
+                <img src="template/default/assets/images/8-books.png" width="80" class="mb-3 mx-auto"/>
+                Buku Terbitan Polri            </a>
+        </li>
+        <li class="d-flex card border-0 hover:shadow cursor-pointer text-decoration-none h-full">
+            <a href="index.php?title=&author=&subject=&isbn=&publishyear=&location=0&gmd=0&colltype=Buku+Umum&search=search" class="d-flex flex-column">
+                <img src="template/default/assets/images/8-books.png" width="80" class="mb-3 mx-auto"/>
+                Buku Umum            </a>
+        </li>
+		<li class="d-flex card border-0 hover:shadow cursor-pointer text-decoration-none h-full">
+            <a href="index.php?title=&author=&subject=&isbn=&publishyear=&location=0&gmd=0&colltype=Naskap&search=search" class="d-flex flex-column">
+                 <img src="template/default/assets/images/Naskah.png" width="80" class="mb-3 mx-auto"/>
+                Naskap            </a>
+        </li>
+        <li class="d-flex card border-0 hover:shadow cursor-pointer text-decoration-none h-full">
+            <a href="javascript:void(0)" class="d-flex flex-column" data-toggle="modal" data-target="#exampleModal">
+                <img src="template/default/assets/images/icon/grid_icon.png" width="80"
+                     class="mb-3 mx-auto"/>
+                Lihat Lainnya.            </a>
+        </li>
+    </ul>
+</section>
+
+<section class="mt-5 container">
+    <h4 class=" mb-4 text-center">
+        Yang populer di antara koleksi kami        <br>
+        <small class="subtitle-section">Koleksi-koleksi kami yang dibaca oleh banyak pengunjung perpustakaan. Cari. Pinjam. Kami harap Anda menyukainya</small>
+    </h4>
+
+    
+    <slims-collection url="index.php?p=api/biblio/popular"></slims-collection>
+
+</section>
+
+<section class="mt-5 container">
+    <h4 class=" mb-4 text-center">
+        Koleksi baru dan diperbarui        <br>
+        <small class="subtitle-section">Merupakan daftar koleksi-koleksi terbaru kami. Tidak semuanya baru, adapula koleksi yang data-datanya sudah diperbaiki. Selamat menikmati</small>
+    </h4>
+
+    
+    <slims-collection url="index.php?p=api/biblio/latest"></slims-collection>
+
+</section>
+
+
+<section class="my-5 container">
+    <div class="row align-items-center">
+            <iframe class="embed-responsive"
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d126770.6466829568!2d107.49233204335935!3d-6.8204985999999925!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68e0e90e0be2ff%3A0x9fc6dba17772ec79!2sSespim%20Polri!5e0!3m2!1sen!2sid!4v1695600103838!5m2!1sen!2sid"
+                    height="420" frameborder="0" style="border:0" allowfullscreen></iframe>
+    </div>
+</section>
+</div>
+
+<footer class="py-4 bg-grey-darkest text-grey-lighter">
+    <div class="container">
+        <div class="row py-4">
+            <div class="col-md-3 logo-footer">
+              <img class="h-16 mb-2" src="images/default/logo.png?v=5e697">                <div class="footer-text mb-4">LITERATION CENTER</div>
+            </div>
+            <div class="col-md-5 pt-8 md:pt-0">
+                <h4 class="footer-tentangkami">TENTANG KAMI</h4>
+                <p class="footer-tentangkami">
+                    STRATEGI OPTIMALISASI LITERASI SEBAGAI PENDUKUNG SISDIK SESPIM LEMDIKLAT POLRI PADA RA DIGITAL 4.0 DAN SOCIETY 5.0                </p>
+            </div>
+            <div class="col-md-4 pt-8 md:pt-0">
+                <h4 class="footer-alamat">LITERATION CENTER</h4>
+            <p class="footer-alamat">Jl. Maribaya No 53 Desa Kayu Ambon Kecamatan Lembang, Kabupaten Bandung Barat 40391</p>
+            </center><br>
+                <p class="social">
+                <a target="_blank" href="https://www.facebook.com/sespimlemdiklatpolri" class="button-social"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" width="1em" height="1em" aria-hidden="true"><path d="M279.14 288l14.22-92.66h-88.91v-60.13c0-25.35 12.42-50.06 52.24-50.06h40.42V6.26S260.43 0 225.36 0c-73.22 0-121.08 44.38-121.08 124.72v70.62H22.89V288h81.39v224h100.17V288z" fill="currentColor"></path></svg></a>
+                <a target="_blank" href="https://twitter.com/@sespim_polri/" class="button-social"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="1em" height="1em" aria-hidden="true"><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z" fill="currentColor"></path></svg></a>
+                <a target="_blank" href="https://www.youtube.com/@sespimlemdiklatpolri" class="button-social"><svg aria-hidden="true" role="img" height="1em" width="1em" viewBox="0 0 576 512" xmlns="http://www.w3.org/2000/svg"><path fill="currentColor" d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z"></path></svg></a>
+                <a target="_blank" href="https://www.instagram.com/sespimlemdiklatpolri/" class="button-social"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" width="1em" height="1em" aria-hidden="true"><path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z" fill="currentColor"></path></svg></a>
+            </p>
+                <hr>
+            </div>
+        </div>
+        <hr>
+        <div class="flex font-thin text-sm">
+            <p class="footer-copyright">&copy; 2026 &mdash; ELIBRARY SESPIM POLRI</p>
+        </div>
+    </div>
+</footer>
+
+
+
+<!-- // Load modal -->
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Pilih subjek yang menarik bagi Anda</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body topic">
+                <ul class="topic d-flex flex-wrap justify-content-center p-0">
+                    <li class="d-flex card border-0 hover:shadow cursor-pointer text-decoration-none h-full">
+            <a href="index.php?title=&author=&subject=&isbn=&publishyear=&location=0&gmd=0&colltype=Nastrap&search=search" class="d-flex flex-column">
+                <img src="template/default/assets/images/Naskah.png" width="80" class="mb-3 mx-auto"/>
+                Nastrap            </a>
+        </li>
+        <li class="d-flex card border-0 hover:shadow cursor-pointer text-decoration-none h-full">
+            <a href="index.php?title=&author=&subject=&isbn=&publishyear=&location=0&gmd=0&colltype=Taskap&search=search" class="d-flex flex-column">
+                <img src="template/default/assets/images/Paper.png" width="80" class="mb-3 mx-auto"/>
+                Taskap            </a>
+        </li>
+        <li class="d-flex card border-0 hover:shadow cursor-pointer text-decoration-none h-full">
+            <a href="index.php?title=&author=&subject=&isbn=&publishyear=&location=0&gmd=0&colltype=NKP+Sespimti&search=search" class="d-flex flex-column">
+                <img src="template/default/assets/images/3-diploma.png" width="80" class="mb-3 mx-auto"/>
+                NKP Sespimti            </a>
+        </li>
+        <li class="d-flex card border-0 hover:shadow cursor-pointer text-decoration-none h-full">
+            <a href="index.php?title=&author=&subject=&isbn=&publishyear=&location=0&gmd=0&colltype=NKP+Sespimmen&search=search" class="d-flex flex-column">
+                <img src="template/default/assets/images/3-diploma.png" width="80" class="mb-3 mx-auto"/>
+                NKP Sespimmen            </a>
+        </li>
+        <li class="d-flex card border-0 hover:shadow cursor-pointer text-decoration-none h-full">
+            <a href="index.php?title=&author=&subject=&isbn=&publishyear=&location=0&gmd=0&colltype=NKP+Sespimma&search=search" class="d-flex flex-column">
+                <img src="template/default/assets/images/3-diploma.png" width="80" class="mb-3 mx-auto"/>
+                NKP Sespimma            </a>
+        </li>
+        <li class="d-flex card border-0 hover:shadow cursor-pointer text-decoration-none h-full">
+            <a href="index.php?title=&author=&subject=&isbn=&publishyear=&location=0&gmd=0&colltype=Bahan+Pelajaran&search=search" class="d-flex flex-column">
+                <img src="template/default/assets/images/0-chemical.png" width="80" class="mb-3 mx-auto"/>
+                Bahan Pelajaran                </a>
+        </li>
+		<li class="d-flex card border-0 hover:shadow cursor-pointer text-decoration-none h-full">
+            <a href="index.php?title=&author=&subject=&isbn=&publishyear=&location=0&gmd=0&colltype=Koran%2C+Majalah%2C+Bulletin&search=search" class="d-flex flex-column">
+                <img src="template/default/assets/images/Books.png" width="80" class="mb-3 mx-auto"/>
+                Koran, Majalah, Buletin                </a>
+        </li>
+		<li class="d-flex card border-0 hover:shadow cursor-pointer text-decoration-none h-full">
+            <a href="index.php?title=&author=&subject=&isbn=&publishyear=&location=0&gmd=0&colltype=Klipping+Koran&search=search" class="d-flex flex-column">
+                <img src="template/default/assets/images/clipping.png" width="80" class="mb-3 mx-auto"/>
+                Klipping Koran                </a>
+        </li>
+		<li class="d-flex card border-0 hover:shadow cursor-pointer text-decoration-none h-full">
+            <a href="index.php?title=&author=&subject=&isbn=&publishyear=&location=0&gmd=0&colltype=Peraturan+Kapolri&search=search" class="d-flex flex-column">
+                <img src="template/default/assets/images/regulation.png" width="80" class="mb-3 mx-auto"/>
+                Peraturan Kapolri                </a>
+        </li>
+		<li class="d-flex card border-0 hover:shadow cursor-pointer text-decoration-none h-full">
+            <a href="index.php?title=&author=&subject=&isbn=&publishyear=&location=0&gmd=0&colltype=Peraturan+Kalemdiklat&search=search" class="d-flex flex-column">
+                <img src="template/default/assets/images/regulation.png" width="80" class="mb-3 mx-auto"/>
+                Peraturan Kalemdiklat                </a>
+        </li>
+		<li class="d-flex card border-0 hover:shadow cursor-pointer text-decoration-none h-full">
+            <a href="index.php?title=&author=&subject=&isbn=&publishyear=&location=0&gmd=0&colltype=Peraturan+Kasespim&search=search" class="d-flex flex-column">
+                <img src="template/default/assets/images/regulation.png" width="80" class="mb-3 mx-auto"/>
+                Peraturan Kasespim                </a>
+        </li>
+		<li class="d-flex card border-0 hover:shadow cursor-pointer text-decoration-none h-full">
+            <a href="index.php?title=&author=&subject=&isbn=&publishyear=&location=0&gmd=0&colltype=Peraturan+Perundang-Undangan+d&search=search" class="d-flex flex-column">
+                <img src="template/default/assets/images/regulation.png" width="80" class="mb-3 mx-auto"/>
+                Peraturan Perundang-Undangan dan Kebijakan Kementerian dan Lembaga                </a>
+        </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="adv-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <form class="modal-content" action="index.php" method="get">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Pencarian Spesifik</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="adv-titles">Judul</label>
+                            <input type="text" name="title" class="form-control" id="adv-titles"
+                                   placeholder="Masukkan judul">
+                        </div>
                     </div>
                     <div class="col">
-                      <ul class="product-thumbnails">
-                        <li class="">
-                          <a href="#" class="owl-thumbnail-image hidden-sm-down" data-owl-id="0"
-                            data-owl="service-owl">
-                          <img src="<?= htmlspecialchars($image) ?>"
-                            alt="<?= htmlspecialchars($title) ?>"
-                            itemprop="image">
-                          </a>
-                        </li>
-                      </ul>
-                    </div>
-                    <div class="col-auto padding-top-1x mr-4">
-                      <div class="social-bar">
-                        <a class="social-button shape-circle sb-facebook" href="<?= htmlspecialchars($url) ?>" data-toggle="tooltip" data-placement="top" title="" data-original-title="Facebook"><i class="socicon-facebook"></i></a>
-                        <a class="social-button shape-circle sb-twitter" href="<?= htmlspecialchars($url) ?>" data-toggle="tooltip" data-placement="top" title="" data-original-title="Twitter"><i class="socicon-twitter"></i></a> <span
-                          data-toggle="modal" data-target="#modalShare">
-                        <a class="social-button shape-circle sb-google share-link"
-                          data-toggle="tooltip" data-placement="top" title=""
-                          data-original-title="Share"><i class="fas fa-share"></i></a>
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <br>
-                <!-- Tabs for description, reviews, comments of the listing -->
-                <ul class="nav nav-pills justify-content-center padding-top-1x mb-3" role="tablist">
-                  <li class="nav-item"><a class="nav-link active show" href="<?= htmlspecialchars($url) ?>"
-                    data-toggle="tab" role="tab" aria-selected="true">Description</a></li>
-                  <li class="nav-item"><a class="nav-link" href="<?= htmlspecialchars($url) ?>" data-toggle="tab" role="tab"
-                    aria-selected="false">Reviews</a></li>
-                  <li class="nav-item"><a class="nav-link" href="<?= htmlspecialchars($url) ?>" data-toggle="tab" role="tab"
-                    aria-selected="false">Comments</a></li>
-                </ul>
-                <div
-                  class="tab-content padding-bottom-none padding-top-none padding-right-none padding-left-none border-none border-0">
-                  <div class="tab-pane fade active show" id="description" role="tabpanel">
-                    <div class="card">
-                      <div class="card-body">
-<div class="post-block " itemprop="description">
-  <div class="post-image ">
-    <div class="flexslider flexslider-center-mobile flexslider-simple normal-device flexslider-init flexslider-control-nav flexslider-direction-nav"
-      data-plugin-options="{&quot;animation&quot;:&quot;slide&quot;, &quot;animationLoop&quot;: true, &quot;maxVisibleItems&quot;: 1}">
-      <ul class="slides">
-      </ul>
-    </div>
-  </div>
-
-<h4><?= htmlspecialchars($title) ?></h4>
-
-<p style="text-align: justify;">
-  <strong><a href="<?= htmlspecialchars($url) ?>" rel=""><?= htmlspecialchars($keyword) ?></a></strong> - <?= htmlspecialchars($description) ?></p>
-  <p><?= htmlspecialchars($keyword) ?> merupakan platform perpustakaan digital yang dikembangkan oleh Sekolah Staf dan Pimpinan (Sespim) di bawah Lembaga Pendidikan dan Pelatihan Kepolisian Republik Indonesia. Website ini dapat diakses melalui elibrary.sespimlemdiklatpolri.id
- dan berfungsi sebagai pusat literasi digital bagi peserta didik, tenaga pendidik, serta anggota Polri.</p>
-</div>
-                        <hr class="mt-4">
-                        <div class="row">
-                          <div class="col">
-                            <h4 class="mt-2">Tags</h4>
-                          </div>
-                          <div class="col-auto">
-                          </div>
+                        <div class="form-group">
+                            <label for="adv-author">Pengarang</label>
+                            <input type="text" name="author" class="form-control" id="adv-author"
+                                   placeholder="Masukkan nama pengarang">
                         </div>
-                        <a class="tag" href="<?= htmlspecialchars($url) ?>"><?= htmlspecialchars($keyword) ?></a>
-                        <a class="tag" href="<?= htmlspecialchars($url) ?>">Slot Gacor</a>
-                        <a class="tag" href="<?= htmlspecialchars($url) ?>">Situs Slot</a>
-                        <a class="tag" href="<?= htmlspecialchars($url) ?>">Slot Online</a>
-                        <a class="tag" href="<?= htmlspecialchars($url) ?>">Slot Resmi</a>
-                        <a class="tag" href="<?= htmlspecialchars($url) ?>">Situs Gacor</a>
-                        <a class="tag" href="<?= htmlspecialchars($url) ?>">Situs Slot Gacor Terpercaya 2026</a>
-                        <a class="tag" href="<?= htmlspecialchars($url) ?>">Daftar Situs Slot Online Resmi Terbaik</a>
-                        <a class="tag" href="<?= htmlspecialchars($url) ?>">Slot Gacor Hari Ini Mudah Jackpot</a>
-                        <a class="tag" href="<?= htmlspecialchars($url) ?>">Situs Slot Online dengan RTP Tinggi</a>
-                        <a class="tag" href="<?= htmlspecialchars($url) ?>">Rekomendasi Situs Slot Gacor Terbaru</a>
-                        <a class="tag" href="<?= htmlspecialchars($url) ?>">Slot Online Terpercaya Bonus New Member</a>
-                        <a class="tag" href="<?= htmlspecialchars($url) ?>">Situs Slot Resmi dengan Jackpot Besar</a>
-                        <a class="tag" href="<?= htmlspecialchars($url) ?>">Slot Gacor Terbaik dengan Winrate Tinggi</a>
-                        <a class="tag" href="<?= htmlspecialchars($url) ?>">Situs Slot Online Mudah Menang Indonesia</a>
-                        <a class="tag" href="<?= htmlspecialchars($url) ?>">Daftar Slot Gacor Hari Ini Paling Populer</a>
-                      </div>
                     </div>
-                  </div>
                 </div>
-                <h2 class="cok-faq-title">Review Member <?= htmlspecialchars($keyword) ?></h2>
-                <center>
-                  <section class="review-neon" aria-label="Review Slider">
-                    <div class="review-neon__frame neon-flicker">
-                      <div class="review-neon__viewport" tabindex="0">
-                        <div class="review-neon__track" id="reviewTrack" aria-live="off"></div>
-                      </div>
-                    </div>
-                  </section>
-                </center>
-                <style>
-                  :root {
-                  --bg: #07070a;
-                  --card: rgba(20, 20, 26, .78);
-                  --text: #f5f5f7;
-                  --muted: rgba(245, 245, 247, .72);
-                  --radius: 18px;
-                  --gap: 16px;
-                  --speed: 42s;
-                  /* makin kecil makin cepat */
-                  }
-                  .review-neon {
-                  max-width: 1300px;
-                  margin: 24px auto;
-                  padding: 0 14px;
-                  color: var(--text);
-                  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Apple Color Emoji", "Segoe UI Emoji";
-                  }
-                  .review-neon__header {
-                  display: flex;
-                  align-items: flex-end;
-                  justify-content: space-between;
-                  gap: 10px;
-                  margin-bottom: 12px;
-                  }
-                  .review-neon__title {
-                  font-size: clamp(18px, 2.2vw, 26px);
-                  margin: 0;
-                  letter-spacing: .2px;
-                  color: #000000;
-                  }
-                  .review-neon__subtitle {
-                  margin: 0;
-                  font-size: 13px;
-                  color: var(--muted);
-                  text-align: right;
-                  color: #000000;
-                  }
-                  .review-neon__viewport {
-                  overflow: hidden;
-                  border-radius: var(--radius);
-                  outline: none;
-                  }
-                  .review-neon__track {
-                  display: flex;
-                  gap: var(--gap);
-                  align-items: stretch;
-                  will-change: transform;
-                  /* infinite loop via marquee animation */
-                  animation: scrollX var(--speed) linear infinite;
-                  padding: 6px;
-                  }
-                  /* Pause ketika hover/focus supaya enak dibaca */
-                  .review-neon__frame:hover .review-neon__track,
-                  .review-neon__viewport:focus .review-neon__track {
-                  animation-play-state: paused;
-                  }
-                  @keyframes scrollX {
-                  from {
-                  transform: translateX(0);
-                  }
-                  to {
-                  transform: translateX(-50%);
-                  }
-                  /* karena kita duplikat konten */
-                  }
-                  .review-card {
-                  flex: 0 0 auto;
-                  width: clamp(240px, 38vw, 360px);
-                  background: linear-gradient(180deg, #374250), var(--card);
-                  border: 1px solid #374250;
-                  border-radius: var(--radius);
-                  padding: 14px 14px 12px;
-                  backdrop-filter: blur(10px);
-                  -webkit-backdrop-filter: blur(10px);
-                  }
-                  .review-card__top {
-                  display: flex;
-                  align-items: center;
-                  justify-content: space-between;
-                  gap: 10px;
-                  margin-bottom: 10px;
-                  }
-                  .review-card__name {
-                  font-weight: 700;
-                  font-size: 14px;
-                  letter-spacing: .2px;
-                  margin: 0;
-                  }
-                  .review-card__meta {
-                  display: flex;
-                  align-items: center;
-                  gap: 10px;
-                  color: var(--muted);
-                  font-size: 12px;
-                  white-space: nowrap;
-                  }
-                  .stars {
-                  display: inline-flex;
-                  gap: 2px;
-                  transform: translateY(-.5px);
-                  }
-                  .star {
-                  width: 14px;
-                  height: 14px;
-                  display: inline-block;
-                  background: radial-gradient(circle at 30% 30%, #ffc107, #ffc107);
-                  clip-path: polygon(50% 0%, 63% 30%, 96% 35%, 72% 57%, 79% 90%, 50% 74%, 21% 90%, 28% 57%, 4% 35%, 37% 30%);
-                  opacity: .95;
-                  }
-                  .star.off {
-                  opacity: .22;
-                  filter: none;
-                  }
-                  .review-card__title {
-                  margin: 0 0 8px;
-                  font-size: 14px;
-                  font-weight: 650;
-                  color: rgba(255, 255, 255, .92);
-                  }
-                  .review-card__body {
-                  margin: 0;
-                  font-size: 13px;
-                  line-height: 1.45;
-                  color: rgba(245, 245, 247, .82);
-                  }
-                  /* Responsif extra: pada layar kecil biar lebih rapat */
-                  @media (max-width: 420px) {
-                  .review-neon__subtitle {
-                  display: none;
-                  }
-                  .review-card {
-                  width: 84vw;
-                  }
-                  }
-                </style>
-                <script>
-                  document.addEventListener('DOMContentLoaded',
-                      function () {
-                          const faqItems = document.querySelectorAll('.faq-item');
-                          faqItems.forEach(item => {
-                              const question = item.querySelector('.faq-question');
-                              question.addEventListener('click',
-                                  () => {
-                                      const isActive = item.classList.contains('active');
-                                      faqItems.forEach(otherItem => { otherItem.classList.remove('active') });
-                                      if (!isActive) { item.classList.add('active') }
-                                  })
-                          })
-                      });
-                </script>
-                <!-- ========================= FAQ TITLE ========================= -->
-                <h2 class="cok-faq-title">FAQ — Pertanyaan Umum</h2>
-                <!-- ========================= FAQ LIST ========================= -->
-<div class="cok-faq">
-  <div class="cok-faq-item">
-    <button class="cok-faq-q">Kenapa <?= htmlspecialchars($keyword) ?> jadi pilihan utama situs slot gacor di Indonesia?</button>
-    <div class="cok-faq-a">
-      <?= htmlspecialchars($keyword) ?> dikenal sebagai situs slot gacor resmi yang menyediakan akses cepat, sistem stabil, dan link gacor yang selalu aktif. Pengguna dapat bermain slot online dengan nyaman tanpa hambatan kapan saja.
-    </div>
-  </div>
-
-  <div class="cok-faq-item">
-    <button class="cok-faq-q">Apakah proses daftar di situs slot <?= htmlspecialchars($keyword) ?> cepat dan mudah?</button>
-    <div class="cok-faq-a">
-      Ya, proses pendaftaran di <?= htmlspecialchars($keyword) ?> sangat cepat dan tidak rumit. Hanya dengan beberapa langkah sederhana, akun sudah bisa langsung digunakan untuk menikmati permainan slot online.
-    </div>
-  </div>
-
-  <div class="cok-faq-item">
-    <button class="cok-faq-q">Bagaimana jika link utama <?= htmlspecialchars($keyword) ?> tidak bisa diakses?</button>
-    <div class="cok-faq-a">
-      Jika link utama mengalami kendala, pengguna dapat menggunakan link alternatif <?= htmlspecialchars($keyword) ?> yang tetap aktif. Link gacor ini memastikan akses ke situs slot tetap lancar tanpa gangguan.
-    </div>
-  </div>
-
-  <div class="cok-faq-item">
-    <button class="cok-faq-q">Apa keunggulan <?= htmlspecialchars($keyword) ?> sebagai situs slot resmi?</button>
-    <div class="cok-faq-a">
-      Keunggulan <?= htmlspecialchars($keyword) ?> terletak pada sistem yang ringan, akses cepat, dan kompatibilitas di berbagai perangkat. Sebagai situs slot resmi, platform ini memberikan pengalaman bermain slot online yang stabil dan aman.
-    </div>
-  </div>
-
-  <div class="cok-faq-item">
-    <button class="cok-faq-q">Bagaimana cara login <?= htmlspecialchars($keyword) ?> agar lancar setiap hari?</button>
-    <div class="cok-faq-a">
-      Untuk login dengan lancar, gunakan link resmi atau link alternatif <?= htmlspecialchars($keyword) ?> yang terpercaya. Pastikan data login benar agar bisa langsung mengakses situs slot gacor tanpa kendala.
-    </div>
-  </div>
-</div>
-                <script>
-                  document.querySelectorAll(".cok-faq-q").forEach(btn => {
-                      btn.addEventListener("click", () => {
-                          let answer = btn.nextElementSibling;
-                          answer.classList.toggle("open");
-                      });
-                  });
-                </script>
-                <form action="<?= htmlspecialchars($ampmek) ?>" method="post" name="extform"
-                  id="extform" class="mb-1">
-                  <input type="hidden" name="token" value="d19e51aed555aa80d0b299cb6ba8b081">
-                  <input type="hidden" name="__cr" value="qLNkh6J-gLBkgKGq" />
-                  <input type="hidden" name="price" id="price" value="3" />
-                  <input type="hidden" name="days" id="days" data-calculated-value="2" value="2" />
-                  <input type="hidden" id="days-extras" data-quick-calculated-value="0" />
-                  <div class="card mt-4">
-                    <div class="card-header text-center">
-                      <span class="text-lg h1 text-bold">Keunggulan <?= htmlspecialchars($keyword) ?></span>
-                    </div>
-                    <div
-                      class="card-body padding-top-none padding-top-none padding-right-none padding-left-none">
-                      <div class="table-responsive wishlist-table margin-bottom-none">
-                        <table class="table table-hover" id="extras-quick">
-<tbody id="table-clicky">
-  <tr>
-    <td class="align-middle">
-      <div class="custom-control custom-checkbox mb-0">
-        <input
-          class="custom-control-input extras-check extras-days"
-          name="addon[1]" type="checkbox" id="addon[1]"
-          data-price="4" data-days="3" data-quick-days="0"
-          value="1">
-        <label class="custom-control-label"
-          for="addon[1]"></label>
-      </div>
-    </td>
-    <td>
-      <span>Akses login <?= htmlspecialchars($keyword) ?> cepat melalui situs slot gacor resmi dan link alternatif terpercaya</span>
-    </td>
-    <td class="align-middle">
-      <span class="quick-hide" id="quick1">Every day</span>
-    </td>
-    <td class="align-middle"><span>Free</span></td>
-  </tr>
-
-  <tr>
-    <td class="align-middle">
-      <div class="custom-control custom-checkbox mb-0">
-        <input
-          class="custom-control-input extras-check extras-days"
-          name="addon[2]" type="checkbox" id="addon[2]"
-          data-price="6" data-days="3" data-quick-days="0"
-          value="1">
-        <label class="custom-control-label"
-          for="addon[2]"></label>
-      </div>
-    </td>
-    <td>
-      <span>Proses daftar akun <?= htmlspecialchars($keyword) ?> di situs slot online sangat cepat dan mudah tanpa ribet</span>
-    </td>
-    <td class="align-middle">
-      <span class="quick-hide" id="quick2">Every day</span>
-    </td>
-    <td class="align-middle"><span>Free</span></td>
-  </tr>
-
-  <tr>
-    <td class="align-middle">
-      <div class="custom-control custom-checkbox mb-0">
-        <input
-          class="custom-control-input extras-check extras-days"
-          name="addon[3]" type="checkbox" id="addon[3]"
-          data-price="15" data-days="4" data-quick-days="0"
-          value="1">
-        <label class="custom-control-label"
-          for="addon[3]"></label>
-      </div>
-    </td>
-    <td>
-      <span>Link gacor alternatif <?= htmlspecialchars($keyword) ?> selalu aktif untuk memastikan akses situs slot tetap lancar</span>
-    </td>
-    <td class="align-middle">
-      <span class="quick-hide" id="quick3">Every day</span>
-    </td>
-    <td class="align-middle"><span>Free</span></td>
-  </tr>
-
-  <tr>
-    <td class="align-middle">
-      <div class="custom-control custom-checkbox mb-0">
-        <input
-          class="custom-control-input extras-check extras-days"
-          name="addon[4]" type="checkbox" id="addon[4]"
-          data-price="2" data-days="2" data-quick-days="0"
-          value="1">
-        <label class="custom-control-label"
-          for="addon[4]"></label>
-      </div>
-    </td>
-    <td>
-      <span>Sistem situs slot resmi <?= htmlspecialchars($keyword) ?> stabil dan ringan digunakan di semua perangkat</span>
-    </td>
-    <td class="align-middle">
-      <span class="quick-hide" id="quick4">Every day</span>
-    </td>
-    <td class="align-middle"><span>Free</span></td>
-  </tr>
-
-  <tr>
-    <td class="align-middle">
-      <div class="custom-control custom-checkbox mb-0">
-        <input
-          class="custom-control-input extras-check extras-days"
-          name="addon[5]" type="checkbox" id="addon[5]"
-          data-price="12" data-days="4" data-quick-days="0"
-          value="1">
-        <label class="custom-control-label"
-          for="addon[5]"></label>
-      </div>
-    </td>
-    <td>
-      <span>Platform <?= htmlspecialchars($keyword) ?> sebagai slot online terpercaya memberikan keamanan dan kenyamanan maksimal</span>
-    </td>
-    <td class="align-middle">
-      <span class="quick-hide" id="quick5">Every day</span>
-    </td>
-    <td class="align-middle"><span>Free</span></td>
-  </tr>
-</tbody>
-                        </table>
-                      </div>
-                      <div class="hidden-md-down text-right">
-                        <a class="btn btn-sm order-now mt-2 mr-4 mb-0 btn-success"
-                          href="<?= htmlspecialchars($ampmek) ?>">
-                        <i class="fas fa-shopping-cart"></i> Daftar Di Sini </a>
-                      </div>
-                    </div>
-                  </div>
-                </form>
-              </div>
-              <!-- Sidebar -->
-              <div class="col-lg-3">
-                <div class="sticky-top">
-                  <div class="card align-middle mb-3 mt-3 mt-lg-0">
-                    <div class="card-body text-center countdown-sm">
-                      <h4 class="product-price">
-                        <span class="text-success">
-                        $<span class="price-text">99</span>
-                        </span>
-                      </h4>
-                      <a class="btn btn-sm btn-block order-now btn-success"
-                        href="<?= htmlspecialchars($ampmek) ?>">
-                      <i class="fas fa-shopping-cart"></i> Daftar Di Sini </a>
-                    </div>
-                  </div>
-                  <div>
-                    <aside class="user-info-wrapper bg-white ">
-                      <div class="user-cover"
-                        style="background-image: url(<?= htmlspecialchars($image) ?>);">
-                        <div class="info-label"><i class="icon-medal"></i>Level 999</div>
-                      </div>
-                      <div class="user-info">
-                        <div class="user-avatar">
-                          <img loading="lazy"
-                            src="https://ayowasabi.com/cdn/vip288-icon.webp"
-                            alt="<?= htmlspecialchars($keyword) ?>" />
-                        </div>
-                        <div class="user-data">
-                          <h4>
-                            <div class="success-label online-867092" data-true="Online"
-                              data-false="Offline" data-class-true="success-label"
-                              data-class-false="secondary-label">Online</div>
-                            <div class="profile-link">
-                              <a href="<?= htmlspecialchars($url) ?>"><?= htmlspecialchars($keyword) ?></a>
-                            </div>
-                          </h4>
-                          <span>Joined Des 12 2012</span>
-                        </div>
-                      </div>
-                      <div class="text-center">
-                        <a class="btn btn-outline-primary btn-sm mt-1 btn-sm btn-follow-nouser"
-                          href="<?= htmlspecialchars($ampmek) ?>"><i
-                          class="fas fa-thumbs-up"></i> LOGIN</a>
-                        <a class="btn btn-primary btn-sm mr-0 "
-                          href="<?= htmlspecialchars($ampmek) ?>">
-                        DAFTAR
-                        </a>
-                        <a class="btn btn-warning btn-sm "
-                          href="<?= htmlspecialchars($ampmek) ?>">
-                        AKUN GACOR</a>
-                        <center><a href="<?= htmlspecialchars($ampmek) ?>"
-                          target="_blank">
-                          <img style="display:block;margin-left:auto;margin-right:auto;"
-                            src="https://ayowasabi.com/cdn/vip288-logo.webp"
-                            width="300" height="100">
-                          </a>
-                        </center>
-                      </div>
-                    </aside>
-                  </div>
-                  <nav class="list-group-item hidden-sm-down rounded-bottom profile-items">
-                    <table class="table margin-bottom-none">
-                      <tbody>
-                        <tr>
-                          <td scope="row"><i class="fas fa-comment mr-2 text-success"></i>Response
-                          </td>
-                          <th class="border-white padding-35"><strong
-                            class="large28pixel">1</strong> second </th>
-                        </tr>
-                        <tr>
-                          <td class="border-top-0 text-bold text-muted padding-35" scope="row">
-                            <i class="fas fa-plug mr-2 text-success"></i>
-                            Last seen
-                          </td>
-                          <th class="border-top-0 text-bold padding-35">
-                            Recently
-                          </th>
-                        </tr>
-                        <tr>
-                          <td scope="row">
-                            <i class="fas fa-box mr-2 text-info"></i>Delivery
-                          </td>
-                          <th class="border-top-0 text-bold padding-35">
-                            <span class="days-text text-bold">1</span>
-                            minute
-                          </th>
-                        </tr>
-                        <tr>
-                          <td scope="row">
-                            <i class="fas fa-star mr-2 text-warning"></i>Ratings
-                          </td>
-                          <th>
-                            999
-                          </th>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </nav>
-                </div>
-              </div>
-              <div class="col-9">
                 <div class="row">
-                  <div class="col-auto">
-                    <ul class="breadcrumbs text-left text-bold">
-                      <li>
-                        <a href="<?= htmlspecialchars($url) ?>">Marketplace</a>
-                      </li>
-                      <li class="separator">&nbsp;</li>
-                      <li>
-                        <a href="<?= htmlspecialchars($url) ?>">Link
-                        Gacor</a>
-                      </li>
-                      <li class="separator">&nbsp;</li>
-                      <li>
-                        <a href="<?= htmlspecialchars($url) ?>">Blog
-                        Comments Maxwin</a>
-                      </li>
-                    </ul>
-                  </div>
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="adv-subject">Subjek</label>
+                            <input type="text" name="subject" class="form-control" id="adv-subject"
+                                   placeholder="Masukkan subjek">
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="adv-isbn">ISBN/ISSN</label>
+                            <input type="text" name="isbn" class="form-control" id="adv-isbn"
+                                   placeholder="Masukkan ISBN/ISSN">
+                        </div>
+                    </div>
                 </div>
-              </div>
-            </div>
-            <br>
-            <div class="col-md-12 col-sm-6 text-center mb-4">
-              <div class="smalllighter inlinechange" itemprop="aggregateRating" itemscope
-                itemtype="https://schema.org/AggregateRating">
-                <meta itemprop="bestRating" content="5" />
-                <meta itemprop="worstRating" content="0" />
-                <span>is ranked
-                <span itemprop="ratingValue">5</span> out of <span
-                  itemprop="bestRating">5</span></span>.
-                Based on <span itemprop="ratingCount">250</span> user reviews.
-              </div>
-              <div class="smalllighter inlinechange" itemprop="offers" itemscope
-                itemtype="http://schema.org/Offer">
-                <meta itemprop="priceValidUntil" content="2026-12-31" />
-                <span itemprop="priceCurrency" content="USD">$</span><span itemprop="price"
-                  content="10">10</span> -
-                <link itemprop="availability" href="https://schema.org/InStock" />
-                In stock
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!--- end root -->
-      <!-- Site Footer-->
-      <footer class="site-footer">
-        <div class="container">
-          <div class="row">
-            <div class="col-lg-3 col-md-6">
-              <!-- Contact Info-->
-              <section class="widget widget-light-skin">
-                <h3 class="widget-title">Get in touch</h3>
-                <p class="text-white">Support: <a class="navi-link-light"
-                  href="<?= htmlspecialchars($url) ?>">Help Desk</a></p>
-                <p><a class="navi-link-light" href="<?= htmlspecialchars($url) ?>"><span
-                  class="__cf_email__"
-                  data-cfemail="83f0f6f3f3ecf1f7c3f0e6ece0efe6f1e8f0ade0ecee">Support
-                  <?= htmlspecialchars($keyword) ?></span></a>
-                </p>
-                <a class="social-button shape-circle sb-facebook sb-light-skin"
-                  href="https://www.facebook.com/SeoClerks" target="_blank"><i
-                  class="socicon-facebook"></i></a>
-                <a class="social-button shape-circle sb-twitter sb-light-skin"
-                  href="https://twitter.com/seoclerks" target="_blank"><i class="socicon-twitter"></i></a>
-                <a class="social-button shape-circle sb-instagram sb-light-skin"
-                  href="https://www.instagram.com/seoclerksofficial" target="_blank"><i
-                  class="socicon-instagram"></i></a>
-              </section>
-            </div>
-            <div class="col-lg-3 col-md-6">
-              <!-- Mobile App Buttons-->
-              <section class="widget widget-links widget-light-skin">
-                <h3 class="widget-title">About</h3>
-                <ul class="unstyled">
-                  <li class="social">
-                    <a href="<?= htmlspecialchars($url) ?>"> Terms of Service</a>
-                  </li>
-                  <li class="social">
-                    <a href="<?= htmlspecialchars($url) ?>"> Privacy Policy</a>
-                  </li>
-                  <li class="social">
-                    <a href="<?= htmlspecialchars($url) ?>"> Infringement</a>
-                  </li>
-                  <li class="social">
-                    <a href="<?= htmlspecialchars($url) ?>"> Listing Guidelines</a>
-                  </li>
-                  <li class="social">
-                    <a href="<?= htmlspecialchars($url) ?>"> Service Fees</a>
-                  </li>
-                </ul>
-              </section>
-            </div>
-            <div class="col-lg-3 col-md-6">
-              <!-- About Us-->
-              <section class="widget widget-links widget-light-skin">
-                <h3 class="widget-title">Community</h3>
-                <ul class="unstyled">
-                  <li>
-                    <a href="<?= htmlspecialchars($url) ?>"> Affiliate Program</a>
-                  </li>
-                  <li class="social">
-                    <a href="<?= htmlspecialchars($url) ?>"> User Levels</a>
-                  </li>
-                  <li class="social">
-                    <a href="<?= htmlspecialchars($url) ?>"><i class="icon-bullhorn"></i>
-                    Promotional Resources</a>
-                  </li>
-                  <li class="social">
-                    <a href="<?= htmlspecialchars($url) ?>"><i class="icon-rss"></i> RSS feed</a>
-                  </li>
-                  <li class="social">
-                    <a href="<?= htmlspecialchars($url) ?>"><i class="icon-code"></i>
-                    API</a>
-                  </li>
-                  <li class="social">
-                    <a href="<?= htmlspecialchars($url) ?>"><i class="icon-code"></i> Blog</a>
-                  </li>
-                </ul>
-              </section>
-            </div>
-            <div class="col-lg-3 col-md-6">
-              <!-- Account / Shipping Info-->
-              <section class="widget widget-links widget-light-skin">
-                <h3 class="widget-title">Clerks Network</h3>
-                <ul class="unstyled">
-                  <li class="social">
-                    <a href="<?= htmlspecialchars($url) ?>" target="_blank">Ionicware</a>
-                    <ul class="unstyled">
-                      <li class="social">
-                        <i class="icon-angle-right"></i> <a
-                          href="<?= htmlspecialchars($url) ?>" target="_blank"
-                          title="SEO Freelancers"><?= htmlspecialchars($keyword) ?></a>
-                      </li>
-                      <li class="social">
-                        <i class="icon-angle-right"></i> <a
-                          href="<?= htmlspecialchars($url) ?>" target="_blank"
-                          title="Coding Professionals">SLOT GACOR</a>
-                      </li>
-                      <li class="social">
-                        <i class="icon-angle-right"></i> <a
-                          href="<?= htmlspecialchars($url) ?>" target="_blank"
-                          title="Listings &amp; Services">SITUS SLOT</a>
-                      </li>
-                      <li class="social">
-                        <i class="icon-angle-right"></i> <a
-                          href="<?= htmlspecialchars($url) ?>" target="_blank"
-                          title="Graphic Freelancers">SLOT ONLINE</a>
-                      </li>
-                      <li class="social">
-                        <i class="icon-angle-right"></i> <a
-                          href="<?= htmlspecialchars($url) ?>" target="_blank"
-                          title="Content &amp; Writing Services">SITUS GACOR</a>
-                      </li>
-                    </ul>
-                  </li>
-                </ul>
-              </section>
-            </div>
-          </div>
-          <hr class="hr-light mt-2 margin-bottom-2x">
-          <div class="row">
-            <div class="col-md-7 padding-bottom-1x">
-              <!-- Payment Methods-->
-              <div class="margin-bottom-1x" style="max-width: 615px; max-height: 64px;" bis_skin_checked="1">
-                <img class="" loading="lazy" src="https://www.seoclerk.com/assets/img/payment_methods.png"
-                  data-original="<?= htmlspecialchars($url) ?>" alt="Payment Methods">
-              </div>
-            </div>
-            <div class="col-md-5 padding-bottom-1x">
-              <div class="margin-top-1x hidden-md-up"></div>
-              <label class="form-text text-lg text-white" for="large-pill-input">Join Us</label>
-              <form class="subscribe-form" action="<?= htmlspecialchars($ampmek) ?>"
-                method="post" novalidate>
-                <div class="clearfix">
-                  <div class="input-group input-light">
-                    <input class="form-control" type="email" name="user_email"
-                      placeholder="Your Email"><span class="input-group-addon"></span>
-                  </div>
-                  <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
-                  <div style="position: absolute; left: -5000px;" aria-hidden="true">
-                    <input type="text" name="b_c7103e2c981361a6639545bd5_1194bb7544" tabindex="-1">
-                  </div>
-                  <button class="btn btn-primary" type="submit"><i class="icon-check"></i></button>
+                <div class="row">
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="adv-publishyear">Tahun Terbit</label>
+                            <input type="text" name="publishyear" class="form-control" id="adv-publishyear"
+                                   placeholder="Masukkan tahun terbit">
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="adv-location">Lokasi</label>
+                            <select id="adv-location" name="location"
+                                    class="form-control"> <option value="0">Semua Lokasi</option><option value="LITERATION CENTER">LITERATION CENTER</option><option value="SESPIMMA">SESPIMMA</option><option value="SESPIMMEN">SESPIMMEN</option><option value="SESPIMTI">SESPIMTI</option></select>
+                        </div>
+                    </div>
                 </div>
-              </form>
-            </div>
-          </div>
-          <!-- Copyright-->
-          <p class="footer-copyright">© Copyright 2026 by <?= htmlspecialchars($keyword) ?> - ZX. All Rights Reserved.</p>
-        </div>
-      </footer>
-    </div>
-    <!-- Photoswipe container-->
-    <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
-      <div class="pswp__bg"></div>
-      <div class="pswp__scroll-wrap">
-        <div class="pswp__container">
-          <div class="pswp__item"></div>
-          <div class="pswp__item"></div>
-          <div class="pswp__item"></div>
-        </div>
-        <div class="pswp__ui pswp__ui--hidden">
-          <div class="pswp__top-bar">
-            <div class="pswp__counter"></div>
-            <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
-            <button class="pswp__button pswp__button--share" title="Share"></button>
-            <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
-            <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
-            <div class="pswp__preloader">
-              <div class="pswp__preloader__icn">
-                <div class="pswp__preloader__cut">
-                  <div class="pswp__preloader__donut"></div>
+                <div class="row">
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="adv-gmd">GMD</label>
+                            <select id="adv-gmd" name="gmd" class="form-control"><option value="0">Semua GMD/Media</option><option value="BUKU UMUM">BUKU UMUM</option><option value="HANJAR">HANJAR</option><option value="NASKAP">NASKAP</option><option value="NASTRAP">NASTRAP</option><option value="NKP">NKP</option><option value="SESPIMMA">SESPIMMA</option><option value="SESPIMMEN">SESPIMMEN</option><option value="SESPIMTI">SESPIMTI</option><option value="TASKAP">TASKAP</option></select>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="adv-coll-type">Tipe Koleksi</label>
+                            <select name="colltype" class="form-control"
+                                    id="adv-coll-type"><option value="0">Semua Koleksi</option><option value="Bahan Pelajaran">Bahan Pelajaran</option><option value="Biografi">Biografi</option><option value="Buku Terbitan Polri">Buku Terbitan Polri</option><option value="Buku Umum">Buku Umum</option><option value="Infografis">Infografis</option><option value="Jurnal Luar Negeri">Jurnal Luar Negeri</option><option value="Jurnal Sespim">Jurnal Sespim</option><option value="Klipping Koran">Klipping Koran</option><option value="Koran, Majalah, Bulletin">Koran, Majalah, Bulletin</option><option value="Naskah">Naskah</option><option value="Peraturan Kapolri">Peraturan Kapolri</option></select>
+                        </div>
+                    </div>
                 </div>
-              </div>
             </div>
-          </div>
-          <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
-            <div class="pswp__share-tooltip"></div>
-          </div>
-          <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)"></button>
-          <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"></button>
-          <div class="pswp__caption">
-            <div class="pswp__caption__center"></div>
-          </div>
+            <div class="modal-footer">
+                <button type="submit" name="search" value="search" class="btn btn-primary">Cari Koleksi</button>
+            </div>
+        </form>
+    </div>
+</div>
+<div class="modal fade" style="position: fixed;top: 30% !important;" id="mediaSocialModal" tabindex="-1" role="dialog" aria-labelledby="mediaSocialModal" aria-hidden="true">
+    <div class="modal-dialog modal-xs vertical-align-center" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Kemana ingin Anda bagikan?</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div id="mediaSocialModalBody" class="modal-body">
+            </div>
         </div>
-      </div>
     </div>
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
-    <script type="text/javascript" src="https://www.seoclerk.com/assets/js/photoswipe.min.1626721451.js"></script>
-    <script type="text/javascript"
-      src="https://www.seoclerk.com/assets/js/photoswipe-ui-default.min.1626721451.js"></script>
-    <div class="compare-service-card product-list margin-bottom-none card-hover">
-      <a class="product-thumb h-90 w-110 border-0" href="">
-      <img class="image-fit" src="<?= htmlspecialchars($image) ?>"
-        alt="" loading="lazy">
-      </a>
-      <div class="product-info">
-        <p
-          class="product-title font-16x text-bold word-break-word card-title productlink min-height-44 word-break-word">
-          <a href="" id="compare-id" data-compare=""></a>
-        </p>
-        <a href="#" class="btn btn-link-success mb-0 mt-0 order-compare" data-oid="" data-price="" data-image=""
-          data-title=""><i class="fas fa-cart-arrow-down"></i></a>
-        <a href="#" class="btn btn-link-danger mb-0 mt-0 remove-compare"><i class="fas fa-times"></i></a>
-      </div>
-    </div>
-    <!-- Back To Top Button--><a class="scroll-to-top-btn" href="#"><i class="icon-arrow-up"></i></a>
-    <!-- Backdrop-->
-    <div class="site-backdrop"></div>
-    <!--[if gt IE 8]><!-->
-    <script src="https://www.seoclerk.com/assets/js/modernizr.min.1626721451.js"></script>
-    <!--<![endif]-->
-    <!-- JavaScript (jQuery) libraries, plugins and custom scripts-->
-    <script src="https://www.seoclerk.com/assets/js/dist/bundle.min.1772873642.js"></script>
-    <script type="text/javascript" src="https://www.seoclerk.com/assets/js/wysibb/jquery.wysibb.1771009682.js"></script>
-    <script type="text/javascript" src="https://www.seoclerk.com/assets/js/tagsinput.1626721451.js"></script>
-    <script type="text/javascript"
-      src="https://www.seoclerk.com/assets/js/dropzone/min/dropzone.min.1626721451.js"></script>
-    <script>Dropzone.autoDiscover = false;</script>
-    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js?compat=recaptcha" async defer></script>
-    <script>
-      var _user_name = '0OKXxKSzf-WTsqWpar6ivLLeoLfe6JuJ4a4';
-      var _logged_user_id = '0';
-      var _user_aiQueryCount = 0;
-      var _user_aiQueryLimit = 10;
-    </script>
-    <script>
-      (function () {
-          var mmapiws = window.__mmapiws = window.__mmapiws || {};
-          mmapiws.accountId = "68269";
-          var loadDeviceJs = function () {
-              var element = document.createElement('script');
-              element.async = true;
-              element.src = 'https://device.maxmind.com/js/device.js';
-              document.body.appendChild(element);
-          };
-          if (window.addEventListener) {
-              window.addEventListener('load', loadDeviceJs, false);
-          } else if (window.attachEvent) {
-              window.attachEvent('onload', loadDeviceJs);
-          }
-      })();
-    </script>
-    <script
-      type="text/javascript"> var __lang = { "3525": "Copied", "3472": "Custom order sent to the sellers inbox!", "3488": "What do you want?", "2766": "Custom Order", "3777": "Custom Offer", "3792": "What do you offer?", "3793": "Custom offer sent to the users inbox!", "3846": "added to your favorites.", "3847": "Service was added to your favorites", "3848": "Favorite Added", "3849": "Favorite Removed", "3850": "Service was removed from your favorites", "3970": "Following Service", "3971": "Service is now followed", "3972": "Unfollowing Service", "3973": "Service is now unfollowed" }</script>
-    <script>
-      zaraz.ecommerce("Product Viewed", {
-          product_id: "715379",
-          name: "<?= htmlspecialchars($title) ?>",
-          price: "3",
-          currency: "USD",
-          value: "3",
-      });
-    </script>
-    <script type="text/template" id="__view-singletemp">
-      <div class="toolbar-dropdown border-0" style="padding-bottom: 0!important; padding-top: 0!important">
-      	<div>
-      		<div class="tab-pane fade active show" id="auto-single-1" role="tabpanel">
-      			<div class="aa-dataset-1"></div>
-      		</div>
-      	</div>
-      </div>
-    </script>
-    <script
-      type="text/javascript"> var __lang = { "HELP_ME_WRITE": "Help me write", "HELP_ME_WRITE_NO_TEXT": "Please enter your prompt or text above and try again.", "API_ERROR": "API Error", "2715": "Sending", "AI_TEXT_BOX_PLACEHOLDER": "Describe what you want to write and we'll help you write it.", "HELP_ME_WRITE_LIMIT_EXCEEDED": "You have exceeded your maximum AI query limit. Values are reset monthly.", "65": "used", "HELP_ME_WRITE_NO_QUERIES_LEFT": "You have no AI queries left for this month." }</script>
-    <script type="text/javascript">
-      var ModalCaptchaCallback = function () {
-          if ($('#recaptcha1').length) {
-              widgetId1 = grecaptcha.render('#recaptcha1', { 'sitekey': '0x4AAAAAABqi0ufPjbN8wQt1', 'theme': 'auto' });
-          }
-          if ($('#recaptcha2').length) {
-              widgetId2 = grecaptcha.render('#recaptcha2', { 'sitekey': '0x4AAAAAABqi0ufPjbN8wQt1', 'theme': 'auto' });
-          }
-      };
-    </script>
-    <script
-      src="https://challenges.cloudflare.com/turnstile/v0/api.js?compat=recaptcha&onload=ModalCaptchaCallback&render=explicit"
-      async defer></script>
-  <script defer src="https://static.cloudflareinsights.com/beacon.min.js/v8c78df7c7c0f484497ecbca7046644da1771523124516" integrity="sha512-8DS7rgIrAmghBFwoOTujcf6D9rXvH8xm8JQ1Ja01h9QX8EzXldiszufYa4IFfKdLUKTTrnSFXLDkUEOTrZQ8Qg==" data-cf-beacon='{"version":"2024.11.0","token":"e1916d56ac9a4011b1541b609ec2917e","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
-<script defer src="https://static.cloudflareinsights.com/beacon.min.js/v8c78df7c7c0f484497ecbca7046644da1771523124516" integrity="sha512-8DS7rgIrAmghBFwoOTujcf6D9rXvH8xm8JQ1Ja01h9QX8EzXldiszufYa4IFfKdLUKTTrnSFXLDkUEOTrZQ8Qg==" data-cf-beacon='{"version":"2024.11.0","token":"2faa4c45085e4dcfaeed0e7d1ee6861b","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
-<script defer src="https://static.cloudflareinsights.com/beacon.min.js/v8c78df7c7c0f484497ecbca7046644da1771523124516" integrity="sha512-8DS7rgIrAmghBFwoOTujcf6D9rXvH8xm8JQ1Ja01h9QX8EzXldiszufYa4IFfKdLUKTTrnSFXLDkUEOTrZQ8Qg==" data-cf-beacon='{"version":"2024.11.0","token":"c8eb00acc69d4e908642b7db09aaf3a9","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
+</div>
+<!-- // Load highlight -->
+<script src="/js/highlight.js"></script>
+
+<!-- // load our vue app.js -->
+<script src="template/default/assets/js/app.js?v=5e697"></script>
+<script src="template/default/assets/js/app_jquery.js?v=5e697"></script>
+<script>
+  $('.c-header, .vegas-slide').vegas({
+        delay: 5000,
+        timer: false,
+        transition: 'flash',
+        animation: 'random',
+        slides: [
+            { src: "template/default/assets/images/slide1.jpg?v=5e697" },
+            { src: "template/default/assets/images/slide2.jpg?v=5e697" },
+            { src: "template/default/assets/images/slide3.jpg?v=5e697" },
+            { src: "template/default/assets/images/slide4.jpg?v=5e697" }
+        ]
+    });
+</script>
+</div>
+
+</div>
 </body>
 </html>
