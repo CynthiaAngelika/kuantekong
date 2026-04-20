@@ -1,0 +1,547 @@
+
+<!--
+# ===============================
+# Classic SLiMS Template
+# ===============================
+# @Author: Waris Agung Widodo
+# @Email:  ido.alit@gmail.com
+# @Date:   2018-01-23T11:25:57+07:00
+# @Last modified by:   Satrio Sumantri
+# @Last modified time: 2023-09-02
+-->
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>SESPIM LEMDIKLAT POLRI | LITERATION CENTER</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="Pragma" content="no-cache"/>
+    <meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate, post-check=0, pre-check=0"/>
+    <meta http-equiv="Expires" content="Sat, 26 Jul 1997 05:00:00 GMT"/>
+    <meta name="robots" content="index, follow">            <meta name="description" content="SESPIM LEMDIKLAT POLRI | LITERATION CENTER">
+        <meta name="keywords" content="SESPIM LEMDIKLAT POLRI">
+        <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1">
+    <meta name="generator" content="SLiMS 9 (Bulian)">
+    <meta name="theme-color" content="#000">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-00QDCXTWPM"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-41RLJ98E34');
+</script>
+    <meta property="og:locale" content="id_ID"/>
+    <meta property="og:type" content="book"/>
+    <meta property="og:title" content="SESPIM LEMDIKLAT POLRI | LITERATION CENTER"/>
+            <meta property="og:description" content="SESPIM LEMDIKLAT POLRI"/>
+        <meta property="og:url" content="//elibrary.sespimlemdiklatpolri.id%2Fhome.php"/>
+    <meta property="og:site_name" content="LITERATION CENTER"/>
+            <meta property="og:image"
+              content="//elibrary.sespimlemdiklatpolri.id/template/default/img/logo.png"/>
+        <meta name="twitter:card" content="summary">
+    <meta name="twitter:url" content="//elibrary.sespimlemdiklatpolri.id%2Fhome.php"/>
+    <meta name="twitter:title" content="SESPIM LEMDIKLAT POLRI | LITERATION CENTER"/>
+            <meta property="twitter:image"
+              content="//elibrary.sespimlemdiklatpolri.id/template/default/img/logo.png"/>
+        <!-- // load bootstrap style -->
+    <link rel="stylesheet" href="template/default/assets/css/bootstrap.min.css">
+    <!-- // font awesome -->
+    <link rel="stylesheet" href="template/default/assets/plugin/font-awesome/css/fontawesome-all.min.css">
+    <!-- Tailwind CSS -->
+    <link rel="stylesheet" href="template/default/assets/css/tailwind.min.css">
+    <!-- Vegas CSS -->
+    <link rel="stylesheet" href="template/default/assets/plugin/vegas/vegas.min.css">
+    <link href="/js/toastr/toastr.min.css?30105650" rel="stylesheet" type="text/css"/>
+    <!-- CKEditor5 CSS -->
+    <link rel="stylesheet" href="/js/ckeditor5/ckeditor5.css">
+    <!-- SLiMS CSS -->
+    <link rel="stylesheet" href="/js/colorbox/colorbox.css">
+    <link rel="stylesheet" href="/js/ion.rangeSlider/css/ion.rangeSlider.min.css">
+    <!-- // Flag css -->
+    <link rel="stylesheet" href="template/default/assets/css/flag-icon.min.css">
+    <!-- // my custom style -->
+    <link rel="stylesheet" href="template/default/assets/css/style.css?v=20260420-105650">
+<style>
+/* Center the loader */
+#loader {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 1;
+  width: 150px;
+  height: 150px;
+  margin: -76px 0 0 -76px;
+}
+
+/* Add animation to "page content" */
+.animate-bottom {
+  position: relative;
+  -webkit-animation-name: animatebottom;
+  -webkit-animation-duration: 1s;
+  animation-name: animatebottom;
+  animation-duration: 1s
+}
+
+@-webkit-keyframes animatebottom {
+  from { bottom:-250px; opacity:0 } 
+  to { bottom:0px; opacity:1 }
+}
+
+@keyframes animatebottom { 
+  from{ bottom:-250px; opacity:0 } 
+  to{ bottom:0; opacity:1 }
+}
+
+#myDiv {
+  display: none;
+}
+</style>
+    
+
+        <link rel="shortcut icon" href="/images/default/webicon.png?v=5e697" type="image/x-icon"/>
+
+    <!-- // load vue js -->
+    <script src="template/default/assets/js/vue.min.js"></script>
+    <!-- // load jquery library -->
+    <script src="template/default/assets/js/jquery.min.js"></script>
+    <script src="template/default/assets/js/masonry.pkgd.min.js"></script>
+    <!-- // load bootstrap javascript -->
+    <script src="template/default/assets/js/bootstrap.bundle.min.js"></script>
+    <!-- // load vegas javascript -->
+    <script src="template/default/assets/plugin/vegas/vegas.min.js"></script>
+    <script src="/js/toastr/toastr.min.js"></script>
+    <!-- // load SLiMS javascript -->
+    <script src="/js/colorbox/jquery.colorbox-min.js"></script>
+    <script src="/js/gui.js?v=5e697"></script>
+    <script src="/js/fancywebsocket.js"></script>
+    <script src="/js/ion.rangeSlider/js/ion.rangeSlider.min.js"></script>
+    
+</head>
+<body class="bg-grey-lightest">
+<section id="section1 container-fluid">
+    <header class="c-header">
+      <div class="mask"></div>
+      
+<div class=navbar-wrap>
+<nav class="navbar navbar-expand-lg navbar-dark bg-grey-darkest text-grey-lighter">
+    <a class="navbar-brand inline-flex items-center" href="index.php">
+        <img class="h-10 w-15" src="images/default/logo.png?v=5e697">        <div class="inline-flex flex-col leading-tight ml-2">
+            <h1 class="text-lg m-0 p-0">LITERATION CENTER</h1>
+                        <h2 class="text-sm lead m-0 p-0">SESPIM LEMDIKLAT POLRI</h2>
+                    </div>
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+    <a class="nav-link" href="index.php">BERANDA</a>
+</li><li class="nav-item">
+    <a class="nav-link" href="https://sespimlemdiklatpolri.id/">BERITA SESPIM</a>
+</li><li class="nav-item">
+    <a class="nav-link" href="index.php?p=about-e-literasi">TENTANG E-LITERASI</a>
+</li><li class="nav-item">
+    <a class="nav-link" href="index.php?p=pendaftaran_online">REGISTRASI</a>
+</li><li class="nav-item">
+    <a class="nav-link" href="index.php?p=member">ANGGOTA</a>
+</li>                                <li class="nav-item dropdown">
+                              <a class="nav-link dropdown-toggle cursor-pointer" type="button" id="languageMenuButton"
+                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <span class="flag-icon flag-icon-id" style="border-radius: 2px;"></span>
+                </a>
+                <div class="dropdown-menu bg-grey-lighter dropdown-menu-lg-right" aria-labelledby="dropdownMenuButton">
+                    <h6 class="dropdown-header">Pilih Bahasa : </h6>
+                      <a class="dropdown-item" href="index.php?select_lang=ar_SA">
+        <span class="flag-icon flag-icon-sa mr-2" style="border-radius: 2px;"></span> Bahasa Arab
+    </a>    <a class="dropdown-item" href="index.php?select_lang=bn_BD">
+        <span class="flag-icon flag-icon-bd mr-2" style="border-radius: 2px;"></span> Bahasa Bengal
+    </a>    <a class="dropdown-item" href="index.php?select_lang=pt_BR">
+        <span class="flag-icon flag-icon-br mr-2" style="border-radius: 2px;"></span> Bahasa Brazil Portugis
+    </a>    <a class="dropdown-item" href="index.php?select_lang=en_US">
+        <span class="flag-icon flag-icon-us mr-2" style="border-radius: 2px;"></span> Bahasa Inggris
+    </a>    <a class="dropdown-item" href="index.php?select_lang=es_ES">
+        <span class="flag-icon flag-icon-es mr-2" style="border-radius: 2px;"></span> Bahasa Spanyol
+    </a>    <a class="dropdown-item" href="index.php?select_lang=de_DE">
+        <span class="flag-icon flag-icon-de mr-2" style="border-radius: 2px;"></span> Bahasa Jerman
+    </a>    <a class="dropdown-item" href="index.php?select_lang=id_ID">
+        <span class="flag-icon flag-icon-id mr-2" style="border-radius: 2px;"></span> Bahasa Indonesia
+    </a>    <a class="dropdown-item" href="index.php?select_lang=ja_JP">
+        <span class="flag-icon flag-icon-jp mr-2" style="border-radius: 2px;"></span> Bahasa Jepang
+    </a>    <a class="dropdown-item" href="index.php?select_lang=ms_MY">
+        <span class="flag-icon flag-icon-my mr-2" style="border-radius: 2px;"></span> Bahasa Melayu
+    </a>    <a class="dropdown-item" href="index.php?select_lang=fa_IR">
+        <span class="flag-icon flag-icon-ir mr-2" style="border-radius: 2px;"></span> Bahasa Persia
+    </a>    <a class="dropdown-item" href="index.php?select_lang=ru_RU">
+        <span class="flag-icon flag-icon-ru mr-2" style="border-radius: 2px;"></span> Bahasa Rusia
+    </a>    <a class="dropdown-item" href="index.php?select_lang=th_TH">
+        <span class="flag-icon flag-icon-th mr-2" style="border-radius: 2px;"></span> Bahasa Thailand
+    </a>    <a class="dropdown-item" href="index.php?select_lang=tr_TR">
+        <span class="flag-icon flag-icon-tr mr-2" style="border-radius: 2px;"></span> Bahasa Turki
+    </a>    <a class="dropdown-item" href="index.php?select_lang=ur_PK">
+        <span class="flag-icon flag-icon-pk mr-2" style="border-radius: 2px;"></span> Bahasa Urdu
+    </a>                </div>
+            </li>
+        </ul>
+    </div>
+</nav>
+</div>
+    </header>
+  
+<div class="search" id="search-wraper" xmlns:v-bind="http://www.w3.org/1999/xhtml">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 mx-auto">
+                <div class="card border-0 bayangan">
+                    <div class="card-body">
+                        <form class="" action="index.php" method="get" @submit.prevent="searchSubmit">
+                            <input type="hidden" name="search" value="search">
+                            <input ref="keywords" value="" v-model.trim="keywords"
+                                   @focus="searchOnFocus" @blur="searchOnBlur" type="text" id="search-input"
+                                   name="keywords" class="input-transparent w-100" autocomplete="off"
+                                   placeholder="Masukkan kata kunci untuk mencari koleksi..."/>
+                        </form>
+                    </div>
+                </div>
+                <transition name="slide-fade">
+                    <div v-if="show" class="advanced-wraper mt-4" id="advanced-wraper"
+                         v-click-outside="hideSearch">
+                        <p class="label mb-2">
+                            Pencarian berdasarkan :                            <i @click="hideSearch"
+                               class="far fa-times-circle float-right text-danger cursor-pointer"></i>
+                        </p>
+                        <div class="d-flex flex-wrap">
+                            <a v-bind:class="{'btn-primary text-white': searchBy === 'keywords', 'btn-outline-secondary': searchBy !== 'keywords' }"
+                               @click="searchOnClick('keywords')" class="btn mr-2 mb-2">SEMUA</a>
+                            <a v-bind:class="{'btn-primary text-white': searchBy === 'author', 'btn-outline-secondary': searchBy !== 'author' }"
+                               @click="searchOnClick('author')" class="btn mr-2 mb-2">Pengarang</a>
+                            <a v-bind:class="{'btn-primary text-white': searchBy === 'subject', 'btn-outline-secondary': searchBy !== 'subject' }"
+                               @click="searchOnClick('subject')" class="btn mr-2 mb-2">Subjek</a>
+                            <a v-bind:class="{'btn-primary text-white': searchBy === 'isbn', 'btn-outline-secondary': searchBy !== 'isbn' }"
+                               @click="searchOnClick('isbn')" class="btn mr-2 mb-2">ISBN/ISSN</a>
+                            <button class="btn btn-light mr-2 mb-2" disabled>ATAU COBA</button>
+                            <a class="btn btn-outline-primary mr-2 mb-2" data-toggle="modal" data-target="#adv-modal">Pencarian Spesifik</a>
+                        </div>
+                        <p v-if="lastKeywords.length > 0" class="label mt-4">Pencarian terakhir:</p>
+                        <a :href="`index.php?${tmpObj[k].searchBy}=${tmpObj[k].text}&search=search`"
+                           class="flex items-center justify-between py-1 text-decoration-none text-grey-darkest hover:text-blue"
+                           v-for="k in lastKeywords" :key="k"><span><i
+                                        class="far fa-clock text-grey-dark mr-2"></i><span class="italic text-sm">{{tmpObj[k].text}}</span></span><i
+                                    class="fas fa-angle-right text-grey-dark"></i></a>
+                    </div>
+                </transition>
+            </div>
+        </div>
+    </div>
+</div>
+</section>
+
+<div id="slims-home">
+<section class="mt-5 container">
+    <h4 class="text-secondary text-center text-thin mt-5 mb-4">Pilih subjek yang menarik bagi Anda</h4>
+    <ul class="topic d-flex flex-wrap justify-content-center px-0">
+        <li class="d-flex card border-0 hover:shadow cursor-pointer text-decoration-none h-full">
+            <a href="index.php?title=&author=&subject=&isbn=&publishyear=&location=0&gmd=0&colltype=Jurnal+Sespim&search=search" class="d-flex flex-column">
+                <img src="template/default/assets/images/Journal.png" width="80" class="mb-3 mx-auto"/>
+                Journal Sespim            </a>
+        </li>
+        <li class="d-flex card border-0 hover:shadow cursor-pointer text-decoration-none h-full">
+            <a href="index.php?title=&author=&subject=&isbn=&publishyear=&location=0&gmd=0&colltype=Jurnal+Luar+Negeri&search=search" class="d-flex flex-column">
+                <img src="template/default/assets/images/Journal.png" width="80" class="mb-3 mx-auto"/>
+                Journal Luar Negeri            </a>
+        </li>
+        <li class="d-flex card border-0 hover:shadow cursor-pointer text-decoration-none h-full">
+            <a href="index.php?title=&author=&subject=&isbn=&publishyear=&location=0&gmd=0&colltype=Buku+Terbitan+Polri&search=search" class="d-flex flex-column">
+                <img src="template/default/assets/images/8-books.png" width="80" class="mb-3 mx-auto"/>
+                Buku Terbitan Polri            </a>
+        </li>
+        <li class="d-flex card border-0 hover:shadow cursor-pointer text-decoration-none h-full">
+            <a href="index.php?title=&author=&subject=&isbn=&publishyear=&location=0&gmd=0&colltype=Buku+Umum&search=search" class="d-flex flex-column">
+                <img src="template/default/assets/images/8-books.png" width="80" class="mb-3 mx-auto"/>
+                Buku Umum            </a>
+        </li>
+		<li class="d-flex card border-0 hover:shadow cursor-pointer text-decoration-none h-full">
+            <a href="index.php?title=&author=&subject=&isbn=&publishyear=&location=0&gmd=0&colltype=Naskap&search=search" class="d-flex flex-column">
+                 <img src="template/default/assets/images/Naskah.png" width="80" class="mb-3 mx-auto"/>
+                Naskap            </a>
+        </li>
+        <li class="d-flex card border-0 hover:shadow cursor-pointer text-decoration-none h-full">
+            <a href="javascript:void(0)" class="d-flex flex-column" data-toggle="modal" data-target="#exampleModal">
+                <img src="template/default/assets/images/icon/grid_icon.png" width="80"
+                     class="mb-3 mx-auto"/>
+                Lihat Lainnya.            </a>
+        </li>
+    </ul>
+</section>
+
+<section class="mt-5 container">
+    <h4 class=" mb-4 text-center">
+        Yang populer di antara koleksi kami        <br>
+        <small class="subtitle-section">Koleksi-koleksi kami yang dibaca oleh banyak pengunjung perpustakaan. Cari. Pinjam. Kami harap Anda menyukainya</small>
+    </h4>
+
+    
+    <slims-collection url="index.php?p=api/biblio/popular"></slims-collection>
+
+</section>
+
+<section class="mt-5 container">
+    <h4 class=" mb-4 text-center">
+        Koleksi baru dan diperbarui        <br>
+        <small class="subtitle-section">Merupakan daftar koleksi-koleksi terbaru kami. Tidak semuanya baru, adapula koleksi yang data-datanya sudah diperbaiki. Selamat menikmati</small>
+    </h4>
+
+    
+    <slims-collection url="index.php?p=api/biblio/latest"></slims-collection>
+
+</section>
+
+
+<section class="my-5 container">
+    <div class="row align-items-center">
+            <iframe class="embed-responsive"
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d126770.6466829568!2d107.49233204335935!3d-6.8204985999999925!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68e0e90e0be2ff%3A0x9fc6dba17772ec79!2sSespim%20Polri!5e0!3m2!1sen!2sid!4v1695600103838!5m2!1sen!2sid"
+                    height="420" frameborder="0" style="border:0" allowfullscreen></iframe>
+    </div>
+</section>
+</div>
+
+<footer class="py-4 bg-grey-darkest text-grey-lighter">
+    <div class="container">
+        <div class="row py-4">
+            <div class="col-md-3 logo-footer">
+              <img class="h-16 mb-2" src="images/default/logo.png?v=5e697">                <div class="footer-text mb-4">LITERATION CENTER</div>
+            </div>
+            <div class="col-md-5 pt-8 md:pt-0">
+                <h4 class="footer-tentangkami">TENTANG KAMI</h4>
+                <p class="footer-tentangkami">
+                    STRATEGI OPTIMALISASI LITERASI SEBAGAI PENDUKUNG SISDIK SESPIM LEMDIKLAT POLRI PADA RA DIGITAL 4.0 DAN SOCIETY 5.0                </p>
+            </div>
+            <div class="col-md-4 pt-8 md:pt-0">
+                <h4 class="footer-alamat">LITERATION CENTER</h4>
+            <p class="footer-alamat">Jl. Maribaya No 53 Desa Kayu Ambon Kecamatan Lembang, Kabupaten Bandung Barat 40391</p>
+            </center><br>
+                <p class="social">
+                <a target="_blank" href="https://www.facebook.com/sespimlemdiklatpolri" class="button-social"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" width="1em" height="1em" aria-hidden="true"><path d="M279.14 288l14.22-92.66h-88.91v-60.13c0-25.35 12.42-50.06 52.24-50.06h40.42V6.26S260.43 0 225.36 0c-73.22 0-121.08 44.38-121.08 124.72v70.62H22.89V288h81.39v224h100.17V288z" fill="currentColor"></path></svg></a>
+                <a target="_blank" href="https://twitter.com/@sespim_polri/" class="button-social"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="1em" height="1em" aria-hidden="true"><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z" fill="currentColor"></path></svg></a>
+                <a target="_blank" href="https://www.youtube.com/@sespimlemdiklatpolri" class="button-social"><svg aria-hidden="true" role="img" height="1em" width="1em" viewBox="0 0 576 512" xmlns="http://www.w3.org/2000/svg"><path fill="currentColor" d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z"></path></svg></a>
+                <a target="_blank" href="https://www.instagram.com/sespimlemdiklatpolri/" class="button-social"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" width="1em" height="1em" aria-hidden="true"><path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z" fill="currentColor"></path></svg></a>
+            </p>
+                <hr>
+            </div>
+        </div>
+        <hr>
+        <div class="flex font-thin text-sm">
+            <p class="footer-copyright">&copy; 2026 &mdash; ELIBRARY SESPIM POLRI</p>
+        </div>
+    </div>
+</footer>
+
+
+
+<!-- // Load modal -->
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Pilih subjek yang menarik bagi Anda</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body topic">
+                <ul class="topic d-flex flex-wrap justify-content-center p-0">
+                    <li class="d-flex card border-0 hover:shadow cursor-pointer text-decoration-none h-full">
+            <a href="index.php?title=&author=&subject=&isbn=&publishyear=&location=0&gmd=0&colltype=Nastrap&search=search" class="d-flex flex-column">
+                <img src="template/default/assets/images/Naskah.png" width="80" class="mb-3 mx-auto"/>
+                Nastrap            </a>
+        </li>
+        <li class="d-flex card border-0 hover:shadow cursor-pointer text-decoration-none h-full">
+            <a href="index.php?title=&author=&subject=&isbn=&publishyear=&location=0&gmd=0&colltype=Taskap&search=search" class="d-flex flex-column">
+                <img src="template/default/assets/images/Paper.png" width="80" class="mb-3 mx-auto"/>
+                Taskap            </a>
+        </li>
+        <li class="d-flex card border-0 hover:shadow cursor-pointer text-decoration-none h-full">
+            <a href="index.php?title=&author=&subject=&isbn=&publishyear=&location=0&gmd=0&colltype=NKP+Sespimti&search=search" class="d-flex flex-column">
+                <img src="template/default/assets/images/3-diploma.png" width="80" class="mb-3 mx-auto"/>
+                NKP Sespimti            </a>
+        </li>
+        <li class="d-flex card border-0 hover:shadow cursor-pointer text-decoration-none h-full">
+            <a href="index.php?title=&author=&subject=&isbn=&publishyear=&location=0&gmd=0&colltype=NKP+Sespimmen&search=search" class="d-flex flex-column">
+                <img src="template/default/assets/images/3-diploma.png" width="80" class="mb-3 mx-auto"/>
+                NKP Sespimmen            </a>
+        </li>
+        <li class="d-flex card border-0 hover:shadow cursor-pointer text-decoration-none h-full">
+            <a href="index.php?title=&author=&subject=&isbn=&publishyear=&location=0&gmd=0&colltype=NKP+Sespimma&search=search" class="d-flex flex-column">
+                <img src="template/default/assets/images/3-diploma.png" width="80" class="mb-3 mx-auto"/>
+                NKP Sespimma            </a>
+        </li>
+        <li class="d-flex card border-0 hover:shadow cursor-pointer text-decoration-none h-full">
+            <a href="index.php?title=&author=&subject=&isbn=&publishyear=&location=0&gmd=0&colltype=Bahan+Pelajaran&search=search" class="d-flex flex-column">
+                <img src="template/default/assets/images/0-chemical.png" width="80" class="mb-3 mx-auto"/>
+                Bahan Pelajaran                </a>
+        </li>
+		<li class="d-flex card border-0 hover:shadow cursor-pointer text-decoration-none h-full">
+            <a href="index.php?title=&author=&subject=&isbn=&publishyear=&location=0&gmd=0&colltype=Koran%2C+Majalah%2C+Bulletin&search=search" class="d-flex flex-column">
+                <img src="template/default/assets/images/Books.png" width="80" class="mb-3 mx-auto"/>
+                Koran, Majalah, Buletin                </a>
+        </li>
+		<li class="d-flex card border-0 hover:shadow cursor-pointer text-decoration-none h-full">
+            <a href="index.php?title=&author=&subject=&isbn=&publishyear=&location=0&gmd=0&colltype=Klipping+Koran&search=search" class="d-flex flex-column">
+                <img src="template/default/assets/images/clipping.png" width="80" class="mb-3 mx-auto"/>
+                Klipping Koran                </a>
+        </li>
+		<li class="d-flex card border-0 hover:shadow cursor-pointer text-decoration-none h-full">
+            <a href="index.php?title=&author=&subject=&isbn=&publishyear=&location=0&gmd=0&colltype=Peraturan+Kapolri&search=search" class="d-flex flex-column">
+                <img src="template/default/assets/images/regulation.png" width="80" class="mb-3 mx-auto"/>
+                Peraturan Kapolri                </a>
+        </li>
+		<li class="d-flex card border-0 hover:shadow cursor-pointer text-decoration-none h-full">
+            <a href="index.php?title=&author=&subject=&isbn=&publishyear=&location=0&gmd=0&colltype=Peraturan+Kalemdiklat&search=search" class="d-flex flex-column">
+                <img src="template/default/assets/images/regulation.png" width="80" class="mb-3 mx-auto"/>
+                Peraturan Kalemdiklat                </a>
+        </li>
+		<li class="d-flex card border-0 hover:shadow cursor-pointer text-decoration-none h-full">
+            <a href="index.php?title=&author=&subject=&isbn=&publishyear=&location=0&gmd=0&colltype=Peraturan+Kasespim&search=search" class="d-flex flex-column">
+                <img src="template/default/assets/images/regulation.png" width="80" class="mb-3 mx-auto"/>
+                Peraturan Kasespim                </a>
+        </li>
+		<li class="d-flex card border-0 hover:shadow cursor-pointer text-decoration-none h-full">
+            <a href="index.php?title=&author=&subject=&isbn=&publishyear=&location=0&gmd=0&colltype=Peraturan+Perundang-Undangan+d&search=search" class="d-flex flex-column">
+                <img src="template/default/assets/images/regulation.png" width="80" class="mb-3 mx-auto"/>
+                Peraturan Perundang-Undangan dan Kebijakan Kementerian dan Lembaga                </a>
+        </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="adv-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <form class="modal-content" action="index.php" method="get">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Pencarian Spesifik</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="adv-titles">Judul</label>
+                            <input type="text" name="title" class="form-control" id="adv-titles"
+                                   placeholder="Masukkan judul">
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="adv-author">Pengarang</label>
+                            <input type="text" name="author" class="form-control" id="adv-author"
+                                   placeholder="Masukkan nama pengarang">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="adv-subject">Subjek</label>
+                            <input type="text" name="subject" class="form-control" id="adv-subject"
+                                   placeholder="Masukkan subjek">
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="adv-isbn">ISBN/ISSN</label>
+                            <input type="text" name="isbn" class="form-control" id="adv-isbn"
+                                   placeholder="Masukkan ISBN/ISSN">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="adv-publishyear">Tahun Terbit</label>
+                            <input type="text" name="publishyear" class="form-control" id="adv-publishyear"
+                                   placeholder="Masukkan tahun terbit">
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="adv-location">Lokasi</label>
+                            <select id="adv-location" name="location"
+                                    class="form-control"> <option value="0">Semua Lokasi</option><option value="LITERATION CENTER">LITERATION CENTER</option><option value="SESPIMMA">SESPIMMA</option><option value="SESPIMMEN">SESPIMMEN</option><option value="SESPIMTI">SESPIMTI</option></select>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="adv-gmd">GMD</label>
+                            <select id="adv-gmd" name="gmd" class="form-control"><option value="0">Semua GMD/Media</option><option value="BUKU UMUM">BUKU UMUM</option><option value="HANJAR">HANJAR</option><option value="NASKAP">NASKAP</option><option value="NASTRAP">NASTRAP</option><option value="NKP">NKP</option><option value="SESPIMMA">SESPIMMA</option><option value="SESPIMMEN">SESPIMMEN</option><option value="SESPIMTI">SESPIMTI</option><option value="TASKAP">TASKAP</option></select>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="adv-coll-type">Tipe Koleksi</label>
+                            <select name="colltype" class="form-control"
+                                    id="adv-coll-type"><option value="0">Semua Koleksi</option><option value="Bahan Pelajaran">Bahan Pelajaran</option><option value="Biografi">Biografi</option><option value="Buku Terbitan Polri">Buku Terbitan Polri</option><option value="Buku Umum">Buku Umum</option><option value="Infografis">Infografis</option><option value="Jurnal Luar Negeri">Jurnal Luar Negeri</option><option value="Jurnal Sespim">Jurnal Sespim</option><option value="Klipping Koran">Klipping Koran</option><option value="Koran, Majalah, Bulletin">Koran, Majalah, Bulletin</option><option value="Naskah">Naskah</option><option value="Peraturan Kapolri">Peraturan Kapolri</option></select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" name="search" value="search" class="btn btn-primary">Cari Koleksi</button>
+            </div>
+        </form>
+    </div>
+</div>
+<div class="modal fade" style="position: fixed;top: 30% !important;" id="mediaSocialModal" tabindex="-1" role="dialog" aria-labelledby="mediaSocialModal" aria-hidden="true">
+    <div class="modal-dialog modal-xs vertical-align-center" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Kemana ingin Anda bagikan?</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div id="mediaSocialModalBody" class="modal-body">
+            </div>
+        </div>
+    </div>
+</div>
+<!-- // Load highlight -->
+<script src="/js/highlight.js"></script>
+
+<!-- // load our vue app.js -->
+<script src="template/default/assets/js/app.js?v=5e697"></script>
+<script src="template/default/assets/js/app_jquery.js?v=5e697"></script>
+<script>
+  $('.c-header, .vegas-slide').vegas({
+        delay: 5000,
+        timer: false,
+        transition: 'flash',
+        animation: 'random',
+        slides: [
+            { src: "template/default/assets/images/slide1.jpg?v=5e697" },
+            { src: "template/default/assets/images/slide2.jpg?v=5e697" },
+            { src: "template/default/assets/images/slide3.jpg?v=5e697" },
+            { src: "template/default/assets/images/slide4.jpg?v=5e697" }
+        ]
+    });
+</script>
+</div>
+
+</div>
+</body>
+</html>
